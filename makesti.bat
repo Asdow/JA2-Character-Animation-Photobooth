@@ -1,6 +1,10 @@
 @echo off
 setlocal enabledelayedexpansion
 
+Rem output folder for sti files
+set _OUTPUTDIR=make_script\sti\
+
+
 rem available palettes. Add palettes into the array here and increment the lastPaletteIndex as well.
 set Palettes[0]=JA2_character_model_palette_v3.act
 set Palettes[1]=guns_universal.stp
@@ -59,7 +63,8 @@ if %decision%==0 (
 		
 		rem create layered .sti files for basebody
 		SETLOCAL
-		set _FILEPATH=make_script\sti\%_FILE_NAME%!suffixList[%%n]!.sti
+rem		set _FILEPATH=make_script\sti\%_FILE_NAME%!suffixList[%%n]!.sti
+		set _FILEPATH=!_OUTPUTDIR!%_FILE_NAME%!suffixList[%%n]!.sti
 		echo !_FILEPATH!
 		make_script\sticom.exe new -o "!_FILEPATH!"  -i "make_script\extract\0-%%d.bmp%" -r !_RANGE! -p "make_script\Palettes\!chosenPalette!" --offset !_OFFSET! -k "!c!" -F
 		ENDLOCAL
@@ -78,7 +83,8 @@ if %decision%==0 (
 	Rem make_script\convert.exe output\Prop!nProps!_C*.png -crop 121x121+190+189 BMP3:make_script\extract\0.bmp
 	make_script\convert.exe output\Prop!nProps!_C*.png -crop 121x121+3+4 BMP3:make_script\extract\0.bmp
 	
-	make_script\sticom.exe new -o "make_script\sti\%_FILE_NAME%!_SUFFIX!.sti"  -i "make_script\extract\0-%%d.bmp%" -r !_RANGE! -p "make_script\Palettes\!chosenPalette!" --offset !_OFFSET! -k "!c!" -F
+	set _FILEPATH=!_OUTPUTDIR!%_FILE_NAME%!_SUFFIX!.sti
+	make_script\sticom.exe new -o "!_FILEPATH!"  -i "make_script\extract\0-%%d.bmp%" -r !_RANGE! -p "make_script\Palettes\!chosenPalette!" --offset !_OFFSET! -k "!c!" -F
 	ENDLOCAL
 )
 
@@ -140,7 +146,7 @@ EXIT /B 0
 		Rem crop and convert rendered images to use correct header type
 		make_script\convert.exe output\Prop!nProps!_C*.png -crop 121x121+3+4 BMP3:make_script\extract\0.bmp
 		
-		set _FILEPATH=make_script\sti\%_FILE_NAME%!_SUFFIX!.sti
+		set _FILEPATH=!_OUTPUTDIR!%_FILE_NAME%!_SUFFIX!.sti
 		echo !_FILEPATH!
 		make_script\sticom.exe new -o "!_FILEPATH!"  -i "make_script\extract\0-%%d.bmp%" -r !_RANGE! -p "make_script\Palettes\!chosenPalette!" --offset !_OFFSET! -k "!c!" -F
 	)
