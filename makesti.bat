@@ -2,8 +2,8 @@
 setlocal enabledelayedexpansion
 
 Rem output folder for sti files
-set _OUTPUTDIR=make_script\sti\
-
+rem set _OUTPUTDIR=make_script\sti\
+set _OUTPUTDIR=H:\JA2 Dev\Data\Anims\LOBOT\RGM\
 
 rem available palettes. Add palettes into the array here and increment the lastPaletteIndex as well.
 set Palettes[0]=JA2_character_model_palette_v3.act
@@ -39,7 +39,7 @@ for /l %%n in (0,1,%rangeEnd%) do (
 
 
 :ContinueSTI
-set /p decision=Choose [0] for making a layered body STI or [1] for prop STI or [2] for basic props: 
+set /p decision=Choose [0] for making a layered body STI, [1] for prop, [2] for basic props (AR, BP, beret) [3] basic props (BP, beret): 
 if %decision%==0 (
 	rem CALL :ChoosePalette chosenPalette
 	set chosenPalette=!Palettes[0]!
@@ -71,6 +71,8 @@ rem		set _FILEPATH=make_script\sti\%_FILE_NAME%!suffixList[%%n]!.sti
 	)
 ) else if %decision%==2 (
 	CALL :CreateBaseProps
+) else if %decision%==3 (
+	CALL :CreateBasePropsEmptyHands
 ) ELSE (
 	CALL :ChoosePalette chosenPalette
 	SETLOCAL
@@ -153,3 +155,29 @@ EXIT /B 0
 	ENDLOCAL
 EXIT /B 0
 
+:CreateBasePropsEmptyHands
+	SETLOCAL
+	Rem Backpack
+	set propPalettes[0]=!Palettes[0]!
+	set propnumbers[0]=2
+	set propSuffix[0]=_BP
+	Rem beret
+	set propPalettes[1]=!Palettes[3]!
+	set propnumbers[1]=3
+	set propSuffix[1]=_beret
+
+	for /l %%n in (0,1,1) do (
+		set chosenPalette=!propPalettes[%%n]!
+		set nProps=!propnumbers[%%n]!
+		set _SUFFIX=!propSuffix[%%n]!
+		rem delete any .bmp files from extract folder before converting output frames into there
+		DEL make_script\extract\*.bmp
+		Rem crop and convert rendered images to use correct header type
+		make_script\convert.exe output\Prop!nProps!_C*.png -crop 121x121+3+4 BMP3:make_script\extract\0.bmp
+		
+		set _FILEPATH=!_OUTPUTDIR!%_FILE_NAME%!_SUFFIX!.sti
+		echo !_FILEPATH!
+		make_script\sticom.exe new -o "!_FILEPATH!"  -i "make_script\extract\0-%%d.bmp%" -r !_RANGE! -p "make_script\Palettes\!chosenPalette!" --offset !_OFFSET! -k "!c!" -F
+	)
+	ENDLOCAL
+EXIT /B 0
