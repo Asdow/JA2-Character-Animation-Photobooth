@@ -39,7 +39,13 @@ for /l %%n in (0,1,%rangeEnd%) do (
 
 
 :ContinueSTI
-set /p decision=Choose [0] for making a layered body STI, [1] for prop, [2] props (AR, BP, beret), [3] props (BP, beret), [4] props (BP, beret, pistol): 
+echo Choose
+echo [0] for making a layered body STI
+echo [1] for prop
+echo [2] props (AR, BP, beret)
+echo [3] props (BP, beret)
+echo [4] props (BP, beret, pistol)
+set /p decision=Choice: 
 if %decision%==0 (
 	rem CALL :ChoosePalette chosenPalette
 	set chosenPalette=!Palettes[0]!
