@@ -44,7 +44,10 @@ echo [0] for making a layered body STI
 echo [1] for prop
 echo [2] props (AR, BP, beret)
 echo [3] props (BP, beret)
-echo [4] props (BP, beret, pistol)
+echo [4] props (pistol)
+echo [5] props (machine pistol)
+echo [6] props (dual pistols)
+echo [7] props (dual machine pistols)
 set /p decision=Choice: 
 if %decision%==0 (
 	rem CALL :ChoosePalette chosenPalette
@@ -81,6 +84,12 @@ rem		set _FILEPATH=make_script\sti\%_FILE_NAME%!suffixList[%%n]!.sti
 	CALL :CreateBasePropsEmptyHands
 ) else if %decision%==4 (
 	CALL :CreateBasePropsPistol
+) else if %decision%==5 (
+	CALL :CreateBasePropsMachinePistol
+) else if %decision%==6 (
+	CALL :CreateBasePropsDualPistols
+) else if %decision%==7 (
+	CALL :CreateBasePropsDualMachinePistols
 ) ELSE (
 	CALL :ChoosePalette chosenPalette
 	SETLOCAL
@@ -192,20 +201,89 @@ EXIT /B 0
 
 :CreateBasePropsPistol
 	SETLOCAL
-	Rem Backpack
-	set propPalettes[0]=!Palettes[0]!
-	set propnumbers[0]=2
-	set propSuffix[0]=_BP
-	Rem beret
-	set propPalettes[1]=!Palettes[3]!
-	set propnumbers[1]=3
-	set propSuffix[1]=_beret
 	Rem pistol
-	set propPalettes[2]=!Palettes[1]!
-	set propnumbers[2]=4
-	set propSuffix[2]=_pistol
+	set propPalettes[0]=!Palettes[1]!
+	set propnumbers[0]=1
+	set propSuffix[0]=_pistol
 
-	for /l %%n in (0,1,2) do (
+	for /l %%n in (0,1,0) do (
+		set chosenPalette=!propPalettes[%%n]!
+		set nProps=!propnumbers[%%n]!
+		set _SUFFIX=!propSuffix[%%n]!
+		rem delete any .bmp files from extract folder before converting output frames into there
+		DEL make_script\extract\*.bmp
+		Rem crop and convert rendered images to use correct header type
+		make_script\convert.exe output\Prop!nProps!_C*.png -crop 121x121+3+4 BMP3:make_script\extract\0.bmp
+		
+		set _FILEPATH=!_OUTPUTDIR!%_FILE_NAME%!_SUFFIX!.sti
+		echo !_FILEPATH!
+		make_script\sticom.exe new -o "!_FILEPATH!"  -i "make_script\extract\0-%%d.bmp%" -r !_RANGE! -p "make_script\Palettes\!chosenPalette!" --offset !_OFFSET! -k "!c!" -F
+	)
+	ENDLOCAL
+EXIT /B 0
+
+:CreateBasePropsMachinePistol
+	SETLOCAL
+	Rem pistol
+	set propPalettes[0]=!Palettes[1]!
+	set propnumbers[0]=1
+	set propSuffix[0]=_mpistol
+
+	for /l %%n in (0,1,0) do (
+		set chosenPalette=!propPalettes[%%n]!
+		set nProps=!propnumbers[%%n]!
+		set _SUFFIX=!propSuffix[%%n]!
+		rem delete any .bmp files from extract folder before converting output frames into there
+		DEL make_script\extract\*.bmp
+		Rem crop and convert rendered images to use correct header type
+		make_script\convert.exe output\Prop!nProps!_C*.png -crop 121x121+3+4 BMP3:make_script\extract\0.bmp
+		
+		set _FILEPATH=!_OUTPUTDIR!%_FILE_NAME%!_SUFFIX!.sti
+		echo !_FILEPATH!
+		make_script\sticom.exe new -o "!_FILEPATH!"  -i "make_script\extract\0-%%d.bmp%" -r !_RANGE! -p "make_script\Palettes\!chosenPalette!" --offset !_OFFSET! -k "!c!" -F
+	)
+	ENDLOCAL
+EXIT /B 0
+
+:CreateBasePropsDualPistols
+	SETLOCAL
+	Rem right pistol
+	set propPalettes[0]=!Palettes[1]!
+	set propnumbers[0]=1
+	set propSuffix[0]=_pistol
+	Rem left pistol
+	set propPalettes[1]=!Palettes[1]!
+	set propnumbers[1]=4
+	set propSuffix[1]=_lpistol
+
+	for /l %%n in (0,1,1) do (
+		set chosenPalette=!propPalettes[%%n]!
+		set nProps=!propnumbers[%%n]!
+		set _SUFFIX=!propSuffix[%%n]!
+		rem delete any .bmp files from extract folder before converting output frames into there
+		DEL make_script\extract\*.bmp
+		Rem crop and convert rendered images to use correct header type
+		make_script\convert.exe output\Prop!nProps!_C*.png -crop 121x121+3+4 BMP3:make_script\extract\0.bmp
+		
+		set _FILEPATH=!_OUTPUTDIR!%_FILE_NAME%!_SUFFIX!.sti
+		echo !_FILEPATH!
+		make_script\sticom.exe new -o "!_FILEPATH!"  -i "make_script\extract\0-%%d.bmp%" -r !_RANGE! -p "make_script\Palettes\!chosenPalette!" --offset !_OFFSET! -k "!c!" -F
+	)
+	ENDLOCAL
+EXIT /B 0
+
+:CreateBasePropsDualMachinePistols
+	SETLOCAL
+	Rem right pistol
+	set propPalettes[0]=!Palettes[1]!
+	set propnumbers[0]=1
+	set propSuffix[0]=_mpistol
+	Rem left pistol
+	set propPalettes[1]=!Palettes[1]!
+	set propnumbers[1]=4
+	set propSuffix[1]=_lmpistol
+
+	for /l %%n in (0,1,1) do (
 		set chosenPalette=!propPalettes[%%n]!
 		set nProps=!propnumbers[%%n]!
 		set _SUFFIX=!propSuffix[%%n]!
