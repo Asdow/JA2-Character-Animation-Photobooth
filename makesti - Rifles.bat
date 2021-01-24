@@ -2,8 +2,8 @@
 setlocal enabledelayedexpansion
 
 Rem output folder for sti files
-set _OUTPUTDIR=make_script\sti\
-rem set _OUTPUTDIR=H:\JA2 Dev\Data\Anims\LOBOT\RGM\
+rem set _OUTPUTDIR=make_script\sti\
+set _OUTPUTDIR=H:\JA2 Dev\Data\Anims\LOBOT\RGM\
 
 
 rem Read available palettes from text file.
@@ -213,6 +213,14 @@ EXIT /B 0
 	set propPalettes[2]=!Palettes[2]!
 	set propnumbers[2]=3
 	set propSuffix[2]=_AK47
+	Rem Mosin Nagant
+	set propPalettes[3]=!Palettes[2]!
+	set propnumbers[3]=4
+	set propSuffix[3]=_mosin
+	Rem MP5
+	set propPalettes[4]=!Palettes[1]!
+	set propnumbers[4]=5
+	set propSuffix[4]=_MP5
 
 	for /l %%m in (0,1,!animIndex!) do (
 rem		set folderName=!animFolders[%%m]!
@@ -222,7 +230,7 @@ rem		call :unquote folderName !folderName!
 		echo "---------------"
 		echo "!_INPUTDIR!"
 		
-		for /l %%n in (0,1,2) do (
+		for /l %%n in (3,1,4) do (
 			set chosenPalette=!propPalettes[%%n]!
 			set nProps=!propnumbers[%%n]!
 			set _SUFFIX=!propSuffix[%%n]!

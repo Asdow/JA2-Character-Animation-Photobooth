@@ -46,6 +46,8 @@ for i in range(len(animationArray)):
 	bpy.data.objects["Weapon - FAL"].hide_render = False
 	bpy.data.objects["Weapon - Shotgun"].hide_render = False
 	bpy.data.objects["Weapon - AK47"].hide_render = False
+	bpy.data.objects["Weapon - Mosin Nagant"].hide_render = False
+	bpy.data.objects["Weapon - HK MP5"].hide_render = False
 	bpy.data.objects["Weapon - HK MP5K"].hide_render = True
 	bpy.data.objects["Weapon - HK MP5K - Left Hand"].hide_render = True
 	bpy.data.objects["Weapon - HK USP"].hide_render = True
