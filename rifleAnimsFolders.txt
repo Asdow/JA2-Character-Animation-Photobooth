@@ -1,0 +1,16 @@
+Standing - Rifle - Aim
+Standing - Rifle - Hit
+Standing - Rifle - Idle
+Standing - Rifle - Idle - Alternate
+Standing - Rifle - Open door
+Standing - Rifle - Raise to Idle
+Standing - Rifle - Run
+Standing - Rifle - Sidestep
+Standing - Rifle - Sidestep Alternate
+Standing - Rifle - Walk
+Standing - Rifle - Walk Aiming
+Standing To Crouch - Rifle
+Crouch - Rifle - Aim & Shoot
+Crouch - Rifle - Walk
+Crouch - Rifle - Walk Aiming
+Prone - Rifle - Crawl & Shoot

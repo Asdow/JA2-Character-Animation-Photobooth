@@ -1,0 +1,4 @@
+JA2_character_model_palette_v3.act
+guns_universal.stp
+guns_AK.stp
+Hats.stp
