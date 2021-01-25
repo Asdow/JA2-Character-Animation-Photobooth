@@ -7,3 +7,6 @@ TastyTony		-	Low-Poly Mossberg 590	https://sketchfab.com/3d-models/low-poly-moss
 TastyTony		-	Low-Poly HK MP5K		https://sketchfab.com/3d-models/low-poly-hk-mp5k-fb03df0656ea412585d69d6be137788c
 TastyTony		-	Low-Poly HK MP5			https://sketchfab.com/3d-models/low-poly-hk-mp5-80980f757c2c463ebc73460a31611652
 TastyTony		-	Low-Poly Mosin Nagant	https://sketchfab.com/3d-models/low-poly-mosin-nagant-826c8cbd08ee49a08007be940c928c53
+TastyTony		-	Low-Poly PKM			https://sketchfab.com/3d-models/low-poly-pkm-626082c669c740efa06e03c63b7bc2d9
+TastyTony		-	Low-Poly M14			https://sketchfab.com/3d-models/low-poly-m14-30e47673a17b434386e9c3af54670bed
+TastyTony		-	Low-Poly Barrett M82A1	https://sketchfab.com/3d-models/low-poly-barrett-m82a1-9c7027e5a64e40e9ae927adb0872b6d8
