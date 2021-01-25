@@ -2,6 +2,7 @@
 ("Standing - Empty Hands - Idle",8,S_N_STD),
 ("Standing - Empty Hands - Walk",12,S_N_WALK),
 ("Standing - Empty Hands - Run",12,S_N_RUN),
+("Standing - Empty Hands - Pain",14,S_N_PAIN),
 ("Standing - Pistol - Idle",8,S_P_BRTH),
 ("Standing - Pistol - Walk",12,S_P_WALK),
 ("Standing - Pistol - Walk Aiming",12,S_P_RDY_WALK2),
@@ -14,4 +15,6 @@
 ("Crouch - Pistol - Walk Aiming",24,crouched_walk_pistol),
 ("Crouch - Pistol - Aim & Shoot",18,S_CR_AIM_P),
 ("Crouch - Dual Pistol - Walk Aiming",24,crouched_walk_dual),
-("Crouch - Dual Pistol - Aim & Shoot",25,S_CR_AIM_D)
+("Crouch - Dual Pistol - Aim & Shoot",25,S_CR_AIM_D),
+("Prone - Pistol - Crawl & Shoot",29,S_N_PRNE),
+("Prone - Dual Pistol - Shoot",12,S_DB_PRN)

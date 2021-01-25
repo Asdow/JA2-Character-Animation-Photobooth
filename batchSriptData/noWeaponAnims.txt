@@ -1,7 +1,11 @@
 ;Animation name, end frame, sti name
 ;Hop fence is a special case. It's kept here for easy copy and pasting to render scripts but it has its own makesti.bat due to 4 directions.
 ;("Standing - Hop fence",18,S_HOP),
-("Crouch - Render medical aid",8,S_MEDIC),
 ("Standing - Empty Hands - Open door",10,S_OPEN),
 ("Standing - Empty Hands - Pickup",5,S_PICKUP),
-("Standing - Punch",24,S_PUNCH)
+("Standing - Punch",24,S_PUNCH),
+("Standing To Cower - Empty hands",12,S_COWER),
+("Crouch - Render medical aid",8,S_MEDIC),
+("Prone - Empty Hands - Render Aid",7,S_PRN_MED),
+("Prone - Empty Hands - Cower",10,S_PRNCOW),
+("Prone - Empty Hands - Hit and die",22,S_P_DIE)
