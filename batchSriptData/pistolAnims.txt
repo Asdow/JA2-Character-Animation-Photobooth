@@ -1,16 +1,17 @@
-S_N_STD
-S_N_WALK
-S_N_RUN
-S_P_BRTH
-S_P_WALK
-S_P_RDY_WALK2
-S_N_SHOT
-S_P_LOW
-S_P_SDSP_AIM
-S_DBLSHOT
-S_N_CRCH
-S_N_SWAT
-crouched_walk_pistol
-S_CR_AIM_P
-crouched_walk_dual
-S_CR_AIM_D
+;Animation name, end frame, sti name
+("Standing - Empty Hands - Idle",8,S_N_STD),
+("Standing - Empty Hands - Walk",12,S_N_WALK),
+("Standing - Empty Hands - Run",12,S_N_RUN),
+("Standing - Pistol - Idle",8,S_P_BRTH),
+("Standing - Pistol - Walk",12,S_P_WALK),
+("Standing - Pistol - Walk Aiming",12,S_P_RDY_WALK2),
+("Standing - Pistol - Aim & Shoot",21,S_N_SHOT),
+("Standing - Pistol - Shoot low",8,S_P_LOW),
+("Standing - Pistol - Sidestep Aim Alternate",12,S_P_SDSP_AIM),
+("Standing - Dual Pistols - Aim & Shoot",25,S_DBLSHOT),
+("Standing To Crouch - Empty hands",15,S_N_CRCH),
+("Crouch - Empty hands - Walk",22,S_N_SWAT),
+("Crouch - Pistol - Walk Aiming",24,crouched_walk_pistol),
+("Crouch - Pistol - Aim & Shoot",18,S_CR_AIM_P),
+("Crouch - Dual Pistol - Walk Aiming",24,crouched_walk_dual),
+("Crouch - Dual Pistol - Aim & Shoot",25,S_CR_AIM_D)

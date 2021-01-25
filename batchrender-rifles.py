@@ -8,7 +8,7 @@ animationArray = [
 	("Standing - Rifle - Idle - Alternate", 8),
 	("Standing - Rifle - Open door", 10),
 	("Standing - Rifle - Raise to Idle", 5),
-	("Standing - Rifle - Run", 12),
+	("Standing - Rifle - Run", 12),#<---
 #	("Standing - Rifle - Sidestep", 12),
 #	("Standing - Rifle - Sidestep Alternate", 12),
 #	("Standing - Rifle - Walk", 12),
@@ -44,19 +44,22 @@ for i in range(len(animationArray)):
 	# Hide and display objects in renders
 	# TODO make these change depending on the animation, if needed
 	bpy.data.objects["Weapon - FAL"].hide_render = True
-	bpy.data.objects["Weapon - Shotgun"].hide_render = True
+	bpy.data.objects["Weapon - Shotgun"].hide_render = False
 	bpy.data.objects["Weapon - AK47"].hide_render = True
-	bpy.data.objects["Weapon - Mosin Nagant"].hide_render = True
+	bpy.data.objects["Weapon - Mosin Nagant"].hide_render = False
 	bpy.data.objects["Weapon - HK MP5"].hide_render = True
+	bpy.data.objects["Weapon - Barrett"].hide_render = False
+	bpy.data.objects["Weapon - PKM"].hide_render = False
+	bpy.data.objects["Weapon - M14"].hide_render = False
 	bpy.data.objects["Weapon - HK MP5K"].hide_render = True
 	bpy.data.objects["Weapon - HK MP5K - Left Hand"].hide_render = True
 	bpy.data.objects["Weapon - HK USP"].hide_render = True
 	bpy.data.objects["Weapon - HK USP - Left Hand"].hide_render = True
-	bpy.data.objects["Vest - Flak Jacket"].hide_render = False
-	bpy.data.objects["Travel_Backpack"].hide_render = False
-	bpy.data.objects["Hat - Beret"].hide_render = False
-	bpy.data.objects["Hat - Helmet"].hide_render = False
-	bpy.data.objects["Face - Gasmask"].hide_render = False
+	bpy.data.objects["Vest - Flak Jacket"].hide_render = True
+	bpy.data.objects["Travel_Backpack"].hide_render = True
+	bpy.data.objects["Hat - Beret"].hide_render = True
+	bpy.data.objects["Hat - Helmet"].hide_render = True
+	bpy.data.objects["Face - Gasmask"].hide_render = True
 
 	# RENDER AWAYYY!
 	bpy.ops.render.render(animation=True)

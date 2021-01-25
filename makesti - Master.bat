@@ -18,31 +18,55 @@ Rem offset for the frames. Since this doesn't change often, it's not asked.
 set _OFFSET="(-60,-77)"
 
 
-rem Read rifle anim file names
+:AnimDataChoice
+echo Choose animation data file
+echo [0] rifleAnims.txt
+echo [1] pistolAnims.txt
+echo [2] noWeaponAnims.txt
+set /p animchoice=Choice: 
+if %animchoice%==0 (
+	set "animData=batchSriptData\rifleAnims.txt"
+) else if %animchoice%==1 (
+	set animData=batchSriptData\pistolAnims.txt
+) else if %animchoice%==2 (
+	set animData=batchSriptData\noWeaponAnims.txt
+) ELSE (
+	echo Invalid choice
+	GOTO :AnimDataChoice
+)
+
+
+rem Read animation data
 set /a animIndex=0
-FOR /F "tokens=* delims=" %%x in (batchSriptData\rifleAnims.txt) DO (
+FOR /F "tokens=1 delims=()," %%x in (!animData!) DO (
+	set animFolders[!animIndex!]=%%~x
+	set /a animIndex+=1
+)
+set /a animIndex-=1
+
+set /a animIndex=0
+FOR /F "tokens=2 delims=()," %%x in (!animData!) DO (
+	set animFrames[!animIndex!]=%%~x
+	set /a animIndex+=1
+)
+set /a animIndex-=1
+
+set /a animIndex=0
+FOR /F "tokens=3 delims=()," %%x in (!animData!) DO (
 	set animFileNames[!animIndex!]=%%~x
 	set /a animIndex+=1
 )
 set /a animIndex-=1
 
-
-rem Read rifle anim end frames
-set /a frameIndex=0
-FOR /F "tokens=* delims=" %%x in (batchSriptData\rifleAnimsFrames.txt) DO (
-	set /a animFrames[!frameIndex!]=%%~x
-	set /a frameIndex+=1
-)
-set /a frameIndex-=1
-
-
-rem Read rifle anim folder names
-set /a fileIndex=0
-FOR /F "delims=" %%x in (batchSriptData\rifleAnimsFolders.txt) DO (
-	set animFolders[!fileIndex!]="%%~x"
-	set /a fileIndex+=1
-)
-set /a fileIndex-=1
+echo Printing animation data
+echo(
+for /L %%i in (0,1,%animIndex%) do call echo "%%animFolders[%%i]%%"
+echo(
+for /L %%i in (0,1,%animIndex%) do call echo "%%animFrames[%%i]%%"
+echo(
+for /L %%i in (0,1,%animIndex%) do call echo "%%animFileNames[%%i]%%"
+echo(
+echo(
 
 
 rem Create necessary inputs for sticom.exe
@@ -83,8 +107,12 @@ rem	echo !_KEYFRAME[%%n]!
 :ContinueSTI
 echo Choose
 echo [0] for making a layered body STI
-echo [1] for props (AR, shotgun, AK47, Mosin Nagant, MP5)
-echo [2] props (Vest, BP, beret, Helmet, Gasmask)
+echo [1] for props (AR, Shotgun, AK47, Mosin Nagant, MP5)
+echo [2] props (Vest, Backpack, beret, Helmet, Gasmask)
+echo [3] props (Barrett, PKM, M14)
+echo [4] props (HK USP, HK USP Left Hand)
+echo [5] props (HK MP5K, HK MP5K Left Hand)
+echo [99] quit
 set /p decision=Choice: 
 if %decision%==0 (
 	rem CALL :ChoosePalette chosenPalette
@@ -101,10 +129,10 @@ if %decision%==0 (
 	set suffixList[3]=_torso
 	set suffixList[4]=_legs
 	for /l %%m in (0,1,!animIndex!) do (
-rem		set folderName=!animFolders[%%m]!
-rem		call :unquote folderName !folderName!
-		set folderName=!animFolders[%%m]:"=!
+rem		set folderName=!animFolders[%%m]:"=!
+		set folderName=!animFolders[%%m]!
 		set _INPUTDIR=output\!folderName!
+		echo(
 		echo "---------------"
 		echo "!_INPUTDIR!"
 
@@ -124,12 +152,11 @@ rem		call :unquote folderName !folderName!
 			set "_keyframes=!_KEYFRAME[%%m]!"
 			echo !_FILEPATH!
 rem			echo !_extract!
-			echo !_range!
+rem			echo !_range!
 			echo !_palette!
 rem			echo !_OFFSET!
 rem			echo !_keyframes!
 			Rem echo empty lines
-			echo(
 			echo(
 			
 			make_script\sticom.exe new -o "!_FILEPATH!"  -i "!_extract!" -r !_range! -p "!_palette!" --offset !_OFFSET! -k "!_keyframes!" -F
@@ -140,39 +167,22 @@ rem			echo !_keyframes!
 	CALL :CreateBasePropsRifles
 ) else if %decision%==2 (
 	CALL :CreateBasePropsBPandBeret
+) else if %decision%==3 (
+	CALL :CreateBasePropsBarrett
 ) else if %decision%==4 (
-	CALL :CreateBasePropsPistol
-) else if %decision%==5 (
-	CALL :CreateBasePropsMachinePistol
-) else if %decision%==6 (
 	CALL :CreateBasePropsDualPistols
-) else if %decision%==7 (
+) else if %decision%==5 (
 	CALL :CreateBasePropsDualMachinePistols
-) ELSE (
-	CALL :ChoosePalette chosenPalette
-	SETLOCAL
-	set /p nProps=Input the number of the prop to turn into sti. 
-	set /p _SUFFIX=Give a suffix for the prop filename: 
-
-	rem delete any .bmp files from extract folder before converting output frames into there
-	DEL make_script\extract\*.bmp
-	Rem crop and convert rendered images to use correct header type
-	Rem make_script\convert.exe output\Prop!nProps!_C*.png -crop 121x121+190+189 BMP3:make_script\extract\0.bmp
-	make_script\convert.exe output\Prop!nProps!_C*.png -crop 121x121+3+4 BMP3:make_script\extract\0.bmp
-	
-	set _FILEPATH=!_OUTPUTDIR!%_FILE_NAME%!_SUFFIX!.sti
-	make_script\sticom.exe new -o "!_FILEPATH!"  -i "make_script\extract\0-%%d.bmp%" -r !_RANGE! -p "make_script\Palettes\!chosenPalette!" --offset !_OFFSET! -k "!c!" -F
-	ENDLOCAL
-)
-
-
-set /p continueChoice=Choose [0] to quit, otherwise jump back to STI choice for next sti: 
-if %continueChoice%==0 (
+) else if %decision%==99 (
 	echo Quitting makesti script
 	GOTO :EndScript
-) else (
+) ELSE (
+	echo Invalid selection
 	GOTO :ContinueSTI
 )
+
+
+GOTO :ContinueSTI
 
 :EndScript
 EXIT /B %ERRORLEVEL%
@@ -223,10 +233,10 @@ EXIT /B 0
 	set propSuffix[4]=_MP5
 
 	for /l %%m in (0,1,!animIndex!) do (
-rem		set folderName=!animFolders[%%m]!
-rem		call :unquote folderName !folderName!
-		set folderName=!animFolders[%%m]:"=!
+rem		set folderName=!animFolders[%%m]:"=!
+		set folderName=!animFolders[%%m]!
 		set _INPUTDIR=output\!folderName!
+		echo(
 		echo "---------------"
 		echo "!_INPUTDIR!"
 		
@@ -248,11 +258,10 @@ rem		call :unquote folderName !folderName!
 			set "_keyframes=!_KEYFRAME[%%m]!"
 			echo !_FILEPATH!
 rem			echo !_extract!
-			echo !_range!
+rem			echo !_range!
 			echo !_palette!
 rem			echo !_OFFSET!
 rem			echo !_keyframes!
-			echo(
 			echo(
 		
 			make_script\sticom.exe new -o "!_FILEPATH!"  -i "!_extract!" -r !_range! -p "!_palette!" --offset !_OFFSET! -k "!_keyframes!" -F
@@ -286,8 +295,10 @@ EXIT /B 0
 	set propSuffix[4]=_gasmask
 
 	for /l %%m in (0,1,!animIndex!) do (
-		set folderName=!animFolders[%%m]:"=!
+rem		set folderName=!animFolders[%%m]:"=!
+		set folderName=!animFolders[%%m]!
 		set _INPUTDIR=output\!folderName!
+		echo(
 		echo "---------------"
 		echo "!_INPUTDIR!"
 
@@ -309,10 +320,9 @@ EXIT /B 0
 			echo !_FILEPATH!
 rem			echo !_extract!
 rem			echo !_range!
-rem			echo !_palette!
+			echo !_palette!
 rem			echo !_OFFSET!
 rem			echo !_keyframes!
-			echo(
 			echo(
 			make_script\sticom.exe new -o "!_FILEPATH!"  -i "!_extract!" -r !_range! -p "!_palette!" --offset !_OFFSET! -k "!_keyframes!" -F
 		)
@@ -320,51 +330,67 @@ rem			echo !_keyframes!
 	ENDLOCAL
 EXIT /B 0
 
-:CreateBasePropsPistol
+:CreateBasePropsBarrett
 	SETLOCAL
-	Rem pistol
-	set propPalettes[0]=!Palettes[1]!
+	Rem Assault Rifle
+	set propPalettes[0]=!Palettes[4]!
 	set propnumbers[0]=1
-	set propSuffix[0]=_pistol
+	set propSuffix[0]=_M82
+	Rem Shotgun
+	set propPalettes[1]=!Palettes[4]!
+	set propnumbers[1]=2
+	set propSuffix[1]=_shotgun
+	Rem AK47
+	set propPalettes[2]=!Palettes[4]!
+	set propnumbers[2]=3
+	set propSuffix[2]=_PKM
+	Rem Mosin Nagant
+	set propPalettes[3]=!Palettes[4]!
+	set propnumbers[3]=4
+	set propSuffix[3]=_mosin
+	Rem MP5
+	set propPalettes[4]=!Palettes[4]!
+	set propnumbers[4]=5
+	set propSuffix[4]=_M14
 
-	for /l %%n in (0,1,0) do (
-		set chosenPalette=!propPalettes[%%n]!
-		set nProps=!propnumbers[%%n]!
-		set _SUFFIX=!propSuffix[%%n]!
-		rem delete any .bmp files from extract folder before converting output frames into there
-		DEL make_script\extract\*.bmp
-		Rem crop and convert rendered images to use correct header type
-		make_script\convert.exe output\Prop!nProps!_C*.png -crop 121x121+3+4 BMP3:make_script\extract\0.bmp
+	for /l %%m in (0,1,!animIndex!) do (
+rem		set folderName=!animFolders[%%m]:"=!
+		set folderName=!animFolders[%%m]!
+		set _INPUTDIR=output\!folderName!
+		echo(
+		echo "---------------"
+		echo "!_INPUTDIR!"
 		
-		set _FILEPATH=!_OUTPUTDIR!%_FILE_NAME%!_SUFFIX!.sti
-		echo !_FILEPATH!
-		make_script\sticom.exe new -o "!_FILEPATH!"  -i "make_script\extract\0-%%d.bmp%" -r !_RANGE! -p "make_script\Palettes\!chosenPalette!" --offset !_OFFSET! -k "!c!" -F
+		for /l %%n in (0,1,4) do (
+			set chosenPalette=!propPalettes[%%n]!
+			set nProps=!propnumbers[%%n]!
+			set _SUFFIX=!propSuffix[%%n]!
+			rem delete any .bmp files from extract folder before converting output frames into there
+			DEL make_script\extract\*.bmp
+			Rem crop and convert rendered images to use correct header type
+			make_script\convert.exe "!_INPUTDIR!\Prop!nProps!_C*.png" -crop 121x121+3+4 BMP3:make_script\extract\0.bmp
+			
+
+			set _FILE_NAME=!animFileNames[%%m]!
+			set _FILEPATH=!_OUTPUTDIR!!_FILE_NAME!!_SUFFIX!.sti
+			set _range=!_RANGE[%%m]!
+			set "_extract=make_script\extract\0-%%d.bmp%"
+			set "_palette=make_script\Palettes\!chosenPalette!"
+			set "_keyframes=!_KEYFRAME[%%m]!"
+			echo !_FILEPATH!
+rem			echo !_extract!
+rem			echo !_range!
+			echo !_palette!
+rem			echo !_OFFSET!
+rem			echo !_keyframes!
+			echo(
+		
+			make_script\sticom.exe new -o "!_FILEPATH!"  -i "!_extract!" -r !_range! -p "!_palette!" --offset !_OFFSET! -k "!_keyframes!" -F
+		)
 	)
 	ENDLOCAL
 EXIT /B 0
 
-:CreateBasePropsMachinePistol
-	SETLOCAL
-	Rem pistol
-	set propPalettes[0]=!Palettes[1]!
-	set propnumbers[0]=1
-	set propSuffix[0]=_mpistol
-
-	for /l %%n in (0,1,0) do (
-		set chosenPalette=!propPalettes[%%n]!
-		set nProps=!propnumbers[%%n]!
-		set _SUFFIX=!propSuffix[%%n]!
-		rem delete any .bmp files from extract folder before converting output frames into there
-		DEL make_script\extract\*.bmp
-		Rem crop and convert rendered images to use correct header type
-		make_script\convert.exe output\Prop!nProps!_C*.png -crop 121x121+3+4 BMP3:make_script\extract\0.bmp
-		
-		set _FILEPATH=!_OUTPUTDIR!%_FILE_NAME%!_SUFFIX!.sti
-		echo !_FILEPATH!
-		make_script\sticom.exe new -o "!_FILEPATH!"  -i "make_script\extract\0-%%d.bmp%" -r !_RANGE! -p "make_script\Palettes\!chosenPalette!" --offset !_OFFSET! -k "!c!" -F
-	)
-	ENDLOCAL
-EXIT /B 0
 
 :CreateBasePropsDualPistols
 	SETLOCAL
@@ -377,18 +403,40 @@ EXIT /B 0
 	set propnumbers[1]=4
 	set propSuffix[1]=_lpistol
 
-	for /l %%n in (0,1,1) do (
-		set chosenPalette=!propPalettes[%%n]!
-		set nProps=!propnumbers[%%n]!
-		set _SUFFIX=!propSuffix[%%n]!
-		rem delete any .bmp files from extract folder before converting output frames into there
-		DEL make_script\extract\*.bmp
-		Rem crop and convert rendered images to use correct header type
-		make_script\convert.exe output\Prop!nProps!_C*.png -crop 121x121+3+4 BMP3:make_script\extract\0.bmp
+	for /l %%m in (0,1,!animIndex!) do (
+rem		set folderName=!animFolders[%%m]:"=!
+		set folderName=!animFolders[%%m]!
+		set _INPUTDIR=output\!folderName!
+		echo(
+		echo "---------------"
+		echo "!_INPUTDIR!"
 		
-		set _FILEPATH=!_OUTPUTDIR!%_FILE_NAME%!_SUFFIX!.sti
-		echo !_FILEPATH!
-		make_script\sticom.exe new -o "!_FILEPATH!"  -i "make_script\extract\0-%%d.bmp%" -r !_RANGE! -p "make_script\Palettes\!chosenPalette!" --offset !_OFFSET! -k "!c!" -F
+		for /l %%n in (0,1,1) do (
+			set chosenPalette=!propPalettes[%%n]!
+			set nProps=!propnumbers[%%n]!
+			set _SUFFIX=!propSuffix[%%n]!
+			rem delete any .bmp files from extract folder before converting output frames into there
+			DEL make_script\extract\*.bmp
+			Rem crop and convert rendered images to use correct header type
+			make_script\convert.exe "!_INPUTDIR!\Prop!nProps!_C*.png" -crop 121x121+3+4 BMP3:make_script\extract\0.bmp
+			
+
+			set _FILE_NAME=!animFileNames[%%m]!
+			set _FILEPATH=!_OUTPUTDIR!!_FILE_NAME!!_SUFFIX!.sti
+			set _range=!_RANGE[%%m]!
+			set "_extract=make_script\extract\0-%%d.bmp%"
+			set "_palette=make_script\Palettes\!chosenPalette!"
+			set "_keyframes=!_KEYFRAME[%%m]!"
+			echo !_FILEPATH!
+rem			echo !_extract!
+rem			echo !_range!
+			echo !_palette!
+rem			echo !_OFFSET!
+rem			echo !_keyframes!
+			echo(
+		
+			make_script\sticom.exe new -o "!_FILEPATH!"  -i "!_extract!" -r !_range! -p "!_palette!" --offset !_OFFSET! -k "!_keyframes!" -F
+		)
 	)
 	ENDLOCAL
 EXIT /B 0
@@ -404,22 +452,40 @@ EXIT /B 0
 	set propnumbers[1]=4
 	set propSuffix[1]=_lmpistol
 
-	for /l %%n in (0,1,1) do (
-		set chosenPalette=!propPalettes[%%n]!
-		set nProps=!propnumbers[%%n]!
-		set _SUFFIX=!propSuffix[%%n]!
-		rem delete any .bmp files from extract folder before converting output frames into there
-		DEL make_script\extract\*.bmp
-		Rem crop and convert rendered images to use correct header type
-		make_script\convert.exe output\Prop!nProps!_C*.png -crop 121x121+3+4 BMP3:make_script\extract\0.bmp
+	for /l %%m in (0,1,!animIndex!) do (
+rem		set folderName=!animFolders[%%m]:"=!
+		set folderName=!animFolders[%%m]!
+		set _INPUTDIR=output\!folderName!
+		echo(
+		echo "---------------"
+		echo "!_INPUTDIR!"
 		
-		set _FILEPATH=!_OUTPUTDIR!%_FILE_NAME%!_SUFFIX!.sti
-		echo !_FILEPATH!
-		make_script\sticom.exe new -o "!_FILEPATH!"  -i "make_script\extract\0-%%d.bmp%" -r !_RANGE! -p "make_script\Palettes\!chosenPalette!" --offset !_OFFSET! -k "!c!" -F
+		for /l %%n in (0,1,1) do (
+			set chosenPalette=!propPalettes[%%n]!
+			set nProps=!propnumbers[%%n]!
+			set _SUFFIX=!propSuffix[%%n]!
+			rem delete any .bmp files from extract folder before converting output frames into there
+			DEL make_script\extract\*.bmp
+			Rem crop and convert rendered images to use correct header type
+			make_script\convert.exe "!_INPUTDIR!\Prop!nProps!_C*.png" -crop 121x121+3+4 BMP3:make_script\extract\0.bmp
+			
+
+			set _FILE_NAME=!animFileNames[%%m]!
+			set _FILEPATH=!_OUTPUTDIR!!_FILE_NAME!!_SUFFIX!.sti
+			set _range=!_RANGE[%%m]!
+			set "_extract=make_script\extract\0-%%d.bmp%"
+			set "_palette=make_script\Palettes\!chosenPalette!"
+			set "_keyframes=!_KEYFRAME[%%m]!"
+			echo !_FILEPATH!
+rem			echo !_extract!
+rem			echo !_range!
+			echo !_palette!
+rem			echo !_OFFSET!
+rem			echo !_keyframes!
+			echo(
+		
+			make_script\sticom.exe new -o "!_FILEPATH!"  -i "!_extract!" -r !_range! -p "!_palette!" --offset !_OFFSET! -k "!_keyframes!" -F
+		)
 	)
 	ENDLOCAL
 EXIT /B 0
-
-:unquote
-  set %1=%~2
-  goto :EOF

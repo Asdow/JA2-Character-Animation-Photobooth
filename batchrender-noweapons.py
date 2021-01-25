@@ -2,24 +2,12 @@ import bpy
 
 # Animation name in blender & end frame
 animationArray = [
-#	("Standing - Rifle - Aim", 21),
-#	("Standing - Rifle - Hit", 5),
-#	("Standing - Rifle - Idle", 8),
-#	("Standing - Rifle - Idle - Alternate", 8),
-#	("Standing - Rifle - Open door", 10),
-#	("Standing - Rifle - Raise to Idle", 5),
-#	("Standing - Rifle - Run", 12),
-	("Standing - Rifle - Sidestep", 12),
-	("Standing - Rifle - Sidestep Alternate", 12),
-	("Standing - Rifle - Walk", 12),
-	("Standing - Rifle - Walk Aiming", 12),
-	("Standing To Crouch - Rifle", 15),
-#	("Crouch - Rifle - Aim & Shoot", 18),
-#	("Crouch - Rifle - Walk", 22),
-#	("Crouch - Rifle - Walk Aiming", 24),
-#	("Prone - Rifle - Crawl & Shoot", 29)
+	("Standing - Hop fence",18,S_HOP),
+	("Crouch - Render medical aid",8,S_MEDIC),
+	("Standing - Empty Hands - Open door",10,S_OPEN),
+	("Standing - Empty Hands - Pickup",5,S_PICKUP),
+	("Standing - Punch",24,S_PUNCH)
 ]
-
 
 for i in range(len(animationArray)):
 	# Set up specific animation and its end frame
