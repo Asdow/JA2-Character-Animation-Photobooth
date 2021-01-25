@@ -1,0 +1,16 @@
+Standing - Empty Hands - Idle
+Standing - Empty Hands - Walk
+Standing - Empty Hands - Run
+Standing - Pistol - Idle
+Standing - Pistol - Walk
+Standing - Pistol - Walk Aiming
+Standing - Pistol - Aim & Shoot
+Standing - Pistol - Shoot low
+Standing - Pistol - Sidestep Aim Alternate
+Standing - Dual Pistols - Aim & Shoot
+Standing To Crouch - Empty hands
+Crouch - Empty hands - Walk
+Crouch - Pistol - Walk Aiming
+Crouch - Pistol - Aim & Shoot
+Crouch - Dual Pistol - Walk Aiming
+Crouch - Dual Pistol - Aim & Shoot

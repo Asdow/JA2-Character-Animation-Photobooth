@@ -1,0 +1,16 @@
+S_N_STD
+S_N_WALK
+S_N_RUN
+S_P_BRTH
+S_P_WALK
+S_P_RDY_WALK2
+S_N_SHOT
+S_P_LOW
+S_P_SDSP_AIM
+S_DBLSHOT
+S_N_CRCH
+S_N_SWAT
+crouched_walk_pistol
+S_CR_AIM_P
+crouched_walk_dual
+S_CR_AIM_D

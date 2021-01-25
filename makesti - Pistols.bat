@@ -20,7 +20,7 @@ set _OFFSET="(-60,-77)"
 
 rem Read rifle anim file names
 set /a animIndex=0
-FOR /F "tokens=* delims=" %%x in (batchSriptData\rifleAnims.txt) DO (
+FOR /F "tokens=* delims=" %%x in (batchSriptData\pistolAnims.txt) DO (
 	set animFileNames[!animIndex!]=%%~x
 	set /a animIndex+=1
 )
@@ -29,7 +29,7 @@ set /a animIndex-=1
 
 rem Read rifle anim end frames
 set /a frameIndex=0
-FOR /F "tokens=* delims=" %%x in (batchSriptData\rifleAnimsFrames.txt) DO (
+FOR /F "tokens=* delims=" %%x in (batchSriptData\pistolAnimsFrames.txt) DO (
 	set /a animFrames[!frameIndex!]=%%~x
 	set /a frameIndex+=1
 )
@@ -38,7 +38,7 @@ set /a frameIndex-=1
 
 rem Read rifle anim folder names
 set /a fileIndex=0
-FOR /F "delims=" %%x in (batchSriptData\rifleAnimsFolders.txt) DO (
+FOR /F "delims=" %%x in (batchSriptData\pistolAnimsFolders.txt) DO (
 	set animFolders[!fileIndex!]="%%~x"
 	set /a fileIndex+=1
 )
@@ -83,7 +83,7 @@ rem	echo !_KEYFRAME[%%n]!
 :ContinueSTI
 echo Choose
 echo [0] for making a layered body STI
-echo [1] for props (AR, shotgun, AK47, Mosin Nagant, MP5)
+echo [1] for props (AR, shotgun, AK47, Mosin Nagant, MP5) NOT VALID YET
 echo [2] props (Vest, BP, beret, Helmet, Gasmask)
 set /p decision=Choice: 
 if %decision%==0 (
