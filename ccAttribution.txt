@@ -6,7 +6,16 @@ Nik Ladoukakis	-	Vest					https://sketchfab.com/3d-models/vest-e0e9f9f7b70e4be2b
 TastyTony		-	Low-Poly Mossberg 590	https://sketchfab.com/3d-models/low-poly-mossberg-590-c0551a6b841145f7a8e59e9304728f1f
 TastyTony		-	Low-Poly HK MP5K		https://sketchfab.com/3d-models/low-poly-hk-mp5k-fb03df0656ea412585d69d6be137788c
 TastyTony		-	Low-Poly HK MP5			https://sketchfab.com/3d-models/low-poly-hk-mp5-80980f757c2c463ebc73460a31611652
+TastyTony		-	Low-Poly HK MP5SD		https://sketchfab.com/3d-models/low-poly-hk-mp5sd-a79689d37bb547c4a1ab6628f60dd05f
 TastyTony		-	Low-Poly Mosin Nagant	https://sketchfab.com/3d-models/low-poly-mosin-nagant-826c8cbd08ee49a08007be940c928c53
 TastyTony		-	Low-Poly PKM			https://sketchfab.com/3d-models/low-poly-pkm-626082c669c740efa06e03c63b7bc2d9
 TastyTony		-	Low-Poly M14			https://sketchfab.com/3d-models/low-poly-m14-30e47673a17b434386e9c3af54670bed
 TastyTony		-	Low-Poly Barrett M82A1	https://sketchfab.com/3d-models/low-poly-barrett-m82a1-9c7027e5a64e40e9ae927adb0872b6d8
+TastyTony		-	Low-Poly AA .50 Beowulf	https://sketchfab.com/3d-models/low-poly-aa-50-beowulf-0bc11b94512c453e84d2892abc710294
+TastyTony		-	Low-Poly FN FAL			https://sketchfab.com/3d-models/low-poly-fn-fal-c737946bdccf4441b558b97ede5d0e3b
+TastyTony		-	Low-Poly FAMAS			https://sketchfab.com/3d-models/low-poly-famas-f1-bbd20712667e49088f5c9960b97c3d83
+TastyTony		-	Low-Poly P90			https://sketchfab.com/3d-models/low-poly-fn-p90-96b61ebbbf154843b621ebf7f48647fc
+TastyTony		-	Low-Poly TRG-42			https://sketchfab.com/3d-models/low-poly-sako-trg-42-e1430b54583c41daa2695680347058bd
+TastyTony		-	Low-Poly PSG-1			https://sketchfab.com/3d-models/low-poly-hk-psg-1-bfdb981e99614b0495e1252190264120
+TastyTony		-	Low-Poly Dragunov		https://sketchfab.com/3d-models/low-poly-svd-dragunov-fe40c5c2696441bc8696ed042056709e
+TastyTony		-	Low-Poly Patriot		https://sketchfab.com/3d-models/low-poly-mossberg-patriot-00bd45a1ab5146479892357065887322
