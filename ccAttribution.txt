@@ -24,3 +24,5 @@ TastyTony		-	Low-Poly Thompson M1A1	https://sketchfab.com/3d-models/low-poly-tho
 TastyTony		-	Low-Poly PPSH 41		https://sketchfab.com/3d-models/low-poly-ppsh-41-e6c9ed3ac78e42cfac42f91c232f7783
 TastyTony		-	Low-Poly M249 SAW		https://sketchfab.com/3d-models/low-poly-m249-saw-76011c365636451c90a8e3a46c2d8ca5
 TastyTony		-	Low-Poly RPK			https://sketchfab.com/3d-models/low-poly-rpk-acdc6fe399514c41aa4130f8044875fb
+TastyTony		-	Low-Poly SPAS-12		https://sketchfab.com/3d-models/low-poly-spas-12-c95154ea2348443e9195250a6ad122cb
+TastyTony		-	Low-Poly Saiga 12k		https://sketchfab.com/3d-models/low-poly-saiga-12k-e9887136eaf14be396bdbea54f76ff3d
