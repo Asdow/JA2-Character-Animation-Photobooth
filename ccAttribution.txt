@@ -19,3 +19,5 @@ TastyTony		-	Low-Poly TRG-42			https://sketchfab.com/3d-models/low-poly-sako-trg
 TastyTony		-	Low-Poly PSG-1			https://sketchfab.com/3d-models/low-poly-hk-psg-1-bfdb981e99614b0495e1252190264120
 TastyTony		-	Low-Poly Dragunov		https://sketchfab.com/3d-models/low-poly-svd-dragunov-fe40c5c2696441bc8696ed042056709e
 TastyTony		-	Low-Poly Patriot		https://sketchfab.com/3d-models/low-poly-mossberg-patriot-00bd45a1ab5146479892357065887322
+TastyTony		-	Low-Poly FN SCAR H		https://sketchfab.com/3d-models/low-poly-fn-scar-h-c52bc2a8ddaa47caa34e94d69ff72d96
+TastyTony		-	Low-Poly AK-47			https://sketchfab.com/3d-models/low-poly-ak-47-type-2-a7260926fb0a40f8bba5f651b03d23f1
