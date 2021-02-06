@@ -13,15 +13,28 @@ rem echo deleting .png files from !_OUTPUTDIR!
 rem cd !_OUTPUTDIR!
 rem DEL "!_OUTPUTDIR!*.png"
 
-echo opening blender and starting animation rendering
+echo Rendering rifle animations
+echo Opening blender and starting animation rendering
 cd !_BLENDERDIR!
 rem 1> nul ==> suppress text output <- Not using this makes headless rendering considerably slower than just doing CTRL + F12 in blender.
 rem 2> nul ==> suppress error output
-rem blender.exe 1> nul 2> nul -b "!_BLENDFILEDIR!" -P "!_PYTHONFILE!"
 
-start /B blender.exe 1> nul 2> nul -b "!_BLENDFILEDIR!" -P "!_PYTHONFILE!"
-start /B blender.exe 1> nul 2> nul -b "!_BLENDFILEDIR!" -P "!_PYTHONFILE2!"
-start /B blender.exe 1> nul 2> nul -b "!_BLENDFILEDIR!" -P "!_PYTHONFILE3!"
+set /A parallelRender=1
+
+if !parallelRender!==0 (
+	blender.exe 1> nul -b "!_BLENDFILEDIR!" -P "!_PYTHONFILE!"
+) ELSE (
+	start /B blender.exe 1> nul 2> nul -b "!_BLENDFILEDIR!" -P "!_PYTHONFILE!"
+	start /B blender.exe 1> nul 2> nul -b "!_BLENDFILEDIR!" -P "!_PYTHONFILE2!"
+	start /B blender.exe 1> nul 2> nul -b "!_BLENDFILEDIR!" -P "!_PYTHONFILE3!"
+
+	:LOOP
+	tasklist /FI "IMAGENAME eq blender.exe" 2>NUL | find /I /N "blender.exe">NUL
+	if %ERRORLEVEL%==0 (
+		ping localhost -n 11 >nul
+		GOTO LOOP
+	)
+)
 
 echo rendering complete!
 pause

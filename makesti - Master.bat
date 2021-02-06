@@ -15,8 +15,14 @@ FOR /F "tokens=* delims=" %%x in (batchSriptData\palettes.txt) DO (
 set /a lastPaletteIndex-=1
 
 Rem offset for the frames. Since this doesn't change often, it's not asked.
-set _OFFSET="(-60,-77)"
+Rem 128*128 orthoScale 4.5 settings
+rem set _OFFSET="(-60,-77)"
+rem set "_CROPSETTINGS=121x121+3+4"
 
+Rem 192*192 orthoScale 6.75 settings
+set _OFFSET="(-0,-0)"
+set "_CROPSETTINGS=192x192+0+0"
+set _PIVOT=(95,113)
 
 :AnimDataChoice
 echo Choose animation data file
@@ -107,15 +113,15 @@ rem	echo !_KEYFRAME[%%n]!
 :ContinueSTI
 echo Choose
 echo [0] for making a layered body STI
-echo [1] for props (AR, Shotgun, AK47, Mosin Nagant, MP5)
-echo [2] props (Vest, Backpack, beret, Helmet, Gasmask)
-echo [3] props (Barrett, PKM, M14)
-echo [4] props (HK USP, HK USP Left Hand)
-echo [5] props (HK MP5K, HK MP5K Left Hand)
+echo [1] props (Vest, Backpack, beret, Helmet, Gasmask)
+echo [2] assault rifles (FN FAL, M16, AK47, FAMAS, SCAR-H)
+echo [3] sniper rifles (Barrett, Dragunov, PSG1, TRG42, Patriot)
+echo [4] smgs (P90, Thompson, PPSH41, MP5)
+echo [5] lmgs and rifles (RPK, SAW, PKM, Mosin Nagant, M14)
+echo [6] shotguns (Saiga 12K, Mossberg 590, SPAS 12)
 echo [99] quit
 set /p decision=Choice: 
 if %decision%==0 (
-	rem CALL :ChoosePalette chosenPalette
 	set chosenPalette=!Palettes[0]!
 	set outputPrefix[0]=Shadow
 	set outputPrefix[1]=Head
@@ -128,26 +134,48 @@ if %decision%==0 (
 	set suffixList[2]=_hands
 	set suffixList[3]=_torso
 	set suffixList[4]=_legs
+
+	Rem Convert rendered images into correct bmp and rename them. Everything goes into its own folders underneath makesti/extract to be able to process things in parallel
 	for /l %%m in (0,1,!animIndex!) do (
-rem		set folderName=!animFolders[%%m]:"=!
 		set folderName=!animFolders[%%m]!
 		set _INPUTDIR=output\!folderName!
 		echo(
 		echo "---------------"
 		echo "!_INPUTDIR!"
 
+
 		for /l %%n in (0,1,4) do (
+			set "_EXTRACTDIR=make_script\extract\!folderName!\!outputPrefix[%%n]!"
+			IF NOT EXIST "!_EXTRACTDIR!" md "!_EXTRACTDIR!"
+			rem echo !_EXTRACTDIR!
 			rem delete any .bmp files from extract folder before converting output frames into there
-			DEL make_script\extract\*.bmp
+			DEL "!_EXTRACTDIR!\*.bmp"
 			Rem crop and convert rendered images to use correct header type
-			make_script\convert.exe "!_INPUTDIR!\!outputPrefix[%%n]!*.png" -crop 121x121+3+4 BMP3:make_script\extract\0.bmp
+			start /B make_script\convert.exe "!_INPUTDIR!\!outputPrefix[%%n]!*.png" -crop !_CROPSETTINGS! BMP3:"!_EXTRACTDIR!\0.bmp"
+		)
+	)
+	:SYNCLOOP1
+	tasklist /FI "IMAGENAME eq convert.exe" 2>NUL | find /I /N "convert.exe">NUL
+	if %ERRORLEVEL%==0 (
+		ping localhost -n 2 >nul
+		GOTO SYNCLOOP1
+	)
+
+	Rem Turn processed images into sti files in parallel
+	for /l %%m in (0,1,!animIndex!) do (
+		set folderName=!animFolders[%%m]!
+		set _INPUTDIR=output\!folderName!
+
+		for /l %%n in (0,1,4) do (
+			set "_EXTRACTDIR=make_script\extract\!folderName!\!outputPrefix[%%n]!"
+			IF NOT EXIST "!_EXTRACTDIR!" md "!_EXTRACTDIR!"
 			
 			rem create layered .sti files for basebody
 			SETLOCAL
 			set _FILE_NAME=!animFileNames[%%m]!
 			set _FILEPATH=!_OUTPUTDIR!!_FILE_NAME!!suffixList[%%n]!.sti
 			set _range=!_RANGE[%%m]!
-			set "_extract=make_script\extract\0-%%d.bmp%"
+			set "_extract=!_EXTRACTDIR!\0-%%d.bmp%"
 			set "_palette=make_script\Palettes\!chosenPalette!"
 			set "_keyframes=!_KEYFRAME[%%m]!"
 			echo !_FILEPATH!
@@ -159,20 +187,29 @@ rem			echo !_keyframes!
 			Rem echo empty lines
 			echo(
 			
-			make_script\sticom.exe new -o "!_FILEPATH!"  -i "!_extract!" -r !_range! -p "!_palette!" --offset !_OFFSET! -k "!_keyframes!" -F
+			start /B make_script\sticom.exe new -o "!_FILEPATH!"  -i "!_extract!" -r !_range! -p "!_palette!" --offset !_OFFSET! -k "!_keyframes!" -F -M "TRIM" -P !_PIVOT!
 			ENDLOCAL
 		)
 	)
+	:SYNCLOOP2
+	tasklist /FI "IMAGENAME eq sticom.exe" 2>NUL | find /I /N "sticom.exe">NUL
+	if %ERRORLEVEL%==0 (
+		ping localhost -n 2 >nul
+		GOTO SYNCLOOP2
+	)
+	GOTO :ContinueSTI
 ) else if %decision%==1 (
-	CALL :CreateBasePropsRifles
-) else if %decision%==2 (
 	CALL :CreateBasePropsBPandBeret
+) else if %decision%==2 (
+	CALL :CreateBasePropsAssaultRifles
 ) else if %decision%==3 (
-	CALL :CreateBasePropsBarrett
+	CALL :CreateBasePropsSniperRifles
 ) else if %decision%==4 (
-	CALL :CreateBasePropsDualPistols
+	CALL :CreateBasePropsSMGs
 ) else if %decision%==5 (
-	CALL :CreateBasePropsDualMachinePistols
+	CALL :CreateBasePropsLMGandRifles
+) else if %decision%==6 (
+	CALL :CreateBasePropsShotguns
 ) else if %decision%==99 (
 	echo Quitting makesti script
 	GOTO :EndScript
@@ -191,85 +228,38 @@ pause
 
 
 REM functions
-:ChoosePalette
-	:PaletteDialog
-	for /l %%n in (0,1,%lastPaletteIndex%) do (
-		echo %%n !Palettes[%%n]!
-	)
-	set /p paletteChoice=Select a palette by its index: 
-	if %paletteChoice% LSS 0 (
-		echo Invalid palette selection!
-		GOTO :PaletteDialog
-	) else if %paletteChoice% GTR %lastPaletteIndex% (
-		echo Invalid palette selection!
-		GOTO :PaletteDialog
-	) else (
-		set chosenPalette=!Palettes[%paletteChoice%]!
-	)
-EXIT /B 0
-
-
-:CreateBasePropsRifles
+:CreateBasePropsAssaultRifles
 	SETLOCAL
-	Rem Assault Rifle
+
 	set propPalettes[0]=!Palettes[0]!
 	set propnumbers[0]=1
-	set propSuffix[0]=_AR
-	Rem Shotgun
-	set propPalettes[1]=!Palettes[2]!
+	set propSuffix[0]=_FAL
+
+	set propPalettes[1]=!Palettes[0]!
 	set propnumbers[1]=2
-	set propSuffix[1]=_shotgun
-	Rem AK47
+	set propSuffix[1]=_AR
+
 	set propPalettes[2]=!Palettes[2]!
 	set propnumbers[2]=3
 	set propSuffix[2]=_AK47
-	Rem Mosin Nagant
-	set propPalettes[3]=!Palettes[2]!
+
+	set propPalettes[3]=!Palettes[0]!
 	set propnumbers[3]=4
-	set propSuffix[3]=_mosin
-	Rem MP5
-	set propPalettes[4]=!Palettes[1]!
+	set propSuffix[3]=_famas
+
+	set propPalettes[4]=!Palettes[2]!
 	set propnumbers[4]=5
-	set propSuffix[4]=_MP5
+	set propSuffix[4]=_SCARH
+	set /a maxProps=4
 
-	for /l %%m in (0,1,!animIndex!) do (
-rem		set folderName=!animFolders[%%m]:"=!
-		set folderName=!animFolders[%%m]!
-		set _INPUTDIR=output\!folderName!
-		echo(
-		echo "---------------"
-		echo "!_INPUTDIR!"
-		
-		for /l %%n in (0,1,4) do (
-			set chosenPalette=!propPalettes[%%n]!
-			set nProps=!propnumbers[%%n]!
-			set _SUFFIX=!propSuffix[%%n]!
-			rem delete any .bmp files from extract folder before converting output frames into there
-			DEL make_script\extract\*.bmp
-			Rem crop and convert rendered images to use correct header type
-			make_script\convert.exe "!_INPUTDIR!\Prop!nProps!_C*.png" -crop 121x121+3+4 BMP3:make_script\extract\0.bmp
-			
+	Rem Convert rendered images into correct bmp and rename them. Everything goes into its own folders underneath makesti/extract to be able to process things in parallel
+	CALL :ConvertOutputToExtractForProps
+	Rem Turn processed images into sti files in parallel
+	CALL :CreateSTIforProps
 
-			set _FILE_NAME=!animFileNames[%%m]!
-			set _FILEPATH=!_OUTPUTDIR!!_FILE_NAME!!_SUFFIX!.sti
-			set _range=!_RANGE[%%m]!
-			set "_extract=make_script\extract\0-%%d.bmp%"
-			set "_palette=make_script\Palettes\!chosenPalette!"
-			set "_keyframes=!_KEYFRAME[%%m]!"
-			echo !_FILEPATH!
-rem			echo !_extract!
-rem			echo !_range!
-			echo !_palette!
-rem			echo !_OFFSET!
-rem			echo !_keyframes!
-			echo(
-		
-			make_script\sticom.exe new -o "!_FILEPATH!"  -i "!_extract!" -r !_range! -p "!_palette!" --offset !_OFFSET! -k "!_keyframes!" -F
-Rem			make_script\sticom.exe new -o "!_FILEPATH!"  -i "make_script\extract\0-%%d.bmp%" -r !_RANGE! -p "make_script\Palettes\!chosenPalette!" --offset !_OFFSET! -k "!c!" -F
-		)
-	)
 	ENDLOCAL
 EXIT /B 0
+
 
 :CreateBasePropsBPandBeret
 	SETLOCAL
@@ -293,101 +283,136 @@ EXIT /B 0
 	set propPalettes[4]=!Palettes[3]!
 	set propnumbers[4]=5
 	set propSuffix[4]=_gasmask
+	Rem NVG
+	rem set propPalettes[4]=!Palettes[3]!
+	rem set propnumbers[4]=5
+	rem set propSuffix[4]=_NVG
+	set /a maxProps=4
 
-	for /l %%m in (0,1,!animIndex!) do (
-rem		set folderName=!animFolders[%%m]:"=!
-		set folderName=!animFolders[%%m]!
-		set _INPUTDIR=output\!folderName!
-		echo(
-		echo "---------------"
-		echo "!_INPUTDIR!"
 
-		for /l %%n in (0,1,4) do (
-			set chosenPalette=!propPalettes[%%n]!
-			set nProps=!propnumbers[%%n]!
-			set _SUFFIX=!propSuffix[%%n]!
-			rem delete any .bmp files from extract folder before converting output frames into there
-			DEL make_script\extract\*.bmp
-			Rem crop and convert rendered images to use correct header type
-			make_script\convert.exe "!_INPUTDIR!\Prop!nProps!_C*.png" -crop 121x121+3+4 BMP3:make_script\extract\0.bmp
-			
-			set _FILE_NAME=!animFileNames[%%m]!
-			set _FILEPATH=!_OUTPUTDIR!!_FILE_NAME!!_SUFFIX!.sti
-			set _range=!_RANGE[%%m]!
-			set "_extract=make_script\extract\0-%%d.bmp%"
-			set "_palette=make_script\Palettes\!chosenPalette!"
-			set "_keyframes=!_KEYFRAME[%%m]!"
-			echo !_FILEPATH!
-rem			echo !_extract!
-rem			echo !_range!
-			echo !_palette!
-rem			echo !_OFFSET!
-rem			echo !_keyframes!
-			echo(
-			make_script\sticom.exe new -o "!_FILEPATH!"  -i "!_extract!" -r !_range! -p "!_palette!" --offset !_OFFSET! -k "!_keyframes!" -F
-		)
-	)
+	Rem Convert rendered images into correct bmp and rename them. Everything goes into its own folders underneath makesti/extract to be able to process things in parallel
+	CALL :ConvertOutputToExtractForProps
+	Rem Turn processed images into sti files in parallel
+	CALL :CreateSTIforProps
+
 	ENDLOCAL
 EXIT /B 0
 
-:CreateBasePropsBarrett
+
+:CreateBasePropsSniperRifles
 	SETLOCAL
-	Rem Assault Rifle
+
 	set propPalettes[0]=!Palettes[4]!
 	set propnumbers[0]=1
 	set propSuffix[0]=_M82
-	Rem Shotgun
+
 	set propPalettes[1]=!Palettes[4]!
 	set propnumbers[1]=2
-	set propSuffix[1]=_shotgun
-	Rem AK47
+	set propSuffix[1]=_dragunov
+
+	set propPalettes[2]=!Palettes[4]!
+	set propnumbers[2]=3
+	set propSuffix[2]=_PSG1
+
+	set propPalettes[3]=!Palettes[4]!
+	set propnumbers[3]=4
+	set propSuffix[3]=_TRG42
+
+	set propPalettes[4]=!Palettes[4]!
+	set propnumbers[4]=5
+	set propSuffix[4]=_Patriot
+	set /a maxProps=4
+
+	Rem Convert rendered images into correct bmp and rename them. Everything goes into its own folders underneath makesti/extract to be able to process things in parallel
+	CALL :ConvertOutputToExtractForProps
+	Rem Turn processed images into sti files in parallel
+	CALL :CreateSTIforProps
+	ENDLOCAL
+EXIT /B 0
+
+
+:CreateBasePropsLMGandRifles
+	SETLOCAL
+
+	set propPalettes[0]=!Palettes[4]!
+	set propnumbers[0]=1
+	set propSuffix[0]=_RPK
+
+	set propPalettes[1]=!Palettes[4]!
+	set propnumbers[1]=2
+	set propSuffix[1]=_SAW
+
 	set propPalettes[2]=!Palettes[4]!
 	set propnumbers[2]=3
 	set propSuffix[2]=_PKM
-	Rem Mosin Nagant
+
 	set propPalettes[3]=!Palettes[4]!
 	set propnumbers[3]=4
 	set propSuffix[3]=_mosin
-	Rem MP5
+
 	set propPalettes[4]=!Palettes[4]!
 	set propnumbers[4]=5
 	set propSuffix[4]=_M14
+	set /a maxProps=4
 
-	for /l %%m in (0,1,!animIndex!) do (
-rem		set folderName=!animFolders[%%m]:"=!
-		set folderName=!animFolders[%%m]!
-		set _INPUTDIR=output\!folderName!
-		echo(
-		echo "---------------"
-		echo "!_INPUTDIR!"
-		
-		for /l %%n in (0,1,4) do (
-			set chosenPalette=!propPalettes[%%n]!
-			set nProps=!propnumbers[%%n]!
-			set _SUFFIX=!propSuffix[%%n]!
-			rem delete any .bmp files from extract folder before converting output frames into there
-			DEL make_script\extract\*.bmp
-			Rem crop and convert rendered images to use correct header type
-			make_script\convert.exe "!_INPUTDIR!\Prop!nProps!_C*.png" -crop 121x121+3+4 BMP3:make_script\extract\0.bmp
-			
+	Rem Convert rendered images into correct bmp and rename them. Everything goes into its own folders underneath makesti/extract to be able to process things in parallel
+	CALL :ConvertOutputToExtractForProps
+	Rem Turn processed images into sti files in parallel
+	CALL :CreateSTIforProps
+	ENDLOCAL
+EXIT /B 0
 
-			set _FILE_NAME=!animFileNames[%%m]!
-			set _FILEPATH=!_OUTPUTDIR!!_FILE_NAME!!_SUFFIX!.sti
-			set _range=!_RANGE[%%m]!
-			set "_extract=make_script\extract\0-%%d.bmp%"
-			set "_palette=make_script\Palettes\!chosenPalette!"
-			set "_keyframes=!_KEYFRAME[%%m]!"
-			echo !_FILEPATH!
-rem			echo !_extract!
-rem			echo !_range!
-			echo !_palette!
-rem			echo !_OFFSET!
-rem			echo !_keyframes!
-			echo(
-		
-			make_script\sticom.exe new -o "!_FILEPATH!"  -i "!_extract!" -r !_range! -p "!_palette!" --offset !_OFFSET! -k "!_keyframes!" -F
-		)
-	)
+
+:CreateBasePropsSMGs
+	SETLOCAL
+
+	set propPalettes[0]=!Palettes[4]!
+	set propnumbers[0]=1
+	set propSuffix[0]=_P90
+
+	set propPalettes[1]=!Palettes[4]!
+	set propnumbers[1]=2
+	set propSuffix[1]=_M1A1
+
+	set propPalettes[2]=!Palettes[4]!
+	set propnumbers[2]=3
+	set propSuffix[2]=_PPSH41
+
+	set propPalettes[3]=!Palettes[4]!
+	set propnumbers[3]=5
+	set propSuffix[3]=_MP5
+
+	set /a maxProps=3
+
+	Rem Convert rendered images into correct bmp and rename them. Everything goes into its own folders underneath makesti/extract to be able to process things in parallel
+	CALL :ConvertOutputToExtractForProps
+	Rem Turn processed images into sti files in parallel
+	CALL :CreateSTIforProps
+	ENDLOCAL
+EXIT /B 0
+
+
+:CreateBasePropsShotguns
+	SETLOCAL
+
+	set propPalettes[0]=!Palettes[4]!
+	set propnumbers[0]=1
+	set propSuffix[0]=_Saiga
+
+	set propPalettes[1]=!Palettes[4]!
+	set propnumbers[1]=2
+	set propSuffix[1]=_shotgun
+
+	set propPalettes[2]=!Palettes[4]!
+	set propnumbers[2]=3
+	set propSuffix[2]=_spas12
+
+	set /a maxProps=2
+
+	Rem Convert rendered images into correct bmp and rename them. Everything goes into its own folders underneath makesti/extract to be able to process things in parallel
+	CALL :ConvertOutputToExtractForProps
+	Rem Turn processed images into sti files in parallel
+	CALL :CreateSTIforProps
 	ENDLOCAL
 EXIT /B 0
 
@@ -402,44 +427,15 @@ EXIT /B 0
 	set propPalettes[1]=!Palettes[1]!
 	set propnumbers[1]=4
 	set propSuffix[1]=_lpistol
+	set /a maxProps=1
 
-	for /l %%m in (0,1,!animIndex!) do (
-rem		set folderName=!animFolders[%%m]:"=!
-		set folderName=!animFolders[%%m]!
-		set _INPUTDIR=output\!folderName!
-		echo(
-		echo "---------------"
-		echo "!_INPUTDIR!"
-		
-		for /l %%n in (0,1,1) do (
-			set chosenPalette=!propPalettes[%%n]!
-			set nProps=!propnumbers[%%n]!
-			set _SUFFIX=!propSuffix[%%n]!
-			rem delete any .bmp files from extract folder before converting output frames into there
-			DEL make_script\extract\*.bmp
-			Rem crop and convert rendered images to use correct header type
-			make_script\convert.exe "!_INPUTDIR!\Prop!nProps!_C*.png" -crop 121x121+3+4 BMP3:make_script\extract\0.bmp
-			
-
-			set _FILE_NAME=!animFileNames[%%m]!
-			set _FILEPATH=!_OUTPUTDIR!!_FILE_NAME!!_SUFFIX!.sti
-			set _range=!_RANGE[%%m]!
-			set "_extract=make_script\extract\0-%%d.bmp%"
-			set "_palette=make_script\Palettes\!chosenPalette!"
-			set "_keyframes=!_KEYFRAME[%%m]!"
-			echo !_FILEPATH!
-rem			echo !_extract!
-rem			echo !_range!
-			echo !_palette!
-rem			echo !_OFFSET!
-rem			echo !_keyframes!
-			echo(
-		
-			make_script\sticom.exe new -o "!_FILEPATH!"  -i "!_extract!" -r !_range! -p "!_palette!" --offset !_OFFSET! -k "!_keyframes!" -F
-		)
-	)
+	Rem Convert rendered images into correct bmp and rename them. Everything goes into its own folders underneath makesti/extract to be able to process things in parallel
+	CALL :ConvertOutputToExtractForProps
+	Rem Turn processed images into sti files in parallel
+	CALL :CreateSTIforProps
 	ENDLOCAL
 EXIT /B 0
+
 
 :CreateBasePropsDualMachinePistols
 	SETLOCAL
@@ -451,31 +447,67 @@ EXIT /B 0
 	set propPalettes[1]=!Palettes[1]!
 	set propnumbers[1]=4
 	set propSuffix[1]=_lmpistol
+	set /a maxProps=1
 
+	Rem Convert rendered images into correct bmp and rename them. Everything goes into its own folders underneath makesti/extract to be able to process things in parallel
+	CALL :ConvertOutputToExtractForProps
+	Rem Turn processed images into sti files in parallel
+	CALL :CreateSTIforProps
+	ENDLOCAL
+EXIT /B 0
+
+
+:ConvertOutputToExtractForProps
+	SETLOCAL
+	Rem Convert rendered images into correct bmp and rename them. Everything goes into its own folders underneath makesti/extract to be able to process things in parallel
 	for /l %%m in (0,1,!animIndex!) do (
-rem		set folderName=!animFolders[%%m]:"=!
 		set folderName=!animFolders[%%m]!
 		set _INPUTDIR=output\!folderName!
 		echo(
 		echo "---------------"
 		echo "!_INPUTDIR!"
-		
-		for /l %%n in (0,1,1) do (
-			set chosenPalette=!propPalettes[%%n]!
-			set nProps=!propnumbers[%%n]!
-			set _SUFFIX=!propSuffix[%%n]!
-			rem delete any .bmp files from extract folder before converting output frames into there
-			DEL make_script\extract\*.bmp
-			Rem crop and convert rendered images to use correct header type
-			make_script\convert.exe "!_INPUTDIR!\Prop!nProps!_C*.png" -crop 121x121+3+4 BMP3:make_script\extract\0.bmp
-			
 
+		for /l %%n in (0,1,!maxProps!) do (
+			set nProps=!propnumbers[%%n]!
+			set "_EXTRACTDIR=make_script\extract\!folderName!\Prop!nProps!"
+			IF NOT EXIST "!_EXTRACTDIR!" md "!_EXTRACTDIR!"
+			DEL "!_EXTRACTDIR!\*.bmp"
+			start /B make_script\convert.exe "!_INPUTDIR!\Prop!nProps!_C*.png" -crop !_CROPSETTINGS! BMP3:"!_EXTRACTDIR!\0.bmp"
+		)
+	)
+	:SYNCLOOPoutput
+	tasklist /FI "IMAGENAME eq convert.exe" 2>NUL | find /I /N "convert.exe">NUL
+	if %ERRORLEVEL%==0 (
+		ping localhost -n 2 >nul
+		GOTO SYNCLOOPoutput
+	)	
+	ENDLOCAL
+EXIT /B 0
+
+
+:CreateSTIforProps
+	SETLOCAL
+	Rem Turn processed images into sti files in parallel
+	for /l %%m in (0,1,!animIndex!) do (
+		set folderName=!animFolders[%%m]!
+		set _INPUTDIR=output\!folderName!
+		
+		for /l %%n in (0,1,!maxProps!) do (
 			set _FILE_NAME=!animFileNames[%%m]!
+			set _SUFFIX=!propSuffix[%%n]!
 			set _FILEPATH=!_OUTPUTDIR!!_FILE_NAME!!_SUFFIX!.sti
+			
+			set nProps=!propnumbers[%%n]!
+			set "_EXTRACTDIR=make_script\extract\!folderName!\Prop!nProps!"
+			set "_extract=!_EXTRACTDIR!\0-%%d.bmp%"
+			
 			set _range=!_RANGE[%%m]!
-			set "_extract=make_script\extract\0-%%d.bmp%"
+
+			set chosenPalette=!propPalettes[%%n]!
 			set "_palette=make_script\Palettes\!chosenPalette!"
+
 			set "_keyframes=!_KEYFRAME[%%m]!"
+
 			echo !_FILEPATH!
 rem			echo !_extract!
 rem			echo !_range!
@@ -484,8 +516,15 @@ rem			echo !_OFFSET!
 rem			echo !_keyframes!
 			echo(
 		
-			make_script\sticom.exe new -o "!_FILEPATH!"  -i "!_extract!" -r !_range! -p "!_palette!" --offset !_OFFSET! -k "!_keyframes!" -F
+			start /B make_script\sticom.exe new -o "!_FILEPATH!"  -i "!_extract!" -r !_range! -p "!_palette!" --offset !_OFFSET! -k "!_keyframes!" -F -M "TRIM" -P !_PIVOT!
 		)
+	)
+	:SYNCLOOPsti
+	tasklist /FI "IMAGENAME eq sticom.exe" 2>NUL | find /I /N "sticom.exe">NUL
+	if %ERRORLEVEL%==0 (
+		ping localhost -n 2 >nul
+		GOTO SYNCLOOPsti
 	)
 	ENDLOCAL
 EXIT /B 0
+
