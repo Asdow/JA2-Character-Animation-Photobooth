@@ -1,6 +1,7 @@
 ;Animation name, end frame, sti name
-;Hop fence is a special case. It's kept here for easy copy and pasting to render scripts but it has its own makesti.bat due to 4 directions.
+;Hop fence & Climb are special cases. They're kept here for easy copy and pasting to render scripts but have their own makesti.bat due to 4 directions.
 ;("Standing - Hop fence",18,"S_HOP"),
+;("Standing - Empty Hands - Climb",44,"S_CLIMB"),
 ("Standing - Empty Hands - Open door",10,"S_OPEN"),
 ("Standing - Empty Hands - Pickup",5,"S_PICKUP"),
 ("Standing - Punch",24,"S_PUNCH"),

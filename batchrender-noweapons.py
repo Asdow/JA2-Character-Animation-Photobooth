@@ -2,21 +2,33 @@ import bpy
 
 # Animation name in blender & end frame
 animationArray = [
-	("Standing - Hop fence",18,S_HOP),
-	("Crouch - Render medical aid",8,S_MEDIC),
-	("Standing - Empty Hands - Open door",10,S_OPEN),
-	("Standing - Empty Hands - Pickup",5,S_PICKUP),
-	("Standing - Punch",24,S_PUNCH)
+	("Standing - Hop fence",18,"S_HOP"),
+	("Standing - Empty Hands - Climb",44,"S_CLIMB"),
+	("Standing - Empty Hands - Open door",10,"S_OPEN"),
+	("Standing - Empty Hands - Pickup",5,"S_PICKUP"),
+	("Standing - Punch",24,"S_PUNCH"),
+	("Standing - Empty Hands - Hit and die",33,"S_DIE2")
+	("Standing - Empty Hands - Hit and die 2",35,"S_D_FWD")
+	("Standing - Empty Hands - Flyback hit",23,"S_DIEBAC")
+#	("Standing - Empty Hands - Flyback & die",24,"S_DIEHARD"),
+#	("Standing - Empty Hands - Flyback & die BLOOD",7,"S_DIEHARDB"),
+#	("Standing To Cower - Empty hands",12,"S_COWER"),
+#	("Crouch - Render medical aid",8,"S_MEDIC"),
+#	("Crouch - Empty Hands - Hit and die",9,"S_C_DIE"),
+#	("Prone - Empty Hands - Render Aid",7,"S_PRN_MED"),
+#	("Prone - Empty Hands - Cower",10,"S_PRNCOW"),
+#	("Prone - Empty Hands - Hit and die",22,"S_P_DIE"),
+#	("Prone - Empty Hands - Roll",8,"S_ROLL")
 ]
 
 for i in range(len(animationArray)):
 	# Set up specific animation and its end frame
-	bpy.context.object.animation_data.action = bpy.data.actions.get(animationArray[i][0])
+	currentAction = animationArray[i][0]
+	bpy.context.object.animation_data.action = bpy.data.actions.get(currentAction)
 	bpy.context.scene.frame_end = animationArray[i][1]
 
-
 	# Setup output folders according to current animation
-	outputfolder = "//output/" + animationArray[i][0]
+	outputfolder = "//output/" + currentAction
 	for j in range(1,5):
 		bpy.data.node_groups["JA2 Layered Sprite - Body Group"].nodes["File Output.00"+str(j)].base_path = outputfolder
 	bpy.data.node_groups["JA2 Layered Sprite - Body Shadow Group"].nodes["File Output"].base_path = outputfolder
@@ -29,25 +41,32 @@ for i in range(len(animationArray)):
 	bpy.data.scenes["camera 1"].node_tree.nodes["File Output.003"].base_path = outputfolder
 
 
-	# Hide and display objects in renders
-	# TODO make these change depending on the animation, if needed
-	bpy.data.objects["Weapon - FAL"].hide_render = True
-	bpy.data.objects["Weapon - Shotgun"].hide_render = True
-	bpy.data.objects["Weapon - AK47"].hide_render = True
-	bpy.data.objects["Weapon - Mosin Nagant"].hide_render = True
-	bpy.data.objects["Weapon - HK MP5"].hide_render = True
-	bpy.data.objects["Weapon - Barrett"].hide_render = True
-	bpy.data.objects["Weapon - PKM"].hide_render = True
-	bpy.data.objects["Weapon - M14"].hide_render = True
-	bpy.data.objects["Weapon - HK MP5K"].hide_render = True
-	bpy.data.objects["Weapon - HK MP5K - Left Hand"].hide_render = True
-	bpy.data.objects["Weapon - HK USP"].hide_render = True
-	bpy.data.objects["Weapon - HK USP - Left Hand"].hide_render = True
-	bpy.data.objects["Vest - Flak Jacket"].hide_render = False
-	bpy.data.objects["Travel_Backpack"].hide_render = False
-	bpy.data.objects["Hat - Beret"].hide_render = False
-	bpy.data.objects["Hat - Helmet"].hide_render = False
-	bpy.data.objects["Face - Gasmask"].hide_render = False
+	# Hide objects in renders
+	for object in bpy.data.objects:
+		objectName = object.name
+		if "Weapon" in objectName or "Vest" in objectName or "Backpack" in objectName or "Hat" in objectName or "Face" in objectName:
+			object.hide_render = True
+		if "MuzzleFlash" in objectName:
+			object.hide_render = True
+			object.animation_data.action = bpy.data.actions.get("HideMuzzleFlash")
+		if objectName == "Body - RGM" or objectName == "Body - FGM" or objectName == "Body - BGM":
+			object.hide_render = True
+
+	# Bodytypes
+	bpy.data.objects["Body - RGM"].hide_render = False
+	#bpy.data.objects["Body - FGM"].hide_render = False
+	#bpy.data.objects["Body - BGM"].hide_render = False
+
+	# Display props in renders depending on the set
+	renderSet = 1
+	if renderSet == 1:
+		bpy.data.objects["Vest - Flak Jacket"].hide_render = False
+		#bpy.data.objects["Backpack - Backpack"].hide_render = False
+		bpy.data.objects["Hat - Beret"].hide_render = False
+		bpy.data.objects["Hat - Helmet"].hide_render = False
+		bpy.data.objects["Face - Gasmask"].hide_render = False
+	elif renderSet == 2:
+		bpy.data.objects["Face - NVG"].hide_render = False
 
 	# RENDER AWAYYY!
 	bpy.ops.render.render(animation=True)
