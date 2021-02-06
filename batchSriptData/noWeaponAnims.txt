@@ -6,6 +6,8 @@
 ("Standing - Punch",24,"S_PUNCH"),
 ("Standing - Empty Hands - Hit and die",33,"S_DIE2")
 ("Standing - Empty Hands - Hit and die 2",35,"S_D_FWD")
+("Standing - Empty Hands - Flyback & die",24,"S_DIEHARD"),
+("Standing - Empty Hands - Flyback & die BLOOD",7,"S_DIEHARDB"),
 ("Standing To Cower - Empty hands",12,"S_COWER"),
 ("Crouch - Render medical aid",8,"S_MEDIC"),
 ("Crouch - Empty Hands - Hit and die",9,"S_C_DIE"),
