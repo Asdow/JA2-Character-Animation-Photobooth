@@ -2,23 +2,23 @@ import bpy
 
 # Animation name in blender & end frame
 animationArray = [
-	("Standing - Hop fence",18,"S_HOP"),
-	("Standing - Empty Hands - Climb",44,"S_CLIMB"),
-	("Standing - Empty Hands - Open door",10,"S_OPEN"),
-	("Standing - Empty Hands - Pickup",5,"S_PICKUP"),
-	("Standing - Punch",24,"S_PUNCH"),
-	("Standing - Empty Hands - Hit and die",33,"S_DIE2"),
-	("Standing - Empty Hands - Hit and die 2",35,"S_D_FWD"),
-	("Standing - Empty Hands - Flyback hit",23,"S_DIEBAC"),
-#	("Standing - Empty Hands - Flyback & die",24,"S_DIEHARD"),
-#	("Standing - Empty Hands - Flyback & die BLOOD",7,"S_DIEHARDB"),
-#	("Standing To Cower - Empty hands",12,"S_COWER"),
-#	("Crouch - Render medical aid",8,"S_MEDIC"),
-#	("Crouch - Empty Hands - Hit and die",9,"S_C_DIE"),
-#	("Prone - Empty Hands - Render Aid",7,"S_PRN_MED"),
-#	("Prone - Empty Hands - Cower",10,"S_PRNCOW"),
-#	("Prone - Empty Hands - Hit and die",22,"S_P_DIE"),
-#	("Prone - Empty Hands - Roll",8,"S_ROLL")
+#	("Standing - Hop fence",18,"S_HOP"),
+#	("Standing - Empty Hands - Climb",44,"S_CLIMB"),
+#	("Standing - Empty Hands - Open door",10,"S_OPEN"),
+#	("Standing - Empty Hands - Pickup",5,"S_PICKUP"),
+#	("Standing - Punch",24,"S_PUNCH"),
+#	("Standing - Empty Hands - Hit and die",33,"S_DIE2"),
+#	("Standing - Empty Hands - Hit and die 2",35,"S_D_FWD"),
+#	("Standing - Empty Hands - Flyback hit",23,"S_DIEBAC"),
+	("Standing - Empty Hands - Flyback & die",24,"S_DIEHARD"),
+	("Standing - Empty Hands - Flyback & die BLOOD",7,"S_DIEHARDB"),
+	("Standing To Cower - Empty hands",12,"S_COWER"),
+	("Crouch - Render medical aid",8,"S_MEDIC"),
+	("Crouch - Empty Hands - Hit and die",9,"S_C_DIE"),
+	("Prone - Empty Hands - Render Aid",7,"S_PRN_MED"),
+	("Prone - Empty Hands - Cower",10,"S_PRNCOW"),
+	("Prone - Empty Hands - Hit and die",22,"S_P_DIE"),
+	("Prone - Empty Hands - Roll",8,"S_ROLL")
 ]
 
 for i in range(len(animationArray)):

@@ -13,8 +13,10 @@ FOR /F "tokens=* delims=" %%x in (batchSriptData\palettes.txt) DO (
 )
 set /a lastPaletteIndex-=1
 
-Rem offset for the frames. Since this doesn't change often, it's not asked.
-set _OFFSET="(-60,-77)"
+Rem 192*192 orthoScale 6.75 settings
+set _OFFSET="(-0,-0)"
+set "_CROPSETTINGS=192x192+0+0"
+set _PIVOT=(95,113)
 
 
 set _FILE_NAME=S_HOP
@@ -60,22 +62,46 @@ if %decision%==0 (
 	set suffixList[3]=_torso
 	set suffixList[4]=_legs
 	for /l %%n in (0,1,4) do (
+		set "_EXTRACTDIR=make_script\extract\Standing - Hop fence\!outputPrefix[%%n]!"
+		IF NOT EXIST "!_EXTRACTDIR!" md "!_EXTRACTDIR!"
 		rem delete any .bmp files from extract folder before converting output frames into there
-		DEL make_script\extract\*.bmp
+		DEL "!_EXTRACTDIR!\*.bmp"
 		Rem crop and convert rendered images to use correct header type
-		make_script\convert.exe "output\Standing - Hop fence\!outputPrefix[%%n]!2*.png" "output\Standing - Hop fence\!outputPrefix[%%n]!4*.png" "output\Standing - Hop fence\!outputPrefix[%%n]!6*.png" "output\Standing - Hop fence\!outputPrefix[%%n]!8*.png" -crop 121x121+3+4 BMP3:make_script\extract\0.bmp
+		start /B make_script\convert.exe "output\Standing - Hop fence\!outputPrefix[%%n]!_C2*.png" "output\Standing - Hop fence\!outputPrefix[%%n]!_C4*.png" "output\Standing - Hop fence\!outputPrefix[%%n]!_C6*.png" "output\Standing - Hop fence\!outputPrefix[%%n]!_C8*.png" -crop !_CROPSETTINGS! BMP3:"!_EXTRACTDIR!\0.bmp"
+	)
+	:SYNCLOOP1
+	tasklist /FI "IMAGENAME eq convert.exe" 2>NUL | find /I /N "convert.exe">NUL
+	if %ERRORLEVEL%==0 (
+		ping localhost -n 2 >nul
+		GOTO SYNCLOOP1
+	)
+
+	for /l %%n in (0,1,4) do (
+		set "_EXTRACTDIR=make_script\extract\Standing - Empty Hands - Climb\!outputPrefix[%%n]!"
 
 		rem create layered .sti files for basebody
 		SETLOCAL
-rem		set _FILEPATH=make_script\sti\%_FILE_NAME%!suffixList[%%n]!.sti
 		set _FILEPATH=!_OUTPUTDIR!%_FILE_NAME%!suffixList[%%n]!.sti
 		echo !_FILEPATH!
-		make_script\sticom.exe new -o "!_FILEPATH!"  -i "make_script\extract\0-%%d.bmp%" -r !_RANGE! -p "make_script\Palettes\!chosenPalette!" --offset !_OFFSET! -k "!c!" -F
+		set "_extract=!_EXTRACTDIR!\0-%%d.bmp%"
+
+		start /B make_script\sticom.exe new -o "!_FILEPATH!"  -i "!_extract!" -r !_RANGE! -p "make_script\Palettes\!chosenPalette!" --offset !_OFFSET! -k "!c!" -F -M "TRIM" -P !_PIVOT!
 		ENDLOCAL
 	)
-) else if %decision%==2 (
+	:SYNCLOOP2
+	tasklist /FI "IMAGENAME eq sticom.exe" 2>NUL | find /I /N "sticom.exe">NUL
+	if %ERRORLEVEL%==0 (
+		ping localhost -n 3 >nul
+		GOTO SYNCLOOP2
+	)
+	GOTO :ContinueSTI
+) else if %decision%==1 (
  	CALL :CreateBaseProps
+) else if %decision%==99 (
+	echo Quitting makesti script
+	GOTO :EndScript
 ) ELSE (
+	echo Invalid selection
 	GOTO :ContinueSTI
 )
 
@@ -111,19 +137,48 @@ pause
 	set propPalettes[4]=!Palettes[3]!
 	set propnumbers[4]=5
 	set propSuffix[4]=_gasmask
+	Rem NVG
+	set propPalettes[4]=!Palettes[3]!
+	set propnumbers[4]=5
+	set propSuffix[4]=_NVG
 
 	for /l %%n in (0,1,4) do (
 		set chosenPalette=!propPalettes[%%n]!
 		set nProps=!propnumbers[%%n]!
 		set _SUFFIX=!propSuffix[%%n]!
+
+		set "_EXTRACTDIR=make_script\extract\Standing - Hop fence\Prop!nProps!"
+		IF NOT EXIST "!_EXTRACTDIR!" md "!_EXTRACTDIR!"
+
 		rem delete any .bmp files from extract folder before converting output frames into there
-		DEL make_script\extract\*.bmp
+		DEL "!_EXTRACTDIR!\*.bmp"
 		Rem crop and convert rendered images to use correct header type
-		make_script\convert.exe "output\Standing - Hop fence\Prop!nProps!_C2*.png" "output\Standing - Hop fence\Prop!nProps!_C4*.png" "output\Standing - Hop fence\Prop!nProps!_C6*.png" "output\Standing - Hop fence\Prop!nProps!_C8*.png" -crop 121x121+3+4 BMP3:make_script\extract\0.bmp
-		
+		start /B make_script\convert.exe "output\Standing - Hop fence\Prop!nProps!_C2*.png" "output\Standing - Hop fence\Prop!nProps!_C4*.png" "output\Standing - Hop fence\Prop!nProps!_C6*.png" "output\Standing - Hop fence\Prop!nProps!_C8*.png" -crop !_CROPSETTINGS! BMP3:"!_EXTRACTDIR!\0.bmp"
+	)
+	:SYNCLOOP3
+	tasklist /FI "IMAGENAME eq convert.exe" 2>NUL | find /I /N "convert.exe">NUL
+	if %ERRORLEVEL%==0 (
+		ping localhost -n 2 >nul
+		GOTO SYNCLOOP3
+	)
+
+
+	for /l %%n in (0,1,4) do (
+		set chosenPalette=!propPalettes[%%n]!
+		set nProps=!propnumbers[%%n]!
+		set _SUFFIX=!propSuffix[%%n]!
+		set "_EXTRACTDIR=make_script\extract\Standing - Empty Hands - Climb\Prop!nProps!"
 		set _FILEPATH=!_OUTPUTDIR!%_FILE_NAME%!_SUFFIX!.sti
+		set "_extract=!_EXTRACTDIR!\0-%%d.bmp%"
+		set "_palette=make_script\Palettes\!chosenPalette!"
 		echo !_FILEPATH!
-		make_script\sticom.exe new -o "!_FILEPATH!"  -i "make_script\extract\0-%%d.bmp%" -r !_RANGE! -p "make_script\Palettes\!chosenPalette!" --offset !_OFFSET! -k "!c!" -F
+		start /B make_script\sticom.exe new -o "!_FILEPATH!"  -i "!_extract!" -r !_RANGE! -p "!_palette!" --offset !_OFFSET! -k "!c!" -F -M "TRIM" -P !_PIVOT!
+	)
+	:SYNCLOOP4
+	tasklist /FI "IMAGENAME eq sticom.exe" 2>NUL | find /I /N "sticom.exe">NUL
+	if %ERRORLEVEL%==0 (
+		ping localhost -n 3 >nul
+		GOTO SYNCLOOP4
 	)
 	ENDLOCAL
 EXIT /B 0

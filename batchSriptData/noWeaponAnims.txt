@@ -5,9 +5,9 @@
 ("Standing - Empty Hands - Open door",10,"S_OPEN"),
 ("Standing - Empty Hands - Pickup",5,"S_PICKUP"),
 ("Standing - Punch",24,"S_PUNCH"),
-("Standing - Empty Hands - Hit and die",33,"S_DIE2")
-("Standing - Empty Hands - Hit and die 2",35,"S_D_FWD")
-("Standing - Empty Hands - Flyback hit",23,"S_DIEBAC")
+("Standing - Empty Hands - Hit and die",33,"S_DIE2"),
+("Standing - Empty Hands - Hit and die 2",35,"S_D_FWD"),
+("Standing - Empty Hands - Flyback hit",23,"S_DIEBAC"),
 ("Standing - Empty Hands - Flyback & die",24,"S_DIEHARD"),
 ("Standing - Empty Hands - Flyback & die BLOOD",7,"S_DIEHARDB"),
 ("Standing To Cower - Empty hands",12,"S_COWER"),
