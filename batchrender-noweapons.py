@@ -18,7 +18,8 @@ animationArray = [
 #	("Prone - Empty Hands - Render Aid",7,"S_PRN_MED"),
 #	("Prone - Empty Hands - Cower",10,"S_PRNCOW"),
 #	("Prone - Empty Hands - Hit and die",22,"S_P_DIE"),
-#	("Prone - Empty Hands - Roll",8,"S_ROLL")
+#	("Prone - Empty Hands - Roll",8,"S_ROLL"),
+#	("Standing - Knife - Stab",14,"S_STAB")
 ]
 
 for i in range(len(animationArray)):
@@ -66,6 +67,8 @@ for i in range(len(animationArray)):
 		bpy.data.objects["Hat - Helmet"].hide_render = False
 		bpy.data.objects["Face - Gasmask"].hide_render = False
 	elif renderSet == 2:
+		if currentAction == "Standing - Knife - Stab":
+			bpy.data.objects["Weapon - Combat Knife"].hide_render = False
 		bpy.data.objects["Backpack - Backpack"].hide_render = False
 		bpy.data.objects["Face - NVG"].hide_render = False
 
