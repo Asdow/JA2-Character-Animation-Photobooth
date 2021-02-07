@@ -12,6 +12,7 @@ animationArray = [
 	("Standing - Empty Hands - Flyback hit",23,"S_DIEBAC"),
 #	("Standing - Empty Hands - Flyback & die",24,"S_DIEHARD"),
 #	("Standing - Empty Hands - Flyback & die BLOOD",7,"S_DIEHARDB"),
+#	("Standing - Empty Hands - Dodge",6,"S_DODGE"),
 #	("Standing To Cower - Empty hands",12,"S_COWER"),
 #	("Crouch - Render medical aid",8,"S_MEDIC"),
 #	("Crouch - Empty Hands - Hit and die",9,"S_C_DIE"),
