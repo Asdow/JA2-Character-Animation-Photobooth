@@ -18,4 +18,5 @@
 ("Prone - Empty Hands - Hit and die",22,"S_P_DIE"),
 ("Prone - Empty Hands - Roll",8,"S_ROLL"),
 ("Standing - Knife - Stab",14,"S_STAB"),
-("Standing - Knife - Slice",14,"S_SLICE")
+("Standing - Knife - Slice",14,"S_SLICE"),
+("Crouch - Knife - Stab",14,"S_C_STAB")

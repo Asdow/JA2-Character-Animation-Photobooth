@@ -20,7 +20,8 @@ animationArray = [
 #	("Prone - Empty Hands - Hit and die",22,"S_P_DIE"),
 #	("Prone - Empty Hands - Roll",8,"S_ROLL"),
 #	("Standing - Knife - Stab",14,"S_STAB"),
-#	("Standing - Knife - Slice",14,"S_SLICE")
+#	("Standing - Knife - Slice",14,"S_SLICE"),
+#	("Crouch - Knife - Stab",14,"S_C_STAB")
 ]
 
 for i in range(len(animationArray)):
@@ -70,6 +71,8 @@ for i in range(len(animationArray)):
 	elif renderSet == 2:
 		if currentAction == "Standing - Knife - Stab" or currentAction == "Standing - Knife - Slice":
 			bpy.data.objects["Weapon - Combat Knife"].hide_render = False
+		if currentAction == "Crouch - Knife - Stab":
+			bpy.data.objects["Weapon - Combat Knife Alt hold"].hide_render = False		
 		bpy.data.objects["Backpack - Backpack"].hide_render = False
 		bpy.data.objects["Face - NVG"].hide_render = False
 
