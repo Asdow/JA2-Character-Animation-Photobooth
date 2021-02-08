@@ -27,7 +27,8 @@ animationArray = [
 	("Prone - Empty Hands - Roll",8,"S_ROLL"),
 	("Standing - Knife - Stab",14,"S_STAB"),
 	("Standing - Knife - Slice",14,"S_SLICE"),
-	("Crouch - Knife - Stab",14,"S_C_STAB")
+	("Crouch - Knife - Stab",14,"S_C_STAB"),
+	("Crouch To Prone - Sleep",13,"S_SLEEP")
 ]
 
 for i in range(len(animationArray)):
