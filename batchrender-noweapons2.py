@@ -17,6 +17,7 @@ animationArray = [
 	("Standing - Empty Hands - Lob",14,"S_THROW"),
 	("Standing - Empty Hands - Kick Door",20,"S_DR_KICK"),
 	("Standing - Empty Hands - Squish",20,"S_SQUISH"),
+	("Standing - Empty Hands - Pull",13,"S_PULL"),
 	("Standing To Cower - Empty hands",12,"S_COWER"),
 	("Crouch - Render medical aid",8,"S_MEDIC"),
 	("Crouch - Empty Hands - Hit and die",9,"S_C_DIE"),
