@@ -17,6 +17,7 @@ animationArray = [
 ("Standing - Rifle - Kick Door",20,"S_R_DR_KICK"),
 ("Standing - Rifle - Squish",20,"S_R_SQUISH"),
 ("Standing - Rifle - Look",14,"S_R_LOOK"),
+("Standing - Rifle - Spit",21,"S_R_SPIT"),
 ("Standing To Crouch - Rifle",15,"S_R_C"),
 ("Standing To Cower - Rifle",12,"S_R_COWER"),
 ("Crouch - Rifle - Aim & Shoot",18,"S_CR_AIM"),
