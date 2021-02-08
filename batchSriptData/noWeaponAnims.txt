@@ -13,6 +13,7 @@
 ("Standing - Empty Hands - Dodge",6,"S_DODGE"),
 ("Standing - Empty Hands -  Throw",14,"S_LOB"),
 ("Standing - Empty Hands -  Lob",14,"S_THROW"),
+("Standing - Empty Hands -  Kick Door",20,"S_DR_KICK"),
 ("Standing To Cower - Empty hands",12,"S_COWER"),
 ("Crouch - Render medical aid",8,"S_MEDIC"),
 ("Crouch - Empty Hands - Hit and die",9,"S_C_DIE"),
