@@ -25,5 +25,6 @@
 ("Prone - Empty Hands - Roll",8,"S_ROLL"),
 ("Standing - Knife - Stab",14,"S_STAB"),
 ("Standing - Knife - Slice",14,"S_SLICE"),
+("Standing - Knife - Throw",14,"S_K_THROW"),
 ("Crouch - Knife - Stab",14,"S_C_STAB"),
 ("Crouch To Prone - Sleep",13,"S_SLEEP")
