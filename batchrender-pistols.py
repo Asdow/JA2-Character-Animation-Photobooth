@@ -2,22 +2,26 @@ import bpy
 
 # Animation name in blender & end frame
 animationArray = [
-	("Standing - Empty Hands - Idle", 8),
-	("Standing - Empty Hands - Walk", 12),
-	("Standing - Empty Hands - Run", 12),
-	("Standing - Pistol - Idle", 8),
-	("Standing - Pistol - Walk", 12),
-	("Standing - Pistol - Walk Aiming", 12),
-	("Standing - Pistol - Aim & Shoot", 21),
-	("Standing - Pistol - Shoot low", 8),
-	("Standing - Pistol - Sidestep Aim Alternate", 12),
-	("Standing - Dual Pistols - Aim & Shoot", 25),
-	("Standing To Crouch - Empty hands", 15),
-	("Crouch - Empty hands - Walk", 22),
-	("Crouch - Pistol - Walk Aiming", 24),
-	("Crouch - Pistol - Aim & Shoot", 18),
-	("Crouch - Dual Pistol - Walk Aiming", 24),
-	("Crouch - Dual Pistol - Aim & Shoot", 25)
+	("Standing - Empty Hands - Idle",8,"S_N_STD"),
+	("Standing - Empty Hands - Walk",12,"S_N_WALK"),
+	("Standing - Empty Hands - Hurt Walk",12,"S_N_WALK_HURT"),
+	("Standing - Empty Hands - Run",12,"S_N_RUN"),
+	("Standing - Empty Hands - Pain",14,"S_N_PAIN"),
+	("Standing - Pistol - Idle",8,"S_P_BRTH"),
+	("Standing - Pistol - Walk",12,"S_P_WALK"),
+	("Standing - Pistol - Walk Aiming",12,"S_P_RDY_WALK2"),
+	("Standing - Pistol - Aim & Shoot",21,"S_N_SHOT"),
+	("Standing - Pistol - Shoot low",8,"S_P_LOW"),
+	("Standing - Pistol - Sidestep Aim Alternate",12,"S_P_SDSP_AIM"),
+#	("Standing - Dual Pistols - Aim & Shoot",25,"S_DBLSHOT"),
+#	("Standing To Crouch - Empty hands",15,"S_N_CRCH"),
+#	("Crouch - Empty hands - Walk",22,"S_N_SWAT"),
+#	("Crouch - Pistol - Walk Aiming",24,"cr_walk_pistol"),
+#	("Crouch - Pistol - Aim & Shoot",18,"S_CR_AIM_P"),
+#	("Crouch - Dual Pistol - Walk Aiming",24,"cr_walk_dual"),
+#	("Crouch - Dual Pistol - Aim & Shoot",25,"S_CR_AIM_D"),
+#	("Prone - Pistol - Crawl & Shoot",29,"S_N_PRNE"),
+#	("Prone - Dual Pistol - Shoot",12,"S_DB_PRN")
 ]
 
 for i in range(len(animationArray)):
@@ -43,17 +47,17 @@ for i in range(len(animationArray)):
 	# Hide and display objects in renders
 	# TODO make these change depending on the animation, if needed
 	bpy.data.objects["Weapon - FAL"].hide_render = True
-	bpy.data.objects["Weapon - Shotgun"].hide_render = False
+	bpy.data.objects["Weapon - Shotgun"].hide_render = True
 	bpy.data.objects["Weapon - AK47"].hide_render = True
-	bpy.data.objects["Weapon - Mosin Nagant"].hide_render = False
+	bpy.data.objects["Weapon - Mosin Nagant"].hide_render = True
 	bpy.data.objects["Weapon - HK MP5"].hide_render = True
-	bpy.data.objects["Weapon - Barrett"].hide_render = False
-	bpy.data.objects["Weapon - PKM"].hide_render = False
-	bpy.data.objects["Weapon - M14"].hide_render = False
+	bpy.data.objects["Weapon - Barrett"].hide_render = True
+	bpy.data.objects["Weapon - PKM"].hide_render = True
+	bpy.data.objects["Weapon - M14"].hide_render = True
 	bpy.data.objects["Weapon - HK MP5K"].hide_render = True
 	bpy.data.objects["Weapon - HK MP5K - Left Hand"].hide_render = True
-	bpy.data.objects["Weapon - HK USP"].hide_render = True
-	bpy.data.objects["Weapon - HK USP - Left Hand"].hide_render = True
+	bpy.data.objects["Weapon - HK USP"].hide_render = False
+	bpy.data.objects["Weapon - HK USP - Left Hand"].hide_render = False
 	bpy.data.objects["Vest - Flak Jacket"].hide_render = True
 	bpy.data.objects["Travel_Backpack"].hide_render = True
 	bpy.data.objects["Hat - Beret"].hide_render = True

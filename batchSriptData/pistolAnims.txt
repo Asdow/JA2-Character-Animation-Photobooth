@@ -1,6 +1,7 @@
 ;Animation name, end frame, sti name
 ("Standing - Empty Hands - Idle",8,"S_N_STD"),
 ("Standing - Empty Hands - Walk",12,"S_N_WALK"),
+("Standing - Empty Hands - Hurt Walk",12,"S_N_WALK_HURT"),
 ("Standing - Empty Hands - Run",12,"S_N_RUN"),
 ("Standing - Empty Hands - Pain",14,"S_N_PAIN"),
 ("Standing - Pistol - Idle",8,"S_P_BRTH"),
