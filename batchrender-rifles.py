@@ -13,6 +13,7 @@ animationArray = [
 #("Standing - Rifle - Sidestep Alternate",12,"S_R_SDSP_ALT"),
 ("Standing - Rifle - Walk",12,"RGM_BASICWALK"),
 #("Standing - Rifle - Walk Aiming",12,"S_R_RDY_WALK"),
+#("Standing - Rifle - Hurt Walk",12,"S_R_WALK_HURT"),
 #("Standing - Rifle - Pain",14,"S_R_PAIN"),
 #("Standing - Rifle - Kick Door",20,"S_R_DR_KICK"),
 #("Standing - Rifle - Squish",20,"S_R_SQUISH"),
