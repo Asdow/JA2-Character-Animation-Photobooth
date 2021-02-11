@@ -18,6 +18,7 @@ animationArray = [
 	("Standing - Empty Hands - Kick Door",20,"S_DR_KICK"),
 	("Standing - Empty Hands - Squish",20,"S_SQUISH"),
 	("Standing - Empty Hands - Pull",13,"S_PULL"),
+	("Standing - Empty Hands - Radio",16,"S_RADIO"),
 	("Standing To Cower - Empty hands",12,"S_COWER"),
 	("Crouch - Render medical aid",8,"S_MEDIC"),
 	("Crouch - Empty Hands - Hit and die",9,"S_C_DIE"),
@@ -86,7 +87,9 @@ for i in range(len(animationArray)):
 		if currentAction == "Standing - Knife - Throw":
 			bpy.data.objects["Weapon - Combat Knife"].hide_render = False
 			bpy.data.objects["Weapon - Combat Knife"].animation_data.action = bpy.data.actions.get(currentAction)
-		bpy.data.objects["Backpack - Backpack"].hide_render = False
+		if currentAction == "Standing - Empty Hands - Radio":
+			bpy.data.objects["Weapon - Radio"].hide_render = False
+		#bpy.data.objects["Backpack - Backpack"].hide_render = False
 		bpy.data.objects["Face - NVG"].hide_render = False
 
 	# RENDER AWAYYY!
