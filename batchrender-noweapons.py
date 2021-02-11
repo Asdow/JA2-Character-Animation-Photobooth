@@ -21,6 +21,7 @@ animationArray = [
 #	("Standing To Cower - Empty hands",12,"S_COWER"),
 #	("Crouch - Render medical aid",8,"S_MEDIC"),
 #	("Crouch - Empty Hands - Hit and die",9,"S_C_DIE"),
+#	("Crouch - Empty Hands - Punch",14,"S_C_PUNCH"),
 #	("Prone - Empty Hands - Render Aid",7,"S_PRN_MED"),
 #	("Prone - Empty Hands - Cower",10,"S_PRNCOW"),
 #	("Prone - Empty Hands - Hit and die",22,"S_P_DIE"),
