@@ -23,6 +23,7 @@ animationArray = [
 	("Crouch - Render medical aid",8,"S_MEDIC"),
 	("Crouch - Empty Hands - Hit and die",9,"S_C_DIE"),
 	("Crouch - Empty Hands - Punch",14,"S_C_PUNCH"),
+	("Crouch - Empty Hands - Radio",16,"S_C_RADIO"),
 	("Prone - Empty Hands - Render Aid",7,"S_PRN_MED"),
 	("Prone - Empty Hands - Cower",10,"S_PRNCOW"),
 	("Prone - Empty Hands - Hit and die",22,"S_P_DIE"),
@@ -87,7 +88,7 @@ for i in range(len(animationArray)):
 		if currentAction == "Standing - Knife - Throw":
 			bpy.data.objects["Weapon - Combat Knife"].hide_render = False
 			bpy.data.objects["Weapon - Combat Knife"].animation_data.action = bpy.data.actions.get(currentAction)
-		if currentAction == "Standing - Empty Hands - Radio":
+		if currentAction == "Standing - Empty Hands - Radio" or currentAction == "Crouch - Empty Hands - Radio":
 			bpy.data.objects["Weapon - Radio"].hide_render = False
 		#bpy.data.objects["Backpack - Backpack"].hide_render = False
 		bpy.data.objects["Face - NVG"].hide_render = False
