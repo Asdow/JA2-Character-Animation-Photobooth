@@ -37,12 +37,17 @@ for i in range(len(animationArray)):
 		bpy.data.node_groups["JA2 Layered Sprite - Body Group"].nodes["File Output.00"+str(j)].base_path = outputfolder
 	bpy.data.node_groups["JA2 Layered Sprite - Body Shadow Group"].nodes["File Output"].base_path = outputfolder
 
-	# Prop 1, 2, 3, 4, 5  outputs in that order
+	# Prop 1, 2, 3...10 outputs in that order
 	bpy.data.scenes["camera 1"].node_tree.nodes["File Output.004"].base_path = outputfolder
 	bpy.data.scenes["camera 1"].node_tree.nodes["File Output"].base_path = outputfolder
 	bpy.data.scenes["camera 1"].node_tree.nodes["File Output.001"].base_path = outputfolder
 	bpy.data.scenes["camera 1"].node_tree.nodes["File Output.002"].base_path = outputfolder
-	bpy.data.scenes["camera 1"].node_tree.nodes["File Output.003"].base_path = outputfolder
+	bpy.data.scenes["camera 1"].node_tree.nodes["File Output.003"].base_path = outputfolder # prop 5
+	bpy.data.scenes["camera 1"].node_tree.nodes["File Output.005"].base_path = outputfolder
+	bpy.data.scenes["camera 1"].node_tree.nodes["File Output.006"].base_path = outputfolder
+	bpy.data.scenes["camera 1"].node_tree.nodes["File Output.007"].base_path = outputfolder
+	bpy.data.scenes["camera 1"].node_tree.nodes["File Output.008"].base_path = outputfolder
+	bpy.data.scenes["camera 1"].node_tree.nodes["File Output.009"].base_path = outputfolder
 
 
 	# Hide and display objects in renders
