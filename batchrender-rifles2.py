@@ -114,6 +114,9 @@ for i in range(len(animationArray)):
 		bpy.data.objects["Weapon - Thompson M1A1"].hide_render = False
 		bpy.data.objects["Weapon - PPSH41"].hide_render = False
 		bpy.data.objects["Weapon - HK MP5"].hide_render = False
+		bpy.data.objects["Weapon - Shotgun"].hide_render = False
+		bpy.data.objects["Weapon - Saiga 12K"].hide_render = False
+		bpy.data.objects["Weapon - SPAS12"].hide_render = False
 		# Display muzzleflashes only in relevant animations
 		if currentAction == "Standing - Rifle - Aim" or currentAction == "Crouch - Rifle - Aim & Shoot" or currentAction == "Prone - Rifle - Crawl & Shoot":
 			bpy.data.objects["MuzzleFlash - P90"].hide_render = False
@@ -124,17 +127,11 @@ for i in range(len(animationArray)):
 			bpy.data.objects["MuzzleFlash - Thompson M1A1"].animation_data.action = bpy.data.actions.get(currentAction)
 			bpy.data.objects["MuzzleFlash - PPSH41"].animation_data.action = bpy.data.actions.get(currentAction)
 			bpy.data.objects["MuzzleFlash - MP5"].animation_data.action = bpy.data.actions.get(currentAction)
-	elif renderSet == 3:
-		bpy.data.objects["Weapon - Saiga 12K"].hide_render = False
-		bpy.data.objects["Weapon - Shotgun"].hide_render = False
-		bpy.data.objects["Weapon - SPAS12"].hide_render = False
-		# Display muzzleflashes only in relevant animations
-		if currentAction == "Standing - Rifle - Aim" or currentAction == "Crouch - Rifle - Aim & Shoot" or currentAction == "Prone - Rifle - Crawl & Shoot":
-			bpy.data.objects["MuzzleFlash - Saiga 12K"].hide_render = False
 			bpy.data.objects["MuzzleFlash - Shotgun"].hide_render = False
+			bpy.data.objects["MuzzleFlash - Saiga 12K"].hide_render = False
 			bpy.data.objects["MuzzleFlash - SPAS12"].hide_render = False
-			bpy.data.objects["MuzzleFlash - Saiga 12K"].animation_data.action = bpy.data.actions.get(currentAction)
 			bpy.data.objects["MuzzleFlash - Shotgun"].animation_data.action = bpy.data.actions.get(currentAction)
+			bpy.data.objects["MuzzleFlash - Saiga 12K"].animation_data.action = bpy.data.actions.get(currentAction)
 			bpy.data.objects["MuzzleFlash - SPAS12"].animation_data.action = bpy.data.actions.get(currentAction)
 	elif renderSet == 4:
 		bpy.data.objects["Weapon - RPK"].hide_render = False
@@ -160,7 +157,6 @@ for i in range(len(animationArray)):
 		bpy.data.objects["Hat - Beret"].hide_render = False
 		bpy.data.objects["Hat - Helmet"].hide_render = False
 		bpy.data.objects["Face - Gasmask"].hide_render = False
-	elif renderSet == 7:
 		bpy.data.objects["Face - NVG"].hide_render = False
 
 	# RENDER AWAYYY!
