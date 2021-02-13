@@ -29,6 +29,7 @@ animationArray = [
 #("Crouch - Empty Hands - Hit and die",9,"S_C_DIE"),
 #("Crouch - Empty Hands - Punch",14,"S_C_PUNCH"),
 #("Crouch - Empty Hands - Radio",16,"S_C_RADIO"),
+#("Crouch - Empty Hands - Throw",14,"S_C_THROW"),
 #("Crouch - Knife - Stab",14,"S_C_STAB"),
 #("Crouch To Prone - Sleep",13,"S_SLEEP"),
 #("Prone - Empty Hands - Render Aid",7,"S_PRN_MED"),
