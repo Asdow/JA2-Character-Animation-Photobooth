@@ -17,6 +17,8 @@
 ("Standing - Rifle - Look",14,"S_R_LOOK"),
 ("Standing - Rifle - Spit",21,"S_R_SPIT"),
 ("Standing - Rifle - Drunk",20,"S_R_DRUNK"),
+("Standing - Rifle - Bayonet",18,"S_R_BAYONET"),
+("Standing - Rifle - Bayonet Low",23,"S_R_BAYONET_L"),
 ("Standing To Crouch - Rifle",15,"S_R_C"),
 ("Standing To Cower - Rifle",12,"S_R_COWER"),
 ("Crouch - Rifle - Aim & Shoot",18,"S_CR_AIM"),
