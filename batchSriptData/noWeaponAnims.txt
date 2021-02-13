@@ -14,6 +14,7 @@
 ("Standing - Empty Hands - Throw",14,"S_THROW"),
 ("Standing - Empty Hands - Throw Grenade",19,"S_THROW_G"),
 ("Standing - Empty Hands - Lob",14,"S_LOB"),
+("Standing - Empty Hands - Lob Grenade",19,"S_LOB_G"),
 ("Standing - Empty Hands - Kick Door",20,"S_DR_KICK"),
 ("Standing - Empty Hands - Squish",20,"S_SQUISH"),
 ("Standing - Empty Hands - Pull",13,"S_PULL"),
