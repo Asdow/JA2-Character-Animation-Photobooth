@@ -82,6 +82,11 @@ for i in range(len(animationArray)):
 		bpy.data.objects["Weapon - AK47"].hide_render = False
 		bpy.data.objects["Weapon - FAMAS"].hide_render = False
 		bpy.data.objects["Weapon - SCAR-H"].hide_render = False
+		bpy.data.objects["Weapon - Barrett"].hide_render = False
+		bpy.data.objects["Weapon - Dragunov"].hide_render = False
+		bpy.data.objects["Weapon - PSG1"].hide_render = False
+		bpy.data.objects["Weapon - TRG42"].hide_render = False
+		bpy.data.objects["Weapon - Mossberg Patriot"].hide_render = False
 		# Display muzzleflashes only in relevant animations
 		if currentAction == "Standing - Rifle - Aim" or currentAction == "Crouch - Rifle - Aim & Shoot" or currentAction == "Prone - Rifle - Crawl & Shoot":
 			bpy.data.objects["MuzzleFlash - FN FAL"].hide_render = False
@@ -94,6 +99,16 @@ for i in range(len(animationArray)):
 			bpy.data.objects["MuzzleFlash - AK47"].animation_data.action = bpy.data.actions.get(currentAction)
 			bpy.data.objects["MuzzleFlash - FAMAS"].animation_data.action = bpy.data.actions.get(currentAction)
 			bpy.data.objects["MuzzleFlash - SCAR-H"].animation_data.action = bpy.data.actions.get(currentAction)
+			bpy.data.objects["MuzzleFlash - Barrett"].hide_render = False
+			bpy.data.objects["MuzzleFlash - Dragunov"].hide_render = False
+			bpy.data.objects["MuzzleFlash - PSG1"].hide_render = False
+			bpy.data.objects["MuzzleFlash - TRG42"].hide_render = False
+			bpy.data.objects["MuzzleFlash - Mossberg Patriot"].hide_render = False
+			bpy.data.objects["MuzzleFlash - Barrett"].animation_data.action = bpy.data.actions.get(currentAction)
+			bpy.data.objects["MuzzleFlash - Dragunov"].animation_data.action = bpy.data.actions.get(currentAction)
+			bpy.data.objects["MuzzleFlash - PSG1"].animation_data.action = bpy.data.actions.get(currentAction)
+			bpy.data.objects["MuzzleFlash - TRG42"].animation_data.action = bpy.data.actions.get(currentAction)
+			bpy.data.objects["MuzzleFlash - Mossberg Patriot"].animation_data.action = bpy.data.actions.get(currentAction)
 	elif renderSet == 2:
 		bpy.data.objects["Weapon - P90"].hide_render = False
 		bpy.data.objects["Weapon - Thompson M1A1"].hide_render = False
@@ -139,24 +154,6 @@ for i in range(len(animationArray)):
 			bpy.data.objects["MuzzleFlash - PKM"].animation_data.action = bpy.data.actions.get(currentAction)
 			bpy.data.objects["MuzzleFlash - Mosin Nagant"].animation_data.action = bpy.data.actions.get(currentAction)
 			bpy.data.objects["MuzzleFlash - M14"].animation_data.action = bpy.data.actions.get(currentAction)
-	elif renderSet == 5:
-		bpy.data.objects["Weapon - Barrett"].hide_render = False
-		bpy.data.objects["Weapon - Dragunov"].hide_render = False
-		bpy.data.objects["Weapon - PSG1"].hide_render = False
-		bpy.data.objects["Weapon - TRG42"].hide_render = False
-		bpy.data.objects["Weapon - Mossberg Patriot"].hide_render = False
-		# Display muzzleflashes only in relevant animations
-		if currentAction == "Standing - Rifle - Aim" or currentAction == "Crouch - Rifle - Aim & Shoot" or currentAction == "Prone - Rifle - Crawl & Shoot":
-			bpy.data.objects["MuzzleFlash - Barrett"].hide_render = False
-			bpy.data.objects["MuzzleFlash - Dragunov"].hide_render = False
-			bpy.data.objects["MuzzleFlash - PSG1"].hide_render = False
-			bpy.data.objects["MuzzleFlash - TRG42"].hide_render = False
-			bpy.data.objects["MuzzleFlash - Mossberg Patriot"].hide_render = False
-			bpy.data.objects["MuzzleFlash - Barrett"].animation_data.action = bpy.data.actions.get(currentAction)
-			bpy.data.objects["MuzzleFlash - Dragunov"].animation_data.action = bpy.data.actions.get(currentAction)
-			bpy.data.objects["MuzzleFlash - PSG1"].animation_data.action = bpy.data.actions.get(currentAction)
-			bpy.data.objects["MuzzleFlash - TRG42"].animation_data.action = bpy.data.actions.get(currentAction)
-			bpy.data.objects["MuzzleFlash - Mossberg Patriot"].animation_data.action = bpy.data.actions.get(currentAction)
 	elif renderSet == 6:
 		bpy.data.objects["Vest - Flak Jacket"].hide_render = False
 		bpy.data.objects["Backpack - Backpack"].hide_render = False
