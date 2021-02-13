@@ -19,6 +19,7 @@
 ("Standing - Empty Hands - Squish",20,"S_SQUISH"),
 ("Standing - Empty Hands - Pull",13,"S_PULL"),
 ("Standing - Empty Hands - Radio",16,"S_RADIO"),
+("Standing - Empty Hands - Use Remote",6,"S_REMOTE"),
 ("Standing - Knife - Stab",14,"S_STAB"),
 ("Standing - Knife - Slice",14,"S_SLICE"),
 ("Standing - Knife - Throw",14,"S_K_THROW"),

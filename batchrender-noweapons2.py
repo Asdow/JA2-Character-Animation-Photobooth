@@ -21,6 +21,7 @@ animationArray = [
 #("Standing - Empty Hands - Squish",20,"S_SQUISH"),
 #("Standing - Empty Hands - Pull",13,"S_PULL"),
 #("Standing - Empty Hands - Radio",16,"S_RADIO"),
+("Standing - Empty Hands - Use Remote",6,"S_REMOTE"),
 ("Standing - Knife - Stab",14,"S_STAB"),
 ("Standing - Knife - Slice",14,"S_SLICE"),
 ("Standing - Knife - Throw",14,"S_K_THROW"),
@@ -98,7 +99,7 @@ for i in range(len(animationArray)):
 		if currentAction == "Standing - Knife - Throw":
 			bpy.data.objects["Weapon - Combat Knife"].hide_render = False
 			bpy.data.objects["Weapon - Combat Knife"].animation_data.action = bpy.data.actions.get(currentAction)
-		if currentAction == "Standing - Empty Hands - Radio" or currentAction == "Crouch - Empty Hands - Radio":
+		if currentAction == "Standing - Empty Hands - Radio" or currentAction == "Crouch - Empty Hands - Radio" or currentAction == "Standing - Empty Hands - Use Remote":
 			bpy.data.objects["Weapon - Radio"].hide_render = False
 		if currentAction == "Standing - Crowbar - Hit":
 			bpy.data.objects["Weapon - Crowbar"].hide_render = False
