@@ -75,7 +75,7 @@ for i in range(len(animationArray)):
 	#bpy.data.objects["Body - BGM"].hide_render = False
 
 	# Display props in renders depending on the set
-	renderSet = 7
+	renderSet = 1
 	if renderSet == 1:
 		bpy.data.objects["Weapon - FAL"].hide_render = False
 		bpy.data.objects["Weapon - M16"].hide_render = False
@@ -133,7 +133,7 @@ for i in range(len(animationArray)):
 			bpy.data.objects["MuzzleFlash - Shotgun"].animation_data.action = bpy.data.actions.get(currentAction)
 			bpy.data.objects["MuzzleFlash - Saiga 12K"].animation_data.action = bpy.data.actions.get(currentAction)
 			bpy.data.objects["MuzzleFlash - SPAS12"].animation_data.action = bpy.data.actions.get(currentAction)
-	elif renderSet == 4:
+	elif renderSet == 3:
 		bpy.data.objects["Weapon - RPK"].hide_render = False
 		bpy.data.objects["Weapon - SAW"].hide_render = False
 		bpy.data.objects["Weapon - PKM"].hide_render = False
@@ -151,13 +151,14 @@ for i in range(len(animationArray)):
 			bpy.data.objects["MuzzleFlash - PKM"].animation_data.action = bpy.data.actions.get(currentAction)
 			bpy.data.objects["MuzzleFlash - Mosin Nagant"].animation_data.action = bpy.data.actions.get(currentAction)
 			bpy.data.objects["MuzzleFlash - M14"].animation_data.action = bpy.data.actions.get(currentAction)
-	elif renderSet == 6:
+	elif renderSet == 4:
 		bpy.data.objects["Vest - Flak Jacket"].hide_render = False
 		bpy.data.objects["Backpack - Backpack"].hide_render = False
 		bpy.data.objects["Hat - Beret"].hide_render = False
 		bpy.data.objects["Hat - Helmet"].hide_render = False
 		bpy.data.objects["Face - Gasmask"].hide_render = False
 		bpy.data.objects["Face - NVG"].hide_render = False
+		bpy.data.objects["Hat - Booney"].hide_render = False
 
 	# RENDER AWAYYY!
 	bpy.ops.render.render(animation=True)

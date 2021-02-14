@@ -91,6 +91,7 @@ for i in range(len(animationArray)):
 		bpy.data.objects["Hat - Helmet"].hide_render = False
 		bpy.data.objects["Face - Gasmask"].hide_render = False
 		bpy.data.objects["Face - NVG"].hide_render = False
+		bpy.data.objects["Hat - Booney"].hide_render = False
 	elif renderSet == 2:
 		if currentAction == "Standing - Knife - Stab" or currentAction == "Standing - Knife - Slice" or currentAction == "Standing - Knife - Breath":
 			bpy.data.objects["Weapon - Combat Knife"].hide_render = False

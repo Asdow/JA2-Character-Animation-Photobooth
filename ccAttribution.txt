@@ -1,6 +1,7 @@
 Aldensin		-	HK USP Low Poly			https://sketchfab.com/3d-models/hk-usp-low-poly-ab6bc8dff8544c2592c8ff107ebda16f
 Bzovius			-	Russian Soldier			https://sketchfab.com/3d-models/russian-soldier-66df4b2856194d40a546afe2d1d77cfe
 Hellroon		-	Travel Backpack			https://sketchfab.com/3d-models/travel-backpack-e7dc65bbf189461d89899b42082a802c
+lovef1st_		-	Bucket Hat				https://sketchfab.com/3d-models/bucket-hat-293440f8d77549b8a99d0ca6ca8ba614
 Mike Rowley		-	RNZN Beret				https://sketchfab.com/3d-models/rnzn-beret-682b861c6d7e45578c659b7486d5eca6
 Nik Ladoukakis	-	Vest					https://sketchfab.com/3d-models/vest-e0e9f9f7b70e4be2b150f4627017ee4f
 OverLord		-	Combat Knife			https://sketchfab.com/3d-models/combat-knife-48e00da7aeb94530a5d0e0c3d58ca274
@@ -30,3 +31,5 @@ TastyTony		-	Low-Poly M249 SAW		https://sketchfab.com/3d-models/low-poly-m249-sa
 TastyTony		-	Low-Poly RPK			https://sketchfab.com/3d-models/low-poly-rpk-acdc6fe399514c41aa4130f8044875fb
 TastyTony		-	Low-Poly SPAS-12		https://sketchfab.com/3d-models/low-poly-spas-12-c95154ea2348443e9195250a6ad122cb
 TastyTony		-	Low-Poly Saiga 12k		https://sketchfab.com/3d-models/low-poly-saiga-12k-e9887136eaf14be396bdbea54f76ff3d
+TastyTony		-	Low-Poly S&W Model 500	https://sketchfab.com/3d-models/low-poly-sw-model-500-2660a0509d6c428cb3c2212725ffdbb8
+TastyTony		-	Low-Poly Desert Eagle	https://sketchfab.com/3d-models/low-poly-desert-eagle-b81da261345f4462b2c4412352162287

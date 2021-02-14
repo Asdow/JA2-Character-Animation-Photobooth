@@ -50,25 +50,61 @@ for i in range(len(animationArray)):
 	bpy.data.scenes["camera 1"].node_tree.nodes["File Output.009"].base_path = outputfolder
 
 
-	# Hide and display objects in renders
-	# TODO make these change depending on the animation, if needed
-	bpy.data.objects["Weapon - FAL"].hide_render = True
-	bpy.data.objects["Weapon - Shotgun"].hide_render = True
-	bpy.data.objects["Weapon - AK47"].hide_render = True
-	bpy.data.objects["Weapon - Mosin Nagant"].hide_render = True
-	bpy.data.objects["Weapon - HK MP5"].hide_render = True
-	bpy.data.objects["Weapon - Barrett"].hide_render = True
-	bpy.data.objects["Weapon - PKM"].hide_render = True
-	bpy.data.objects["Weapon - M14"].hide_render = True
-	bpy.data.objects["Weapon - HK MP5K"].hide_render = True
-	bpy.data.objects["Weapon - HK MP5K - Left Hand"].hide_render = True
-	bpy.data.objects["Weapon - HK USP"].hide_render = False
-	bpy.data.objects["Weapon - HK USP - Left Hand"].hide_render = False
-	bpy.data.objects["Vest - Flak Jacket"].hide_render = True
-	bpy.data.objects["Travel_Backpack"].hide_render = True
-	bpy.data.objects["Hat - Beret"].hide_render = True
-	bpy.data.objects["Hat - Helmet"].hide_render = True
-	bpy.data.objects["Face - Gasmask"].hide_render = True
+	# Hide objects in renders
+	for object in bpy.data.objects:
+		objectName = object.name
+		if "Weapon" in objectName or "Vest" in objectName or "Backpack" in objectName or "Hat" in objectName or "Face" in objectName:
+			object.hide_render = True
+		if "MuzzleFlash" in objectName:
+			object.hide_render = True
+			object.animation_data.action = bpy.data.actions.get("HideMuzzleFlash")
+		if objectName == "Body - RGM" or objectName == "Body - FGM" or objectName == "Body - BGM":
+			object.hide_render = True
+
+	# Bodytypes
+	bpy.data.objects["Body - RGM"].hide_render = False
+	#bpy.data.objects["Body - FGM"].hide_render = False
+	#bpy.data.objects["Body - BGM"].hide_render = False
+
+	# Display props in renders depending on the set
+	if renderSet == 1:
+		bpy.data.objects["Vest - Flak Jacket"].hide_render = False
+		bpy.data.objects["Backpack - Backpack"].hide_render = False
+		bpy.data.objects["Hat - Beret"].hide_render = False
+		bpy.data.objects["Hat - Helmet"].hide_render = False
+		bpy.data.objects["Face - Gasmask"].hide_render = False
+		bpy.data.objects["Face - NVG"].hide_render = False
+		bpy.data.objects["Hat - Booney"].hide_render = False
+	elif renderSet == 2:
+		bpy.data.objects["Weapon - HK USP"].hide_render = False
+		bpy.data.objects["Weapon - HK USP - Left Hand"].hide_render = False
+		bpy.data.objects["Weapon - HK MP5K"].hide_render = False
+		bpy.data.objects["Weapon - HK MP5K - Left Hand"].hide_render = False
+		bpy.data.objects["Weapon - Desert Eagle"].hide_render = False
+		bpy.data.objects["Weapon - Desert Eagle - Left Hand"].hide_render = False
+		bpy.data.objects["Weapon - SW500"].hide_render = False
+		bpy.data.objects["Weapon - SW500 - Left Hand"].hide_render = False
+		# Display muzzleflashes only in relevant animations
+		if currentAction == "Standing - Dual Pistols - Aim & Shoot" or currentAction == "Crouch - Dual Pistol - Aim & Shoot" or currentAction == "Prone - Dual Pistol - Shoot":
+			leftMuzzleFlashAction = "Dual Pistols - Aim & Shoot - Left Muzzleflash"
+			if currentAction == "Prone - Dual Pistol - Shoot":
+				leftMuzzleFlashAction = "Prone - Dual Pistol - Shoot - Left Muzzleflash"
+			bpy.data.objects["MuzzleFlash - HK USP"].hide_render = False
+			bpy.data.objects["MuzzleFlash - HK USP - Left Hand"].hide_render = False
+			bpy.data.objects["MuzzleFlash - HK MP5K"].hide_render = False
+			bpy.data.objects["MuzzleFlash - HK MP5K - Left Hand"].hide_render = False
+			bpy.data.objects["MuzzleFlash - Desert Eagle"].hide_render = False
+			bpy.data.objects["MuzzleFlash - Desert Eagle - Left Hand"].hide_render = False
+			bpy.data.objects["MuzzleFlash - SW500"].hide_render = False
+			bpy.data.objects["MuzzleFlash - SW500 - Left Hand"].hide_render = False
+			bpy.data.objects["MuzzleFlash - HK USP"].animation_data.action = bpy.data.actions.get(currentAction)
+			bpy.data.objects["MuzzleFlash - HK USP - Left Hand"].animation_data.action = bpy.data.actions.get(leftMuzzleFlashAction)
+			bpy.data.objects["MuzzleFlash - HK MP5K"].animation_data.action = bpy.data.actions.get(currentAction)
+			bpy.data.objects["MuzzleFlash - HK MP5K - Left Hand"].animation_data.action = bpy.data.actions.get(leftMuzzleFlashAction)
+			bpy.data.objects["MuzzleFlash - Desert Eagle"].animation_data.action = bpy.data.actions.get(currentAction)
+			bpy.data.objects["MuzzleFlash - Desert Eagle - Left Hand"].animation_data.action = bpy.data.actions.get(leftMuzzleFlashAction)
+			bpy.data.objects["MuzzleFlash - SW500"].animation_data.action = bpy.data.actions.get(currentAction)
+			bpy.data.objects["MuzzleFlash - SW500 - Left Hand"].animation_data.action = bpy.data.actions.get(leftMuzzleFlashAction)
 
 	# RENDER AWAYYY!
 	bpy.ops.render.render(animation=True)
