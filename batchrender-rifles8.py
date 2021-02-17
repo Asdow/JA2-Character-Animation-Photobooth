@@ -10,9 +10,9 @@ animationArray = [
 #("Standing - Rifle - Kick Door",20,"S_R_DR_KICK"),
 #("Standing - Rifle - Aim",21,"S_SR_AIM"),
 #("Standing - Rifle - Hit",5,"S_HIT"),
-("Standing - Rifle - Idle",8,"S_R_STD"),
-("Standing - Rifle - Open door",10,"S_RIFLE_OPEN"),
-("Standing - Rifle - Raise to Idle",5,"S_RAISE"),
+#("Standing - Rifle - Idle",8,"S_R_STD"),
+#("Standing - Rifle - Open door",10,"S_RIFLE_OPEN"),
+#("Standing - Rifle - Raise to Idle",5,"S_RAISE"),
 #("Standing - Rifle - Run",12,"S_R_RUN"),
 #("Standing - Rifle - Sidestep",12,"S_R_SDSP"),
 #("Standing - Rifle - Walk",12,"RGM_BASICWALK"),
@@ -28,10 +28,10 @@ animationArray = [
 #("Standing To Crouch - Rifle",15,"S_R_C"),
 #("Standing To Cower - Rifle",12,"S_R_COWER"),
 #("Crouch - Rifle - Aim & Shoot",18,"S_CR_AIM"),
-#("Crouch - Rifle - Walk",22,"S_R_SWAT"),
-#("Crouch - Rifle - Walk Aiming",24,"cr_walk_rifle"),
-#("Prone - Rifle - Crawl & Shoot",29,"S_R_PRN"),
-#("Prone - Rifle - Cower",10,"S_R_PRNCOW")
+("Crouch - Rifle - Walk",22,"S_R_SWAT"),
+("Crouch - Rifle - Walk Aiming",24,"cr_walk_rifle"),
+("Prone - Rifle - Crawl & Shoot",29,"S_R_PRN"),
+("Prone - Rifle - Cower",10,"S_R_PRNCOW")
 ]
 
 

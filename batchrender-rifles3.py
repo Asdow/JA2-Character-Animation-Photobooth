@@ -1,21 +1,24 @@
+import os
+import sys
+scriptpath = "J:/JA2 1.13 SVN/JA2-Character-Animation-Photobooth/"
+sys.path.append(os.path.abspath(scriptpath))
+import helpers
 import bpy
 
 # Animation name in blender & end frame
 animationArray = [
+#("Standing - Rifle - Kick Door",20,"S_R_DR_KICK"),
 #("Standing - Rifle - Aim",21,"S_SR_AIM"),
 #("Standing - Rifle - Hit",5,"S_HIT"),
 #("Standing - Rifle - Idle",8,"S_R_STD"),
-#("Standing - Rifle - Idle - Alternate",8,"S_R_STD_ALT"),
 #("Standing - Rifle - Open door",10,"S_RIFLE_OPEN"),
 #("Standing - Rifle - Raise to Idle",5,"S_RAISE"),
-#("Standing - Rifle - Run",12,"S_R_RUN"),
-#("Standing - Rifle - Sidestep",12,"S_R_SDSP"),
-#("Standing - Rifle - Sidestep Alternate",12,"S_R_SDSP_ALT"),
-#("Standing - Rifle - Walk",12,"RGM_BASICWALK"),
+("Standing - Rifle - Run",12,"S_R_RUN"),
+("Standing - Rifle - Sidestep",12,"S_R_SDSP"),
+("Standing - Rifle - Walk",12,"RGM_BASICWALK"),
 #("Standing - Rifle - Walk Aiming",12,"S_R_RDY_WALK"),
 #("Standing - Rifle - Hurt Walk",12,"S_R_WALK_HURT"),
 #("Standing - Rifle - Pain",14,"S_R_PAIN"),
-#("Standing - Rifle - Kick Door",20,"S_R_DR_KICK"),
 #("Standing - Rifle - Squish",20,"S_R_SQUISH"),
 #("Standing - Rifle - Look",14,"S_R_LOOK"),
 #("Standing - Rifle - Spit",21,"S_R_SPIT"),
@@ -27,8 +30,8 @@ animationArray = [
 #("Crouch - Rifle - Aim & Shoot",18,"S_CR_AIM"),
 #("Crouch - Rifle - Walk",22,"S_R_SWAT"),
 #("Crouch - Rifle - Walk Aiming",24,"cr_walk_rifle"),
-("Prone - Rifle - Crawl & Shoot",29,"S_R_PRN"),
-("Prone - Rifle - Cower",10,"S_R_PRNCOW")
+#("Prone - Rifle - Crawl & Shoot",29,"S_R_PRN"),
+#("Prone - Rifle - Cower",10,"S_R_PRNCOW")
 ]
 
 
@@ -75,9 +78,17 @@ for i in range(len(animationArray)):
 	#bpy.data.objects["Body - BGM"].hide_render = False
 
 	# Display props in renders depending on the set
-	renderSet = 1
+	renderSet = 3
 	if renderSet == 1:
-		bpy.data.objects["Weapon - FAL"].hide_render = False
+		#helpers.disablePropRenderlayer(1)
+		#helpers.disablePropRenderlayer(4)
+		#helpers.disablePropRenderlayer(5)
+		#helpers.disablePropRenderlayer(6)
+		#helpers.disablePropRenderlayer(7)
+		#helpers.disablePropRenderlayer(8)
+		#helpers.disablePropRenderlayer(9)
+		#helpers.disablePropRenderlayer(10)
+		bpy.data.objects["Weapon - FN FAL"].hide_render = False
 		bpy.data.objects["Weapon - M16"].hide_render = False
 		bpy.data.objects["Weapon - AK47"].hide_render = False
 		bpy.data.objects["Weapon - FAMAS"].hide_render = False
@@ -117,6 +128,9 @@ for i in range(len(animationArray)):
 		bpy.data.objects["Weapon - Shotgun"].hide_render = False
 		bpy.data.objects["Weapon - Saiga 12K"].hide_render = False
 		bpy.data.objects["Weapon - SPAS12"].hide_render = False
+		helpers.disablePropRenderlayer(8)
+		helpers.disablePropRenderlayer(9)
+		helpers.disablePropRenderlayer(10)
 		# Display muzzleflashes only in relevant animations
 		if currentAction == "Standing - Rifle - Aim" or currentAction == "Crouch - Rifle - Aim & Shoot" or currentAction == "Prone - Rifle - Crawl & Shoot":
 			bpy.data.objects["MuzzleFlash - P90"].hide_render = False
@@ -139,6 +153,11 @@ for i in range(len(animationArray)):
 		bpy.data.objects["Weapon - PKM"].hide_render = False
 		bpy.data.objects["Weapon - Mosin Nagant"].hide_render = False
 		bpy.data.objects["Weapon - M14"].hide_render = False
+		helpers.disablePropRenderlayer(6)
+		helpers.disablePropRenderlayer(7)
+		helpers.disablePropRenderlayer(8)
+		helpers.disablePropRenderlayer(9)
+		helpers.disablePropRenderlayer(10)
 		# Display muzzleflashes only in relevant animations
 		if currentAction == "Standing - Rifle - Aim" or currentAction == "Crouch - Rifle - Aim & Shoot" or currentAction == "Prone - Rifle - Crawl & Shoot":
 			bpy.data.objects["MuzzleFlash - RPK"].hide_render = False

@@ -1,18 +1,23 @@
-;Animation name, end frame, sti name
+; Animation name, end frame, sti name
+;------------------------------------------------------
+; These animations are special cases. They're kept here for easy copy and pasting to render scripts but have their own makesti.bat due to 4 directions.
+;("Standing - Rifle - Kick Door",20,"S_R_DR_KICK"),
+;------------------------------------------------------
+; Alternate animations, not used at the moment
+;("Standing - Rifle - Idle - Alternate",8,"S_R_STD_ALT"),
+;("Standing - Rifle - Sidestep Alternate",12,"S_R_SDSP_ALT"),
+;------------------------------------------------------
 ("Standing - Rifle - Aim",21,"S_SR_AIM"),
 ("Standing - Rifle - Hit",5,"S_HIT"),
 ("Standing - Rifle - Idle",8,"S_R_STD"),
-;("Standing - Rifle - Idle - Alternate",8,"S_R_STD_ALT"),
 ("Standing - Rifle - Open door",10,"S_RIFLE_OPEN"),
 ("Standing - Rifle - Raise to Idle",5,"S_RAISE"),
 ("Standing - Rifle - Run",12,"S_R_RUN"),
 ("Standing - Rifle - Sidestep",12,"S_R_SDSP"),
-;("Standing - Rifle - Sidestep Alternate",12,"S_R_SDSP_ALT"),
 ("Standing - Rifle - Walk",12,"RGM_BASICWALK"),
 ("Standing - Rifle - Walk Aiming",12,"S_R_RDY_WALK"),
 ("Standing - Rifle - Hurt Walk",12,"S_R_WALK_HURT"),
 ("Standing - Rifle - Pain",14,"S_R_PAIN"),
-("Standing - Rifle - Kick Door",20,"S_R_DR_KICK"),
 ("Standing - Rifle - Squish",20,"S_R_SQUISH"),
 ("Standing - Rifle - Look",14,"S_R_LOOK"),
 ("Standing - Rifle - Spit",21,"S_R_SPIT"),

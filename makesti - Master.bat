@@ -113,12 +113,12 @@ rem	echo !_KEYFRAME[%%n]!
 :ContinueSTI
 echo Choose
 echo [0] for making a layered body STI
-echo [1] props (Vest, Backpack, beret, Helmet, Gasmask)
-echo [2] assault rifles (FN FAL, M16, AK47, FAMAS, SCAR-H)
-echo [3] sniper rifles (Barrett, Dragunov, PSG1, TRG42, Patriot)
-echo [4] smgs (P90, Thompson, PPSH41, MP5)
-echo [5] lmgs and rifles (RPK, SAW, PKM, Mosin Nagant, M14)
-echo [6] shotguns (Saiga 12K, Mossberg 590, SPAS 12)
+echo [1] props (Vest, Backpack, beret, Helmet, Gasmask, NVG, booney hat)
+echo [2] assault rifles (FN FAL, M16, AK47, FAMAS, SCAR-H) and sniper rifles (Barrett, Dragunov, PSG1, TRG42, Patriot)
+echo [3] smgs (P90, Thompson, PPSH41, MP5) and shotguns (Mossberg 590, Saiga 12K, SPAS 12)
+echo [4] lmgs and rifles (RPK, SAW, PKM, Mosin Nagant, M14)
+echo [5] pistols (USP, MP5K, Desert eagle, SW500)
+echo [6] props (Combat knife, Radio, crowbar)
 echo [99] quit
 set /p decision=Choice: 
 if %decision%==0 (
@@ -157,7 +157,7 @@ if %decision%==0 (
 	:SYNCLOOP1
 	tasklist /FI "IMAGENAME eq convert.exe" 2>NUL | find /I /N "convert.exe">NUL
 	if %ERRORLEVEL%==0 (
-		ping localhost -n 2 >nul
+		ping localhost -n 5 >nul
 		GOTO SYNCLOOP1
 	)
 
@@ -194,7 +194,7 @@ rem			echo !_keyframes!
 	:SYNCLOOP2
 	tasklist /FI "IMAGENAME eq sticom.exe" 2>NUL | find /I /N "sticom.exe">NUL
 	if %ERRORLEVEL%==0 (
-		ping localhost -n 2 >nul
+		ping localhost -n 5 >nul
 		GOTO SYNCLOOP2
 	)
 	GOTO :ContinueSTI
@@ -203,13 +203,13 @@ rem			echo !_keyframes!
 ) else if %decision%==2 (
 	CALL :CreateBasePropsAssaultRifles
 ) else if %decision%==3 (
-	CALL :CreateBasePropsSniperRifles
-) else if %decision%==4 (
 	CALL :CreateBasePropsSMGs
-) else if %decision%==5 (
+) else if %decision%==4 (
 	CALL :CreateBasePropsLMGandRifles
+) else if %decision%==5 (
+	CALL :CreateBasePropsDualPistols
 ) else if %decision%==6 (
-	CALL :CreateBasePropsShotguns
+	CALL :CreateBasePropsKnifeAndRadio
 ) else if %decision%==99 (
 	echo Quitting makesti script
 	GOTO :EndScript
@@ -231,26 +231,47 @@ REM functions
 :CreateBasePropsAssaultRifles
 	SETLOCAL
 
-	set propPalettes[0]=!Palettes[0]!
+	set propPalettes[0]=!Palettes[4]!
 	set propnumbers[0]=1
 	set propSuffix[0]=_FAL
 
-	set propPalettes[1]=!Palettes[0]!
+	set propPalettes[1]=!Palettes[4]!
 	set propnumbers[1]=2
 	set propSuffix[1]=_AR
 
-	set propPalettes[2]=!Palettes[2]!
+	set propPalettes[2]=!Palettes[4]!
 	set propnumbers[2]=3
 	set propSuffix[2]=_AK47
 
-	set propPalettes[3]=!Palettes[0]!
+	set propPalettes[3]=!Palettes[4]!
 	set propnumbers[3]=4
 	set propSuffix[3]=_famas
 
-	set propPalettes[4]=!Palettes[2]!
+	set propPalettes[4]=!Palettes[4]!
 	set propnumbers[4]=5
 	set propSuffix[4]=_SCARH
-	set /a maxProps=4
+
+
+	set propPalettes[5]=!Palettes[4]!
+	set propnumbers[5]=6
+	set propSuffix[5]=_M82
+
+	set propPalettes[6]=!Palettes[4]!
+	set propnumbers[6]=7
+	set propSuffix[6]=_dragunov
+
+	set propPalettes[7]=!Palettes[4]!
+	set propnumbers[7]=8
+	set propSuffix[7]=_PSG1
+
+	set propPalettes[8]=!Palettes[4]!
+	set propnumbers[8]=9
+	set propSuffix[8]=_TRG42
+
+	set propPalettes[9]=!Palettes[4]!
+	set propnumbers[9]=10
+	set propSuffix[9]=_Patriot
+	set /a maxProps=9
 
 	Rem Convert rendered images into correct bmp and rename them. Everything goes into its own folders underneath makesti/extract to be able to process things in parallel
 	CALL :ConvertOutputToExtractForProps
@@ -264,11 +285,11 @@ EXIT /B 0
 :CreateBasePropsBPandBeret
 	SETLOCAL
 	Rem Vest
-	set propPalettes[0]=!Palettes[0]!
+	set propPalettes[0]=!Palettes[3]!
 	set propnumbers[0]=1
 	set propSuffix[0]=_vest
 	Rem Backpack
-	set propPalettes[1]=!Palettes[0]!
+	set propPalettes[1]=!Palettes[3]!
 	set propnumbers[1]=2
 	set propSuffix[1]=_BP
 	Rem beret
@@ -284,10 +305,15 @@ EXIT /B 0
 	set propnumbers[4]=5
 	set propSuffix[4]=_gasmask
 	Rem NVG
-	rem set propPalettes[4]=!Palettes[3]!
-	rem set propnumbers[4]=5
-	rem set propSuffix[4]=_NVG
-	set /a maxProps=4
+	set propPalettes[5]=!Palettes[3]!
+	set propnumbers[5]=6
+	set propSuffix[5]=_NVG
+
+	set propPalettes[6]=!Palettes[3]!
+	set propnumbers[6]=7
+	set propSuffix[6]=_Booney
+
+	set /a maxProps=6
 
 
 	Rem Convert rendered images into correct bmp and rename them. Everything goes into its own folders underneath makesti/extract to be able to process things in parallel
@@ -298,37 +324,6 @@ EXIT /B 0
 	ENDLOCAL
 EXIT /B 0
 
-
-:CreateBasePropsSniperRifles
-	SETLOCAL
-
-	set propPalettes[0]=!Palettes[4]!
-	set propnumbers[0]=1
-	set propSuffix[0]=_M82
-
-	set propPalettes[1]=!Palettes[4]!
-	set propnumbers[1]=2
-	set propSuffix[1]=_dragunov
-
-	set propPalettes[2]=!Palettes[4]!
-	set propnumbers[2]=3
-	set propSuffix[2]=_PSG1
-
-	set propPalettes[3]=!Palettes[4]!
-	set propnumbers[3]=4
-	set propSuffix[3]=_TRG42
-
-	set propPalettes[4]=!Palettes[4]!
-	set propnumbers[4]=5
-	set propSuffix[4]=_Patriot
-	set /a maxProps=4
-
-	Rem Convert rendered images into correct bmp and rename them. Everything goes into its own folders underneath makesti/extract to be able to process things in parallel
-	CALL :ConvertOutputToExtractForProps
-	Rem Turn processed images into sti files in parallel
-	CALL :CreateSTIforProps
-	ENDLOCAL
-EXIT /B 0
 
 
 :CreateBasePropsLMGandRifles
@@ -379,10 +374,23 @@ EXIT /B 0
 	set propSuffix[2]=_PPSH41
 
 	set propPalettes[3]=!Palettes[4]!
-	set propnumbers[3]=5
+	set propnumbers[3]=4
 	set propSuffix[3]=_MP5
 
-	set /a maxProps=3
+
+	set propPalettes[4]=!Palettes[4]!
+	set propnumbers[4]=5
+	set propSuffix[4]=_shotgun
+
+	set propPalettes[5]=!Palettes[4]!
+	set propnumbers[5]=6
+	set propSuffix[5]=_Saiga
+
+	set propPalettes[6]=!Palettes[4]!
+	set propnumbers[6]=7
+	set propSuffix[6]=_spas12
+
+	set /a maxProps=6
 
 	Rem Convert rendered images into correct bmp and rename them. Everything goes into its own folders underneath makesti/extract to be able to process things in parallel
 	CALL :ConvertOutputToExtractForProps
@@ -391,30 +399,6 @@ EXIT /B 0
 	ENDLOCAL
 EXIT /B 0
 
-
-:CreateBasePropsShotguns
-	SETLOCAL
-
-	set propPalettes[0]=!Palettes[4]!
-	set propnumbers[0]=1
-	set propSuffix[0]=_Saiga
-
-	set propPalettes[1]=!Palettes[4]!
-	set propnumbers[1]=2
-	set propSuffix[1]=_shotgun
-
-	set propPalettes[2]=!Palettes[4]!
-	set propnumbers[2]=3
-	set propSuffix[2]=_spas12
-
-	set /a maxProps=2
-
-	Rem Convert rendered images into correct bmp and rename them. Everything goes into its own folders underneath makesti/extract to be able to process things in parallel
-	CALL :ConvertOutputToExtractForProps
-	Rem Turn processed images into sti files in parallel
-	CALL :CreateSTIforProps
-	ENDLOCAL
-EXIT /B 0
 
 
 :CreateBasePropsDualPistols
@@ -425,9 +409,34 @@ EXIT /B 0
 	set propSuffix[0]=_pistol
 	Rem left pistol
 	set propPalettes[1]=!Palettes[1]!
-	set propnumbers[1]=4
+	set propnumbers[1]=2
 	set propSuffix[1]=_lpistol
-	set /a maxProps=1
+
+	set propPalettes[2]=!Palettes[1]!
+	set propnumbers[2]=3
+	set propSuffix[2]=_mpistol
+
+	set propPalettes[3]=!Palettes[1]!
+	set propnumbers[3]=4
+	set propSuffix[3]=_lmpistol
+	
+	set propPalettes[4]=!Palettes[1]!
+	set propnumbers[4]=5
+	set propSuffix[4]=_deagle
+
+	set propPalettes[5]=!Palettes[1]!
+	set propnumbers[5]=6
+	set propSuffix[5]=_ldeagle
+	
+	set propPalettes[6]=!Palettes[1]!
+	set propnumbers[6]=7
+	set propSuffix[6]=_sw500
+
+	set propPalettes[7]=!Palettes[1]!
+	set propnumbers[7]=8
+	set propSuffix[7]=_lsw500
+
+	set /a maxProps=7
 
 	Rem Convert rendered images into correct bmp and rename them. Everything goes into its own folders underneath makesti/extract to be able to process things in parallel
 	CALL :ConvertOutputToExtractForProps
@@ -437,17 +446,21 @@ EXIT /B 0
 EXIT /B 0
 
 
-:CreateBasePropsDualMachinePistols
+:CreateBasePropsKnifeAndRadio
 	SETLOCAL
-	Rem right pistol
-	set propPalettes[0]=!Palettes[1]!
+	set propPalettes[0]=!Palettes[0]!
 	set propnumbers[0]=1
-	set propSuffix[0]=_mpistol
-	Rem left pistol
-	set propPalettes[1]=!Palettes[1]!
-	set propnumbers[1]=4
-	set propSuffix[1]=_lmpistol
-	set /a maxProps=1
+	set propSuffix[0]=_knife
+
+	set propPalettes[1]=!Palettes[0]!
+	set propnumbers[1]=2
+	set propSuffix[1]=_radio
+
+	set propPalettes[2]=!Palettes[0]!
+	set propnumbers[2]=3
+	set propSuffix[2]=_crowbar
+
+	set /a maxProps=2
 
 	Rem Convert rendered images into correct bmp and rename them. Everything goes into its own folders underneath makesti/extract to be able to process things in parallel
 	CALL :ConvertOutputToExtractForProps
@@ -478,7 +491,7 @@ EXIT /B 0
 	:SYNCLOOPoutput
 	tasklist /FI "IMAGENAME eq convert.exe" 2>NUL | find /I /N "convert.exe">NUL
 	if %ERRORLEVEL%==0 (
-		ping localhost -n 2 >nul
+		ping localhost -n 5 >nul
 		GOTO SYNCLOOPoutput
 	)	
 	ENDLOCAL
@@ -522,7 +535,7 @@ rem			echo !_keyframes!
 	:SYNCLOOPsti
 	tasklist /FI "IMAGENAME eq sticom.exe" 2>NUL | find /I /N "sticom.exe">NUL
 	if %ERRORLEVEL%==0 (
-		ping localhost -n 2 >nul
+		ping localhost -n 5 >nul
 		GOTO SYNCLOOPsti
 	)
 	ENDLOCAL
