@@ -18,7 +18,8 @@ animationArray = [
 #	("Standing - Pistol - Walk Aiming",12,"S_P_RDY_WALK"),
 #	("Standing - Pistol - Aim & Shoot",21,"S_N_SHOT"),
 #	("Standing - Pistol - Shoot low",8,"S_P_LOW"),
-#	("Standing - Pistol - Sidestep Aim Alternate",12,"S_P_SDSP_AIM"),#<--
+#	("Standing - Pistol - Sidestep",12,"S_P_SDSP"),
+#	("Standing - Pistol - Sidestep Aim Alternate",12,"S_P_SDSP_AIM"),
 #	("Standing - Dual Pistols - Aim & Shoot",25,"S_DBLSHOT"),
 #	("Standing - Dual Pistols - Walk Aiming",12,"S_DBL_RDY_WALK"),
 #	("Standing - Dual Pistols - Sidestep Aim",12,"S_DBL_SDSP_AIM"),
