@@ -18,9 +18,10 @@ set _OFFSET="(-0,-0)"
 set "_CROPSETTINGS=192x192+0+0"
 set _PIVOT=(95,113)
 
-
-set _FILE_NAME=S_HOP
-set ll=18
+set "_animFolder=Standing - Empty Hands - Kick Door"
+set "_output=output\!_animFolder!"
+set _FILE_NAME=S_DR_KICK
+set ll=20
 set /A nframes=%ll%
 set /A rangeEnd=%nframes% - 2
 
@@ -62,12 +63,12 @@ if %decision%==0 (
 	set suffixList[3]=_torso
 	set suffixList[4]=_legs
 	for /l %%n in (0,1,4) do (
-		set "_EXTRACTDIR=make_script\extract\Standing - Hop fence\!outputPrefix[%%n]!"
+		set "_EXTRACTDIR=make_script\extract\Standing - Empty Hands - Climb\!outputPrefix[%%n]!"
 		IF NOT EXIST "!_EXTRACTDIR!" md "!_EXTRACTDIR!"
 		rem delete any .bmp files from extract folder before converting output frames into there
 		DEL "!_EXTRACTDIR!\*.bmp"
 		Rem crop and convert rendered images to use correct header type
-		start /B make_script\convert.exe "output\Standing - Hop fence\!outputPrefix[%%n]!_C2*.png" "output\Standing - Hop fence\!outputPrefix[%%n]!_C4*.png" "output\Standing - Hop fence\!outputPrefix[%%n]!_C6*.png" "output\Standing - Hop fence\!outputPrefix[%%n]!_C8*.png" -crop !_CROPSETTINGS! BMP3:"!_EXTRACTDIR!\0.bmp"
+		start /B make_script\convert.exe "!_output!\!outputPrefix[%%n]!_C2*.png" "!_output!\!outputPrefix[%%n]!_C4*.png" "!_output!\!outputPrefix[%%n]!_C6*.png" "!_output!\!outputPrefix[%%n]!_C8*.png" -crop !_CROPSETTINGS! BMP3:"!_EXTRACTDIR!\0.bmp"
 	)
 	:SYNCLOOP1
 	tasklist /FI "IMAGENAME eq convert.exe" 2>NUL | find /I /N "convert.exe">NUL
@@ -77,8 +78,7 @@ if %decision%==0 (
 	)
 
 	for /l %%n in (0,1,4) do (
-		set "_EXTRACTDIR=make_script\extract\Standing - Hop fence\!outputPrefix[%%n]!"
-
+		set "_EXTRACTDIR=make_script\extract\Standing - Empty Hands - Climb\!outputPrefix[%%n]!"
 		rem create layered .sti files for basebody
 		SETLOCAL
 		set _FILEPATH=!_OUTPUTDIR!%_FILE_NAME%!suffixList[%%n]!.sti
@@ -149,17 +149,15 @@ pause
 	set /a maxProps=6
 
 	for /l %%n in (0,1,!maxProps!) do (
-		set chosenPalette=!propPalettes[%%n]!
 		set nProps=!propnumbers[%%n]!
-		set _SUFFIX=!propSuffix[%%n]!
 
-		set "_EXTRACTDIR=make_script\extract\Standing - Hop fence\Prop!nProps!"
+		set "_EXTRACTDIR=make_script\extract\!_animFolder!\Prop!nProps!"
 		IF NOT EXIST "!_EXTRACTDIR!" md "!_EXTRACTDIR!"
 
 		rem delete any .bmp files from extract folder before converting output frames into there
 		DEL "!_EXTRACTDIR!\*.bmp"
 		Rem crop and convert rendered images to use correct header type
-		start /B make_script\convert.exe "output\Standing - Hop fence\Prop!nProps!_C2*.png" "output\Standing - Hop fence\Prop!nProps!_C4*.png" "output\Standing - Hop fence\Prop!nProps!_C6*.png" "output\Standing - Hop fence\Prop!nProps!_C8*.png" -crop !_CROPSETTINGS! BMP3:"!_EXTRACTDIR!\0.bmp"
+		start /B make_script\convert.exe "!_output!\Prop!nProps!_C2*.png" "!_output!\Prop!nProps!_C4*.png" "!_output!\Prop!nProps!_C6*.png" "!_output!\Prop!nProps!_C8*.png" -crop !_CROPSETTINGS! BMP3:"!_EXTRACTDIR!\0.bmp"
 	)
 	:SYNCLOOP3
 	tasklist /FI "IMAGENAME eq convert.exe" 2>NUL | find /I /N "convert.exe">NUL
@@ -173,7 +171,7 @@ pause
 		set chosenPalette=!propPalettes[%%n]!
 		set nProps=!propnumbers[%%n]!
 		set _SUFFIX=!propSuffix[%%n]!
-		set "_EXTRACTDIR=make_script\extract\Standing - Hop fence\Prop!nProps!"
+		set "_EXTRACTDIR=make_script\extract\!_animFolder!\Prop!nProps!"
 		set _FILEPATH=!_OUTPUTDIR!%_FILE_NAME%!_SUFFIX!.sti
 		set "_extract=!_EXTRACTDIR!\0-%%d.bmp%"
 		set "_palette=make_script\Palettes\!chosenPalette!"

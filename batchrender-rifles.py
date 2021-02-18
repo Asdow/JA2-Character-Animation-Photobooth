@@ -9,12 +9,14 @@ import bpy
 animationArray = [
 ("Standing - Rifle - Kick Door",20,"S_R_DR_KICK"),
 ("Standing - Rifle - Aim",21,"S_SR_AIM"),
+("Standing - Rifle - Shoot low",8,"S_R_LOW"),
 ("Standing - Rifle - Hit",5,"S_HIT"),
 #("Standing - Rifle - Idle",8,"S_R_STD"),
 #("Standing - Rifle - Open door",10,"S_RIFLE_OPEN"),
 #("Standing - Rifle - Raise to Idle",5,"S_RAISE"),
 #("Standing - Rifle - Run",12,"S_R_RUN"),
 #("Standing - Rifle - Sidestep",12,"S_R_SDSP"),
+#("Standing - Rifle - Sidestep Aim",12,"S_R_SDSP_AIM"),
 #("Standing - Rifle - Walk",12,"RGM_BASICWALK"),
 #("Standing - Rifle - Walk Aiming",12,"S_R_RDY_WALK"),
 #("Standing - Rifle - Hurt Walk",12,"S_R_WALK_HURT"),
@@ -78,7 +80,7 @@ for i in range(len(animationArray)):
 	#bpy.data.objects["Body - BGM"].hide_render = False
 
 	# Display props in renders depending on the set
-	renderSet = 3
+	renderSet = 4
 	if renderSet == 1:
 		#helpers.disablePropRenderlayer(1)
 		#helpers.disablePropRenderlayer(2)
@@ -101,7 +103,7 @@ for i in range(len(animationArray)):
 		bpy.data.objects["Weapon - TRG42"].hide_render = False
 		bpy.data.objects["Weapon - Mossberg Patriot"].hide_render = False
 		# Display muzzleflashes only in relevant animations
-		if currentAction == "Standing - Rifle - Aim" or currentAction == "Crouch - Rifle - Aim & Shoot" or currentAction == "Prone - Rifle - Crawl & Shoot":
+		if currentAction == "Standing - Rifle - Aim" or currentAction == "Crouch - Rifle - Aim & Shoot" or currentAction == "Prone - Rifle - Crawl & Shoot" or currentAction == "Standing - Rifle - Shoot low":
 			bpy.data.objects["MuzzleFlash - FN FAL"].hide_render = False
 			bpy.data.objects["MuzzleFlash - M16"].hide_render = False
 			bpy.data.objects["MuzzleFlash - AK47"].hide_render = False
@@ -134,7 +136,7 @@ for i in range(len(animationArray)):
 		helpers.disablePropRenderlayer(9)
 		helpers.disablePropRenderlayer(10)
 		# Display muzzleflashes only in relevant animations
-		if currentAction == "Standing - Rifle - Aim" or currentAction == "Crouch - Rifle - Aim & Shoot" or currentAction == "Prone - Rifle - Crawl & Shoot":
+		if currentAction == "Standing - Rifle - Aim" or currentAction == "Crouch - Rifle - Aim & Shoot" or currentAction == "Prone - Rifle - Crawl & Shoot" or currentAction == "Standing - Rifle - Shoot low":
 			bpy.data.objects["MuzzleFlash - P90"].hide_render = False
 			bpy.data.objects["MuzzleFlash - Thompson M1A1"].hide_render = False
 			bpy.data.objects["MuzzleFlash - PPSH41"].hide_render = False
@@ -161,7 +163,7 @@ for i in range(len(animationArray)):
 		helpers.disablePropRenderlayer(9)
 		helpers.disablePropRenderlayer(10)
 		# Display muzzleflashes only in relevant animations
-		if currentAction == "Standing - Rifle - Aim" or currentAction == "Crouch - Rifle - Aim & Shoot" or currentAction == "Prone - Rifle - Crawl & Shoot":
+		if currentAction == "Standing - Rifle - Aim" or currentAction == "Crouch - Rifle - Aim & Shoot" or currentAction == "Prone - Rifle - Crawl & Shoot" or currentAction == "Standing - Rifle - Shoot low":
 			bpy.data.objects["MuzzleFlash - RPK"].hide_render = False
 			bpy.data.objects["MuzzleFlash - SAW"].hide_render = False
 			bpy.data.objects["MuzzleFlash - PKM"].hide_render = False

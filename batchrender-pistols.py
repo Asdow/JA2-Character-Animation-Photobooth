@@ -1,3 +1,8 @@
+import os
+import sys
+scriptpath = "J:/JA2 1.13 SVN/JA2-Character-Animation-Photobooth/"
+sys.path.append(os.path.abspath(scriptpath))
+import helpers
 import bpy
 
 # Animation name in blender & end frame
@@ -5,16 +10,18 @@ animationArray = [
 	("Standing - Empty Hands - Idle",8,"S_N_STD"),
 	("Standing - Empty Hands - Walk",12,"S_N_WALK"),
 	("Standing - Empty Hands - Hurt Walk",12,"S_N_WALK_HURT"),
-	("Standing - Empty Hands - Run",12,"S_N_RUN"),
-	("Standing - Empty Hands - Pain",14,"S_N_PAIN"),
-	("Standing - Empty Hands - Drunk",20,"S_N_DRUNK"),
-	("Standing - Pistol - Idle",8,"S_P_BRTH"),
-	("Standing - Pistol - Walk",12,"S_P_WALK"),
-	("Standing - Pistol - Walk Aiming",12,"S_P_RDY_WALK2"),
-	("Standing - Pistol - Aim & Shoot",21,"S_N_SHOT"),
-	("Standing - Pistol - Shoot low",8,"S_P_LOW"),
-	("Standing - Pistol - Sidestep Aim Alternate",12,"S_P_SDSP_AIM"),
+#	("Standing - Empty Hands - Run",12,"S_N_RUN"),
+#	("Standing - Empty Hands - Pain",14,"S_N_PAIN"),
+#	("Standing - Empty Hands - Drunk",20,"S_N_DRUNK"),
+#	("Standing - Pistol - Idle",8,"S_P_BRTH"),
+#	("Standing - Pistol - Walk",12,"S_P_WALK"),
+#	("Standing - Pistol - Walk Aiming",12,"S_P_RDY_WALK"),
+#	("Standing - Pistol - Aim & Shoot",21,"S_N_SHOT"),
+#	("Standing - Pistol - Shoot low",8,"S_P_LOW"),
+#	("Standing - Pistol - Sidestep Aim Alternate",12,"S_P_SDSP_AIM"),#<--
 #	("Standing - Dual Pistols - Aim & Shoot",25,"S_DBLSHOT"),
+#	("Standing - Dual Pistols - Walk Aiming",12,"S_DBL_RDY_WALK"),
+#	("Standing - Dual Pistols - Sidestep Aim",12,"S_DBL_SDSP_AIM"),
 #	("Standing To Crouch - Empty hands",15,"S_N_CRCH"),
 #	("Crouch - Empty hands - Walk",22,"S_N_SWAT"),
 #	("Crouch - Pistol - Walk Aiming",24,"cr_walk_pistol"),
@@ -27,6 +34,7 @@ animationArray = [
 
 for i in range(len(animationArray)):
 	# Set up specific animation and its end frame
+	currentAction = animationArray[i][0]
 	bpy.context.object.animation_data.action = bpy.data.actions.get(animationArray[i][0])
 	bpy.context.scene.frame_end = animationArray[i][1]
 
@@ -67,6 +75,7 @@ for i in range(len(animationArray)):
 	#bpy.data.objects["Body - BGM"].hide_render = False
 
 	# Display props in renders depending on the set
+	renderSet = 2
 	if renderSet == 1:
 		bpy.data.objects["Vest - Flak Jacket"].hide_render = False
 		bpy.data.objects["Backpack - Backpack"].hide_render = False
@@ -75,6 +84,9 @@ for i in range(len(animationArray)):
 		bpy.data.objects["Face - Gasmask"].hide_render = False
 		bpy.data.objects["Face - NVG"].hide_render = False
 		bpy.data.objects["Hat - Booney"].hide_render = False
+		helpers.disablePropRenderlayer(8)
+		helpers.disablePropRenderlayer(9)
+		helpers.disablePropRenderlayer(10)
 	elif renderSet == 2:
 		bpy.data.objects["Weapon - HK USP"].hide_render = False
 		bpy.data.objects["Weapon - HK USP - Left Hand"].hide_render = False
@@ -84,6 +96,8 @@ for i in range(len(animationArray)):
 		bpy.data.objects["Weapon - Desert Eagle - Left Hand"].hide_render = False
 		bpy.data.objects["Weapon - SW500"].hide_render = False
 		bpy.data.objects["Weapon - SW500 - Left Hand"].hide_render = False
+		helpers.disablePropRenderlayer(9)
+		helpers.disablePropRenderlayer(10)
 		# Display muzzleflashes only in relevant animations
 		if currentAction == "Standing - Dual Pistols - Aim & Shoot" or currentAction == "Crouch - Dual Pistol - Aim & Shoot" or currentAction == "Prone - Dual Pistol - Shoot":
 			leftMuzzleFlashAction = "Dual Pistols - Aim & Shoot - Left Muzzleflash"
@@ -105,6 +119,15 @@ for i in range(len(animationArray)):
 			bpy.data.objects["MuzzleFlash - Desert Eagle - Left Hand"].animation_data.action = bpy.data.actions.get(leftMuzzleFlashAction)
 			bpy.data.objects["MuzzleFlash - SW500"].animation_data.action = bpy.data.actions.get(currentAction)
 			bpy.data.objects["MuzzleFlash - SW500 - Left Hand"].animation_data.action = bpy.data.actions.get(leftMuzzleFlashAction)
+		if currentAction == "Standing - Pistol - Aim & Shoot" or currentAction == "Crouch - Pistol - Aim & Shoot" or currentAction == "Prone - Pistol - Crawl & Shoot" or currentAction == "Standing - Pistol - Shoot low":
+			bpy.data.objects["MuzzleFlash - HK USP"].hide_render = False
+			bpy.data.objects["MuzzleFlash - HK MP5K"].hide_render = False
+			bpy.data.objects["MuzzleFlash - Desert Eagle"].hide_render = False
+			bpy.data.objects["MuzzleFlash - SW500"].hide_render = False
+			bpy.data.objects["MuzzleFlash - HK USP"].animation_data.action = bpy.data.actions.get(currentAction)
+			bpy.data.objects["MuzzleFlash - HK MP5K"].animation_data.action = bpy.data.actions.get(currentAction)
+			bpy.data.objects["MuzzleFlash - Desert Eagle"].animation_data.action = bpy.data.actions.get(currentAction)
+			bpy.data.objects["MuzzleFlash - SW500"].animation_data.action = bpy.data.actions.get(currentAction)
 
 	# RENDER AWAYYY!
 	bpy.ops.render.render(animation=True)

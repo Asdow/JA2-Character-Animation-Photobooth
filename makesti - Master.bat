@@ -404,35 +404,35 @@ EXIT /B 0
 :CreateBasePropsDualPistols
 	SETLOCAL
 	Rem right pistol
-	set propPalettes[0]=!Palettes[1]!
+	set propPalettes[0]=!Palettes[4]!
 	set propnumbers[0]=1
 	set propSuffix[0]=_pistol
 	Rem left pistol
-	set propPalettes[1]=!Palettes[1]!
+	set propPalettes[1]=!Palettes[4]!
 	set propnumbers[1]=2
 	set propSuffix[1]=_lpistol
 
-	set propPalettes[2]=!Palettes[1]!
+	set propPalettes[2]=!Palettes[4]!
 	set propnumbers[2]=3
 	set propSuffix[2]=_mpistol
 
-	set propPalettes[3]=!Palettes[1]!
+	set propPalettes[3]=!Palettes[4]!
 	set propnumbers[3]=4
 	set propSuffix[3]=_lmpistol
 	
-	set propPalettes[4]=!Palettes[1]!
+	set propPalettes[4]=!Palettes[4]!
 	set propnumbers[4]=5
 	set propSuffix[4]=_deagle
 
-	set propPalettes[5]=!Palettes[1]!
+	set propPalettes[5]=!Palettes[4]!
 	set propnumbers[5]=6
 	set propSuffix[5]=_ldeagle
 	
-	set propPalettes[6]=!Palettes[1]!
+	set propPalettes[6]=!Palettes[4]!
 	set propnumbers[6]=7
 	set propSuffix[6]=_sw500
 
-	set propPalettes[7]=!Palettes[1]!
+	set propPalettes[7]=!Palettes[4]!
 	set propnumbers[7]=8
 	set propSuffix[7]=_lsw500
 
@@ -448,15 +448,15 @@ EXIT /B 0
 
 :CreateBasePropsKnifeAndRadio
 	SETLOCAL
-	set propPalettes[0]=!Palettes[0]!
+	set propPalettes[0]=!Palettes[4]!
 	set propnumbers[0]=1
 	set propSuffix[0]=_knife
 
-	set propPalettes[1]=!Palettes[0]!
+	set propPalettes[1]=!Palettes[4]!
 	set propnumbers[1]=2
 	set propSuffix[1]=_radio
 
-	set propPalettes[2]=!Palettes[0]!
+	set propPalettes[2]=!Palettes[4]!
 	set propnumbers[2]=3
 	set propSuffix[2]=_crowbar
 

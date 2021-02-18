@@ -72,7 +72,7 @@ if %decision%==0 (
 	:SYNCLOOP1
 	tasklist /FI "IMAGENAME eq convert.exe" 2>NUL | find /I /N "convert.exe">NUL
 	if %ERRORLEVEL%==0 (
-		ping localhost -n 2 >nul
+		ping localhost -n 3 >nul
 		GOTO SYNCLOOP1
 	)
 
@@ -117,11 +117,11 @@ pause
 :CreateBaseProps
 	SETLOCAL
 	Rem Vest
-	set propPalettes[0]=!Palettes[0]!
+	set propPalettes[0]=!Palettes[3]!
 	set propnumbers[0]=1
 	set propSuffix[0]=_vest
 	Rem Backpack
-	set propPalettes[1]=!Palettes[0]!
+	set propPalettes[1]=!Palettes[3]!
 	set propnumbers[1]=2
 	set propSuffix[1]=_BP
 	Rem beret
@@ -137,11 +137,17 @@ pause
 	set propnumbers[4]=5
 	set propSuffix[4]=_gasmask
 	Rem NVG
-	rem set propPalettes[4]=!Palettes[3]!
-	rem set propnumbers[4]=5
-	rem set propSuffix[4]=_NVG
+	set propPalettes[5]=!Palettes[3]!
+	set propnumbers[5]=6
+	set propSuffix[5]=_NVG
 
-	for /l %%n in (0,1,4) do (
+	set propPalettes[6]=!Palettes[3]!
+	set propnumbers[6]=7
+	set propSuffix[6]=_Booney
+
+	set /a maxProps=6
+
+	for /l %%n in (0,1,!maxProps!) do (
 		set nProps=!propnumbers[%%n]!
 
 		set "_EXTRACTDIR=make_script\extract\Standing - Empty Hands - Climb\Prop!nProps!"
@@ -155,12 +161,12 @@ pause
 	:SYNCLOOP3
 	tasklist /FI "IMAGENAME eq convert.exe" 2>NUL | find /I /N "convert.exe">NUL
 	if %ERRORLEVEL%==0 (
-		ping localhost -n 2 >nul
+		ping localhost -n 3 >nul
 		GOTO SYNCLOOP3
 	)
 
 
-	for /l %%n in (0,1,4) do (
+	for /l %%n in (0,1,!maxProps!) do (
 		set chosenPalette=!propPalettes[%%n]!
 		set nProps=!propnumbers[%%n]!
 		set _SUFFIX=!propSuffix[%%n]!

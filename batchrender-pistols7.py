@@ -7,9 +7,9 @@ import bpy
 
 # Animation name in blender & end frame
 animationArray = [
-	("Standing - Empty Hands - Run",12,"S_N_RUN"),
-	("Standing - Empty Hands - Pain",14,"S_N_PAIN"),
-	("Standing - Empty Hands - Drunk",20,"S_N_DRUNK"),
+	("Crouch - Pistol - Aim & Shoot",18,"S_CR_AIM_P"),
+	("Crouch - Dual Pistol - Walk Aiming",24,"cr_walk_dual"),
+	("Crouch - Dual Pistol - Aim & Shoot",25,"S_CR_AIM_D"),
 ]
 
 for i in range(len(animationArray)):
