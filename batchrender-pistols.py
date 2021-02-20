@@ -7,9 +7,9 @@ import bpy
 
 # Animation name in blender & end frame
 animationArray = [
-	("Standing - Empty Hands - Idle",8,"S_N_STD"),
-	("Standing - Empty Hands - Walk",12,"S_N_WALK"),
-	("Standing - Empty Hands - Hurt Walk",12,"S_N_WALK_HURT"),
+#	("Standing - Empty Hands - Idle",8,"S_N_STD"),
+#	("Standing - Empty Hands - Walk",12,"S_N_WALK"),
+#	("Standing - Empty Hands - Hurt Walk",12,"S_N_WALK_HURT"),#<---
 #	("Standing - Empty Hands - Run",12,"S_N_RUN"),
 #	("Standing - Empty Hands - Pain",14,"S_N_PAIN"),
 #	("Standing - Empty Hands - Drunk",20,"S_N_DRUNK"),
@@ -22,6 +22,7 @@ animationArray = [
 #	("Standing - Pistol - Sidestep Aim Alternate",12,"S_P_SDSP_AIM"),
 #	("Standing - Dual Pistols - Aim & Shoot",25,"S_DBLSHOT"),
 #	("Standing - Dual Pistols - Walk Aiming",12,"S_DBL_RDY_WALK"),
+	("Standing - Dual Pistols - Sidestep",12,"S_DBL_SDSP"),
 #	("Standing - Dual Pistols - Sidestep Aim",12,"S_DBL_SDSP_AIM"),
 #	("Standing To Crouch - Empty hands",15,"S_N_CRCH"),
 #	("Crouch - Empty hands - Walk",22,"S_N_SWAT"),

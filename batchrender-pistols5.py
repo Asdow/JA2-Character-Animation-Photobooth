@@ -9,6 +9,7 @@ import bpy
 animationArray = [
 	("Standing - Dual Pistols - Aim & Shoot",25,"S_DBLSHOT"),
 	("Standing - Dual Pistols - Walk Aiming",12,"S_DBL_RDY_WALK"),
+	("Standing - Dual Pistols - Sidestep",12,"S_DBL_SDSP"),
 	("Standing - Dual Pistols - Sidestep Aim",12,"S_DBL_SDSP_AIM"),
 ]
 

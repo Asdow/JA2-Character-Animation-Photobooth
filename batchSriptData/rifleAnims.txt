@@ -8,7 +8,9 @@
 ;("Standing - Rifle - Sidestep Alternate",12,"S_R_SDSP_ALT"),
 ;------------------------------------------------------
 ("Standing - Rifle - Aim",21,"S_SR_AIM"),
+("Standing - Rifle - Hip Aim",21,"S_SR_HIP_AIM"),
 ("Standing - Rifle - Shoot low",8,"S_R_LOW"),
+("Standing - Rifle - Hip Shoot low",8,"S_R_HIP_LOW"),
 ("Standing - Rifle - Hit",5,"S_HIT"),
 ("Standing - Rifle - Idle",8,"S_R_STD"),
 ("Standing - Rifle - Open door",10,"S_RIFLE_OPEN"),
