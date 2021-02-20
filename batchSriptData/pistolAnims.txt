@@ -9,6 +9,7 @@
 ("Standing - Pistol - Walk",12,"S_P_WALK"),
 ("Standing - Pistol - Walk Aiming",12,"S_P_RDY_WALK"),
 ("Standing - Pistol - Aim & Shoot",21,"S_N_SHOT"),
+("Standing - Pistol - Aim & Shoot - One Handed",21,"S_N_SHOT2"),
 ("Standing - Pistol - Shoot low",8,"S_P_LOW"),
 ("Standing - Pistol - Sidestep",12,"S_P_SDSP"),
 ("Standing - Pistol - Sidestep Aim Alternate",12,"S_P_SDSP_AIM"),

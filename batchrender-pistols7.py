@@ -99,7 +99,7 @@ for i in range(len(animationArray)):
 			bpy.data.objects["MuzzleFlash - Desert Eagle - Left Hand"].animation_data.action = bpy.data.actions.get(leftMuzzleFlashAction)
 			bpy.data.objects["MuzzleFlash - SW500"].animation_data.action = bpy.data.actions.get(currentAction)
 			bpy.data.objects["MuzzleFlash - SW500 - Left Hand"].animation_data.action = bpy.data.actions.get(leftMuzzleFlashAction)
-		if currentAction == "Standing - Pistol - Aim & Shoot" or currentAction == "Crouch - Pistol - Aim & Shoot" or currentAction == "Prone - Pistol - Crawl & Shoot" or currentAction == "Standing - Pistol - Shoot low":
+		if currentAction == "Standing - Pistol - Aim & Shoot" or currentAction == "Crouch - Pistol - Aim & Shoot" or currentAction == "Prone - Pistol - Crawl & Shoot" or currentAction == "Standing - Pistol - Shoot low" or currentAction == "Standing - Pistol - Aim & Shoot - One Handed":
 			bpy.data.objects["MuzzleFlash - HK USP"].hide_render = False
 			bpy.data.objects["MuzzleFlash - HK MP5K"].hide_render = False
 			bpy.data.objects["MuzzleFlash - Desert Eagle"].hide_render = False
