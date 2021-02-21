@@ -29,6 +29,7 @@ echo Choose animation data file
 echo [0] rifleAnims.txt
 echo [1] pistolAnims.txt
 echo [2] noWeaponAnims.txt
+echo [3] meleeWeaponAnims.txt
 set /p animchoice=Choice: 
 if %animchoice%==0 (
 	set "animData=batchSriptData\rifleAnims.txt"
@@ -36,6 +37,8 @@ if %animchoice%==0 (
 	set animData=batchSriptData\pistolAnims.txt
 ) else if %animchoice%==2 (
 	set animData=batchSriptData\noWeaponAnims.txt
+) else if %animchoice%==3 (
+	set animData=batchSriptData\meleeWeaponAnims.txt
 ) ELSE (
 	echo Invalid choice
 	GOTO :AnimDataChoice

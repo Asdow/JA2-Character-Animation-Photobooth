@@ -17,3 +17,12 @@ def disablePropRenderlayer(propNumber):
 				layer.use = False
 	
 	return True
+
+
+def setCameraOrthoScale(scale):
+	for scene in bpy.data.scenes:
+		for object in bpy.data.objects:
+			if "camera 1" in object.name:
+				#print(object)
+				#object.data.ortho_scale=6.7 # For backup, used for RGM
+				object.data.ortho_scale=scale
