@@ -22,6 +22,8 @@
 ("Standing - Empty Hands - Pull",13,"S_PULL"),
 ("Standing - Empty Hands - Radio",16,"S_RADIO"),
 ("Standing - Empty Hands - Use Remote",6,"S_REMOTE"),
+("Standing - Empty Hands - Fall",52,"S_N_FALL"),
+("Standing - Empty Hands - Fall Forwad",41,"S_N_FALL_FWD"),
 ("Standing To Cower - Empty hands",12,"S_COWER"),
 ("Crouch - Render medical aid",8,"S_MEDIC"),
 ("Crouch - Empty Hands - Hit and die",9,"S_C_DIE"),
