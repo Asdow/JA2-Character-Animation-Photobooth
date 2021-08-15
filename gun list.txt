@@ -1,0 +1,59 @@
+--- Assault rifles ---
+x M16
+x FAL
+x AK47
+x FAMAS
+x Scar-H
+
+--- SMG ---
+x P90
+x Thompson
+x PPSH41
+x MP5
+
+--- Shotgun ---
+x Mossberg
+x Saiga 12k
+x SPAS-12
+
+--- Wooden Stock rifles ---
+x Mosin nagant
+x M14
+
+--- Sniper Rifles ---
+x Barrett M82
+x Dragunov
+x PSG-1
+x Sako TRG-42
+x Mossberg Patriot
+
+--- LMG ---
+x PKM
+x Minimi
+x RPK
+
+--- Pistol & Machine pistol ---
+x HK USP
+x HK MP5K
+x Desert Eagle
+x S&W Model 500
+
+--- Heavy weapons ---
+RPG-7
+Milkor MGL
+M79
+Mortar
+x LAW
+
+--- Props ---
+x Vest (needs proper rigging)
+x Helmet
+x Beret
+x Booney hat
+x Gasmask
+x NVG
+x Knife
+x Radio
+x crowbar
+knee pads
+riot shield

@@ -1,0 +1,15 @@
+Missing animations:
+Merc in water
+mortar anims
+helidrop
+badass merc anims
+riot shield
+
+
+Known issues:
+Death animations lack blood spurts/head explosion
+Dark pixel artifacts in SCARH sprites in certain camera angles
+Same for TRG42 and wooden stock sniper rifles
+Could probably do the same for M14 sprites to emulate semiauto rifles with polymer stocks
+Helmet could be better
+Karate punch uses the same RGMPUNCH animation surface as the regular punch. Bio's skilltrait filters are not implemented so we can't differentiate between karate and regular punch

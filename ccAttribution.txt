@@ -7,6 +7,7 @@ Nik Ladoukakis	-	Vest					https://sketchfab.com/3d-models/vest-e0e9f9f7b70e4be2b
 OverLord		-	Combat Knife			https://sketchfab.com/3d-models/combat-knife-48e00da7aeb94530a5d0e0c3d58ca274
 polarb			-	Night Vision			https://sketchfab.com/3d-models/night-vision-11705eaaae174eababc45a53203f59ce
 r4m				-	PRC 152					https://sketchfab.com/3d-models/prc-152-00e19a0326c84dabb2a995d92985470b
+Rectus			-	M72 LAW Rocket Launcher https://sketchfab.com/3d-models/m72-law-rocket-launcher-b4367ffcf3084d4b9eff8c497bf5c7fd
 Saucy			-	Crowbar (Low-poly)		https://sketchfab.com/3d-models/crowbar-low-poly-b562b989f1084ae1a286e6aaa34456ae
 TastyTony		-	Low-Poly Mossberg 590	https://sketchfab.com/3d-models/low-poly-mossberg-590-c0551a6b841145f7a8e59e9304728f1f
 TastyTony		-	Low-Poly HK MP5K		https://sketchfab.com/3d-models/low-poly-hk-mp5k-fb03df0656ea412585d69d6be137788c
@@ -33,3 +34,4 @@ TastyTony		-	Low-Poly SPAS-12		https://sketchfab.com/3d-models/low-poly-spas-12-
 TastyTony		-	Low-Poly Saiga 12k		https://sketchfab.com/3d-models/low-poly-saiga-12k-e9887136eaf14be396bdbea54f76ff3d
 TastyTony		-	Low-Poly S&W Model 500	https://sketchfab.com/3d-models/low-poly-sw-model-500-2660a0509d6c428cb3c2212725ffdbb8
 TastyTony		-	Low-Poly Desert Eagle	https://sketchfab.com/3d-models/low-poly-desert-eagle-b81da261345f4462b2c4412352162287
+TastyTony		-	Low-Poly Milkor MGL Mk 	https://sketchfab.com/3d-models/low-poly-milkor-mgl-mk-1s-f62f582eada147b8aeb3c08773379d29

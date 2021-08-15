@@ -1,0 +1,3 @@
+; Animation name, end frame, sti name
+;------------------------------------------------------
+("Standing - LAW - Fire",20,"S_LAW"),
