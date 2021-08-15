@@ -1,18 +1,3 @@
-import os
-import sys
-scriptpath = "J:/JA2 1.13 SVN/JA2-Character-Animation-Photobooth/"
-sys.path.append(os.path.abspath(scriptpath))
-import helpers
-import bpy
-
-# Animation name in blender & end frame
-animationArray = [
-("Standing To Crouch - Rifle",15,"S_R_C"),
-("Standing To Cower - Rifle",12,"S_R_COWER"),
-("Crouch - Rifle - Aim & Shoot",18,"S_CR_AIM"),
-]
-
-
 for i in range(len(animationArray)):
 	# Set up specific animation and its end frame
 	currentAction = animationArray[i][0]
@@ -52,13 +37,20 @@ for i in range(len(animationArray)):
 
 	# Bodytypes
 	bpy.data.objects["Body - RGM"].hide_render = False
-	#bpy.data.objects["Body - FGM"].hide_render = False
-	#bpy.data.objects["Body - BGM"].hide_render = False
+	bpy.data.objects["Body - BGM"].hide_render = True
+	bpy.data.objects["Body - FGM"].hide_render = True
+	
+
+	if bpy.data.objects["Body - BGM"].hide_render == False:
+		helpers.setCameraOrthoScale(6.0)
+		
 
 	# Display props in renders depending on the set
-	renderSet = 4
+	renderSet = 1
 	if renderSet == 1:
 		#helpers.disablePropRenderlayer(1)
+		#helpers.disablePropRenderlayer(2)
+		#helpers.disablePropRenderlayer(3)
 		#helpers.disablePropRenderlayer(4)
 		#helpers.disablePropRenderlayer(5)
 		#helpers.disablePropRenderlayer(6)

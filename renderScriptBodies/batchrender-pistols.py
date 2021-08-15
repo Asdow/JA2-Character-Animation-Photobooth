@@ -1,17 +1,3 @@
-import os
-import sys
-scriptpath = "J:/JA2 1.13 SVN/JA2-Character-Animation-Photobooth/"
-sys.path.append(os.path.abspath(scriptpath))
-import helpers
-import bpy
-
-# Animation name in blender & end frame
-animationArray = [
-	("Crouch - Pistol - Aim & Shoot",18,"S_CR_AIM_P"),
-	("Crouch - Dual Pistol - Walk Aiming",24,"cr_walk_dual"),
-	("Crouch - Dual Pistol - Aim & Shoot",25,"S_CR_AIM_D"),
-]
-
 for i in range(len(animationArray)):
 	# Set up specific animation and its end frame
 	currentAction = animationArray[i][0]

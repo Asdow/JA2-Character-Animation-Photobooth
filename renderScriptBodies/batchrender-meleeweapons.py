@@ -1,21 +1,3 @@
-import os
-import sys
-scriptpath = "J:/JA2 1.13 SVN/JA2-Character-Animation-Photobooth/"
-sys.path.append(os.path.abspath(scriptpath))
-import helpers
-import bpy
-
-# Animation name in blender & end frame
-animationArray = [
-("Standing - Empty Hands - Lob",14,"S_LOB"),
-("Standing - Empty Hands - Lob Grenade",19,"S_LOB_G"),
-("Standing - Empty Hands - Squish",20,"S_SQUISH"),
-("Standing - Empty Hands - Pull",13,"S_PULL"),
-("Standing To Cower - Empty hands",12,"S_COWER"),
-("Crouch - Render medical aid",8,"S_MEDIC"),
-("Crouch - Empty Hands - Hit and die",9,"S_C_DIE"),
-]
-
 for i in range(len(animationArray)):
 	# Set up specific animation and its end frame
 	currentAction = animationArray[i][0]
@@ -58,7 +40,7 @@ for i in range(len(animationArray)):
 	#bpy.data.objects["Body - BGM"].hide_render = False
 
 	# Display props in renders depending on the set
-	renderSet = 1
+	renderSet = 2
 	if renderSet == 1:
 		bpy.data.objects["Vest - Flak Jacket"].hide_render = False
 		bpy.data.objects["Backpack - Backpack"].hide_render = False
@@ -71,18 +53,22 @@ for i in range(len(animationArray)):
 		helpers.disablePropRenderlayer(9)
 		helpers.disablePropRenderlayer(10)
 	elif renderSet == 2:
+		bpy.data.objects["Weapon - Combat Knife"].hide_render = False
+		bpy.data.objects["Weapon - Combat Knife"].animation_data.action = bpy.data.actions.get("DisplayProp")
+		bpy.data.objects["Weapon - Crowbar"].hide_render = False
 		if currentAction == "Standing - Knife - Stab" or currentAction == "Standing - Knife - Slice" or currentAction == "Standing - Knife - Breath":
 			bpy.data.objects["Weapon - Combat Knife"].hide_render = False
 			bpy.data.objects["Weapon - Combat Knife"].animation_data.action = bpy.data.actions.get(currentAction)
 		if currentAction == "Crouch - Knife - Stab":
-			bpy.data.objects["Weapon - Combat Knife Alt hold"].hide_render = False		
+			bpy.data.objects["Weapon - Combat Knife"].hide_render = True
+			bpy.data.objects["Weapon - Combat Knife Alt hold"].hide_render = False
 		if currentAction == "Standing - Knife - Throw":
 			bpy.data.objects["Weapon - Combat Knife"].hide_render = False
 			bpy.data.objects["Weapon - Combat Knife"].animation_data.action = bpy.data.actions.get(currentAction)
-		if currentAction == "Standing - Empty Hands - Radio" or currentAction == "Crouch - Empty Hands - Radio" or currentAction == "Standing - Empty Hands - Use Remote":
-			bpy.data.objects["Weapon - Radio"].hide_render = False
 		if currentAction == "Standing - Crowbar - Hit":
 			bpy.data.objects["Weapon - Crowbar"].hide_render = False
+		helpers.disablePropRenderlayer(2)
+		helpers.disablePropRenderlayer(3)
 		helpers.disablePropRenderlayer(4)
 		helpers.disablePropRenderlayer(5)
 		helpers.disablePropRenderlayer(6)
@@ -90,6 +76,6 @@ for i in range(len(animationArray)):
 		helpers.disablePropRenderlayer(8)
 		helpers.disablePropRenderlayer(9)
 		helpers.disablePropRenderlayer(10)
-
+		
 	# RENDER AWAYYY!
 	bpy.ops.render.render(animation=True)

@@ -7,13 +7,43 @@ import bpy
 
 # Animation name in blender & end frame
 animationArray = [
-("Standing - Empty Hands - Hit and die 2",35,"S_D_FWD"),
-("Standing - Empty Hands - Flyback hit",23,"S_DIEBAC"),
-("Standing - Empty Hands - Flyback & die",24,"S_DIEHARD"),
-("Standing - Empty Hands - Flyback & die BLOOD",7,"S_DIEHARDB"),
-("Standing - Empty Hands - Dodge",6,"S_DODGE"),
-("Standing - Empty Hands - Throw",14,"S_THROW"),
-("Standing - Empty Hands - Throw Grenade",19,"S_THROW_G"),
+#("Standing - Hop fence",18,"S_HOP"),
+#("Standing - Empty Hands - Climb",44,"S_CLIMB"),
+#("Standing - Empty Hands - Kick Door",20,"S_DR_KICK"),
+#("Standing - Empty Hands - Open door",10,"S_OPEN"),
+#("Standing - Empty Hands - Pickup",5,"S_PICKUP"),
+#("Standing - Punch",24,"S_PUNCH"),#<--
+#("Standing - Empty Hands - Hit and die",33,"S_DIE2"),
+#("Standing - Empty Hands - Hit and die 2",35,"S_D_FWD"),
+#("Standing - Empty Hands - Flyback hit",23,"S_DIEBAC"),
+#("Standing - Empty Hands - Flyback & die",24,"S_DIEHARD"),
+#("Standing - Empty Hands - Flyback & die BLOOD",7,"S_DIEHARDB"),
+#("Standing - Empty Hands - Dodge",6,"S_DODGE"),
+#("Standing - Empty Hands - Throw",14,"S_THROW"),
+#("Standing - Empty Hands - Throw Grenade",19,"S_THROW_G"),
+#("Standing - Empty Hands - Lob",14,"S_LOB"),
+#("Standing - Empty Hands - Lob Grenade",19,"S_LOB_G"),
+#("Standing - Empty Hands - Squish",20,"S_SQUISH"),
+#("Standing - Empty Hands - Pull",13,"S_PULL"),
+#("Standing - Empty Hands - Radio",16,"S_RADIO"),
+#("Standing - Empty Hands - Use Remote",6,"S_REMOTE"),
+#("Standing - Empty Hands - Fall",52,"S_N_FALL"),
+#("Standing - Empty Hands - Fall Forward",41,"S_N_FALL_FWD"),
+("Standing - Empty Hands - Karate punch",24,"S_K_PUNCH"),
+("Standing - Empty Hands - Karate low kick",44,"S_K_LOWKICK"),
+("Standing - Empty Hands - Karate spin kick",70,"S_K_SPINKICK"),
+#("Standing To Cower - Empty hands",12,"S_COWER"),
+#("Crouch - Render medical aid",8,"S_MEDIC"),
+#("Crouch - Empty Hands - Hit and die",9,"S_C_DIE"),
+#("Crouch - Empty Hands - Punch",14,"S_C_PUNCH"),
+#("Crouch - Empty Hands - Radio",16,"S_C_RADIO"),
+#("Crouch - Empty Hands - Throw",14,"S_C_THROW"),
+#("Crouch To Prone - Sleep",13,"S_SLEEP"),
+#("Prone - Empty Hands - Render Aid",7,"S_PRN_MED"),
+#("Prone - Empty Hands - Cower",10,"S_PRNCOW"),
+#("Prone - Empty Hands - Hit and die",22,"S_P_DIE"),
+#("Prone - Empty Hands - Roll",8,"S_ROLL"),
+#("Prone - Empty Hands - Roll Over",14,"S_N_ROLL")
 ]
 
 for i in range(len(animationArray)):
@@ -71,18 +101,10 @@ for i in range(len(animationArray)):
 		helpers.disablePropRenderlayer(9)
 		helpers.disablePropRenderlayer(10)
 	elif renderSet == 2:
-		if currentAction == "Standing - Knife - Stab" or currentAction == "Standing - Knife - Slice" or currentAction == "Standing - Knife - Breath":
-			bpy.data.objects["Weapon - Combat Knife"].hide_render = False
-			bpy.data.objects["Weapon - Combat Knife"].animation_data.action = bpy.data.actions.get(currentAction)
-		if currentAction == "Crouch - Knife - Stab":
-			bpy.data.objects["Weapon - Combat Knife Alt hold"].hide_render = False		
-		if currentAction == "Standing - Knife - Throw":
-			bpy.data.objects["Weapon - Combat Knife"].hide_render = False
-			bpy.data.objects["Weapon - Combat Knife"].animation_data.action = bpy.data.actions.get(currentAction)
 		if currentAction == "Standing - Empty Hands - Radio" or currentAction == "Crouch - Empty Hands - Radio" or currentAction == "Standing - Empty Hands - Use Remote":
 			bpy.data.objects["Weapon - Radio"].hide_render = False
-		if currentAction == "Standing - Crowbar - Hit":
-			bpy.data.objects["Weapon - Crowbar"].hide_render = False
+		helpers.disablePropRenderlayer(1)
+		helpers.disablePropRenderlayer(3)
 		helpers.disablePropRenderlayer(4)
 		helpers.disablePropRenderlayer(5)
 		helpers.disablePropRenderlayer(6)
@@ -90,6 +112,6 @@ for i in range(len(animationArray)):
 		helpers.disablePropRenderlayer(8)
 		helpers.disablePropRenderlayer(9)
 		helpers.disablePropRenderlayer(10)
-
+		
 	# RENDER AWAYYY!
 	bpy.ops.render.render(animation=True)
