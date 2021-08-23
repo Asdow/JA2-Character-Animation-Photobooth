@@ -35,3 +35,4 @@ TastyTony		-	Low-Poly Saiga 12k		https://sketchfab.com/3d-models/low-poly-saiga-
 TastyTony		-	Low-Poly S&W Model 500	https://sketchfab.com/3d-models/low-poly-sw-model-500-2660a0509d6c428cb3c2212725ffdbb8
 TastyTony		-	Low-Poly Desert Eagle	https://sketchfab.com/3d-models/low-poly-desert-eagle-b81da261345f4462b2c4412352162287
 TastyTony		-	Low-Poly Milkor MGL Mk 	https://sketchfab.com/3d-models/low-poly-milkor-mgl-mk-1s-f62f582eada147b8aeb3c08773379d29
+Thunder			-	WW2 Mortar				https://sketchfab.com/3d-models/ww2-mortar-e7ce155b80954e98800664154cd101b4

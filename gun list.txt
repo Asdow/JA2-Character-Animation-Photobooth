@@ -39,9 +39,7 @@ x Desert Eagle
 x S&W Model 500
 
 --- Heavy weapons ---
-RPG-7
-Milkor MGL
-M79
+x Milkor MGL
 Mortar
 x LAW
 
@@ -55,5 +53,5 @@ x NVG
 x Knife
 x Radio
 x crowbar
-knee pads
+x knee pads
 riot shield

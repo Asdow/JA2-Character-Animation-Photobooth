@@ -26,7 +26,7 @@ for i in range(len(animationArray)):
 	# Hide objects in renders
 	for object in bpy.data.objects:
 		objectName = object.name
-		if "Weapon" in objectName or "Vest" in objectName or "Backpack" in objectName or "Hat" in objectName or "Face" in objectName:
+		if "Weapon" in objectName or "Vest" in objectName or "Backpack" in objectName or "Hat" in objectName or "Face" in objectName or "Legs" in objectName:
 			object.hide_render = True
 		if "MuzzleFlash" in objectName:
 			object.hide_render = True
@@ -35,23 +35,43 @@ for i in range(len(animationArray)):
 			object.hide_render = True
 
 	# Bodytypes
-	bpy.data.objects["Body - RGM"].hide_render = False
-	#bpy.data.objects["Body - FGM"].hide_render = False
-	#bpy.data.objects["Body - BGM"].hide_render = False
+	bpy.data.objects["Body - RGM"].hide_render = True
+	bpy.data.objects["Body - BGM"].hide_render = False
+	bpy.data.objects["Body - FGM"].hide_render = True
+	
+
+	if bpy.data.objects["Body - RGM"].hide_render == False:
+		helpers.setCameraOrthoScale(6.6)
+	if bpy.data.objects["Body - BGM"].hide_render == False:
+		helpers.setCameraOrthoScale(6.0)
+
+
 
 	# Display props in renders depending on the set
 	renderSet = 1
 	if renderSet == 1:
 		bpy.data.objects["Vest - Flak Jacket"].hide_render = False
+		# Change the flak jacket's shrinkwrap target depending on the body to be rendered
+		if bpy.data.objects["Body - RGM"].hide_render == False:
+			bpy.data.objects["Vest - Flak Jacket"].modifiers["Shrinkwrap"].target = bpy.data.objects["RGM - Vest Target"]
+		elif bpy.data.objects["Body - BGM"].hide_render == False:
+			bpy.data.objects["Vest - Flak Jacket"].modifiers["Shrinkwrap"].target = bpy.data.objects["BGM - Vest Target"]
 		bpy.data.objects["Backpack - Backpack"].hide_render = False
 		bpy.data.objects["Hat - Beret"].hide_render = False
 		bpy.data.objects["Hat - Helmet"].hide_render = False
 		bpy.data.objects["Face - Gasmask"].hide_render = False
 		bpy.data.objects["Face - NVG"].hide_render = False
 		bpy.data.objects["Hat - Booney"].hide_render = False
-		helpers.disablePropRenderlayer(8)
-		helpers.disablePropRenderlayer(9)
-		helpers.disablePropRenderlayer(10)
+		bpy.data.objects["Legs - Kneepad - Left"].hide_render = False
+		bpy.data.objects["Legs - Kneepad - Right"].hide_render = False
+		bpy.data.objects["Hat - Camo Helmet"].hide_render = False
+		# Change the long sleeved mesh depending on body
+		if bpy.data.objects["Body - RGM"].hide_render == False:
+			bpy.data.objects["Vest - Long Sleeved"].hide_render = False
+		elif bpy.data.objects["Body - BGM"].hide_render == False:
+			bpy.data.objects["Vest - BGM Long Sleeved"].hide_render = False
+		# Switch the background color to gray for the long sleeved composition groups
+		bpy.data.node_groups["JA2 Layered Sprite - Prop 10"].nodes["Switch.002"].check = False
 	elif renderSet == 2:
 		if currentAction == "Standing - Empty Hands - Radio" or currentAction == "Crouch - Empty Hands - Radio" or currentAction == "Standing - Empty Hands - Use Remote":
 			bpy.data.objects["Weapon - Radio"].hide_render = False

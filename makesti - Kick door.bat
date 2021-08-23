@@ -146,7 +146,19 @@ pause
 	set propnumbers[6]=7
 	set propSuffix[6]=_Booney
 
-	set /a maxProps=6
+	set propPalettes[7]=!Palettes[3]!
+	set propnumbers[7]=8
+	set propSuffix[7]=_Pads
+
+	set propPalettes[8]=!Palettes[3]!
+	set propnumbers[8]=9
+	set propSuffix[8]=_camohelmet
+
+	set propPalettes[9]=!Palettes[0]!
+	set propnumbers[9]=10
+	set propSuffix[9]=_lsleeve
+
+	set /a maxProps=9
 
 	for /l %%n in (0,1,!maxProps!) do (
 		set nProps=!propnumbers[%%n]!

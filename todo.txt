@@ -2,14 +2,16 @@ Missing animations:
 Merc in water
 mortar anims
 helidrop
-badass merc anims
-riot shield
+female merc anims
+riot shield needs its own set of animations (Needs codework for nonLOBOT bodies)
 
 
 Known issues:
 Death animations lack blood spurts/head explosion
-Dark pixel artifacts in SCARH sprites in certain camera angles
+LAW animations lack smoke and fire effects
+Paletteswap for M14 sprites to emulate semiauto rifles with polymer stocks
 Same for TRG42 and wooden stock sniper rifles
-Could probably do the same for M14 sprites to emulate semiauto rifles with polymer stocks
-Helmet could be better
 Karate punch uses the same RGMPUNCH animation surface as the regular punch. Bio's skilltrait filters are not implemented so we can't differentiate between karate and regular punch
+Prone crawling animation has pixelated legs when behind backpack, again
+Badass merc sidestep with rifle not working yet. Needs a proper filter
+Same for badass merc sidestep with pistol

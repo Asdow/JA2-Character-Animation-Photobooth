@@ -27,7 +27,7 @@ for i in range(len(animationArray)):
 	# Hide objects in renders
 	for object in bpy.data.objects:
 		objectName = object.name
-		if "Weapon" in objectName or "Vest" in objectName or "Backpack" in objectName or "Hat" in objectName or "Face" in objectName:
+		if "Weapon" in objectName or "Vest" in objectName or "Backpack" in objectName or "Hat" in objectName or "Face" in objectName or "Legs" in objectName:
 			object.hide_render = True
 		if "MuzzleFlash" in objectName:
 			object.hide_render = True
@@ -36,11 +36,13 @@ for i in range(len(animationArray)):
 			object.hide_render = True
 
 	# Bodytypes
-	bpy.data.objects["Body - RGM"].hide_render = False
-	bpy.data.objects["Body - BGM"].hide_render = True
+	bpy.data.objects["Body - RGM"].hide_render = True
+	bpy.data.objects["Body - BGM"].hide_render = False
 	bpy.data.objects["Body - FGM"].hide_render = True
 	
 
+	if bpy.data.objects["Body - RGM"].hide_render == False:
+		helpers.setCameraOrthoScale(6.6)
 	if bpy.data.objects["Body - BGM"].hide_render == False:
 		helpers.setCameraOrthoScale(6.0)
 		
@@ -69,7 +71,7 @@ for i in range(len(animationArray)):
 		bpy.data.objects["Weapon - TRG42"].hide_render = False
 		bpy.data.objects["Weapon - Mossberg Patriot"].hide_render = False
 		# Display muzzleflashes only in relevant animations
-		if currentAction == "Standing - Rifle - Aim" or currentAction == "Crouch - Rifle - Aim & Shoot" or currentAction == "Prone - Rifle - Crawl & Shoot" or currentAction == "Standing - Rifle - Shoot low" or currentAction == "Standing - Rifle - Hip Aim" or currentAction == "Standing - Rifle - Hip Shoot low":
+		if currentAction == "Standing - Rifle - Aim" or currentAction == "Crouch - Rifle - Aim & Shoot" or currentAction == "Prone - Rifle - Crawl & Shoot" or currentAction == "Standing - Rifle - Shoot low" or currentAction == "Standing - Rifle - Hip Aim" or currentAction == "Standing - Rifle - Hip Shoot low" or currentAction == "Standing - Rifle - Aim Badass" or currentAction == "Crouch - Rifle - Aim & Shoot Badass" or currentAction == "Prone - Rifle - Crawl & Shoot Badass":
 			bpy.data.objects["MuzzleFlash - FN FAL"].hide_render = False
 			bpy.data.objects["MuzzleFlash - M16"].hide_render = False
 			bpy.data.objects["MuzzleFlash - AK47"].hide_render = False
@@ -102,7 +104,7 @@ for i in range(len(animationArray)):
 		helpers.disablePropRenderlayer(9)
 		helpers.disablePropRenderlayer(10)
 		# Display muzzleflashes only in relevant animations
-		if currentAction == "Standing - Rifle - Aim" or currentAction == "Crouch - Rifle - Aim & Shoot" or currentAction == "Prone - Rifle - Crawl & Shoot" or currentAction == "Standing - Rifle - Shoot low" or currentAction == "Standing - Rifle - Hip Aim" or currentAction == "Standing - Rifle - Hip Shoot low":
+		if currentAction == "Standing - Rifle - Aim" or currentAction == "Crouch - Rifle - Aim & Shoot" or currentAction == "Prone - Rifle - Crawl & Shoot" or currentAction == "Standing - Rifle - Shoot low" or currentAction == "Standing - Rifle - Hip Aim" or currentAction == "Standing - Rifle - Hip Shoot low" or currentAction == "Standing - Rifle - Aim Badass" or currentAction == "Crouch - Rifle - Aim & Shoot Badass" or currentAction == "Prone - Rifle - Crawl & Shoot Badass":
 			bpy.data.objects["MuzzleFlash - P90"].hide_render = False
 			bpy.data.objects["MuzzleFlash - Thompson M1A1"].hide_render = False
 			bpy.data.objects["MuzzleFlash - PPSH41"].hide_render = False
@@ -123,13 +125,13 @@ for i in range(len(animationArray)):
 		bpy.data.objects["Weapon - PKM"].hide_render = False
 		bpy.data.objects["Weapon - Mosin Nagant"].hide_render = False
 		bpy.data.objects["Weapon - M14"].hide_render = False
-		helpers.disablePropRenderlayer(6)
+		bpy.data.objects["Weapon - Milkor"].hide_render = False
 		helpers.disablePropRenderlayer(7)
 		helpers.disablePropRenderlayer(8)
 		helpers.disablePropRenderlayer(9)
 		helpers.disablePropRenderlayer(10)
 		# Display muzzleflashes only in relevant animations
-		if currentAction == "Standing - Rifle - Aim" or currentAction == "Crouch - Rifle - Aim & Shoot" or currentAction == "Prone - Rifle - Crawl & Shoot" or currentAction == "Standing - Rifle - Shoot low" or currentAction == "Standing - Rifle - Hip Aim" or currentAction == "Standing - Rifle - Hip Shoot low":
+		if currentAction == "Standing - Rifle - Aim" or currentAction == "Crouch - Rifle - Aim & Shoot" or currentAction == "Prone - Rifle - Crawl & Shoot" or currentAction == "Standing - Rifle - Shoot low" or currentAction == "Standing - Rifle - Hip Aim" or currentAction == "Standing - Rifle - Hip Shoot low" or currentAction == "Standing - Rifle - Aim Badass" or currentAction == "Crouch - Rifle - Aim & Shoot Badass" or currentAction == "Prone - Rifle - Crawl & Shoot Badass":
 			bpy.data.objects["MuzzleFlash - RPK"].hide_render = False
 			bpy.data.objects["MuzzleFlash - SAW"].hide_render = False
 			bpy.data.objects["MuzzleFlash - PKM"].hide_render = False
@@ -142,15 +144,28 @@ for i in range(len(animationArray)):
 			bpy.data.objects["MuzzleFlash - M14"].animation_data.action = bpy.data.actions.get(currentAction)
 	elif renderSet == 4:
 		bpy.data.objects["Vest - Flak Jacket"].hide_render = False
+		# Change the flak jacket's shrinkwrap target depending on the body to be rendered
+		if bpy.data.objects["Body - RGM"].hide_render == False:
+			bpy.data.objects["Vest - Flak Jacket"].modifiers["Shrinkwrap"].target = bpy.data.objects["RGM - Vest Target"]
+		elif bpy.data.objects["Body - BGM"].hide_render == False:
+			bpy.data.objects["Vest - Flak Jacket"].modifiers["Shrinkwrap"].target = bpy.data.objects["BGM - Vest Target"]
 		bpy.data.objects["Backpack - Backpack"].hide_render = False
 		bpy.data.objects["Hat - Beret"].hide_render = False
 		bpy.data.objects["Hat - Helmet"].hide_render = False
 		bpy.data.objects["Face - Gasmask"].hide_render = False
 		bpy.data.objects["Face - NVG"].hide_render = False
 		bpy.data.objects["Hat - Booney"].hide_render = False
-		helpers.disablePropRenderlayer(8)
-		helpers.disablePropRenderlayer(9)
-		helpers.disablePropRenderlayer(10)
+		bpy.data.objects["Legs - Kneepad - Left"].hide_render = False
+		bpy.data.objects["Legs - Kneepad - Right"].hide_render = False
+		bpy.data.objects["Hat - Camo Helmet"].hide_render = False
+		# Change the long sleeved mesh depending on body
+		if bpy.data.objects["Body - RGM"].hide_render == False:
+			bpy.data.objects["Vest - Long Sleeved"].hide_render = False
+		elif bpy.data.objects["Body - BGM"].hide_render == False:
+			bpy.data.objects["Vest - BGM Long Sleeved"].hide_render = False
+		# Switch the background color to gray for the long sleeved composition groups
+		bpy.data.node_groups["JA2 Layered Sprite - Prop 10"].nodes["Switch.002"].check = False
+
 
 	# RENDER AWAYYY!
 	bpy.ops.render.render(animation=True)

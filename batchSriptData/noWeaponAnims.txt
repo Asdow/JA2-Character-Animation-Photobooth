@@ -4,6 +4,8 @@
 ;("Standing - Hop fence",18,"S_HOP"),
 ;("Standing - Empty Hands - Climb",44,"S_CLIMB"),
 ;("Standing - Empty Hands - Kick Door",20,"S_DR_KICK"),
+;("Standing - Empty Hands - Fall",52,"S_N_FALL"),
+;("Standing - Empty Hands - Fall Forward",41,"S_N_FALL_FWD"),
 ;------------------------------------------------------
 ;("Standing - Empty Hands - Open door",10,"S_OPEN"),
 ;("Standing - Empty Hands - Pickup",5,"S_PICKUP"),
@@ -20,18 +22,15 @@
 ;("Standing - Empty Hands - Lob Grenade",19,"S_LOB_G"),
 ;("Standing - Empty Hands - Squish",20,"S_SQUISH"),
 ;("Standing - Empty Hands - Pull",13,"S_PULL"),
-;("Standing - Empty Hands - Radio",16,"S_RADIO"),
-;("Standing - Empty Hands - Use Remote",6,"S_REMOTE"),
 ;("Standing - Empty Hands - Fall",52,"S_N_FALL"),
 ;("Standing - Empty Hands - Fall Forwad",41,"S_N_FALL_FWD"),
-("Standing - Empty Hands - Karate punch",24,"S_K_PUNCH"),
+;("Standing - Empty Hands - Karate punch",24,"S_K_PUNCH"),
 ;("Standing - Empty Hands - Karate low kick",44,"S_K_LOWKICK"),
 ;("Standing - Empty Hands - Karate spin kick",70,"S_K_SPINKICK"),
 ;("Standing To Cower - Empty hands",12,"S_COWER"),
 ;("Crouch - Render medical aid",8,"S_MEDIC"),
 ;("Crouch - Empty Hands - Hit and die",9,"S_C_DIE"),
 ;("Crouch - Empty Hands - Punch",14,"S_C_PUNCH"),
-;("Crouch - Empty Hands - Radio",16,"S_C_RADIO"),
 ;("Crouch - Empty Hands - Throw",14,"S_C_THROW"),
 ;("Crouch To Prone - Sleep",13,"S_SLEEP"),
 ;("Prone - Empty Hands - Render Aid",7,"S_PRN_MED"),
@@ -39,3 +38,14 @@
 ;("Prone - Empty Hands - Hit and die",22,"S_P_DIE"),
 ;("Prone - Empty Hands - Roll",8,"S_ROLL"),
 ;("Prone - Empty Hands - Roll Over",14,"S_N_ROLL")
+;------------------------------------------------------
+; Animations for using the radio
+;------------------------------------------------------
+;("Crouch - Empty Hands - Radio",16,"S_C_RADIO"),
+;("Standing - Empty Hands - Radio",16,"S_RADIO"),
+;("Standing - Empty Hands - Use Remote",6,"S_REMOTE"),
+;------------------------------------------------------
+; Badass big merc anims
+;------------------------------------------------------
+("Standing - Empty Hands - Flex Badass",14,"M_FLEX"),
+("Standing - Empty Hands - Stretch Badass",14,"M_STRETCH"),

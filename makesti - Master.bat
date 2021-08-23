@@ -30,6 +30,7 @@ echo [0] rifleAnims.txt
 echo [1] pistolAnims.txt
 echo [2] noWeaponAnims.txt
 echo [3] meleeWeaponAnims.txt
+echo [4] HeavyWeaponAnims.txt
 set /p animchoice=Choice: 
 if %animchoice%==0 (
 	set "animData=batchSriptData\rifleAnims.txt"
@@ -39,6 +40,8 @@ if %animchoice%==0 (
 	set animData=batchSriptData\noWeaponAnims.txt
 ) else if %animchoice%==3 (
 	set animData=batchSriptData\meleeWeaponAnims.txt
+) else if %animchoice%==4 (
+	set animData=batchSriptData\HeavyWeaponAnims.txt
 ) ELSE (
 	echo Invalid choice
 	GOTO :AnimDataChoice
@@ -116,12 +119,14 @@ rem	echo !_KEYFRAME[%%n]!
 :ContinueSTI
 echo Choose
 echo [0] for making a layered body STI
-echo [1] props (Vest, Backpack, beret, Helmet, Gasmask, NVG, booney hat)
+echo [1] props (Vest, Backpack, beret, Helmet, Gasmask, NVG, booney hat, knee pads, camo helmet, long sleeves)
 echo [2] assault rifles (FN FAL, M16, AK47, FAMAS, SCAR-H) and sniper rifles (Barrett, Dragunov, PSG1, TRG42, Patriot)
 echo [3] smgs (P90, Thompson, PPSH41, MP5) and shotguns (Mossberg 590, Saiga 12K, SPAS 12)
-echo [4] lmgs and rifles (RPK, SAW, PKM, Mosin Nagant, M14)
+echo [4] lmgs and rifles (RPK, SAW, PKM, Mosin Nagant, M14, Milkor MKL)
 echo [5] pistols (USP, MP5K, Desert eagle, SW500)
-echo [6] props (Combat knife, Radio, crowbar)
+echo [6] props (Combat knife, crowbar)
+echo [7] Radio
+echo [8] LAW
 echo [99] quit
 set /p decision=Choice: 
 if %decision%==0 (
@@ -139,6 +144,8 @@ if %decision%==0 (
 	set suffixList[4]=_legs
 
 	Rem Convert rendered images into correct bmp and rename them. Everything goes into its own folders underneath makesti/extract to be able to process things in parallel
+	set /a count=1
+	set /a div=4
 	for /l %%m in (0,1,!animIndex!) do (
 		set folderName=!animFolders[%%m]!
 		set _INPUTDIR=output\!folderName!
@@ -156,15 +163,17 @@ if %decision%==0 (
 			Rem crop and convert rendered images to use correct header type
 			start /B make_script\convert.exe "!_INPUTDIR!\!outputPrefix[%%n]!*.png" -crop !_CROPSETTINGS! BMP3:"!_EXTRACTDIR!\0.bmp"
 		)
+		set /a xx=!count! %% !div!
+		if !xx! == 0 (
+			call :loop1sync
+		)
+		set /a count+=1
 	)
-	:SYNCLOOP1
-	tasklist /FI "IMAGENAME eq convert.exe" 2>NUL | find /I /N "convert.exe">NUL
-	if %ERRORLEVEL%==0 (
-		ping localhost -n 5 >nul
-		GOTO SYNCLOOP1
-	)
-
+	call :loop1sync
+	
 	Rem Turn processed images into sti files in parallel
+	set /a count=1
+	set /a div=4
 	for /l %%m in (0,1,!animIndex!) do (
 		set folderName=!animFolders[%%m]!
 		set _INPUTDIR=output\!folderName!
@@ -193,13 +202,14 @@ rem			echo !_keyframes!
 			start /B make_script\sticom.exe new -o "!_FILEPATH!"  -i "!_extract!" -r !_range! -p "!_palette!" --offset !_OFFSET! -k "!_keyframes!" -F -M "TRIM" -P !_PIVOT!
 			ENDLOCAL
 		)
+		set /a xx=!count! %% !div!
+		if !xx! == 0 (
+			call :loop2sync
+		)
+		set /a count+=1
 	)
-	:SYNCLOOP2
-	tasklist /FI "IMAGENAME eq sticom.exe" 2>NUL | find /I /N "sticom.exe">NUL
-	if %ERRORLEVEL%==0 (
-		ping localhost -n 5 >nul
-		GOTO SYNCLOOP2
-	)
+	call :loop2sync
+	
 	GOTO :ContinueSTI
 ) else if %decision%==1 (
 	CALL :CreateBasePropsBPandBeret
@@ -212,7 +222,11 @@ rem			echo !_keyframes!
 ) else if %decision%==5 (
 	CALL :CreateBasePropsDualPistols
 ) else if %decision%==6 (
-	CALL :CreateBasePropsKnifeAndRadio
+	CALL :CreateBasePropsKnifeAndCrowbar
+) else if %decision%==7 (
+	CALL :CreateRadioProp
+) else if %decision%==8 (
+	CALL :CreateLAW
 ) else if %decision%==99 (
 	echo Quitting makesti script
 	GOTO :EndScript
@@ -228,6 +242,29 @@ GOTO :ContinueSTI
 EXIT /B %ERRORLEVEL%
 pause
 
+
+
+:loop1sync
+	SETLOCAL
+	:SYNCLOOP1
+	tasklist /FI "IMAGENAME eq convert.exe" 2>NUL | find /I /N "convert.exe">NUL
+	if %ERRORLEVEL%==0 (
+		ping localhost -n 3 >nul
+		GOTO SYNCLOOP1
+	)
+	ENDLOCAL
+EXIT /B 0
+
+:loop2sync
+	SETLOCAL
+	:SYNCLOOP2
+	tasklist /FI "IMAGENAME eq sticom.exe" 2>NUL | find /I /N "sticom.exe">NUL
+	if %ERRORLEVEL%==0 (
+		ping localhost -n 3 >nul
+		GOTO SYNCLOOP2
+	)
+	ENDLOCAL
+EXIT /B 0
 
 
 REM functions
@@ -316,7 +353,19 @@ EXIT /B 0
 	set propnumbers[6]=7
 	set propSuffix[6]=_Booney
 
-	set /a maxProps=6
+	set propPalettes[7]=!Palettes[3]!
+	set propnumbers[7]=8
+	set propSuffix[7]=_Pads
+
+	set propPalettes[8]=!Palettes[3]!
+	set propnumbers[8]=9
+	set propSuffix[8]=_camohelmet
+
+	set propPalettes[9]=!Palettes[0]!
+	set propnumbers[9]=10
+	set propSuffix[9]=_lsleeve
+
+	set /a maxProps=9
 
 
 	Rem Convert rendered images into correct bmp and rename them. Everything goes into its own folders underneath makesti/extract to be able to process things in parallel
@@ -351,7 +400,11 @@ EXIT /B 0
 	set propPalettes[4]=!Palettes[4]!
 	set propnumbers[4]=5
 	set propSuffix[4]=_M14
-	set /a maxProps=4
+
+	set propPalettes[5]=!Palettes[4]!
+	set propnumbers[5]=6
+	set propSuffix[5]=_MKL
+	set /a maxProps=5
 
 	Rem Convert rendered images into correct bmp and rename them. Everything goes into its own folders underneath makesti/extract to be able to process things in parallel
 	CALL :ConvertOutputToExtractForProps
@@ -449,21 +502,17 @@ EXIT /B 0
 EXIT /B 0
 
 
-:CreateBasePropsKnifeAndRadio
+:CreateBasePropsKnifeAndCrowbar
 	SETLOCAL
 	set propPalettes[0]=!Palettes[4]!
 	set propnumbers[0]=1
 	set propSuffix[0]=_knife
 
 	set propPalettes[1]=!Palettes[4]!
-	set propnumbers[1]=2
-	set propSuffix[1]=_radio
+	set propnumbers[1]=3
+	set propSuffix[1]=_crowbar
 
-	set propPalettes[2]=!Palettes[4]!
-	set propnumbers[2]=3
-	set propSuffix[2]=_crowbar
-
-	set /a maxProps=2
+	set /a maxProps=1
 
 	Rem Convert rendered images into correct bmp and rename them. Everything goes into its own folders underneath makesti/extract to be able to process things in parallel
 	CALL :ConvertOutputToExtractForProps
@@ -473,9 +522,44 @@ EXIT /B 0
 EXIT /B 0
 
 
+:CreateRadioProp
+	SETLOCAL
+	set propPalettes[0]=!Palettes[4]!
+	set propnumbers[0]=2
+	set propSuffix[0]=_radio
+
+	set /a maxProps=0
+	Rem Convert rendered images into correct bmp and rename them. Everything goes into its own folders underneath makesti/extract to be able to process things in parallel
+	CALL :ConvertOutputToExtractForProps
+	Rem Turn processed images into sti files in parallel
+	CALL :CreateSTIforProps
+	ENDLOCAL
+EXIT /B 0
+
+
+:CreateLAW
+	SETLOCAL
+
+	set propPalettes[0]=!Palettes[4]!
+	set propnumbers[0]=1
+	set propSuffix[0]=_LAW
+
+	set /a maxProps=0
+
+	Rem Convert rendered images into correct bmp and rename them. Everything goes into its own folders underneath makesti/extract to be able to process things in parallel
+	CALL :ConvertOutputToExtractForProps
+	Rem Turn processed images into sti files in parallel
+	CALL :CreateSTIforProps
+
+	ENDLOCAL
+EXIT /B 0
+
+
 :ConvertOutputToExtractForProps
 	SETLOCAL
 	Rem Convert rendered images into correct bmp and rename them. Everything goes into its own folders underneath makesti/extract to be able to process things in parallel
+	set /a count=1
+	set /a div=3
 	for /l %%m in (0,1,!animIndex!) do (
 		set folderName=!animFolders[%%m]!
 		set _INPUTDIR=output\!folderName!
@@ -490,13 +574,25 @@ EXIT /B 0
 			DEL "!_EXTRACTDIR!\*.bmp"
 			start /B make_script\convert.exe "!_INPUTDIR!\Prop!nProps!_C*.png" -crop !_CROPSETTINGS! BMP3:"!_EXTRACTDIR!\0.bmp"
 		)
+		set /a xx=!count! %% !div!
+		if !xx! == 0 (
+			call :loopConvert
+		)
+		set /a count+=1
 	)
+	call :loopConvert
+
+	ENDLOCAL
+EXIT /B 0
+
+:loopConvert
+	SETLOCAL
 	:SYNCLOOPoutput
 	tasklist /FI "IMAGENAME eq convert.exe" 2>NUL | find /I /N "convert.exe">NUL
 	if %ERRORLEVEL%==0 (
-		ping localhost -n 5 >nul
+		ping localhost -n 4 >nul
 		GOTO SYNCLOOPoutput
-	)	
+	)
 	ENDLOCAL
 EXIT /B 0
 
@@ -504,6 +600,8 @@ EXIT /B 0
 :CreateSTIforProps
 	SETLOCAL
 	Rem Turn processed images into sti files in parallel
+	set /a count=1
+	set /a div=3
 	for /l %%m in (0,1,!animIndex!) do (
 		set folderName=!animFolders[%%m]!
 		set _INPUTDIR=output\!folderName!
@@ -534,11 +632,23 @@ rem			echo !_keyframes!
 		
 			start /B make_script\sticom.exe new -o "!_FILEPATH!"  -i "!_extract!" -r !_range! -p "!_palette!" --offset !_OFFSET! -k "!_keyframes!" -F -M "TRIM" -P !_PIVOT!
 		)
+		set /a xx=!count! %% !div!
+		if !xx! == 0 (
+			call :sticomLoop
+		)
+		set /a count+=1
 	)
+	call :sticomLoop
+
+	ENDLOCAL
+EXIT /B 0
+
+:sticomLoop
+	SETLOCAL
 	:SYNCLOOPsti
 	tasklist /FI "IMAGENAME eq sticom.exe" 2>NUL | find /I /N "sticom.exe">NUL
-	if %ERRORLEVEL%==0 (
-		ping localhost -n 5 >nul
+	if !ERRORLEVEL!==0 (
+		ping localhost -n 4 >nul
 		GOTO SYNCLOOPsti
 	)
 	ENDLOCAL
