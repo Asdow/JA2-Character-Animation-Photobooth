@@ -99,3 +99,7 @@ make_script/sti-edit/[ACT] JA2-Palette---Guns-copy.act
 make_script/sti-edit/[ACT] JA2-Palette---Guns-copy-1.act
 __pycache__/helpers.cpython-37.pyc
 __pycache__/helpers.cpython-39.pyc
+batchrender-meleeweapons0.py
+batchrender-noweapons0.py
+batchrender-pistols0.py
+batchrender-rifles0.py
