@@ -1,0 +1,32 @@
+<!-- note that this is an external entity, so it is not a valid xml file by itself -->
+<!-- NOTE! Filenames have a 27 character limit. If they're longer, JA will crash when trying to load said file-->
+<AnimSurface name="LBT_RGMRIFLE_WALK_CROUCH_AR" file="Anims\LOBOT\RGM\cr_walk_rifle_AR.STI" flags="0" structdata="ANIMS\STRUCTDATA\M_CROUCH.JSD" directions = "8" framesperdir="24" profile="-1" />
+<AnimSurface name="LBT_RGMRIFLE_WALK_AR" file="Anims\LOBOT\RGM\S_R_RDY_WALK_AR.STI" flags="0" structdata="ANIMS\STRUCTDATA\M_STAND.JSD" directions = "8" framesperdir="12" profile="-1" />
+<AnimSurface name="LBT_RGMRIFLE_WALK_HURT_AR" file="Anims\LOBOT\RGM\S_R_WALK_HURT_AR.STI" flags="0" structdata="ANIMS\STRUCTDATA\M_STAND.JSD" directions = "8" framesperdir="12" profile="-1" />
+<AnimSurface name="LBT_RGMRIFLE_IDLE_AR" file="Anims\LOBOT\RGM\S_R_STD_AR.STI" flags="0" structdata="ANIMS\STRUCTDATA\M_STAND.JSD" directions = "8" framesperdir="8" profile="-1" />
+<AnimSurface name="LBT_RGMBASICWALK_AR" file="Anims\LOBOT\RGM\RGM_BASICWALK_AR.STI" flags="0" structdata="ANIMS\STRUCTDATA\M_STAND.JSD" directions = "8" framesperdir="12" profile="-1" />
+<AnimSurface name="LBT_RGMRIFLE_CROUCH_AR" file="Anims\LOBOT\RGM\S_R_C_AR.STI" flags="0" structdata="ANIMS\STRUCTDATA\M_STAND.JSD" directions = "8" framesperdir="15" profile="-1" />
+<AnimSurface name="LBT_RGMRIFLE_SWAT_AR" file="Anims\LOBOT\RGM\S_R_SWAT_AR.STI" flags="0" structdata="ANIMS\STRUCTDATA\M_CROUCH.JSD" directions = "8" framesperdir="22" profile="-1" />
+<AnimSurface name="LBT_RGMRIFLE_SIDESTEP_AR" file="Anims\LOBOT\RGM\S_R_SDSP_AR.STI" flags="0" structdata="ANIMS\STRUCTDATA\M_STAND.JSD" directions = "8" framesperdir="12" profile="-1" />
+<AnimSurface name="LBT_RGMRIFLE_SIDESTEP_AIM_AR" file="Anims\LOBOT\RGM\S_R_SDSP_AIM_AR.STI" flags="0" structdata="ANIMS\STRUCTDATA\M_STAND.JSD" directions = "8" framesperdir="12" profile="-1" />
+<AnimSurface name="LBT_RGMRUNNING_AR" file="Anims\LOBOT\RGM\S_R_RUN_AR.STI" flags="0" structdata="ANIMS\STRUCTDATA\M_STAND.JSD" directions = "8" framesperdir="12" profile="-1" />
+<AnimSurface name="LBT_RGMRIFLE_RAISE_AR" file="Anims\LOBOT\RGM\S_RAISE_AR.STI" flags="0" structdata="ANIMS\STRUCTDATA\M_STAND.JSD" directions = "8" framesperdir="5" profile="-1" />
+<AnimSurface name="LBT_RGMRIFLE_AIM_AR" file="Anims\LOBOT\RGM\S_SR_AIM_AR.STI" flags="0" structdata="ANIMS\STRUCTDATA\M_STAND.JSD" directions = "8" framesperdir="21" profile="-1" />
+<AnimSurface name="LBT_RGMRIFLE_LOW_AR" file="Anims\LOBOT\RGM\S_R_LOW_AR.STI" flags="0" structdata="ANIMS\STRUCTDATA\M_STAND.JSD" directions = "8" framesperdir="8" profile="-1" />
+<AnimSurface name="LBT_RGMRIFLE_HIP_AR" file="Anims\LOBOT\RGM\S_SR_HIP_AIM_AR.STI" flags="0" structdata="ANIMS\STRUCTDATA\M_STAND.JSD" directions = "8" framesperdir="21" profile="-1" />
+<AnimSurface name="LBT_RGMRIFLE_HIP_LOW_AR" file="Anims\LOBOT\RGM\S_R_HIP_LOW_AR.STI" flags="0" structdata="ANIMS\STRUCTDATA\M_STAND.JSD" directions = "8" framesperdir="8" profile="-1" />
+<AnimSurface name="LBT_RGMRIFLE_CR_AIM_AR" file="Anims\LOBOT\RGM\S_CR_AIM_AR.STI" flags="0" structdata="ANIMS\STRUCTDATA\M_CROUCH.JSD" directions = "8" framesperdir="18" profile="-1" />
+<AnimSurface name="LBT_RGMRIFLE_PRONE_AR" file="Anims\LOBOT\RGM\S_R_PRN_AR.STI" flags="0" structdata="ANIMS\STRUCTDATA\M_PRONE.JSD" directions = "8" framesperdir="29" profile="-1" />
+<AnimSurface name="LBT_RGM_RIFLE_OPEN_AR" file="Anims\LOBOT\RGM\S_RIFLE_OPEN_AR.STI" flags="0" structdata="ANIMS\STRUCTDATA\M_STAND.JSD" directions = "8" framesperdir="10" profile="-1" />
+<AnimSurface name="LBT_RGMRIFLE_KICKDOOR_AR" file="Anims\LOBOT\RGM\S_R_DR_KICK_AR.STI" flags="0" structdata="ANIMS\STRUCTDATA\M_STAND.JSD" directions = "4" framesperdir="20" profile="-1" />
+<AnimSurface name="LBT_RGMRIFLE_SQUISH_AR" file="Anims\LOBOT\RGM\S_R_SQUISH_AR.STI" flags="0" structdata="ANIMS\STRUCTDATA\M_STAND.JSD" directions = "8" framesperdir="20" profile="-1" />
+<AnimSurface name="LBT_RGMRIFLE_LOOK_AR" file="Anims\LOBOT\RGM\S_R_LOOK_AR.STI" flags="0" structdata="ANIMS\STRUCTDATA\M_STAND.JSD" directions = "8" framesperdir="14" profile="-1" />
+<AnimSurface name="LBT_RGMRIFLE_SPIT_AR" file="Anims\LOBOT\RGM\S_R_SPIT_AR.STI" flags="0" structdata="ANIMS\STRUCTDATA\M_STAND.JSD" directions = "8" framesperdir="21" profile="-1" />
+<AnimSurface name="LBT_RGMRIFLE_DRUNK_AR" file="Anims\LOBOT\RGM\S_R_DRUNK_AR.STI" flags="0" structdata="ANIMS\STRUCTDATA\M_STAND.JSD" directions = "8" framesperdir="20" profile="-1" />
+<AnimSurface name="LBT_RGMRIFLE_BAYONET_AR" file="Anims\LOBOT\RGM\S_R_BAYONET_AR.STI" flags="0" structdata="ANIMS\STRUCTDATA\M_STAND.JSD" directions = "8" framesperdir="18" profile="-1" />
+<AnimSurface name="LBT_RGMRIFLE_BAYONET_L_AR" file="Anims\LOBOT\RGM\S_R_BAYONET_L_AR.STI" flags="0" structdata="ANIMS\STRUCTDATA\M_STAND.JSD" directions = "8" framesperdir="23" profile="-1" />
+<AnimSurface name="LBT_RGMRIFLE_HIT_AR" file="Anims\LOBOT\RGM\S_HIT_AR.STI" flags="0" structdata="ANIMS\STRUCTDATA\M_STAND.JSD" directions = "8" framesperdir="5" profile="-1" />
+<AnimSurface name="LBT_RGMRIFLE_PAIN_AR" file="Anims\LOBOT\RGM\S_R_PAIN_AR.STI" flags="0" structdata="ANIMS\STRUCTDATA\M_STAND.JSD" directions = "8" framesperdir="14" profile="-1" />
+<AnimSurface name="LBT_RGMRIFLE_COWER_AR" file="Anims\LOBOT\RGM\S_R_COWER_AR.STI" flags="0" structdata="ANIMS\STRUCTDATA\M_STAND.JSD" directions = "8" framesperdir="12" profile="-1" />
+<AnimSurface name="LBT_RGMRIFLE_PRN_COWER_AR" file="Anims\LOBOT\RGM\S_R_PRNCOW_AR.STI" flags="0" structdata="ANIMS\STRUCTDATA\M_PRONE.JSD" directions = "8" framesperdir="10" profile="-1" />
+<AnimSurface name="LBT_RGMRIFLE_ROLL_SIDE_AR" file="Anims\LOBOT\RGM\S_R_ROLL_AR.STI" flags="0" structdata="ANIMS\STRUCTDATA\M_PRONE.JSD" directions = "8" framesperdir="10" profile="-1" />

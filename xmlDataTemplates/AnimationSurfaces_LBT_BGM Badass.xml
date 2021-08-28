@@ -1,0 +1,27 @@
+<!-- note that this is an external entity, so it is not a valid xml file by itself -->
+<!-- NOTE! Filenames have a 27 character limit. If they're longer, JA will crash when trying to load said file-->
+<!-- BADASS MERC ANIMS -->
+
+<!-- pistol -->
+<AnimSurface name="BGMPISTOL_IDLE_DEAGLE" file="Anims\LOBOT\BGM\S_P_BRTH_HERO_DEAGLE.STI" flags="0" structdata="ANIMS\STRUCTDATA\M_STAND.JSD" directions = "8" framesperdir="8" profile="-1" />
+<AnimSurface name="BGMPISTOL_AIM_DEAGLE" file="Anims\LOBOT\BGM\M_P_SHOT_HERO_DEAGLE.STI" flags="0" structdata="ANIMS\STRUCTDATA\M_STAND.JSD" directions = "8" framesperdir="21" profile="-1" />
+
+
+<!-- rifle -->
+<AnimSurface name="BGMRIFLE_IDLE_HERO_AR" file="Anims\LOBOT\BGM\S_R_STD_HERO_AR.STI" flags="0" structdata="ANIMS\STRUCTDATA\M_STAND.JSD" directions = "8" framesperdir="8" profile="-1" />
+<AnimSurface name="BGMRIFLE_WALK_HERO_AR" file="Anims\LOBOT\BGM\S_R_WALK_HERO_AR.STI" flags="0" structdata="ANIMS\STRUCTDATA\M_STAND.JSD" directions = "8" framesperdir="12" profile="-1" />
+<AnimSurface name="BGMRUNNING_HERO_AR" file="Anims\LOBOT\BGM\S_R_RUN_HERO_AR.STI" flags="0" structdata="ANIMS\STRUCTDATA\M_STAND.JSD" directions = "8" framesperdir="12" profile="-1" />
+<AnimSurface name="BGMRIFLE_AIM_HERO_AR" file="Anims\LOBOT\BGM\S_SR_AIM_HERO_AR.STI" flags="0" structdata="ANIMS\STRUCTDATA\M_STAND.JSD" directions = "8" framesperdir="21" profile="-1" />
+<AnimSurface name="BGMRIFLE_HIT_HERO_AR" file="Anims\LOBOT\BGM\S_HIT_HERO_AR.STI" flags="0" structdata="ANIMS\STRUCTDATA\M_STAND.JSD" directions = "8" framesperdir="5" profile="-1" />
+<AnimSurface name="BGMRIFLE_RAISE_HERO_AR" file="Anims\LOBOT\BGM\S_RAISE_HERO_AR.STI" flags="0" structdata="ANIMS\STRUCTDATA\M_STAND.JSD" directions = "8" framesperdir="5" profile="-1" />
+<AnimSurface name="BGMRIFLE_SIDESTEP_HERO_AR" file="Anims\LOBOT\BGM\S_R_SDSP_HERO_AR.STI" flags="0" structdata="ANIMS\STRUCTDATA\M_STAND.JSD" directions = "8" framesperdir="12" profile="-1" />
+<AnimSurface name="BGMRIFLE_SIDESTEP_AIM_HERO_AR" file="Anims\LOBOT\BGM\M_SDSP_AIM_HERO_AR.STI" flags="0" structdata="ANIMS\STRUCTDATA\M_STAND.JSD" directions = "8" framesperdir="12" profile="-1" />
+<AnimSurface name="BGMRIFLE_WALK_RDY_HERO_AR" file="Anims\LOBOT\BGM\M_RDY_WALK_HERO_AR.STI" flags="0" structdata="ANIMS\STRUCTDATA\M_STAND.JSD" directions = "8" framesperdir="12" profile="-1" />
+<AnimSurface name="BGMRIFLE_DUST_SHOE_AR" file="Anims\LOBOT\BGM\M_SHOEDUST_AR.STI" flags="0" structdata="ANIMS\STRUCTDATA\M_STAND.JSD" directions = "8" framesperdir="14" profile="-1" />
+<AnimSurface name="BGMRIFLE_WIPE_AR" file="Anims\LOBOT\BGM\M_WIPE_AR.STI" flags="0" structdata="ANIMS\STRUCTDATA\M_STAND.JSD" directions = "8" framesperdir="14" profile="-1" />
+<AnimSurface name="BGMRIFLE_NECK_AR" file="Anims\LOBOT\BGM\M_NECK_AR.STI" flags="0" structdata="ANIMS\STRUCTDATA\M_STAND.JSD" directions = "8" framesperdir="14" profile="-1" />
+<AnimSurface name="BGMRIFLE_CROUCH_HERO_AR" file="Anims\LOBOT\BGM\S_R_C_HERO_AR.STI" flags="0" structdata="ANIMS\STRUCTDATA\M_STAND.JSD" directions = "8" framesperdir="15" profile="-1" />
+<AnimSurface name="BGMRIFLE_CROUCH_BIGM_AR" file="Anims\LOBOT\BGM\M_R_C_AR.STI" flags="0" structdata="ANIMS\STRUCTDATA\M_STAND.JSD" directions = "8" framesperdir="5" profile="-1" />
+<AnimSurface name="BGMRIFLE_CR_AIM_HERO_AR" file="Anims\LOBOT\BGM\S_CR_AIM_HERO_AR.STI" flags="0" structdata="ANIMS\STRUCTDATA\M_CROUCH.JSD" directions = "8" framesperdir="18" profile="-1" />
+<AnimSurface name="BGMRIFLE_PRONE_HERO_AR" file="Anims\LOBOT\BGM\S_R_PRN_HERO_AR.STI" flags="0" structdata="ANIMS\STRUCTDATA\M_PRONE.JSD" directions = "8" framesperdir="29" profile="-1" />
+<!-- BADASS MERC ANIMS -->
