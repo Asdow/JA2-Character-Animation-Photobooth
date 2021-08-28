@@ -395,7 +395,11 @@ EXIT /B 0
 	set propnumbers[6]=7
 	set propSuffix[6]=_spas12
 
-	set /a maxProps=6
+	set propPalettes[7]=!Palettes[4]!
+	set propnumbers[7]=8
+	set propSuffix[7]=_uzi
+
+	set /a maxProps=7
 
 
 

@@ -10,6 +10,7 @@ x P90
 x Thompson
 x PPSH41
 x MP5
+x UZI
 
 --- Shotgun ---
 x Mossberg
@@ -37,6 +38,7 @@ x HK USP
 x HK MP5K
 x Desert Eagle
 x S&W Model 500
+x UZI
 
 --- Heavy weapons ---
 x Milkor MGL

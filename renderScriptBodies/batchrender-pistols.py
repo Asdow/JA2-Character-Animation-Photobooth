@@ -36,8 +36,8 @@ for i in range(len(animationArray)):
 			object.hide_render = True
 
 	# Bodytypes
-	bpy.data.objects["Body - RGM"].hide_render = True
-	bpy.data.objects["Body - BGM"].hide_render = False
+	bpy.data.objects["Body - RGM"].hide_render = False
+	bpy.data.objects["Body - BGM"].hide_render = True
 	bpy.data.objects["Body - FGM"].hide_render = True
 	
 
@@ -81,8 +81,8 @@ for i in range(len(animationArray)):
 		bpy.data.objects["Weapon - Desert Eagle - Left Hand"].hide_render = False
 		bpy.data.objects["Weapon - SW500"].hide_render = False
 		bpy.data.objects["Weapon - SW500 - Left Hand"].hide_render = False
-		helpers.disablePropRenderlayer(9)
-		helpers.disablePropRenderlayer(10)
+		bpy.data.objects["Weapon - UZI MP"].hide_render = False
+		bpy.data.objects["Weapon - UZI MP Left"].hide_render = False
 		# Display muzzleflashes only in relevant animations
 		if currentAction == "Standing - Dual Pistols - Aim & Shoot" or currentAction == "Crouch - Dual Pistol - Aim & Shoot" or currentAction == "Prone - Dual Pistol - Shoot":
 			leftMuzzleFlashAction = "Dual Pistols - Aim & Shoot - Left Muzzleflash"
@@ -104,15 +104,21 @@ for i in range(len(animationArray)):
 			bpy.data.objects["MuzzleFlash - Desert Eagle - Left Hand"].animation_data.action = bpy.data.actions.get(leftMuzzleFlashAction)
 			bpy.data.objects["MuzzleFlash - SW500"].animation_data.action = bpy.data.actions.get(currentAction)
 			bpy.data.objects["MuzzleFlash - SW500 - Left Hand"].animation_data.action = bpy.data.actions.get(leftMuzzleFlashAction)
+			bpy.data.objects["MuzzleFlash - UZI MP"].hide_render = False
+			bpy.data.objects["MuzzleFlash - UZI MP Left"].hide_render = False
+			bpy.data.objects["MuzzleFlash - UZI MP"].animation_data.action = bpy.data.actions.get(currentAction)
+			bpy.data.objects["MuzzleFlash - UZI MP Left"].animation_data.action = bpy.data.actions.get(leftMuzzleFlashAction)
 		if currentAction == "Standing - Pistol - Aim & Shoot" or currentAction == "Crouch - Pistol - Aim & Shoot" or currentAction == "Prone - Pistol - Crawl & Shoot" or currentAction == "Standing - Pistol - Shoot low" or currentAction == "Standing - Pistol - Aim & Shoot - One Handed" or currentAction == "Standing - Pistol - Aim Badass":
 			bpy.data.objects["MuzzleFlash - HK USP"].hide_render = False
 			bpy.data.objects["MuzzleFlash - HK MP5K"].hide_render = False
 			bpy.data.objects["MuzzleFlash - Desert Eagle"].hide_render = False
 			bpy.data.objects["MuzzleFlash - SW500"].hide_render = False
+			bpy.data.objects["MuzzleFlash - UZI MP"].hide_render = False
 			bpy.data.objects["MuzzleFlash - HK USP"].animation_data.action = bpy.data.actions.get(currentAction)
 			bpy.data.objects["MuzzleFlash - HK MP5K"].animation_data.action = bpy.data.actions.get(currentAction)
 			bpy.data.objects["MuzzleFlash - Desert Eagle"].animation_data.action = bpy.data.actions.get(currentAction)
 			bpy.data.objects["MuzzleFlash - SW500"].animation_data.action = bpy.data.actions.get(currentAction)
+			bpy.data.objects["MuzzleFlash - UZI MP"].animation_data.action = bpy.data.actions.get(currentAction)
 
 	# RENDER AWAYYY!
 	bpy.ops.render.render(animation=True)

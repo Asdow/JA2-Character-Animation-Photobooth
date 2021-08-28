@@ -36,8 +36,8 @@ for i in range(len(animationArray)):
 			object.hide_render = True
 
 	# Bodytypes
-	bpy.data.objects["Body - RGM"].hide_render = True
-	bpy.data.objects["Body - BGM"].hide_render = False
+	bpy.data.objects["Body - RGM"].hide_render = False
+	bpy.data.objects["Body - BGM"].hide_render = True
 	bpy.data.objects["Body - FGM"].hide_render = True
 	
 
@@ -48,7 +48,7 @@ for i in range(len(animationArray)):
 		
 
 	# Display props in renders depending on the set
-	renderSet = 1
+	renderSet = 4
 	if renderSet == 1:
 		#helpers.disablePropRenderlayer(1)
 		#helpers.disablePropRenderlayer(2)
@@ -100,7 +100,7 @@ for i in range(len(animationArray)):
 		bpy.data.objects["Weapon - Shotgun"].hide_render = False
 		bpy.data.objects["Weapon - Saiga 12K"].hide_render = False
 		bpy.data.objects["Weapon - SPAS12"].hide_render = False
-		helpers.disablePropRenderlayer(8)
+		bpy.data.objects["Weapon - UZI SMG"].hide_render = False
 		helpers.disablePropRenderlayer(9)
 		helpers.disablePropRenderlayer(10)
 		# Display muzzleflashes only in relevant animations
@@ -119,6 +119,8 @@ for i in range(len(animationArray)):
 			bpy.data.objects["MuzzleFlash - Shotgun"].animation_data.action = bpy.data.actions.get(currentAction)
 			bpy.data.objects["MuzzleFlash - Saiga 12K"].animation_data.action = bpy.data.actions.get(currentAction)
 			bpy.data.objects["MuzzleFlash - SPAS12"].animation_data.action = bpy.data.actions.get(currentAction)
+			bpy.data.objects["MuzzleFlash - UZI SMG"].hide_render = False
+			bpy.data.objects["MuzzleFlash - UZI SMG"].animation_data.action = bpy.data.actions.get(currentAction)
 	elif renderSet == 3:
 		bpy.data.objects["Weapon - RPK"].hide_render = False
 		bpy.data.objects["Weapon - SAW"].hide_render = False

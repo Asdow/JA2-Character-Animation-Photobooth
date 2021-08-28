@@ -127,6 +127,7 @@ echo [5] pistols (USP, MP5K, Desert eagle, SW500)
 echo [6] props (Combat knife, crowbar)
 echo [7] Radio
 echo [8] LAW
+echo [9] Camoshirt and camopants
 echo [99] quit
 set /p decision=Choice: 
 if %decision%==0 (
@@ -227,6 +228,8 @@ rem			echo !_keyframes!
 	CALL :CreateRadioProp
 ) else if %decision%==8 (
 	CALL :CreateLAW
+) else if %decision%==9 (
+	CALL :CreateCamoprops
 ) else if %decision%==99 (
 	echo Quitting makesti script
 	GOTO :EndScript
@@ -377,6 +380,100 @@ EXIT /B 0
 EXIT /B 0
 
 
+:CreateCamoprops
+	SETLOCAL
+	set chosenPalette=!Palettes[5]!
+	set outputPrefix[0]=Legs
+	set suffixList[0]=_camolegs
+
+	set /a maxProps=0
+
+	Rem Convert rendered images into correct bmp and rename them. Everything goes into its own folders underneath makesti/extract to be able to process things in parallel
+	set /a count=1
+	set /a div=4
+	for /l %%m in (0,1,!animIndex!) do (
+		set folderName=!animFolders[%%m]!
+		set _INPUTDIR=output\!folderName!
+		echo(
+		echo "---------------"
+		echo "!_INPUTDIR!"
+
+
+		for /l %%n in (0,1,!maxProps!) do (
+			set "_EXTRACTDIR=make_script\extract\!folderName!\!outputPrefix[%%n]!"
+			IF NOT EXIST "!_EXTRACTDIR!" md "!_EXTRACTDIR!"
+			rem echo !_EXTRACTDIR!
+			rem delete any .bmp files from extract folder before converting output frames into there
+			DEL "!_EXTRACTDIR!\*.bmp"
+			Rem crop and convert rendered images to use correct header type
+			start /B make_script\convert.exe "!_INPUTDIR!\!outputPrefix[%%n]!*.png" -crop !_CROPSETTINGS! BMP3:"!_EXTRACTDIR!\0.bmp"
+		)
+		set /a xx=!count! %% !div!
+		if !xx! == 0 (
+			call :loop1sync
+		)
+		set /a count+=1
+	)
+	call :loop1sync
+	
+	Rem Turn processed images into sti files in parallel
+	set /a count=1
+	set /a div=4
+	for /l %%m in (0,1,!animIndex!) do (
+		set folderName=!animFolders[%%m]!
+		set _INPUTDIR=output\!folderName!
+
+		for /l %%n in (0,1,!maxProps!) do (
+			set "_EXTRACTDIR=make_script\extract\!folderName!\!outputPrefix[%%n]!"
+			IF NOT EXIST "!_EXTRACTDIR!" md "!_EXTRACTDIR!"
+			
+			rem create layered .sti files for basebody
+			SETLOCAL
+			set _FILE_NAME=!animFileNames[%%m]!
+			set _FILEPATH=!_OUTPUTDIR!!_FILE_NAME!!suffixList[%%n]!.sti
+			set _range=!_RANGE[%%m]!
+			set "_extract=!_EXTRACTDIR!\0-%%d.bmp%"
+			set "_palette=make_script\Palettes\!chosenPalette!"
+			set "_keyframes=!_KEYFRAME[%%m]!"
+			echo !_FILEPATH!
+rem			echo !_extract!
+rem			echo !_range!
+			echo !_palette!
+rem			echo !_OFFSET!
+rem			echo !_keyframes!
+			Rem echo empty lines
+			echo(
+			
+			start /B make_script\sticom.exe new -o "!_FILEPATH!"  -i "!_extract!" -r !_range! -p "!_palette!" --offset !_OFFSET! -k "!_keyframes!" -F -M "TRIM" -P !_PIVOT!
+			ENDLOCAL
+		)
+		set /a xx=!count! %% !div!
+		if !xx! == 0 (
+			call :loop2sync
+		)
+		set /a count+=1
+	)
+	call :loop2sync
+
+
+
+	
+	set propPalettes[0]=!Palettes[5]!
+	set propnumbers[0]=10
+	set propSuffix[0]=_camolsleeve
+
+	set /a maxProps=0
+
+
+	Rem Convert rendered images into correct bmp and rename them. Everything goes into its own folders underneath makesti/extract to be able to process things in parallel
+	CALL :ConvertOutputToExtractForProps
+	Rem Turn processed images into sti files in parallel
+	CALL :CreateSTIforProps
+
+	ENDLOCAL
+EXIT /B 0
+
+
 
 :CreateBasePropsLMGandRifles
 	SETLOCAL
@@ -446,7 +543,11 @@ EXIT /B 0
 	set propnumbers[6]=7
 	set propSuffix[6]=_spas12
 
-	set /a maxProps=6
+	set propPalettes[7]=!Palettes[4]!
+	set propnumbers[7]=8
+	set propSuffix[7]=_uzi
+
+	set /a maxProps=7
 
 	Rem Convert rendered images into correct bmp and rename them. Everything goes into its own folders underneath makesti/extract to be able to process things in parallel
 	CALL :ConvertOutputToExtractForProps
@@ -492,7 +593,15 @@ EXIT /B 0
 	set propnumbers[7]=8
 	set propSuffix[7]=_lsw500
 
-	set /a maxProps=7
+	set propPalettes[8]=!Palettes[4]!
+	set propnumbers[8]=9
+	set propSuffix[8]=_uzi_1h
+
+	set propPalettes[9]=!Palettes[4]!
+	set propnumbers[9]=10
+	set propSuffix[9]=_uzi_1h_l
+
+	set /a maxProps=9
 
 	Rem Convert rendered images into correct bmp and rename them. Everything goes into its own folders underneath makesti/extract to be able to process things in parallel
 	CALL :ConvertOutputToExtractForProps
