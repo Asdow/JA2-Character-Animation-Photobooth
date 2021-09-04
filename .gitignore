@@ -110,3 +110,7 @@ make_script/sti-edit/stiPalette.gpl
 make_script/sti-edit/stiPalette_camo.act
 make_script/sti-edit/stiPalette_camo.gpl
 make_script/sti-edit/[ACT] JA2-Palette---Guns-copy.act
+batchrender-femaleAnims0.py
+batchrender-femaleAnims1.py
+batchrender-femaleAnims2.py
+batchrender-femaleAnims3.py

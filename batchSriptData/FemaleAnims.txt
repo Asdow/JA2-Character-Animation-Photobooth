@@ -1,0 +1,110 @@
+; Animation name, end frame, sti name
+;------------------------------------------------------
+; These animations are special cases. They're kept here for easy copy and pasting to render scripts but have their own makesti.bat due to 4 directions.
+;------------------------------------------------------
+;("Standing - Hop fence",18,"S_HOP"),
+;("Standing - Empty Hands - Climb",44,"S_CLIMB"),
+;("Standing - Empty Hands - Kick Door",20,"S_DR_KICK"),
+;("Standing - Empty Hands - Fall",52,"S_N_FALL"),
+;("Standing - Empty Hands - Fall Forward",41,"S_N_FALL_FWD"),
+;("Standing - Rifle - Kick Door",20,"S_R_DR_KICK"),
+;------------------------------------------------------
+; Female specific anims
+;------------------------------------------------------
+;("Standing - Empty Hands - Idle - Female",8,"F_N_STD"),
+;("Standing - Empty Hands - Idle - Fox",8,"F_N_STD_FOX"),
+;("Standing - Empty Hands - Pickup - Female",5,"F_PICKUP"),
+;("Standing - Empty Hands - Pickup - Fox",5,"F_PICKUP_FOX"),
+;("Standing - Empty Hands - Lob - Female",14,"F_LOB"),
+;("Standing - Empty Hands - Lob Grenade - Female",19,"F_LOB_G"),
+;("Standing - Empty Hands - Throw - Female",14,"F_THROW"),
+;("Standing - Empty Hands - Throw Grenade - Female",19,"F_THROW_G"),
+;("Standing - Empty Hands - Open Door - Female",10,"F_OPEN"),
+;("Standing - Empty Hands - Dodge - Female",6,"F_DODGE"),
+("Standing - Empty Hands - Hit & Die - Female",33,"F_DIE2"),
+("Standing - Empty Hands - Hit & Die 2 - Female",35,"F_D_FWD"),
+;("Standing - Empty Hands - Flyback Hit - Female",23,"F_DIEBAC"),
+;("Standing - Empty Hands - Flyback & Die - Female",24,"F_DIEHARD"),
+;("Standing - Empty Hands - Flyback & Die BLOOD - Female",7,"F_DIEHARDB"),
+;("Standing To Cower - Empty hands - Female",12,"F_COWER"),
+;("Crouch - Empty Hands - Throw - Female",14,"F_C_THROW"),
+;("Crouch - Empty Hands - Hit and Die - Female",9,"F_C_DIE"),
+;("Crouch - Empty Hands - Punch - Female",14,"F_C_PUNCH"),
+;("Crouch - Render medical aid - Female",8,"F_MEDIC"),
+;("Prone - Empty Hands - Roll - Female",8,"F_ROLL"),
+;("Prone - Empty Hands - Hit and Die - Female",22,"F_P_DIE"),
+;------------------------------------------------------
+; Animations for using the radio
+;------------------------------------------------------
+;("Crouch - Empty Hands - Radio - Female",16,"F_C_RADIO"),
+;("Standing - Empty Hands - Radio - Female",16,"F_RADIO"),
+;("Standing - Empty Hands - Use Remote - Female",6,"F_REMOTE"),
+;------------------------------------------------------
+; Pistol Related Anims
+;------------------------------------------------------
+;("Standing - Empty Hands - Drunk - Female",20,"F_N_DRUNK"),
+;("Standing - Empty Hands - Walk - Female",12,"F_N_WALK"),
+;("Standing - Empty Hands - Run - Female",12,"F_N_RUN"),
+;("Standing - Empty Hands - Pain - Female",14,"F_N_PAIN"),
+;("Standing To Crouch - Empty Hands - Female",15,"F_N_CRCH"),
+;("Crouch - Empty Hands - Walk - Female",22,"F_N_SWAT"),
+;("Standing - Pistol - Idle - Female",8,"F_P_BRTH"),
+;("Standing - Pistol - Aim & Shoot - Female",21,"F_P_SHOT"),
+;("Standing - Pistol - Aim & Shoot - One Handed - Female",21,"F_P_SHOT2"),
+;("Standing - Pistol - Shoot low - Female",8,"F_P_LOW"),
+;("Standing - Pistol - Walk Aiming - Female",12,"F_P_RDY_WALK"),
+;("Standing - Dual Pistols - Aim & Shoot - Female",25,"F_DBLSHOT"),
+;("Standing - Dual Pistols - Walk Aiming - Female",12,"F_DBL_RDY_WALK"),
+;("Crouch - Pistol - Aim & Shoot - Female",18,"F_CR_AIM_P"),
+;("Crouch - Pistol - Walk Aiming - Female",24,"F_P_SWAT_AIM"),
+;("Crouch - Dual Pistol - Aim & Shoot - Female",25,"F_CR_AIM_D"),
+;("Crouch - Dual Pistol - Walk Aiming - Female",24,"F_D_SWAT_AIM"),
+;("Prone - Pistol - Crawl & Shoot - Female UNFINISHED",29,"F_N_PRNE"),
+;------------------------------------------------------
+; Rifle Related Anims
+;------------------------------------------------------
+;("Standing - Rifle - Raise to Idle - Female",5,"F_RAISE"),
+;("Standing - Rifle - Idle - Female",8,"F_R_STD"),
+;("Standing - Rifle - Walk - Female",12,"RGF_BASICWALK"),
+;("Standing - Rifle - Walk Aiming - Female",12,"F_R_RDY_WALK"),
+;("Standing - Rifle - Hurt Walk - Female",12,"F_R_WALK_HURT"),
+;("Standing - Rifle - Run - Female",12,"F_R_RUN"),
+;("Standing - Rifle - Aim & Shoot - Female",21,"F_SR_AIM"),
+;("Standing - Rifle - Shoot low - Female",8,"F_R_LOW"),
+;("Standing - Rifle - Hip Aim - Female",21,"F_SR_HIP_AIM"),
+;("Standing - Rifle - Hip Shoot low - Female",8,"F_R_HIP_LOW"),
+;("Standing - Rifle - Hit - Female",5,"F_HIT"),
+;("Standing - Rifle - Pain - Female",14,"F_R_PAIN"),
+;("Standing - Rifle - Drunk - Female",20,"F_R_DRUNK"),
+;("Standing - Rifle - Open door - Female",10,"F_RIFLE_OPEN"),
+;("Standing To Cower - Rifle - Female",12,"F_R_COWER"),
+;("Standing To Crouch - Rifle - Female",15,"F_R_C"),
+;("Crouch - Rifle - Walk - Female",22,"F_R_SWAT"),
+;("Crouch - Rifle - Walk Aiming - Female",24,"F_R_SWAT_AIM"),
+;("Crouch - Rifle - Aim & Shoot - Female",18,"F_CR_AIM"),
+;("Prone - Rifle - Crawl & Shoot - Female",29,"F_R_PRN"),
+;------------------------------------------------------
+; Common anims with RGM & BGM
+;------------------------------------------------------
+;("Standing - Punch",24,"S_PUNCH"),
+;("Standing - Empty Hands - Karate punch",24,"S_K_PUNCH"),
+;("Standing - Empty Hands - Karate low kick",44,"S_K_LOWKICK"),
+;("Standing - Empty Hands - Karate spin kick",70,"S_K_SPINKICK"),
+;("Crouch To Prone - Sleep",13,"S_SLEEP"),
+;("Prone - Empty Hands - Render Aid",7,"S_PRN_MED"),
+;("Prone - Empty Hands - Cower",10,"S_PRNCOW"),
+;("Prone - Empty Hands - Roll Over",14,"S_N_ROLL")
+;("Standing - Pistol - Sidestep",12,"S_P_SDSP"),
+;("Standing - Pistol - Sidestep Aim Alternate",12,"S_P_SDSP_AIM"),
+;("Standing - Dual Pistols - Sidestep",12,"S_DBL_SDSP"),
+;("Standing - Dual Pistols - Sidestep Aim",12,"S_DBL_SDSP_AIM"),
+;("Prone - Pistol - Crawl & Shoot",29,"S_N_PRNE"),
+;("Prone - Dual Pistol - Shoot",12,"S_DB_PRN")
+;("Standing - Rifle - Sidestep",12,"S_R_SDSP"),
+;("Standing - Rifle - Sidestep Aim",12,"S_R_SDSP_AIM"),
+;("Standing - Rifle - Bayonet",18,"S_R_BAYONET"),
+;("Standing - Rifle - Bayonet Low",23,"S_R_BAYONET_L"),
+;("Prone - Rifle - Cower",10,"S_R_PRNCOW"),
+;("Prone - Rifle - Roll Over",14,"S_R_ROLL"),
+;("Standing - LAW - Fire",20,"S_LAW"),
+;("Crouch - LAW - Fire",20,"S_LAW_CR"),

@@ -47,5 +47,6 @@
 ;------------------------------------------------------
 ; Badass big merc anims
 ;------------------------------------------------------
-("Standing - Empty Hands - Flex Badass",14,"M_FLEX"),
-("Standing - Empty Hands - Stretch Badass",14,"M_STRETCH"),
+;("Standing - Empty Hands - Flex Badass",14,"M_FLEX"),
+;("Standing - Empty Hands - Stretch Badass",14,"M_STRETCH"),
+("Standing - Empty Hands - Flip Rock",8,"M_STEIN"),

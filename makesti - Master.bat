@@ -31,6 +31,7 @@ echo [1] pistolAnims.txt
 echo [2] noWeaponAnims.txt
 echo [3] meleeWeaponAnims.txt
 echo [4] HeavyWeaponAnims.txt
+echo [5] FemaleAnims.txt
 set /p animchoice=Choice: 
 if %animchoice%==0 (
 	set "animData=batchSriptData\rifleAnims.txt"
@@ -42,6 +43,8 @@ if %animchoice%==0 (
 	set animData=batchSriptData\meleeWeaponAnims.txt
 ) else if %animchoice%==4 (
 	set animData=batchSriptData\HeavyWeaponAnims.txt
+) else if %animchoice%==5 (
+	set animData=batchSriptData\FemaleAnims.txt
 ) ELSE (
 	echo Invalid choice
 	GOTO :AnimDataChoice
@@ -146,7 +149,7 @@ if %decision%==0 (
 
 	Rem Convert rendered images into correct bmp and rename them. Everything goes into its own folders underneath makesti/extract to be able to process things in parallel
 	set /a count=1
-	set /a div=4
+	set /a div=3
 	for /l %%m in (0,1,!animIndex!) do (
 		set folderName=!animFolders[%%m]!
 		set _INPUTDIR=output\!folderName!
@@ -174,7 +177,7 @@ if %decision%==0 (
 	
 	Rem Turn processed images into sti files in parallel
 	set /a count=1
-	set /a div=4
+	set /a div=3
 	for /l %%m in (0,1,!animIndex!) do (
 		set folderName=!animFolders[%%m]!
 		set _INPUTDIR=output\!folderName!

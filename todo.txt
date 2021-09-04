@@ -1,9 +1,7 @@
 Todo:
-- Redo TRG42 green material and sprites, it doesn't look particularly good right now
-- Tweak camopattern materials to look better ingame
-- Damnit, we need an uzi model
-- Muzzleflashes need to be rerendered so they're not black and white
-
+Add rocket rifle
+check female anims gotten from rust
+work on camo pants and sleeves
 
 Missing animations:
 - Merc in water
