@@ -320,8 +320,11 @@ EXIT /B 0
 	set propPalettes[5]=!Palettes[4]!
 	set propnumbers[5]=6
 	set propSuffix[5]=_MKL
-	set /a maxProps=5
 
+	set propPalettes[6]=!Palettes[4]!
+	set propnumbers[6]=7
+	set propSuffix[6]=_RR
+	set /a maxProps=6
 
 
 	for /l %%n in (0,1,!maxProps!) do (

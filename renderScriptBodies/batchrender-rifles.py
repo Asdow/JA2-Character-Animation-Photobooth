@@ -36,8 +36,8 @@ for i in range(len(animationArray)):
 			object.hide_render = True
 
 	# Bodytypes
-	bpy.data.objects["Body - RGM"].hide_render = False
-	bpy.data.objects["Body - BGM"].hide_render = True
+	bpy.data.objects["Body - RGM"].hide_render = True
+	bpy.data.objects["Body - BGM"].hide_render = False
 	bpy.data.objects["Body - FGM"].hide_render = True
 	
 
@@ -48,7 +48,7 @@ for i in range(len(animationArray)):
 		
 
 	# Display props in renders depending on the set
-	renderSet = 4
+	renderSet = 3
 	if renderSet == 1:
 		#helpers.disablePropRenderlayer(1)
 		#helpers.disablePropRenderlayer(2)
@@ -128,7 +128,7 @@ for i in range(len(animationArray)):
 		bpy.data.objects["Weapon - Mosin Nagant"].hide_render = False
 		bpy.data.objects["Weapon - M14"].hide_render = False
 		bpy.data.objects["Weapon - Milkor"].hide_render = False
-		helpers.disablePropRenderlayer(7)
+		bpy.data.objects["Weapon - Rocket Rifle"].hide_render = False
 		helpers.disablePropRenderlayer(8)
 		helpers.disablePropRenderlayer(9)
 		helpers.disablePropRenderlayer(10)

@@ -50,7 +50,7 @@ for i in range(len(animationArray)):
 		
 
 	# Display props in renders depending on the set
-	renderSet = 6
+	renderSet = 3
 	if renderSet == 1:
 		bpy.data.objects["Weapon - FN FAL"].hide_render = False
 		bpy.data.objects["Weapon - M16"].hide_render = False
@@ -120,7 +120,7 @@ for i in range(len(animationArray)):
 		bpy.data.objects["Weapon - Mosin Nagant"].hide_render = False
 		bpy.data.objects["Weapon - M14"].hide_render = False
 		bpy.data.objects["Weapon - Milkor"].hide_render = False
-		helpers.disablePropRenderlayer(7)
+		bpy.data.objects["Weapon - Rocket Rifle"].hide_render = False
 		helpers.disablePropRenderlayer(8)
 		helpers.disablePropRenderlayer(9)
 		helpers.disablePropRenderlayer(10)
@@ -137,20 +137,20 @@ for i in range(len(animationArray)):
 			bpy.data.objects["MuzzleFlash - Mosin Nagant"].animation_data.action = bpy.data.actions.get(currentAction)
 			bpy.data.objects["MuzzleFlash - M14"].animation_data.action = bpy.data.actions.get(currentAction)
 	elif renderSet == 4:
-		bpy.data.objects["Vest - Flak Jacket"].hide_render = False
+		bpy.data.objects["Vest - Flak Jacket - Female"].hide_render = False
 		# Change the flak jacket's shrinkwrap target depending on the body to be rendered
 		if bpy.data.objects["Body - RGM"].hide_render == False:
 			bpy.data.objects["Vest - Flak Jacket"].modifiers["Shrinkwrap"].target = bpy.data.objects["RGM - Vest Target"]
 		elif bpy.data.objects["Body - BGM"].hide_render == False:
 			bpy.data.objects["Vest - Flak Jacket"].modifiers["Shrinkwrap"].target = bpy.data.objects["BGM - Vest Target"]
 		elif bpy.data.objects["Body - FGM"].hide_render == False:
-			bpy.data.objects["Vest - Flak Jacket"].modifiers["Shrinkwrap"].target = bpy.data.objects["FGM - Vest Target"]
+			bpy.data.objects["Vest - Flak Jacket - Female"].modifiers["Shrinkwrap"].target = bpy.data.objects["FGM - Vest Target"]
 		bpy.data.objects["Backpack - Backpack"].hide_render = False
-		bpy.data.objects["Hat - Beret"].hide_render = False
-		bpy.data.objects["Hat - Helmet"].hide_render = False
+		bpy.data.objects["Hat - Beret - Female"].hide_render = False
+		bpy.data.objects["Hat - Helmet - Female"].hide_render = False
 		bpy.data.objects["Face - Gasmask"].hide_render = False
 		bpy.data.objects["Face - NVG"].hide_render = False
-		bpy.data.objects["Hat - Booney"].hide_render = False
+		bpy.data.objects["Hat - Booney - Female"].hide_render = False
 		bpy.data.objects["Legs - Kneepad - Left"].hide_render = False
 		bpy.data.objects["Legs - Kneepad - Right"].hide_render = False
 		bpy.data.objects["Hat - Camo Helmet"].hide_render = False
@@ -226,16 +226,18 @@ for i in range(len(animationArray)):
 		bpy.data.objects["Weapon - Combat Knife"].hide_render = False
 		bpy.data.objects["Weapon - Combat Knife"].animation_data.action = bpy.data.actions.get("DisplayProp")
 		bpy.data.objects["Weapon - Crowbar"].hide_render = False
-		if currentAction == "Standing - Knife - Stab" or currentAction == "Standing - Knife - Slice" or currentAction == "Standing - Knife - Breath":
+		if currentAction == "Standing - Knife - Stab - Female" or currentAction == "Standing - Knife - Slice - Female" or currentAction == "Standing - Knife - Breath - Female":
 			bpy.data.objects["Weapon - Combat Knife"].hide_render = False
 			bpy.data.objects["Weapon - Combat Knife"].animation_data.action = bpy.data.actions.get(currentAction)
-		if currentAction == "Crouch - Knife - Stab":
+		if currentAction == "Crouch - Knife - Stab - Female":
 			bpy.data.objects["Weapon - Combat Knife"].hide_render = True
+			bpy.data.objects["Weapon - Combat Knife"].animation_data.action = bpy.data.actions.get("HideMuzzleFlash")
 			bpy.data.objects["Weapon - Combat Knife Alt hold"].hide_render = False
-		if currentAction == "Standing - Knife - Throw":
+		if currentAction == "Standing - Knife - Throw - Female":
 			bpy.data.objects["Weapon - Combat Knife"].hide_render = False
+			bpy.data.objects["Weapon - Combat Knife Alt hold"].hide_render = True
 			bpy.data.objects["Weapon - Combat Knife"].animation_data.action = bpy.data.actions.get(currentAction)
-		if currentAction == "Standing - Crowbar - Hit":
+		if currentAction == "Standing - Crowbar - Hit - Female":
 			bpy.data.objects["Weapon - Crowbar"].hide_render = False
 		helpers.disablePropRenderlayer(2)
 		#helpers.disablePropRenderlayer(3)
