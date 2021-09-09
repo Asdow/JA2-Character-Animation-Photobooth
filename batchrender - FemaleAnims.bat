@@ -14,7 +14,7 @@ if !parallelRender!==1 (
 )
 
 
-echo Rendering rifle animations
+echo Rendering female animations
 echo Opening blender and starting animation rendering
 cd !_BLENDERDIR!
 

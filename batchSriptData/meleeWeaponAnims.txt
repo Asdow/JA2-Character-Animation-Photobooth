@@ -16,4 +16,4 @@
 ("Crouch - Empty hands - Walk",22,"S_N_SWAT"),
 ("Crouch - Crowbar - Hit",14,"S_C_CROWBAR"),
 ("Crouch - Knife - Stab",14,"S_C_STAB"),
-("Prone - Pistol - Crawl & Shoot",29,"S_N_PRNE")
+("Prone - Pistol - Crawl & Shoot",29,"S_N_PRNE"),

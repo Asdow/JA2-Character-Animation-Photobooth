@@ -48,7 +48,7 @@ for i in range(len(animationArray)):
 		
 
 	# Display props in renders depending on the set
-	renderSet = 1
+	renderSet = 3
 	if renderSet == 1:
 		bpy.data.objects["Weapon - LAW"].hide_render = False
 		#helpers.disablePropRenderlayer(1)
@@ -84,6 +84,24 @@ for i in range(len(animationArray)):
 			bpy.data.objects["Vest - BGM Long Sleeved"].hide_render = False
 		# Switch the background color to gray for the long sleeved composition groups
 		bpy.data.node_groups["JA2 Layered Sprite - Prop 10"].nodes["Switch.002"].check = False
+	if renderSet == 3:
+		bpy.data.objects["Hat - Ballcap"].hide_render = False
+		if bpy.data.objects["Body - RGM"].hide_render == False:
+			bpy.data.objects["Hat - Ballcap"].modifiers["Shrinkwrap"].target = bpy.data.objects["Body - RGM"]
+		elif bpy.data.objects["Body - BGM"].hide_render == False:
+			bpy.data.objects["Hat - Ballcap"].modifiers["Shrinkwrap"].target = bpy.data.objects["Body - BGM"]
+		elif bpy.data.objects["Body - FGM"].hide_render == False:
+			bpy.data.objects["Hat - Ballcap"].modifiers["Shrinkwrap"].target = bpy.data.objects["Body - FGM"]
+		bpy.data.node_groups["JA2 Layered Sprite - Prop 1"].nodes["Switch.002"].check = False
+		helpers.disablePropRenderlayer(2)
+		helpers.disablePropRenderlayer(3)
+		helpers.disablePropRenderlayer(4)
+		helpers.disablePropRenderlayer(5)
+		helpers.disablePropRenderlayer(6)
+		helpers.disablePropRenderlayer(7)
+		helpers.disablePropRenderlayer(8)
+		helpers.disablePropRenderlayer(9)
+		helpers.disablePropRenderlayer(10)
 
 	# RENDER AWAYYY!
 	bpy.ops.render.render(animation=True)

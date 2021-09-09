@@ -10,6 +10,7 @@ r4m				-	PRC 152					https://sketchfab.com/3d-models/prc-152-00e19a0326c84dabb2a
 Rectus			-	M72 LAW Rocket Launcher https://sketchfab.com/3d-models/m72-law-rocket-launcher-b4367ffcf3084d4b9eff8c497bf5c7fd
 Ruslan Koschey	-	Military vest - free	https://sketchfab.com/3d-models/military-vest-free-8cc3fa44dd39451cb534def120ec1850
 Saucy			-	Crowbar (Low-poly)		https://sketchfab.com/3d-models/crowbar-low-poly-b562b989f1084ae1a286e6aaa34456ae
+Tactical_Gamer	-	Baseball hat			https://sketchfab.com/3d-models/baseball-hat-d2663d7899c04e73a43cc34ec3e14ee0
 TastyTony		-	Low-Poly Mossberg 590	https://sketchfab.com/3d-models/low-poly-mossberg-590-c0551a6b841145f7a8e59e9304728f1f
 TastyTony		-	Low-Poly HK MP5K		https://sketchfab.com/3d-models/low-poly-hk-mp5k-fb03df0656ea412585d69d6be137788c
 TastyTony		-	Low-Poly HK MP5			https://sketchfab.com/3d-models/low-poly-hk-mp5-80980f757c2c463ebc73460a31611652

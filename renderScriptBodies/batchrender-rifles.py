@@ -36,8 +36,8 @@ for i in range(len(animationArray)):
 			object.hide_render = True
 
 	# Bodytypes
-	bpy.data.objects["Body - RGM"].hide_render = True
-	bpy.data.objects["Body - BGM"].hide_render = False
+	bpy.data.objects["Body - RGM"].hide_render = False
+	bpy.data.objects["Body - BGM"].hide_render = True
 	bpy.data.objects["Body - FGM"].hide_render = True
 	
 
@@ -48,7 +48,7 @@ for i in range(len(animationArray)):
 		
 
 	# Display props in renders depending on the set
-	renderSet = 3
+	renderSet = 5
 	if renderSet == 1:
 		#helpers.disablePropRenderlayer(1)
 		#helpers.disablePropRenderlayer(2)
@@ -167,6 +167,24 @@ for i in range(len(animationArray)):
 			bpy.data.objects["Vest - BGM Long Sleeved"].hide_render = False
 		# Switch the background color to gray for the long sleeved composition groups
 		bpy.data.node_groups["JA2 Layered Sprite - Prop 10"].nodes["Switch.002"].check = False
+	if renderSet == 5:
+		bpy.data.objects["Hat - Ballcap"].hide_render = False
+		if bpy.data.objects["Body - RGM"].hide_render == False:
+			bpy.data.objects["Hat - Ballcap"].modifiers["Shrinkwrap"].target = bpy.data.objects["Body - RGM"]
+		elif bpy.data.objects["Body - BGM"].hide_render == False:
+			bpy.data.objects["Hat - Ballcap"].modifiers["Shrinkwrap"].target = bpy.data.objects["Body - BGM"]
+		elif bpy.data.objects["Body - FGM"].hide_render == False:
+			bpy.data.objects["Hat - Ballcap"].modifiers["Shrinkwrap"].target = bpy.data.objects["Body - FGM"]
+		bpy.data.node_groups["JA2 Layered Sprite - Prop 1"].nodes["Switch.002"].check = False
+		helpers.disablePropRenderlayer(2)
+		helpers.disablePropRenderlayer(3)
+		helpers.disablePropRenderlayer(4)
+		helpers.disablePropRenderlayer(5)
+		helpers.disablePropRenderlayer(6)
+		helpers.disablePropRenderlayer(7)
+		helpers.disablePropRenderlayer(8)
+		helpers.disablePropRenderlayer(9)
+		helpers.disablePropRenderlayer(10)
 
 
 	# RENDER AWAYYY!

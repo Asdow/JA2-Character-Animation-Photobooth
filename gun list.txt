@@ -44,6 +44,7 @@ x UZI
 x Milkor MGL
 Mortar
 x LAW
+x Rocket Rifle
 
 --- Props ---
 x Vest (needs proper rigging)
@@ -56,4 +57,5 @@ x Knife
 x Radio
 x crowbar
 x knee pads
+x ballcap
 riot shield

@@ -47,7 +47,7 @@ for i in range(len(animationArray)):
 
 
 	# Display props in renders depending on the set
-	renderSet = 2
+	renderSet = 3
 	if renderSet == 1:
 		bpy.data.objects["Vest - Flak Jacket"].hide_render = False
 		# Change the flak jacket's shrinkwrap target depending on the body to be rendered
@@ -80,6 +80,7 @@ for i in range(len(animationArray)):
 			bpy.data.objects["Weapon - Combat Knife"].animation_data.action = bpy.data.actions.get(currentAction)
 		if currentAction == "Crouch - Knife - Stab":
 			bpy.data.objects["Weapon - Combat Knife"].hide_render = True
+			bpy.data.objects["Weapon - Combat Knife"].animation_data.action = bpy.data.actions.get("HideMuzzleFlash")
 			bpy.data.objects["Weapon - Combat Knife Alt hold"].hide_render = False
 		if currentAction == "Standing - Knife - Throw":
 			bpy.data.objects["Weapon - Combat Knife"].hide_render = False
@@ -88,6 +89,24 @@ for i in range(len(animationArray)):
 			bpy.data.objects["Weapon - Crowbar"].hide_render = False
 		helpers.disablePropRenderlayer(2)
 		#helpers.disablePropRenderlayer(3)
+		helpers.disablePropRenderlayer(4)
+		helpers.disablePropRenderlayer(5)
+		helpers.disablePropRenderlayer(6)
+		helpers.disablePropRenderlayer(7)
+		helpers.disablePropRenderlayer(8)
+		helpers.disablePropRenderlayer(9)
+		helpers.disablePropRenderlayer(10)
+	if renderSet == 3:
+		bpy.data.objects["Hat - Ballcap"].hide_render = False
+		if bpy.data.objects["Body - RGM"].hide_render == False:
+			bpy.data.objects["Hat - Ballcap"].modifiers["Shrinkwrap"].target = bpy.data.objects["Body - RGM"]
+		elif bpy.data.objects["Body - BGM"].hide_render == False:
+			bpy.data.objects["Hat - Ballcap"].modifiers["Shrinkwrap"].target = bpy.data.objects["Body - BGM"]
+		elif bpy.data.objects["Body - FGM"].hide_render == False:
+			bpy.data.objects["Hat - Ballcap"].modifiers["Shrinkwrap"].target = bpy.data.objects["Body - FGM"]
+		bpy.data.node_groups["JA2 Layered Sprite - Prop 1"].nodes["Switch.002"].check = False
+		helpers.disablePropRenderlayer(2)
+		helpers.disablePropRenderlayer(3)
 		helpers.disablePropRenderlayer(4)
 		helpers.disablePropRenderlayer(5)
 		helpers.disablePropRenderlayer(6)

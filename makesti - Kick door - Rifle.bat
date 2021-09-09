@@ -49,6 +49,7 @@ echo [1] props (Vest, Backpack, beret, Helmet, Gasmask)
 echo [2] assault rifles (FN FAL, M16, AK47, FAMAS, SCAR-H) and sniper rifles (Barrett, Dragunov, PSG1, TRG42, Patriot)
 echo [3] smgs (P90, Thompson, PPSH41, MP5) and shotguns (Mossberg 590, Saiga 12K, SPAS 12)
 echo [4] lmgs and rifles (RPK, SAW, PKM, Mosin Nagant, M14)
+echo [5] props (ballcap)
 echo [99] quit
 set /p decision=Choice: 
 if %decision%==0 (
@@ -106,6 +107,8 @@ if %decision%==0 (
 	CALL :CreateBasePropsSMGs
 ) else if %decision%==4 (
 	CALL :CreateBasePropsLMGandRifles
+) else if %decision%==5 (
+	CALL :CreateProps2
 ) else if %decision%==99 (
 	echo Quitting makesti script
 	GOTO :EndScript
@@ -169,42 +172,7 @@ pause
 
 	set /a maxProps=9
 
-	for /l %%n in (0,1,!maxProps!) do (
-		set nProps=!propnumbers[%%n]!
-
-		set "_EXTRACTDIR=make_script\extract\!_animFolder!\Prop!nProps!"
-		IF NOT EXIST "!_EXTRACTDIR!" md "!_EXTRACTDIR!"
-
-		rem delete any .bmp files from extract folder before converting output frames into there
-		DEL "!_EXTRACTDIR!\*.bmp"
-		Rem crop and convert rendered images to use correct header type
-		start /B make_script\convert.exe "!_output!\Prop!nProps!_C2*.png" "!_output!\Prop!nProps!_C4*.png" "!_output!\Prop!nProps!_C6*.png" "!_output!\Prop!nProps!_C8*.png" -crop !_CROPSETTINGS! BMP3:"!_EXTRACTDIR!\0.bmp"
-	)
-	:SYNCLOOP3
-	tasklist /FI "IMAGENAME eq convert.exe" 2>NUL | find /I /N "convert.exe">NUL
-	if %ERRORLEVEL%==0 (
-		ping localhost -n 3 >nul
-		GOTO SYNCLOOP3
-	)
-
-
-	for /l %%n in (0,1,!maxProps!) do (
-		set chosenPalette=!propPalettes[%%n]!
-		set nProps=!propnumbers[%%n]!
-		set _SUFFIX=!propSuffix[%%n]!
-		set "_EXTRACTDIR=make_script\extract\!_animFolder!\Prop!nProps!"
-		set _FILEPATH=!_OUTPUTDIR!%_FILE_NAME%!_SUFFIX!.sti
-		set "_extract=!_EXTRACTDIR!\0-%%d.bmp%"
-		set "_palette=make_script\Palettes\!chosenPalette!"
-		echo !_FILEPATH!
-		start /B make_script\sticom.exe new -o "!_FILEPATH!"  -i "!_extract!" -r !_RANGE! -p "!_palette!" --offset !_OFFSET! -k "!c!" -F -M "TRIM" -P !_PIVOT!
-	)
-	:SYNCLOOP4
-	tasklist /FI "IMAGENAME eq sticom.exe" 2>NUL | find /I /N "sticom.exe">NUL
-	if %ERRORLEVEL%==0 (
-		ping localhost -n 3 >nul
-		GOTO SYNCLOOP4
-	)
+	CALL :Create4DirSTI
 	ENDLOCAL
 EXIT /B 0
 
@@ -255,42 +223,7 @@ EXIT /B 0
 	set /a maxProps=9
 
 
-	for /l %%n in (0,1,!maxProps!) do (
-		set nProps=!propnumbers[%%n]!
-
-		set "_EXTRACTDIR=make_script\extract\!_animFolder!\Prop!nProps!"
-		IF NOT EXIST "!_EXTRACTDIR!" md "!_EXTRACTDIR!"
-
-		rem delete any .bmp files from extract folder before converting output frames into there
-		DEL "!_EXTRACTDIR!\*.bmp"
-		Rem crop and convert rendered images to use correct header type
-		start /B make_script\convert.exe "!_output!\Prop!nProps!_C2*.png" "!_output!\Prop!nProps!_C4*.png" "!_output!\Prop!nProps!_C6*.png" "!_output!\Prop!nProps!_C8*.png" -crop !_CROPSETTINGS! BMP3:"!_EXTRACTDIR!\0.bmp"
-	)
-	:SYNCLOOP3
-	tasklist /FI "IMAGENAME eq convert.exe" 2>NUL | find /I /N "convert.exe">NUL
-	if %ERRORLEVEL%==0 (
-		ping localhost -n 3 >nul
-		GOTO SYNCLOOP3
-	)
-
-
-	for /l %%n in (0,1,!maxProps!) do (
-		set chosenPalette=!propPalettes[%%n]!
-		set nProps=!propnumbers[%%n]!
-		set _SUFFIX=!propSuffix[%%n]!
-		set "_EXTRACTDIR=make_script\extract\!_animFolder!\Prop!nProps!"
-		set _FILEPATH=!_OUTPUTDIR!%_FILE_NAME%!_SUFFIX!.sti
-		set "_extract=!_EXTRACTDIR!\0-%%d.bmp%"
-		set "_palette=make_script\Palettes\!chosenPalette!"
-		echo !_FILEPATH!
-		start /B make_script\sticom.exe new -o "!_FILEPATH!"  -i "!_extract!" -r !_RANGE! -p "!_palette!" --offset !_OFFSET! -k "!c!" -F -M "TRIM" -P !_PIVOT!
-	)
-	:SYNCLOOP4
-	tasklist /FI "IMAGENAME eq sticom.exe" 2>NUL | find /I /N "sticom.exe">NUL
-	if %ERRORLEVEL%==0 (
-		ping localhost -n 3 >nul
-		GOTO SYNCLOOP4
-	)
+	CALL :Create4DirSTI
 	ENDLOCAL
 EXIT /B 0
 
@@ -327,42 +260,7 @@ EXIT /B 0
 	set /a maxProps=6
 
 
-	for /l %%n in (0,1,!maxProps!) do (
-		set nProps=!propnumbers[%%n]!
-
-		set "_EXTRACTDIR=make_script\extract\!_animFolder!\Prop!nProps!"
-		IF NOT EXIST "!_EXTRACTDIR!" md "!_EXTRACTDIR!"
-
-		rem delete any .bmp files from extract folder before converting output frames into there
-		DEL "!_EXTRACTDIR!\*.bmp"
-		Rem crop and convert rendered images to use correct header type
-		start /B make_script\convert.exe "!_output!\Prop!nProps!_C2*.png" "!_output!\Prop!nProps!_C4*.png" "!_output!\Prop!nProps!_C6*.png" "!_output!\Prop!nProps!_C8*.png" -crop !_CROPSETTINGS! BMP3:"!_EXTRACTDIR!\0.bmp"
-	)
-	:SYNCLOOP3
-	tasklist /FI "IMAGENAME eq convert.exe" 2>NUL | find /I /N "convert.exe">NUL
-	if %ERRORLEVEL%==0 (
-		ping localhost -n 3 >nul
-		GOTO SYNCLOOP3
-	)
-
-
-	for /l %%n in (0,1,!maxProps!) do (
-		set chosenPalette=!propPalettes[%%n]!
-		set nProps=!propnumbers[%%n]!
-		set _SUFFIX=!propSuffix[%%n]!
-		set "_EXTRACTDIR=make_script\extract\!_animFolder!\Prop!nProps!"
-		set _FILEPATH=!_OUTPUTDIR!%_FILE_NAME%!_SUFFIX!.sti
-		set "_extract=!_EXTRACTDIR!\0-%%d.bmp%"
-		set "_palette=make_script\Palettes\!chosenPalette!"
-		echo !_FILEPATH!
-		start /B make_script\sticom.exe new -o "!_FILEPATH!"  -i "!_extract!" -r !_RANGE! -p "!_palette!" --offset !_OFFSET! -k "!c!" -F -M "TRIM" -P !_PIVOT!
-	)
-	:SYNCLOOP4
-	tasklist /FI "IMAGENAME eq sticom.exe" 2>NUL | find /I /N "sticom.exe">NUL
-	if %ERRORLEVEL%==0 (
-		ping localhost -n 3 >nul
-		GOTO SYNCLOOP4
-	)
+	CALL :Create4DirSTI
 	ENDLOCAL
 EXIT /B 0
 
@@ -405,7 +303,26 @@ EXIT /B 0
 	set /a maxProps=7
 
 
+	CALL :Create4DirSTI
+	ENDLOCAL
+EXIT /B 0
 
+
+:CreateProps2
+	SETLOCAL
+	set propPalettes[0]=!Palettes[0]!
+	set propnumbers[0]=1
+	set propSuffix[0]=_bcap
+
+	set /a maxProps=0
+
+	CALL :Create4DirSTI
+	ENDLOCAL
+EXIT /B 0
+
+
+:Create4DirSTI
+	SETLOCAL
 	for /l %%n in (0,1,!maxProps!) do (
 		set nProps=!propnumbers[%%n]!
 

@@ -19,6 +19,8 @@ set "_CROPSETTINGS=192x192+0+0"
 set _PIVOT=(95,113)
 
 
+set "_animFolder=Standing - Empty Hands - Climb"
+set "_output=output\!_animFolder!"
 set _FILE_NAME=S_CLIMB
 set ll=44
 set /A nframes=%ll%
@@ -45,6 +47,7 @@ for /l %%n in (0,1,%rangeEnd%) do (
 echo Choose
 echo [0] for making a layered body STI
 echo [1] props (Vest, Backpack, beret, Helmet, Gasmask)
+echo [2] props (ballcap)
 echo [99] quit
 set /p decision=Choice: 
 if %decision%==0 (
@@ -96,6 +99,8 @@ if %decision%==0 (
 	GOTO :ContinueSTI
 ) else if %decision%==1 (
  	CALL :CreateBaseProps
+) else if %decision%==2 (
+	CALL :CreateProps2
 ) else if %decision%==99 (
 	echo Quitting makesti script
 	GOTO :EndScript
@@ -159,16 +164,36 @@ pause
 
 	set /a maxProps=9
 
+	CALL :Create4DirSTI
+	ENDLOCAL
+EXIT /B 0
+
+
+:CreateProps2
+	SETLOCAL
+	set propPalettes[0]=!Palettes[0]!
+	set propnumbers[0]=1
+	set propSuffix[0]=_bcap
+
+	set /a maxProps=0
+
+	CALL :Create4DirSTI
+	ENDLOCAL
+EXIT /B 0
+
+
+:Create4DirSTI
+	SETLOCAL
 	for /l %%n in (0,1,!maxProps!) do (
 		set nProps=!propnumbers[%%n]!
 
-		set "_EXTRACTDIR=make_script\extract\Standing - Empty Hands - Climb\Prop!nProps!"
+		set "_EXTRACTDIR=make_script\extract\!_animFolder!\Prop!nProps!"
 		IF NOT EXIST "!_EXTRACTDIR!" md "!_EXTRACTDIR!"
 
 		rem delete any .bmp files from extract folder before converting output frames into there
 		DEL "!_EXTRACTDIR!\*.bmp"
 		Rem crop and convert rendered images to use correct header type
-		start /B make_script\convert.exe "output\Standing - Empty Hands - Climb\Prop!nProps!_C2*.png" "output\Standing - Empty Hands - Climb\Prop!nProps!_C4*.png" "output\Standing - Empty Hands - Climb\Prop!nProps!_C6*.png" "output\Standing - Empty Hands - Climb\Prop!nProps!_C8*.png" -crop !_CROPSETTINGS! BMP3:"!_EXTRACTDIR!\0.bmp"
+		start /B make_script\convert.exe "!_output!\Prop!nProps!_C2*.png" "!_output!\Prop!nProps!_C4*.png" "!_output!\Prop!nProps!_C6*.png" "!_output!\Prop!nProps!_C8*.png" -crop !_CROPSETTINGS! BMP3:"!_EXTRACTDIR!\0.bmp"
 	)
 	:SYNCLOOP3
 	tasklist /FI "IMAGENAME eq convert.exe" 2>NUL | find /I /N "convert.exe">NUL
@@ -182,7 +207,7 @@ pause
 		set chosenPalette=!propPalettes[%%n]!
 		set nProps=!propnumbers[%%n]!
 		set _SUFFIX=!propSuffix[%%n]!
-		set "_EXTRACTDIR=make_script\extract\Standing - Empty Hands - Climb\Prop!nProps!"
+		set "_EXTRACTDIR=make_script\extract\!_animFolder!\Prop!nProps!"
 		set _FILEPATH=!_OUTPUTDIR!%_FILE_NAME%!_SUFFIX!.sti
 		set "_extract=!_EXTRACTDIR!\0-%%d.bmp%"
 		set "_palette=make_script\Palettes\!chosenPalette!"

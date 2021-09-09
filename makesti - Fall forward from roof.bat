@@ -46,6 +46,7 @@ for /l %%n in (0,1,%rangeEnd%) do (
 echo Choose
 echo [0] for making a layered body STI
 echo [1] props (Vest, Backpack, beret, Helmet, Gasmask)
+echo [2] props (ballcap)
 echo [99] quit
 set /p decision=Choice: 
 if %decision%==0 (
@@ -97,6 +98,8 @@ if %decision%==0 (
 	GOTO :ContinueSTI
 ) else if %decision%==1 (
  	CALL :CreateBaseProps
+) else if %decision%==2 (
+	CALL :CreateProps2
 ) else if %decision%==99 (
 	echo Quitting makesti script
 	GOTO :EndScript
@@ -148,6 +151,26 @@ pause
 
 	set /a maxProps=6
 
+	CALL :Create4DirSTI
+	ENDLOCAL
+EXIT /B 0
+
+
+:CreateProps2
+	SETLOCAL
+	set propPalettes[0]=!Palettes[0]!
+	set propnumbers[0]=1
+	set propSuffix[0]=_bcap
+
+	set /a maxProps=0
+
+	CALL :Create4DirSTI
+	ENDLOCAL
+EXIT /B 0
+
+
+:Create4DirSTI
+	SETLOCAL
 	for /l %%n in (0,1,!maxProps!) do (
 		set nProps=!propnumbers[%%n]!
 

@@ -131,6 +131,7 @@ echo [6] props (Combat knife, crowbar)
 echo [7] Radio
 echo [8] LAW
 echo [9] Camoshirt and camopants
+echo [10] props (ballcap)
 echo [99] quit
 set /p decision=Choice: 
 if %decision%==0 (
@@ -233,6 +234,8 @@ rem			echo !_keyframes!
 	CALL :CreateLAW
 ) else if %decision%==9 (
 	CALL :CreateCamoprops
+) else if %decision%==10 (
+	CALL :CreateProps2
 ) else if %decision%==99 (
 	echo Quitting makesti script
 	GOTO :EndScript
@@ -372,6 +375,24 @@ EXIT /B 0
 	set propSuffix[9]=_lsleeve
 
 	set /a maxProps=9
+
+
+	Rem Convert rendered images into correct bmp and rename them. Everything goes into its own folders underneath makesti/extract to be able to process things in parallel
+	CALL :ConvertOutputToExtractForProps
+	Rem Turn processed images into sti files in parallel
+	CALL :CreateSTIforProps
+
+	ENDLOCAL
+EXIT /B 0
+
+
+:CreateProps2
+	SETLOCAL
+	set propPalettes[0]=!Palettes[0]!
+	set propnumbers[0]=1
+	set propSuffix[0]=_bcap
+
+	set /a maxProps=0
 
 
 	Rem Convert rendered images into correct bmp and rename them. Everything goes into its own folders underneath makesti/extract to be able to process things in parallel
