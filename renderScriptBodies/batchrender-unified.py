@@ -35,6 +35,7 @@ for i in range(len(animationArray)):
 		if objectName == "Body - RGM" or objectName == "Body - FGM" or objectName == "Body - BGM":
 			object.hide_render = True
 
+
 	# Bodytypes
 	bpy.data.objects["Body - RGM"].hide_render = True
 	bpy.data.objects["Body - BGM"].hide_render = True
@@ -48,6 +49,7 @@ for i in range(len(animationArray)):
 	if bpy.data.objects["Body - FGM"].hide_render == False:
 		helpers.setCameraOrthoScale(6.6)
 		
+
 
 	# Display props in renders depending on the set
 	renderSet = 9
@@ -175,7 +177,7 @@ for i in range(len(animationArray)):
 		bpy.data.objects["Weapon - UZI MP"].hide_render = False
 		bpy.data.objects["Weapon - UZI MP Left"].hide_render = False
 		# Display muzzleflashes only in relevant animations
-		if currentAction == "Standing - Dual Pistols - Aim & Shoot - Female" or currentAction == "Crouch - Dual Pistol - Aim & Shoot - Female" or currentAction == "Prone - Dual Pistol - Shoot":
+		if currentAction == "Standing - Dual Pistols - Aim & Shoot" or currentAction == "Crouch - Dual Pistol - Aim & Shoot" or currentAction == "Standing - Dual Pistols - Aim & Shoot - Female" or currentAction == "Crouch - Dual Pistol - Aim & Shoot - Female" or currentAction == "Prone - Dual Pistol - Shoot":
 			leftMuzzleFlashAction = "Dual Pistols - Aim & Shoot - Left Muzzleflash"
 			if currentAction == "Prone - Dual Pistol - Shoot":
 				leftMuzzleFlashAction = "Prone - Dual Pistol - Shoot - Left Muzzleflash"
@@ -199,7 +201,7 @@ for i in range(len(animationArray)):
 			bpy.data.objects["MuzzleFlash - UZI MP Left"].hide_render = False
 			bpy.data.objects["MuzzleFlash - UZI MP"].animation_data.action = bpy.data.actions.get(currentAction)
 			bpy.data.objects["MuzzleFlash - UZI MP Left"].animation_data.action = bpy.data.actions.get(leftMuzzleFlashAction)
-		if currentAction == "Standing - Pistol - Aim & Shoot - Female" or currentAction == "Crouch - Pistol - Aim & Shoot - Female" or currentAction == "Prone - Pistol - Crawl & Shoot" or currentAction == "Standing - Pistol - Shoot low - Female" or currentAction == "Standing - Pistol - Aim & Shoot - One Handed - Female":
+		if currentAction == "Standing - Pistol - Aim & Shoot" or currentAction == "Crouch - Pistol - Aim & Shoot" or currentAction == "Standing - Pistol - Shoot low" or currentAction == "Standing - Pistol - Aim & Shoot - One Handed" or currentAction == "Standing - Pistol - Aim Badass" or currentAction == "Standing - Pistol - Aim & Shoot - Female" or currentAction == "Crouch - Pistol - Aim & Shoot - Female" or currentAction == "Prone - Pistol - Crawl & Shoot" or currentAction == "Standing - Pistol - Shoot low - Female" or currentAction == "Standing - Pistol - Aim & Shoot - One Handed - Female":
 			bpy.data.objects["MuzzleFlash - HK USP"].hide_render = False
 			bpy.data.objects["MuzzleFlash - HK MP5K"].hide_render = False
 			bpy.data.objects["MuzzleFlash - Desert Eagle"].hide_render = False
@@ -211,7 +213,7 @@ for i in range(len(animationArray)):
 			bpy.data.objects["MuzzleFlash - SW500"].animation_data.action = bpy.data.actions.get(currentAction)
 			bpy.data.objects["MuzzleFlash - UZI MP"].animation_data.action = bpy.data.actions.get(currentAction)
 	elif renderSet == 6:
-		if currentAction == "Standing - Empty Hands - Radio - Female" or currentAction == "Crouch - Empty Hands - Radio - Female" or currentAction == "Standing - Empty Hands - Use Remote - Female":
+		if currentAction == "Standing - Empty Hands - Radio" or currentAction == "Crouch - Empty Hands - Radio" or currentAction == "Standing - Empty Hands - Use Remote" or currentAction == "Standing - Empty Hands - Radio - Female" or currentAction == "Crouch - Empty Hands - Radio - Female" or currentAction == "Standing - Empty Hands - Use Remote - Female":
 			bpy.data.objects["Weapon - Radio"].hide_render = False
 		helpers.disablePropRenderlayer(1)
 		helpers.disablePropRenderlayer(3)
@@ -226,7 +228,7 @@ for i in range(len(animationArray)):
 		bpy.data.objects["Weapon - Combat Knife"].hide_render = False
 		bpy.data.objects["Weapon - Combat Knife"].animation_data.action = bpy.data.actions.get("DisplayProp")
 		bpy.data.objects["Weapon - Crowbar"].hide_render = False
-		if currentAction == "Standing - Knife - Stab - Female" or currentAction == "Standing - Knife - Slice - Female" or currentAction == "Standing - Knife - Breath - Female":
+		if currentAction == "Standing - Knife - Stab" or currentAction == "Standing - Knife - Slice" or currentAction == "Standing - Knife - Breath" or currentAction == "Standing - Knife - Stab - Female" or currentAction == "Standing - Knife - Slice - Female" or currentAction == "Standing - Knife - Breath - Female":
 			bpy.data.objects["Weapon - Combat Knife"].hide_render = False
 			bpy.data.objects["Weapon - Combat Knife"].animation_data.action = bpy.data.actions.get(currentAction)
 		if currentAction == "Crouch - Knife - Stab - Female":

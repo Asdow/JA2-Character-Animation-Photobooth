@@ -2,12 +2,12 @@
 setlocal enabledelayedexpansion
 
 rem change these to wherever they are located on your machine
-set _BLENDERDIR=J:\Ohjelmat\Blender\Blender 2.93\
+set _BLENDERDIR=J:\Ohjelmat\Blender\Blender 3.0\
 set _BLENDFILEDIR=J:\JA2 1.13 SVN\JA2-Character-Animation-Photobooth\JA2 2.9_033.blend
-set _PYTHONFILE=J:\JA2 1.13 SVN\JA2-Character-Animation-Photobooth\batchrender-rifles
+set _PYTHONFILE=J:\JA2 1.13 SVN\JA2-Character-Animation-Photobooth\renderGeneratedScripts\batchrender-rifleAnims
 
 
-set /A parallelRender=1
+set /A parallelRender=0
 if !parallelRender!==1 (
 	rem set /p decision=Input amount of blender processes: 
 	set /a decision=8
