@@ -1,0 +1,3 @@
+; :: separator, palette filename, prefix, suffix
+;------------------------------------------------------
+guns_universal_v2.stp :: Prop1 :: _radio

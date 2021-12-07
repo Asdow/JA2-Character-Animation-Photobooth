@@ -1,0 +1,6 @@
+rifleAnims.txt
+pistolAnims.txt
+noWeaponAnims.txt
+meleeWeaponAnims.txt
+HeavyWeaponAnims.txt
+FemaleAnims.txt

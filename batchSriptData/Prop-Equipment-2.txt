@@ -1,0 +1,3 @@
+; :: separator, palette filename, prefix, suffix
+;------------------------------------------------------
+JA2_character_model_palette_v3.act :: Prop1 :: _bcap

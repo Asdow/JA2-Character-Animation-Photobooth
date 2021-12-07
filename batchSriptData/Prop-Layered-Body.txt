@@ -1,0 +1,7 @@
+; :: separator, palette filename, prefix, suffix
+;------------------------------------------------------
+JA2_character_model_palette_v3.act :: Shadow :: _shadow
+JA2_character_model_palette_v3.act :: Head :: _head
+JA2_character_model_palette_v3.act :: Hands :: _hands
+JA2_character_model_palette_v3.act :: Torso :: _torso
+JA2_character_model_palette_v3.act :: Legs :: _legs
