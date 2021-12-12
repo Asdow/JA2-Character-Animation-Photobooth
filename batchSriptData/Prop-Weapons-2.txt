@@ -1,9 +1,0 @@
-; :: separator, palette filename, prefix, suffix
-;------------------------------------------------------
-guns_universal_v2.stp :: Prop1 :: _RPK
-guns_universal_v2.stp :: Prop2 :: _SAW
-guns_universal_v2.stp :: Prop3 :: _PKM
-guns_universal_v2.stp :: Prop4 :: _mosin
-guns_universal_v2.stp :: Prop5 :: _M14
-guns_universal_v2.stp :: Prop6 :: _MKL
-guns_universal_v2.stp :: Prop7 :: _RR

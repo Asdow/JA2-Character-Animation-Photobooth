@@ -1,7 +1,7 @@
 import bpy
 
 def disablePropRenderlayer(propNumber):
-	if propNumber < 1 or propNumber > 10:
+	if propNumber < 1 or propNumber > 25:
 		print("Invalid prop number. Aborting")
 		return False
 	
@@ -9,6 +9,13 @@ def disablePropRenderlayer(propNumber):
 	propGroundShadow = "Prop " + str(propNumber) + " groundShadow"
 	propFreestyle = "Freestyle - Prop " + str(propNumber)
 	propCryptoMatte = "Prop " + str(propNumber)
+	
+	# Disable file output for node
+	if propNumber >= 10:
+		fileOutput = "File Output.0" + str(propNumber)
+	else:
+		fileOutput = "File Output.00" + str(propNumber)
+	bpy.data.scenes["camera 1"].node_tree.nodes["fileOutput"].mute_toggle()
 	
 	for scene in bpy.data.scenes:
 		for layer in scene.view_layers:

@@ -10,3 +10,5 @@ Hats.stp :: Prop7 :: _Booney
 Hats.stp :: Prop8 :: _Pads
 Hats.stp :: Prop9 :: _camohelmet
 JA2_character_model_palette_v3.act :: Prop10 :: _lsleeve
+;------------------------------------------------------
+JA2_character_model_palette_v3.act :: Prop11 :: _bcap
