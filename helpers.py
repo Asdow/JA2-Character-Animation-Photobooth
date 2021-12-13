@@ -15,7 +15,7 @@ def disablePropRenderlayer(propNumber):
 		fileOutput = "File Output.0" + str(propNumber)
 	else:
 		fileOutput = "File Output.00" + str(propNumber)
-	bpy.data.scenes["camera 1"].node_tree.nodes["fileOutput"].mute_toggle()
+	bpy.data.scenes["camera 1"].node_tree.nodes[fileOutput].mute = True
 	
 	for scene in bpy.data.scenes:
 		for layer in scene.view_layers:
