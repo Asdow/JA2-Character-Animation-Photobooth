@@ -167,46 +167,57 @@ for i in range(len(animationArray)):
 			bpy.data.objects["MuzzleFlash - M14"].animation_data.action = bpy.data.actions.get(currentAction)
 			
 	elif renderSet == 2:
+		# Default case is regular male
 		bpy.data.objects["Vest - Flak Jacket"].hide_render = False
 		bpy.data.objects["Backpack - Backpack"].hide_render = False
-		bpy.data.objects["Hat - Beret - Female"].hide_render = False
-		bpy.data.objects["Hat - Helmet - Female"].hide_render = False
+		bpy.data.objects["Hat - Beret"].hide_render = False
+		bpy.data.objects["Hat - Helmet"].hide_render = False
 		bpy.data.objects["Face - Gasmask"].hide_render = False
 		bpy.data.objects["Face - NVG"].hide_render = False
-		bpy.data.objects["Hat - Booney - Female"].hide_render = False
+		bpy.data.objects["Hat - Booney"].hide_render = False
 		bpy.data.objects["Legs - Kneepad - Left"].hide_render = False
 		bpy.data.objects["Legs - Kneepad - Right"].hide_render = False
 		bpy.data.objects["Hat - Camo Helmet"].hide_render = False
+		bpy.data.objects["Vest - Long Sleeved"].hide_render = False
 		bpy.data.objects["Hat - Ballcap"].hide_render = False
-
-		# Change the ballcap's shrinkwrap target depending on the body to be rendered
-		if bpy.data.objects["Body - RGM"].hide_render == False:
-			bpy.data.objects["Hat - Ballcap"].modifiers["Shrinkwrap"].target = bpy.data.objects["Body - RGM"]
-		elif bpy.data.objects["Body - BGM"].hide_render == False:
-			bpy.data.objects["Hat - Ballcap"].modifiers["Shrinkwrap"].target = bpy.data.objects["Body - BGM"]
-		elif bpy.data.objects["Body - FGM"].hide_render == False:
-			bpy.data.objects["Hat - Ballcap"].modifiers["Shrinkwrap"].target = bpy.data.objects["Body - FGM"]
-		# Switch the background color to gray
-		bpy.data.node_groups["JA2 Layered Sprite - Prop 11"].nodes["Switch.002"].check = False
-
-		# Change the flak jacket's object and shrinkwrap target depending on the body to be rendered
-		if bpy.data.objects["Body - RGM"].hide_render == False:
-			bpy.data.objects["Vest - Flak Jacket"].modifiers["Shrinkwrap"].target = bpy.data.objects["RGM - Vest Target"]
-		elif bpy.data.objects["Body - BGM"].hide_render == False:
-			bpy.data.objects["Vest - Flak Jacket"].modifiers["Shrinkwrap"].target = bpy.data.objects["BGM - Vest Target"]
-		elif bpy.data.objects["Body - FGM"].hide_render == False:
-			bpy.data.objects["Vest - Flak Jacket"].hide_render = True
-			bpy.data.objects["Vest - Flak Jacket - Female"].hide_render = False
-			bpy.data.objects["Vest - Flak Jacket - Female"].modifiers["Shrinkwrap"].target = bpy.data.objects["FGM - Vest Target"]
-		# Change the long sleeved mesh depending on body
-		if bpy.data.objects["Body - RGM"].hide_render == False:
-			bpy.data.objects["Vest - Long Sleeved"].hide_render = False
-		elif bpy.data.objects["Body - BGM"].hide_render == False:
-			bpy.data.objects["Vest - BGM Long Sleeved"].hide_render = False
-		elif bpy.data.objects["Body - FGM"].hide_render == False:
-			bpy.data.objects["Vest - FGM Long Sleeved"].hide_render = False
-		# Switch the background color to gray for the long sleeved composition groups
+		
+		# Modifiers
+		bpy.data.objects["Vest - Flak Jacket"].modifiers["Shrinkwrap"].target = bpy.data.objects["RGM - Vest Target"]
+		bpy.data.objects["Hat - Ballcap"].modifiers["Shrinkwrap"].target = bpy.data.objects["Body - RGM"]
+		
+		
+		# Switch the background color to gray for props that use the default bodytype palette
 		bpy.data.node_groups["JA2 Layered Sprite - Prop 10"].nodes["Switch.002"].check = False
+		bpy.data.node_groups["JA2 Layered Sprite - Prop 11"].nodes["Switch.002"].check = False
+		
+		
+		# Change objects depending on the body
+		if bpy.data.objects["Body - FGM"].hide_render == False:
+			# Hide RGM objects
+			bpy.data.objects["Vest - Flak Jacket"].hide_render = True
+			bpy.data.objects["Hat - Beret"].hide_render = True
+			bpy.data.objects["Hat - Helmet"].hide_render = True
+			bpy.data.objects["Hat - Booney"].hide_render = True
+			bpy.data.objects["Vest - Long Sleeved"].hide_render = True
+			# Show RGF specific ones
+			bpy.data.objects["Vest - Flak Jacket - Female"].hide_render = False
+			bpy.data.objects["Hat - Beret - Female"].hide_render = False
+			bpy.data.objects["Hat - Helmet - Female"].hide_render = False
+			bpy.data.objects["Hat - Booney - Female"].hide_render = False
+			bpy.data.objects["Vest - FGM Long Sleeved"].hide_render = False
+			
+			bpy.data.objects["Vest - Flak Jacket - Female"].modifiers["Shrinkwrap"].target = bpy.data.objects["FGM - Vest Target"]
+			bpy.data.objects["Hat - Ballcap"].modifiers["Shrinkwrap"].target = bpy.data.objects["Body - FGM"]
+			
+		elif bpy.data.objects["Body - BGM"].hide_render == False:
+			# Hide RGM objects
+			bpy.data.objects["Vest - Long Sleeved"].hide_render = True
+			# Show BGM specific ones
+			bpy.data.objects["Vest - BGM Long Sleeved"].hide_render = False
+			
+			bpy.data.objects["Vest - Flak Jacket"].modifiers["Shrinkwrap"].target = bpy.data.objects["BGM - Vest Target"]
+			bpy.data.objects["Hat - Ballcap"].modifiers["Shrinkwrap"].target = bpy.data.objects["Body - BGM"]
+		
 		
 		# Disable unused renderlayers
 		helpers.disablePropRenderlayer(12)
