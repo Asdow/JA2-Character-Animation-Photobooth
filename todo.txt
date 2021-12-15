@@ -1,12 +1,17 @@
 Todo:
-work on camo pants and sleeves
+- work on camo pants and sleeves
+- red berette color needs to be toned down a bit
+- Create better animation lists so the need to comment/uncomment lines is minimized
+- Increase rendering sample size to get rid of render artifacts (Do only just before making the final final renders)
+- Now that adding and rendering props is a lot more convenient. Different armor would be nice
 
 
 Missing animations:
 - Merc in water
 - mortar anims
-- helidrop
+- bigmale throw rock idle anim
 - riot shield needs its own set of animations (Needs codework for nonLOBOT bodies)
+- Throw item/grenade when in water (Needs codework for nonLOBOT bodies)
 
 
 Known issues:
@@ -15,3 +20,7 @@ Known issues:
 - Karate punch uses the same RGMPUNCH animation surface as the regular punch. Bio's skilltrait filters are not implemented so we can't differentiate between karate and regular punch
 - Badass merc sidestep with rifle not working yet. Needs a proper filter
 - Same for badass merc sidestep with pistol
+
+
+Reported bugs:
+- Female crouch walking animation with drawn weapon is a bit weird - you'll notice when you see it

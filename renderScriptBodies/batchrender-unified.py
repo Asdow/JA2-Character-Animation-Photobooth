@@ -75,9 +75,9 @@ for i in range(len(animationArray)):
 
 
 	# Bodytypes
-	bpy.data.objects["Body - RGM"].hide_render = True
+	bpy.data.objects["Body - RGM"].hide_render = False
 	bpy.data.objects["Body - BGM"].hide_render = True
-	bpy.data.objects["Body - FGM"].hide_render = False
+	bpy.data.objects["Body - FGM"].hide_render = True
 	
 
 	if bpy.data.objects["Body - RGM"].hide_render == False:
@@ -90,8 +90,12 @@ for i in range(len(animationArray)):
 
 
 	# Display props in renders depending on the set
-	renderSet = 1
-	if renderSet == 1:
+	renderSet = 2
+	if renderSet == 0:
+		# Do not render props
+		for j in range(1,26):
+			helpers.disablePropRenderlayer(j)
+	elif renderSet == 1:
 		bpy.data.objects["Weapon - FN FAL"].hide_render = False
 		bpy.data.objects["Weapon - M16"].hide_render = False
 		bpy.data.objects["Weapon - AK47"].hide_render = False
@@ -218,6 +222,10 @@ for i in range(len(animationArray)):
 			bpy.data.objects["Vest - Flak Jacket"].modifiers["Shrinkwrap"].target = bpy.data.objects["BGM - Vest Target"]
 			bpy.data.objects["Hat - Ballcap"].modifiers["Shrinkwrap"].target = bpy.data.objects["Body - BGM"]
 		
+		# Show rope only in helidrop animation
+		if currentAction == "Helidrop":
+			bpy.data.objects["Helirope"].hide_render = False
+			bpy.data.objects["Helirope"].animation_data.action = bpy.data.actions.get(currentAction)
 		
 		# Disable unused renderlayers
 		helpers.disablePropRenderlayer(12)
@@ -233,7 +241,7 @@ for i in range(len(animationArray)):
 		helpers.disablePropRenderlayer(22)
 		helpers.disablePropRenderlayer(23)
 		helpers.disablePropRenderlayer(24)
-		helpers.disablePropRenderlayer(25)
+		
 		
 	elif renderSet == 3:
 		bpy.data.objects["Weapon - HK USP"].hide_render = False

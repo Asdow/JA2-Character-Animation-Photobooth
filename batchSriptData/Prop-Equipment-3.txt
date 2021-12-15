@@ -1,3 +1,4 @@
 ; :: separator, palette filename, prefix, suffix
 ;------------------------------------------------------
 guns_universal_v2.stp :: Prop1 :: _radio
+Hats.stp :: Prop25 :: _rope
