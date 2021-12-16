@@ -1,6 +1,6 @@
 ; Animation name, end frame, sti name, directions
 ;------------------------------------------------------
-("Helidrop",70,"S_HELI",1),
+;("Helidrop",70,"S_HELI",1),
 ;------------------------------------------------------
 ; Animations with 4 directions instead of 8
 ;------------------------------------------------------
@@ -52,5 +52,5 @@
 ;------------------------------------------------------
 ;("Standing - Empty Hands - Flex Badass",14,"M_FLEX",8),
 ;("Standing - Empty Hands - Stretch Badass",14,"M_STRETCH",8),
-;("Standing - Empty Hands - Flip Rock",8,"M_STEIN",8),
+("Standing - Empty Hands - Flip Rock",8,"M_STEIN",8),
 ;("Prone - Empty Hands - Cower",11,"M_PRNCOW",8),
