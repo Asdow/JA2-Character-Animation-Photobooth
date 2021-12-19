@@ -52,5 +52,16 @@
 ;------------------------------------------------------
 ;("Standing - Empty Hands - Flex Badass",14,"M_FLEX",8),
 ;("Standing - Empty Hands - Stretch Badass",14,"M_STRETCH",8),
-("Standing - Empty Hands - Flip Rock",8,"M_STEIN",8),
+;("Standing - Empty Hands - Flip Rock",8,"M_STEIN",8),
 ;("Prone - Empty Hands - Cower",11,"M_PRNCOW",8),
+;------------------------------------------------------
+; Water anims
+;------------------------------------------------------
+;("Standing - Empty Hands - Idle Water",8,"SW_N_STD",8),
+;("Standing - Empty Hands - Walk Water",12,"SW_N_WALK",8),
+;("Standing - Empty Hands - Fall Water",10,"SW_FALL",8),
+;("Standing - Empty Hands - Tread Water",12,"SW_TREAD",8),
+;("Standing - Empty Hands - Swim Water",16,"SW_SWIM",8),
+;("Standing - Empty Hands - Die Water",28,"SW_DIE",8),
+;("Standing - Empty Hands - Drown Water",13,"SW_DROWN",8),
+;("Standing - Empty Hands - Throw Water",14,"SW_THROW",8),

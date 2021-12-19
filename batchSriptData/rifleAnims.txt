@@ -53,10 +53,16 @@
 ;("Standing To Crouch - Rifle Bigmale",5,"M_R_C",8),
 ;("Crouch - Rifle - Aim & Shoot Badass",18,"S_CR_AIM_HERO",8),
 ;("Prone - Rifle - Crawl & Shoot Badass",29,"S_R_PRN_HERO",8),
-("Prone - Rifle - Cower",11,"M_R_PRNCOW",8),
+;("Prone - Rifle - Cower",11,"M_R_PRNCOW",8),
 ;------------------------------------------------------
 ; NOT IN USE
 ;------------------------------------------------------
 ;("Standing - Rifle - Idle - Alternate",8,"S_R_STD_ALT",8),
 ;("Standing - Rifle - Sidestep Alternate",12,"S_R_SDSP_ALT",8),
 ;------------------------------------------------------
+; Water anims
+;------------------------------------------------------
+;("Standing - Rifle - Idle Water",8,"SW_R_STD",8),
+;("Standing - Rifle - Walk Water",12,"SW_R_WALK",8),
+("Standing - Rifle - Hip Aim Water",21,"SW_SR_HIP_AIM",8),
+("Standing - Rifle - Aim Water",21,"SW_SR_AIM",8),

@@ -4,10 +4,16 @@ def disablePropRenderlayer(propNumber):
 	if propNumber < 1 or propNumber > 25:
 		print("Invalid prop number. Aborting")
 		return False
+
+	if propNumber >= 10:
+		number = "0" + str(propNumber)
+	else:
+		number = "00" + str(propNumber)
+
 	
-	propViewLayer = "Prop " + str(propNumber) + " Viewlayer"
-	propGroundShadow = "Prop " + str(propNumber) + " groundShadow"
-	propFreestyle = "Freestyle - Prop " + str(propNumber)
+	propViewLayer = "Prop Viewlayer_" + number
+	propGroundShadow = "Prop groundShadow_" + number
+	propFreestyle = "Freestyle - Prop_" + number
 	propCryptoMatte = "Prop " + str(propNumber)
 	
 	# Disable file output for node
@@ -33,3 +39,24 @@ def setCameraOrthoScale(scale):
 				#print(object)
 				#object.data.ortho_scale=6.7 # For backup, used for RGM
 				object.data.ortho_scale=scale
+
+
+def disablePropGroundshadows(propNumber):
+	if propNumber < 1 or propNumber > 25:
+		print("Invalid prop number. Aborting")
+		return False
+	
+	if propNumber >= 10:
+		number = "0" + str(propNumber)
+	else:
+		number = "00" + str(propNumber)
+
+	propGroundShadow = "Prop groundShadow_" + number
+	
+	for scene in bpy.data.scenes:
+		for layer in scene.view_layers:
+			layerName = layer.name
+			if layerName == propGroundShadow:
+				layer.use = False
+	
+	return True
