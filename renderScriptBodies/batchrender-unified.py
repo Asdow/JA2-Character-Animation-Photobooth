@@ -15,7 +15,8 @@ rifleActions = [
 	"Standing - Rifle - Shoot low", "Standing - Rifle - Hip Aim", "Standing - Rifle - Hip Shoot low",
 	"Standing - Rifle - Aim Badass", "Crouch - Rifle - Aim & Shoot Badass", "Prone - Rifle - Crawl & Shoot Badass",
 	"Standing - Rifle - Aim & Shoot - Female", "Crouch - Rifle - Aim & Shoot - Female", "Prone - Rifle - Crawl & Shoot - Female",
-	"Standing - Rifle - Shoot low - Female", "Standing - Rifle - Hip Aim - Female", "Standing - Rifle - Hip Shoot low - Female"
+	"Standing - Rifle - Shoot low - Female", "Standing - Rifle - Hip Aim - Female", "Standing - Rifle - Hip Shoot low - Female",
+	"Standing - Rifle - Hip Aim Water", "Standing - Rifle - Aim Water"
 ]
 
 pistolActions = [
@@ -23,13 +24,13 @@ pistolActions = [
 	"Standing - Pistol - Aim & Shoot - One Handed", "Standing - Pistol - Aim Badass", 
 	"Standing - Pistol - Aim & Shoot - Female", "Crouch - Pistol - Aim & Shoot - Female",
 	"Standing - Pistol - Shoot low - Female", "Standing - Pistol - Aim & Shoot - One Handed - Female",
-	"Prone - Pistol - Crawl & Shoot"
+	"Prone - Pistol - Crawl & Shoot", "Standing - Pistol - Aim & Shoot Water"
 ]
 
 dualPistolActions = [
 	"Standing - Dual Pistols - Aim & Shoot", "Crouch - Dual Pistol - Aim & Shoot", 
 	"Standing - Dual Pistols - Aim & Shoot - Female", "Crouch - Dual Pistol - Aim & Shoot - Female",
-	"Prone - Dual Pistol - Shoot"
+	"Prone - Dual Pistol - Shoot", "Standing - Dual Pistols - Aim & Shoot Water"
 ]
 
 radioActions = [
@@ -41,6 +42,7 @@ knifeActions = [
 	"Standing - Knife - Stab", "Standing - Knife - Slice", "Standing - Knife - Breath",
 	"Standing - Knife - Stab - Female", "Standing - Knife - Slice - Female", "Standing - Knife - Breath - Female"
  ]
+
 
 
 
@@ -77,8 +79,8 @@ for i in range(len(animationArray)):
 
 
 	# Bodytypes
-	bpy.data.objects["Body - RGM"].hide_render = True
-	bpy.data.objects["Body - BGM"].hide_render = False
+	bpy.data.objects["Body - RGM"].hide_render = False
+	bpy.data.objects["Body - BGM"].hide_render = True
 	bpy.data.objects["Body - FGM"].hide_render = True
 	
 
@@ -90,9 +92,14 @@ for i in range(len(animationArray)):
 		helpers.setCameraOrthoScale(6.6)
 		
 
+	# Set up water animations
+	if "Water" in currentAction:
+		for j in range(1,26):
+			helpers.disablePropGroundshadows(j)
+
 
 	# Display props in renders depending on the set
-	renderSet = 4
+	renderSet = 6
 	if renderSet == 0:
 		# Do not render props
 		for j in range(1,26):
@@ -345,7 +352,12 @@ for i in range(len(animationArray)):
 		
 	if renderSet == 6:
 		bpy.data.objects["Weapon - LAW"].hide_render = False
-		for j in range(2,26):
+		if currentAction == "Crouch - Mortar - Fire":
+			bpy.data.objects["Weapon - Mortar Tube"].hide_render = False
+			bpy.data.objects["Weapon - Mortar Legs"].hide_render = False
+			bpy.data.objects["Armature - Mortar"].animation_data.action = bpy.data.actions.get(currentAction)
+		
+		for j in range(3,26):
 			helpers.disablePropRenderlayer(j)
 
 
