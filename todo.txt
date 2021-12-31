@@ -1,8 +1,5 @@
 Todo:
 - work on camo pants and sleeves
-- red berette color needs to be toned down a bit
-- Create better animation lists so the need to comment/uncomment lines is minimized
-- Increase rendering sample size to get rid of render artifacts (Do only just before making the final final renders)
 - Now that adding and rendering props is a lot more convenient. Different armor would be nice
 
 

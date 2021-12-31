@@ -3,9 +3,14 @@ setlocal enabledelayedexpansion
 
 DEL "renderGeneratedScripts\*.py"
 
-JA2-BatchRenderCreator.exe "1" "noWeaponAnims.txt" "batchrender-unified.py"
-JA2-BatchRenderCreator.exe "1" "meleeWeaponAnims.txt" "batchrender-unified.py"
-JA2-BatchRenderCreator.exe "1" "pistolAnims.txt" "batchrender-unified.py"
-JA2-BatchRenderCreator.exe "1" "rifleAnims.txt" "batchrender-unified.py"
-JA2-BatchRenderCreator.exe "1" "HeavyWeaponAnims.txt" "batchrender-unified.py"
-JA2-BatchRenderCreator.exe "1" "FemaleAnims.txt" "batchrender-unified.py"
+JA2-BatchRenderCreator.exe "4" "Animations - Big male - Heavy weapons.txt" "batchrender-unified.py"
+JA2-BatchRenderCreator.exe "4" "Animations - Big male - Rifle.txt" "batchrender-unified.py"
+JA2-BatchRenderCreator.exe "4" "Animations - Big male - Pistol.txt" "batchrender-unified.py"
+JA2-BatchRenderCreator.exe "4" "Animations - Big male - Melee weapons.txt" "batchrender-unified.py"
+JA2-BatchRenderCreator.exe "4" "Animations - Big male - Empty hands.txt" "batchrender-unified.py"
+
+JA2-BatchRenderCreator.exe "4" "Animations - Female - Heavy weapons.txt" "batchrender-unified.py"
+JA2-BatchRenderCreator.exe "4" "Animations - Female - Rifle.txt" "batchrender-unified.py"
+JA2-BatchRenderCreator.exe "4" "Animations - Female - Pistol.txt" "batchrender-unified.py"
+JA2-BatchRenderCreator.exe "4" "Animations - Female - Melee weapons.txt" "batchrender-unified.py"
+JA2-BatchRenderCreator.exe "4" "Animations - Female - Empty hands.txt" "batchrender-unified.py"

@@ -1,0 +1,43 @@
+; Animation name, end frame, sti name, directions
+;------------------------------------------------------
+("Standing - Rifle - Kick Door",20,"F_R_DR_KICK",4),
+("Standing - Rifle - Raise to Idle - Female",5,"F_RAISE",8),
+("Standing - Rifle - Idle - Female",8,"F_R_STD",8),
+("Standing - Rifle - Walk - Female",12,"F_R_WALK",8),
+("Standing - Rifle - Walk Aiming - Female",12,"F_R_RDY_WALK",8),
+("Standing - Rifle - Hurt Walk - Female",12,"F_R_WALK_HURT",8),
+("Standing - Rifle - Run - Female",12,"F_R_RUN",8),
+("Standing - Rifle - Aim & Shoot - Female",21,"F_SR_AIM",8),
+("Standing - Rifle - Shoot low - Female",8,"F_R_LOW",8),
+("Standing - Rifle - Hip Aim - Female",21,"F_SR_HIP_AIM",8),
+("Standing - Rifle - Hip Shoot low - Female",8,"F_R_HIP_LOW",8),
+("Standing - Rifle - Hit - Female",5,"F_HIT",8),
+("Standing - Rifle - Pain - Female",14,"F_R_PAIN",8),
+("Standing - Rifle - Drunk - Female",20,"F_R_DRUNK",8),
+("Standing - Rifle - Open door - Female",10,"F_RIFLE_OPEN",8),
+("Standing - Rifle - Look - Female",14,"F_R_LOOK",8),
+("Standing - Rifle - Clean - Female",20,"F_R_CLEAN",8),
+("Standing To Cower - Rifle - Female",12,"F_R_COWER",8),
+("Standing To Crouch - Rifle - Female",15,"F_R_C",8),
+("Crouch - Rifle - Walk - Female",22,"F_R_SWAT",8),
+("Crouch - Rifle - Walk Aiming - Female",24,"F_R_SWAT_AIM",8),
+("Crouch - Rifle - Aim & Shoot - Female",18,"F_CR_AIM",8),
+("Prone - Rifle - Crawl & Shoot - Female",29,"F_R_PRN",8),
+("Standing - Rifle - Sidestep",12,"F_R_SDSP",8),
+("Standing - Rifle - Sidestep Aim",12,"F_R_SDSP_AIM",8),
+("Standing - Rifle - Bayonet",18,"F_R_BAYONET",8),
+("Standing - Rifle - Bayonet Low",23,"F_R_BAYONET_L",8),
+("Prone - Rifle - Cower",11,"F_R_PRNCOW",8),
+("Prone - Rifle - Roll Over",14,"F_R_ROLL",8),
+;------------------------------------------------------
+; Water anims
+;------------------------------------------------------
+;("Standing - Rifle - Idle - Female Water",8,"FW_R_STD",8),
+;("Standing - Rifle - Walk - Female Water",12,"FW_R_WALK",8),
+;("Standing - Rifle - Hip Aim - Female Water",21,"FW_SR_HIP_AIM",8),
+;("Standing - Rifle - Aim & Shoot - Female Water",21,"FW_SR_AIM",8),
+;------------------------------------------------------
+; NOT IN USE!
+;------------------------------------------------------
+;("Standing - Empty Hands - Lob Grenade - Female",18,"F_LOB_G",8),
+;("Standing - Empty Hands - Throw - Female",14,"F_THROW",8),

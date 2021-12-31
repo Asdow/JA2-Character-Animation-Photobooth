@@ -1,0 +1,32 @@
+; Animation name, end frame, sti name, directions
+;------------------------------------------------------
+("Standing - Empty Hands - Idle - Female",8,"F_N_STD",8),
+("Standing - Empty Hands - Drunk - Female",20,"F_N_DRUNK",8),
+("Standing - Empty Hands - Walk - Female",12,"F_N_WALK",8),
+("Standing - Empty Hands - Run - Female",12,"F_N_RUN",8),
+("Standing - Empty Hands - Pain - Female",14,"F_N_PAIN",8),
+("Standing To Crouch - Empty Hands - Female",15,"F_N_CRCH",8),
+("Crouch - Empty Hands - Walk - Female",22,"F_N_SWAT",8),
+("Standing - Pistol - Idle - Female",8,"F_P_BRTH",8),
+("Standing - Pistol - Aim & Shoot - Female",21,"F_P_SHOT",8),
+("Standing - Pistol - Aim & Shoot - One Handed - Female",21,"F_P_SHOT2",8),
+("Standing - Pistol - Shoot low - Female",8,"F_P_LOW",8),
+("Standing - Pistol - Walk Aiming - Female",12,"F_P_RDY_WALK",8),
+("Standing - Dual Pistols - Aim & Shoot - Female",25,"F_DBLSHOT",8),
+("Standing - Dual Pistols - Walk Aiming - Female",12,"F_DBL_RDY_WALK",8),
+("Crouch - Pistol - Aim & Shoot - Female",18,"F_CR_AIM_P",8),
+("Crouch - Pistol - Walk Aiming - Female",24,"F_P_SWAT_AIM",8),
+("Crouch - Dual Pistol - Aim & Shoot - Female",25,"F_CR_AIM_D",8),
+("Crouch - Dual Pistol - Walk Aiming - Female",24,"F_D_SWAT_AIM",8),
+("Standing - Pistol - Sidestep",12,"F_P_SDSP",8),
+("Standing - Pistol - Sidestep Aim Alternate",12,"F_P_SDSP_AIM",8),
+("Standing - Dual Pistols - Sidestep",12,"F_DBL_SDSP",8),
+("Standing - Dual Pistols - Sidestep Aim",12,"F_DBL_SDSP_AIM",8),
+("Prone - Pistol - Crawl & Shoot",29,"F_N_PRNE",8),
+("Prone - Dual Pistol - Shoot",12,"F_DB_PRN",8),
+("Standing - Rifle - Hurt Walk - Female",12,"F_R_WALK_HURT",8),
+;------------------------------------------------------
+; NOT IN USE!
+;------------------------------------------------------
+;("Prone - Pistol - Crawl & Shoot - Female UNFINISHED",29,"F_N_PRNE",8),
+;("Standing - Empty Hands - Idle - Fox",8,"F_N_STD_FOX",8),

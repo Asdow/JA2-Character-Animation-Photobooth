@@ -1,0 +1,62 @@
+; Animation name, end frame, sti name, directions
+;------------------------------------------------------
+("Helidrop",70,"M_HELI",1),
+("Standing - Hop fence",18,"M_HOP",4),
+("Standing - Empty Hands - Climb",44,"M_CLIMB",4),
+("Standing - Empty Hands - Kick Door",20,"M_DR_KICK",4),
+("Standing - Empty Hands - Fall",52,"M_N_FALL",4),
+("Standing - Empty Hands - Fall Forward",41,"M_N_FALL_FWD",4),
+("Standing - Empty Hands - Open door",10,"M_OPEN",8),
+("Standing - Empty Hands - Pickup",5,"M_PICKUP",8),
+("Standing - Punch",24,"M_PUNCH",8),
+("Standing - Empty Hands - Hit and die",33,"M_DIE2",8),
+("Standing - Empty Hands - Hit and die 2",35,"M_D_FWD",8),
+("Standing - Empty Hands - Flyback hit",23,"M_DIEBAC",8),
+("Standing - Empty Hands - Flyback & die",24,"M_DIEHARD",8),
+("Standing - Empty Hands - Flyback & die BLOOD",7,"M_DIEHARDB",8),
+("Standing - Empty Hands - Dodge",6,"M_DODGE",8),
+("Standing - Empty Hands - Throw",14,"M_THROW",8),
+("Standing - Empty Hands - Throw Grenade",19,"M_THROW_G",8),
+("Standing - Empty Hands - Lob",14,"M_LOB",8),
+("Standing - Empty Hands - Lob Grenade",19,"M_LOB_G",8),
+("Standing - Empty Hands - Squish",20,"M_SQUISH",8),
+("Standing - Empty Hands - Pull",13,"M_PULL",8),
+("Standing - Empty Hands - Fall",52,"M_N_FALL",8),
+("Standing - Empty Hands - Fall Forwad",41,"M_N_FALL_FWD",8),
+("Standing - Empty Hands - Karate punch",24,"M_K_PUNCH",8),
+("Standing - Empty Hands - Karate low kick",44,"M_K_LOWKICK",8),
+("Standing - Empty Hands - Karate spin kick",70,"M_K_SPINKICK",8),
+("Standing To Cower - Empty hands",12,"M_COWER",8),
+("Crouch - Render medical aid",8,"M_MEDIC",8),
+("Crouch - Empty Hands - Hit and die",9,"M_C_DIE",8),
+("Crouch - Empty Hands - Punch",14,"M_C_PUNCH",8),
+("Crouch - Empty Hands - Throw",14,"M_C_THROW",8),
+("Crouch To Prone - Sleep",13,"M_SLEEP",8),
+("Prone - Empty Hands - Render Aid",7,"M_PRN_MED",8),
+("Prone - Empty Hands - Hit and die",22,"M_P_DIE",8),
+("Prone - Empty Hands - Roll",8,"M_ROLL",8),
+("Prone - Empty Hands - Roll Over",14,"M_N_ROLL",8),
+;------------------------------------------------------
+; Animations for using the radio
+;------------------------------------------------------
+("Crouch - Empty Hands - Radio",16,"M_C_RADIO",8),
+("Standing - Empty Hands - Radio",16,"M_RADIO",8),
+("Standing - Empty Hands - Use Remote",6,"M_REMOTE",8),
+;------------------------------------------------------
+; Badass big merc anims
+;------------------------------------------------------
+("Standing - Empty Hands - Flex Badass",14,"M_FLEX",8),
+("Standing - Empty Hands - Stretch Badass",14,"M_STRETCH",8),
+("Standing - Empty Hands - Flip Rock",8,"M_STEIN",8),
+("Prone - Empty Hands - Cower",11,"M_PRNCOW",8),
+;------------------------------------------------------
+; Water anims
+;------------------------------------------------------
+;("Standing - Empty Hands - Idle Water",8,"MW_N_STD",8),
+;("Standing - Empty Hands - Walk Water",12,"MW_N_WALK",8),
+;("Standing - Empty Hands - Fall Water",10,"MW_FALL",8),
+;("Standing - Empty Hands - Tread Water",12,"MW_TREAD",8),
+;("Standing - Empty Hands - Swim Water",16,"MW_SWIM",8),
+;("Standing - Empty Hands - Die Water",28,"MW_DIE",8),
+;("Standing - Empty Hands - Drown Water",13,"MW_DROWN",8),
+;("Standing - Empty Hands - Throw Water",14,"MW_THROW",8),

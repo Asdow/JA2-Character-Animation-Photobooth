@@ -1,9 +1,11 @@
 ; Animation name, end frame, sti name, directions
 ;------------------------------------------------------
+("Helidrop",70,"F_HELI",1),
+;------------------------------------------------------
 ; Animations with 4 directions instead of 8
 ;------------------------------------------------------
 ;("Standing - Hop fence",18,"S_HOP",4),
-("Standing - Empty Hands - Climb",44,"S_CLIMB",4),
+;("Standing - Empty Hands - Climb",44,"S_CLIMB",4),
 ;("Standing - Empty Hands - Kick Door",20,"S_DR_KICK",4),
 ;("Standing - Empty Hands - Fall",52,"S_N_FALL",4),
 ;("Standing - Empty Hands - Fall Forward",41,"S_N_FALL_FWD",4),
@@ -117,8 +119,27 @@
 ;("Prone - Rifle - Roll Over",14,"S_R_ROLL",8),
 ;("Standing - LAW - Fire",20,"S_LAW",8),
 ;("Crouch - LAW - Fire",20,"S_LAW_CR",8),
+;("Crouch - Mortar - Fire",51,"F_MORTAR",8),
 ;------------------------------------------------------
 ; NOT IN USE!
 ;------------------------------------------------------
 ;("Standing - Empty Hands - Lob Grenade - Female",18,"F_LOB_G",8),
 ;("Standing - Empty Hands - Throw - Female",14,"F_THROW",8),
+;------------------------------------------------------
+; Water anims
+;------------------------------------------------------
+;("Standing - Empty Hands - Idle - Female Water",8,"FW_N_STD",8),
+;("Standing - Empty Hands - Walk - Female Water",12,"FW_N_WALK",8),
+;("Standing - Pistol - Idle - Female Water",8,"FW_P_BRTH",8),
+;("Standing - Pistol - Aim & Shoot - Female Water",21,"FW_P_SHOT",8),
+;("Standing - Dual Pistols - Aim & Shoot - Female Water",25,"FW_DBLSHOT",8),
+;("Standing - Rifle - Idle - Female Water",8,"FW_R_STD",8),
+;("Standing - Rifle - Walk - Female Water",12,"FW_R_WALK",8),
+;("Standing - Rifle - Hip Aim - Female Water",21,"FW_SR_HIP_AIM",8),
+;("Standing - Rifle - Aim & Shoot - Female Water",21,"FW_SR_AIM",8),
+;("Standing - Empty Hands - Fall Water",10,"FW_FALL",8),
+;("Standing - Empty Hands - Tread Water",12,"FW_TREAD",8),
+;("Standing - Empty Hands - Swim Water",16,"FW_SWIM",8),
+;("Standing - Empty Hands - Die Water",28,"FW_DIE",8),
+;("Standing - Empty Hands - Drown Water",13,"FW_DROWN",8),
+;("Standing - Empty Hands - Throw Water",14,"FW_THROW",8),

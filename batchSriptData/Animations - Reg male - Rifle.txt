@@ -1,0 +1,44 @@
+; Animation name, end frame, sti name, directions
+;------------------------------------------------------
+("Standing - Rifle - Kick Door",20,"S_R_DR_KICK",4),
+("Standing - Rifle - Hip Aim",21,"S_SR_HIP_AIM",8),
+("Standing - Rifle - Aim",21,"S_SR_AIM",8),
+("Standing - Rifle - Shoot low",8,"S_R_LOW",8),
+("Standing - Rifle - Hip Shoot low",8,"S_R_HIP_LOW",8),
+("Standing - Rifle - Hit",5,"S_HIT",8),
+("Standing - Rifle - Idle",8,"S_R_STD",8),
+("Standing - Rifle - Open door",10,"S_RIFLE_OPEN",8),
+("Standing - Rifle - Raise to Idle",5,"S_RAISE",8),
+("Standing - Rifle - Run",12,"S_R_RUN",8),
+("Standing - Rifle - Sidestep",12,"S_R_SDSP",8),
+("Standing - Rifle - Sidestep Aim",12,"S_R_SDSP_AIM",8),
+("Standing - Rifle - Walk",12,"S_R_WALK",8),
+("Standing - Rifle - Walk Aiming",12,"S_R_RDY_WALK",8),
+("Standing - Rifle - Hurt Walk",12,"S_R_WALK_HURT",8),
+("Standing - Rifle - Pain",14,"S_R_PAIN",8),
+("Standing - Rifle - Squish",20,"S_R_SQUISH",8),
+("Standing - Rifle - Look",14,"S_R_LOOK",8),
+("Standing - Rifle - Spit",21,"S_R_SPIT",8),
+("Standing - Rifle - Drunk",20,"S_R_DRUNK",8),
+("Standing - Rifle - Bayonet",18,"S_R_BAYONET",8),
+("Standing - Rifle - Bayonet Low",23,"S_R_BAYONET_L",8),
+("Standing To Crouch - Rifle",15,"S_R_C",8),
+("Standing To Cower - Rifle",12,"S_R_COWER",8),
+("Crouch - Rifle - Aim & Shoot",18,"S_CR_AIM",8),
+("Crouch - Rifle - Walk",22,"S_R_SWAT",8),
+("Crouch - Rifle - Walk Aiming",24,"S_R_RDY_SWAT",8),
+("Prone - Rifle - Crawl & Shoot",29,"S_R_PRN",8),
+("Prone - Rifle - Cower",10,"S_R_PRNCOW",8),
+("Prone - Rifle - Roll Over",14,"S_R_ROLL",8),
+;------------------------------------------------------
+; Water anims
+;------------------------------------------------------
+;("Standing - Rifle - Idle Water",8,"SW_R_STD",8),
+;("Standing - Rifle - Walk Water",12,"SW_R_WALK",8),
+;("Standing - Rifle - Hip Aim Water",21,"SW_SR_HIP_AIM",8),
+;("Standing - Rifle - Aim Water",21,"SW_SR_AIM",8),
+;------------------------------------------------------
+; NOT IN USE
+;------------------------------------------------------
+;("Standing - Rifle - Idle - Alternate",8,"S_R_STD_ALT",8),
+;("Standing - Rifle - Sidestep Alternate",12,"S_R_SDSP_ALT",8),

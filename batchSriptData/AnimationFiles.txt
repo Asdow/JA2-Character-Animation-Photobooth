@@ -1,6 +1,15 @@
-rifleAnims.txt
-pistolAnims.txt
-noWeaponAnims.txt
-meleeWeaponAnims.txt
-HeavyWeaponAnims.txt
-FemaleAnims.txt
+Animations - Reg male - Empty hands.txt
+Animations - Reg male - Melee weapons.txt
+Animations - Reg male - Pistol.txt
+Animations - Reg male - Rifle.txt
+Animations - Reg male - Heavy weapons.txt
+Animations - Big male - Empty hands.txt
+Animations - Big male - Melee weapons.txt
+Animations - Big male - Pistol.txt
+Animations - Big male - Rifle.txt
+Animations - Big male - Heavy weapons.txt
+Animations - Female - Empty hands.txt
+Animations - Female - Melee weapons.txt
+Animations - Female - Pistol.txt
+Animations - Female - Rifle.txt
+Animations - Female - Heavy weapons.txt

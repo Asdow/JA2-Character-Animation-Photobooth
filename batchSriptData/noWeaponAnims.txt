@@ -1,6 +1,6 @@
 ; Animation name, end frame, sti name, directions
 ;------------------------------------------------------
-;("Helidrop",70,"S_HELI",1),
+("Helidrop",70,"S_HELI",1),
 ;------------------------------------------------------
 ; Animations with 4 directions instead of 8
 ;------------------------------------------------------
@@ -44,9 +44,9 @@
 ;------------------------------------------------------
 ; Animations for using the radio
 ;------------------------------------------------------
-;("Crouch - Empty Hands - Radio",16,"S_C_RADIO",8),
-;("Standing - Empty Hands - Radio",16,"S_RADIO",8),
-;("Standing - Empty Hands - Use Remote",6,"S_REMOTE",8),
+("Crouch - Empty Hands - Radio",16,"S_C_RADIO",8),
+("Standing - Empty Hands - Radio",16,"S_RADIO",8),
+("Standing - Empty Hands - Use Remote",6,"S_REMOTE",8),
 ;------------------------------------------------------
 ; Badass big merc anims
 ;------------------------------------------------------

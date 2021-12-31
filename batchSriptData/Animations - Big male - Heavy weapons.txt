@@ -1,0 +1,5 @@
+; Animation name, end frame, sti name, directions
+;------------------------------------------------------
+("Standing - LAW - Fire",20,"M_LAW",8),
+("Crouch - LAW - Fire",20,"M_LAW_CR",8),
+("Crouch - Mortar - Fire",51,"M_MORTAR",8),

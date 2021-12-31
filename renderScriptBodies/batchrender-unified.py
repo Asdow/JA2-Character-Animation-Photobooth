@@ -16,7 +16,8 @@ rifleActions = [
 	"Standing - Rifle - Aim Badass", "Crouch - Rifle - Aim & Shoot Badass", "Prone - Rifle - Crawl & Shoot Badass",
 	"Standing - Rifle - Aim & Shoot - Female", "Crouch - Rifle - Aim & Shoot - Female", "Prone - Rifle - Crawl & Shoot - Female",
 	"Standing - Rifle - Shoot low - Female", "Standing - Rifle - Hip Aim - Female", "Standing - Rifle - Hip Shoot low - Female",
-	"Standing - Rifle - Hip Aim Water", "Standing - Rifle - Aim Water"
+	"Standing - Rifle - Hip Aim Water", "Standing - Rifle - Aim Water", "Standing - Rifle - Aim & Shoot - Female Water",
+	"Standing - Rifle - Hip Aim - Female Water"
 ]
 
 pistolActions = [
@@ -24,13 +25,14 @@ pistolActions = [
 	"Standing - Pistol - Aim & Shoot - One Handed", "Standing - Pistol - Aim Badass", 
 	"Standing - Pistol - Aim & Shoot - Female", "Crouch - Pistol - Aim & Shoot - Female",
 	"Standing - Pistol - Shoot low - Female", "Standing - Pistol - Aim & Shoot - One Handed - Female",
-	"Prone - Pistol - Crawl & Shoot", "Standing - Pistol - Aim & Shoot Water"
+	"Prone - Pistol - Crawl & Shoot", "Standing - Pistol - Aim & Shoot Water", "Standing - Pistol - Aim Badass Water",
+	"Standing - Pistol - Aim & Shoot - Female Water"
 ]
 
 dualPistolActions = [
 	"Standing - Dual Pistols - Aim & Shoot", "Crouch - Dual Pistol - Aim & Shoot", 
 	"Standing - Dual Pistols - Aim & Shoot - Female", "Crouch - Dual Pistol - Aim & Shoot - Female",
-	"Prone - Dual Pistol - Shoot", "Standing - Dual Pistols - Aim & Shoot Water"
+	"Prone - Dual Pistol - Shoot", "Standing - Dual Pistols - Aim & Shoot Water", "Standing - Dual Pistols - Aim & Shoot - Female Water"
 ]
 
 radioActions = [
@@ -79,8 +81,8 @@ for i in range(len(animationArray)):
 
 
 	# Bodytypes
-	bpy.data.objects["Body - RGM"].hide_render = False
-	bpy.data.objects["Body - BGM"].hide_render = True
+	bpy.data.objects["Body - RGM"].hide_render = True
+	bpy.data.objects["Body - BGM"].hide_render = False
 	bpy.data.objects["Body - FGM"].hide_render = True
 	
 
@@ -99,7 +101,7 @@ for i in range(len(animationArray)):
 
 
 	# Display props in renders depending on the set
-	renderSet = 6
+	renderSet = 2
 	if renderSet == 0:
 		# Do not render props
 		for j in range(1,26):
@@ -321,7 +323,7 @@ for i in range(len(animationArray)):
 		# Show rope only in helidrop animation
 		if currentAction == "Helidrop":
 			bpy.data.objects["Item - Helirope"].hide_render = False
-			bpy.data.objects["Armature - Helirope"].animation_data.action = bpy.data.actions.get(currentAction)
+			bpy.data.objects["Armature - Helirope"].animation_data.action = bpy.data.actions.get("Helirope - ArmatureAction")
 		
 		
 		helpers.disablePropRenderlayer(1)
@@ -335,15 +337,15 @@ for i in range(len(animationArray)):
 		if currentAction in knifeActions:
 			bpy.data.objects["Weapon - Combat Knife"].hide_render = False
 			bpy.data.objects["Weapon - Combat Knife"].animation_data.action = bpy.data.actions.get(currentAction)
-		if currentAction == "Crouch - Knife - Stab - Female":
+		if currentAction == "Crouch - Knife - Stab - Female" or currentAction == "Crouch - Knife - Stab":
 			bpy.data.objects["Weapon - Combat Knife"].hide_render = True
 			bpy.data.objects["Weapon - Combat Knife"].animation_data.action = bpy.data.actions.get("HideMuzzleFlash")
 			bpy.data.objects["Weapon - Combat Knife Alt hold"].hide_render = False
-		if currentAction == "Standing - Knife - Throw - Female":
+		if currentAction == "Standing - Knife - Throw - Female" or currentAction == "Standing - Knife - Throw":
 			bpy.data.objects["Weapon - Combat Knife"].hide_render = False
 			bpy.data.objects["Weapon - Combat Knife Alt hold"].hide_render = True
 			bpy.data.objects["Weapon - Combat Knife"].animation_data.action = bpy.data.actions.get(currentAction)
-		if currentAction == "Standing - Crowbar - Hit - Female":
+		if currentAction == "Standing - Crowbar - Hit - Female" or currentAction == "Standing - Crowbar - Hit":
 			bpy.data.objects["Weapon - Crowbar"].hide_render = False
 		
 		helpers.disablePropRenderlayer(2)

@@ -1,0 +1,58 @@
+; Animation name, end frame, sti name, directions
+;------------------------------------------------------
+("Helidrop",70,"F_HELI",1),
+("Standing - Hop fence",18,"F_HOP",4),
+("Standing - Empty Hands - Climb",44,"F_CLIMB",4),
+("Standing - Empty Hands - Kick Door",20,"F_DR_KICK",4),
+("Standing - Empty Hands - Fall",52,"F_N_FALL",4),
+("Standing - Empty Hands - Fall Forward",41,"F_N_FALL_FWD",4),
+("Standing - Empty Hands - Idle - Female",8,"F_N_STD",8),
+("Standing - Empty Hands - Idle - Fox",8,"F_N_STD_FOX",8),
+("Standing - Empty Hands - Pickup - Female",5,"F_PICKUP",8),
+("Standing - Empty Hands - Pickup - Fox",5,"F_PICKUP_FOX",8),
+("Standing - Empty Hands - Open Door - Female",10,"F_OPEN",8),
+("Standing - Empty Hands - Dodge - Female",6,"F_DODGE",8),
+("Standing - Empty Hands - Hit & Die - Female",33,"F_DIE2",8),
+("Standing - Empty Hands - Hit & Die 2 - Female",35,"F_D_FWD",8),
+("Standing - Empty Hands - Flyback Hit - Female",23,"F_DIEBAC",8),
+("Standing - Empty Hands - Flyback & Die - Female",24,"F_DIEHARD",8),
+("Standing - Empty Hands - Flyback & Die BLOOD - Female",24,"F_DIEHARDB",8),
+("Standing - Empty Hands - Throw Grenade - Female",18,"F_THROW_G",8),
+("Standing - Empty Hands - Lob - Female",14,"F_LOB",8),
+("Standing To Cower - Empty hands - Female",12,"F_COWER",8),
+("Standing - Empty Hands - Kick Sand - Female",15,"F_SAND",8),
+("Standing - Empty Hands - Wipe - Female",14,"F_WIPE",8),
+("Standing - Empty Hands - Drunk - Female",20,"F_N_DRUNK",8),
+("Standing - Empty Hands - Walk - Female",12,"F_N_WALK",8),
+("Standing - Empty Hands - Run - Female",12,"F_N_RUN",8),
+("Standing - Empty Hands - Pain - Female",14,"F_N_PAIN",8),
+("Standing To Crouch - Empty Hands - Female",15,"F_N_CRCH",8),
+("Crouch - Empty Hands - Walk - Female",22,"F_N_SWAT",8),
+("Crouch - Empty Hands - Throw - Female",14,"F_C_THROW",8),
+("Crouch - Empty Hands - Hit and Die - Female",9,"F_C_DIE",8),
+("Crouch - Empty Hands - Punch - Female",14,"F_C_PUNCH",8),
+("Crouch - Render medical aid - Female",8,"F_MEDIC",8),
+("Prone - Empty Hands - Roll - Female",8,"F_ROLL",8),
+("Prone - Empty Hands - Hit and Die - Female",22,"F_P_DIE",8),
+;------------------------------------------------------
+; Animations for using the radio
+;------------------------------------------------------
+("Crouch - Empty Hands - Radio - Female",16,"F_C_RADIO",8),
+("Standing - Empty Hands - Radio - Female",16,"F_RADIO",8),
+("Standing - Empty Hands - Use Remote - Female",6,"F_REMOTE",8),
+;------------------------------------------------------
+; Common anims with RGM & BGM
+;------------------------------------------------------
+("Standing - Punch",24,"F_PUNCH",8),
+("Standing - Empty Hands - Karate punch",24,"F_K_PUNCH",8),
+("Standing - Empty Hands - Karate low kick",44,"F_K_LOWKICK",8),
+("Standing - Empty Hands - Karate spin kick",70,"F_K_SPINKICK",8),
+("Crouch To Prone - Sleep",13,"F_SLEEP",8),
+("Prone - Empty Hands - Render Aid",7,"F_PRN_MED",8),
+("Prone - Empty Hands - Cower",11,"F_PRNCOW",8),
+("Prone - Empty Hands - Roll Over",14,"F_N_ROLL",8),
+;------------------------------------------------------
+; NOT IN USE!
+;------------------------------------------------------
+;("Standing - Empty Hands - Lob Grenade - Female",18,"F_LOB_G",8),
+;("Standing - Empty Hands - Throw - Female",14,"F_THROW",8),
