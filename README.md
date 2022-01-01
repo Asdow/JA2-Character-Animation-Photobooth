@@ -8,10 +8,13 @@ Rendering is done through the commandline via batchscripts and a python script g
 Folder 'batchScriptData' contains files with data used by the rendering script and programs that convert the rendered output to .sti files that Jagged Alliance understands.
 
 See this tutorial for an introduction to the rendering setup.
+
 https://thepit.ja-galaxy-forum.com/index.php?t=msg&goto=364117&#msg_364117
 
 
 ## Repositories for the helper programs
 https://github.com/Asdow/JA2-BatchRenderCreator
+
 https://github.com/Asdow/JA2-BatchRender
+
 https://github.com/Asdow/JA2-MakeSTI
