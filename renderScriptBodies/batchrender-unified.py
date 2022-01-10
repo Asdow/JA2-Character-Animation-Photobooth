@@ -13,7 +13,7 @@ objectList = [
 rifleActions = [
 	"Standing - Rifle - Aim", "Crouch - Rifle - Aim & Shoot", "Prone - Rifle - Crawl & Shoot",
 	"Standing - Rifle - Shoot low", "Standing - Rifle - Hip Aim", "Standing - Rifle - Hip Shoot low",
-	"Standing - Rifle - Aim Badass", "Crouch - Rifle - Aim & Shoot Badass", "Prone - Rifle - Crawl & Shoot Badass",
+	"Standing - Rifle - Aim Badass", "Crouch - Rifle - Aim & Shoot Badass", "Prone - Rifle - Crawl & Shoot Badass",	"Standing - Rifle - Hip Aim Badass",
 	"Standing - Rifle - Aim & Shoot - Female", "Crouch - Rifle - Aim & Shoot - Female", "Prone - Rifle - Crawl & Shoot - Female",
 	"Standing - Rifle - Shoot low - Female", "Standing - Rifle - Hip Aim - Female", "Standing - Rifle - Hip Shoot low - Female",
 	"Standing - Rifle - Hip Aim Water", "Standing - Rifle - Aim Water", "Standing - Rifle - Aim & Shoot - Female Water",
@@ -352,7 +352,7 @@ for i in range(len(animationArray)):
 		for j in range(4,26):
 			helpers.disablePropRenderlayer(j)
 		
-	if renderSet == 6:
+	elif renderSet == 6:
 		bpy.data.objects["Weapon - LAW"].hide_render = False
 		if currentAction == "Crouch - Mortar - Fire":
 			bpy.data.objects["Weapon - Mortar Tube"].hide_render = False
@@ -360,6 +360,13 @@ for i in range(len(animationArray)):
 			bpy.data.objects["Armature - Mortar"].animation_data.action = bpy.data.actions.get(currentAction)
 		
 		for j in range(3,26):
+			helpers.disablePropRenderlayer(j)
+	elif renderSet == 7:
+		bpy.data.objects["Weapon - G11"].hide_render = False
+		if currentAction in rifleActions:
+			bpy.data.objects["MuzzleFlash - G11"].hide_render = False
+			bpy.data.objects["MuzzleFlash - G11"].animation_data.action = bpy.data.actions.get(currentAction)
+		for j in range(2,26):
 			helpers.disablePropRenderlayer(j)
 
 

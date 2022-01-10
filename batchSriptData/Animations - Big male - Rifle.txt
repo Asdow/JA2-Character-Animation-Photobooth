@@ -36,6 +36,7 @@
 ("Standing - Rifle - Walk Badass",12,"M_R_WALK_HERO",8),
 ("Standing - Rifle - Run Badass",12,"M_R_RUN_HERO",8),
 ("Standing - Rifle - Aim Badass",21,"M_SR_AIM_HERO",8),
+("Standing - Rifle - Hip Aim Badass",21,"M_R_HIP_AIM_HERO",8),
 ("Standing - Rifle - Hit Badass",5,"M_HIT_HERO",8),
 ("Standing - Rifle - Pain Transition Badass",5,"M_TRAN_HERO",8),
 ("Standing - Rifle - Raise to Idle Badass",5,"M_RAISE_HERO",8),
