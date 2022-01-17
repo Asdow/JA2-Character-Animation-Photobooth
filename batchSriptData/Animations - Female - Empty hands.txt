@@ -19,6 +19,7 @@
 ("Standing - Empty Hands - Flyback & Die BLOOD - Female",24,"F_DIEHARDB",8),
 ("Standing - Empty Hands - Throw Grenade - Female",18,"F_THROW_G",8),
 ("Standing - Empty Hands - Lob - Female",14,"F_LOB",8),
+("Standing - Empty Hands - Slap - Female",37,"F_N_SLAP",8),
 ("Standing To Cower - Empty hands - Female",12,"F_COWER",8),
 ("Standing - Empty Hands - Kick Sand - Female",15,"F_SAND",8),
 ("Standing - Empty Hands - Wipe - Female",14,"F_WIPE",8),
