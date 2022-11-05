@@ -81,8 +81,8 @@ for i in range(len(animationArray)):
 
 
 	# Bodytypes
-	bpy.data.objects["Body - RGM"].hide_render = True
-	bpy.data.objects["Body - BGM"].hide_render = False
+	bpy.data.objects["Body - RGM"].hide_render = False
+	bpy.data.objects["Body - BGM"].hide_render = True
 	bpy.data.objects["Body - FGM"].hide_render = True
 	
 
@@ -101,7 +101,7 @@ for i in range(len(animationArray)):
 
 
 	# Display props in renders depending on the set
-	renderSet = 2
+	renderSet = 3
 	if renderSet == 0:
 		# Do not render props
 		for j in range(1,26):
@@ -260,6 +260,8 @@ for i in range(len(animationArray)):
 		bpy.data.objects["Weapon - SW500 - Left Hand"].hide_render = False
 		bpy.data.objects["Weapon - UZI MP"].hide_render = False
 		bpy.data.objects["Weapon - UZI MP Left"].hide_render = False
+		bpy.data.objects["Weapon - SawnOff"].hide_render = False
+		bpy.data.objects["Weapon - SawnOff - Left Hand"].hide_render = False
 		# Display muzzleflashes only in relevant animations
 		if currentAction in dualPistolActions:
 			leftMuzzleFlashAction = "Dual Pistols - Aim & Shoot - Left Muzzleflash"
@@ -285,6 +287,10 @@ for i in range(len(animationArray)):
 			bpy.data.objects["MuzzleFlash - UZI MP Left"].hide_render = False
 			bpy.data.objects["MuzzleFlash - UZI MP"].animation_data.action = bpy.data.actions.get(currentAction)
 			bpy.data.objects["MuzzleFlash - UZI MP Left"].animation_data.action = bpy.data.actions.get(leftMuzzleFlashAction)
+			bpy.data.objects["MuzzleFlash - SawnOff"].hide_render = False
+			bpy.data.objects["MuzzleFlash - SawnOff - Left Hand"].hide_render = False
+			bpy.data.objects["MuzzleFlash - SawnOff"].animation_data.action = bpy.data.actions.get(currentAction)
+			bpy.data.objects["MuzzleFlash - SawnOff - Left Hand"].animation_data.action = bpy.data.actions.get(leftMuzzleFlashAction)
 		if currentAction in pistolActions:
 			bpy.data.objects["MuzzleFlash - HK USP"].hide_render = False
 			bpy.data.objects["MuzzleFlash - HK MP5K"].hide_render = False
@@ -296,9 +302,9 @@ for i in range(len(animationArray)):
 			bpy.data.objects["MuzzleFlash - Desert Eagle"].animation_data.action = bpy.data.actions.get(currentAction)
 			bpy.data.objects["MuzzleFlash - SW500"].animation_data.action = bpy.data.actions.get(currentAction)
 			bpy.data.objects["MuzzleFlash - UZI MP"].animation_data.action = bpy.data.actions.get(currentAction)
-		
-		helpers.disablePropRenderlayer(11)
-		helpers.disablePropRenderlayer(12)
+			bpy.data.objects["MuzzleFlash - SawnOff"].hide_render = False
+			bpy.data.objects["MuzzleFlash - SawnOff"].animation_data.action = bpy.data.actions.get(currentAction)
+	
 		helpers.disablePropRenderlayer(13)
 		helpers.disablePropRenderlayer(14)
 		helpers.disablePropRenderlayer(15)
