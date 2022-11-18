@@ -4,3 +4,4 @@ guns_AK.stp
 Hats.stp
 guns_universal_v2.stp
 camoprops.stp
+Colormap.act

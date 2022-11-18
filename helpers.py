@@ -60,3 +60,27 @@ def disablePropGroundshadows(propNumber):
 				layer.use = False
 	
 	return True
+
+
+def disableFullbodyOutput():
+	bpy.data.node_groups["JA2 - Full Body Group"].nodes["File Output.026"].mute = True
+
+def disableLayeredbodyShadowOutput():
+	bpy.data.node_groups["JA2 Layered Sprite - Body Shadow Group"].nodes["File Output"].mute = True
+
+def disableLayeredbodyOutput():
+	disableLayeredbodyShadowOutput()
+	for j in range(1,5):
+		bpy.data.node_groups["JA2 Layered Sprite - Body Group"].nodes["File Output.00"+str(j)].mute = True
+
+
+def enableFullbodyOutput():
+	bpy.data.node_groups["JA2 - Full Body Group"].nodes["File Output.026"].mute = False
+
+def enableLayeredbodyShadowOutput():
+	bpy.data.node_groups["JA2 Layered Sprite - Body Shadow Group"].nodes["File Output"].mute = False
+
+def enableLayeredbodyOutput():
+	enableLayeredbodyShadowOutput()
+	for j in range(1,5):
+		bpy.data.node_groups["JA2 Layered Sprite - Body Group"].nodes["File Output.00"+str(j)].mute = False

@@ -26,6 +26,14 @@
 ("Prone - Dual Pistol - Shoot",12,"F_DB_PRN",8),
 ("Standing - Rifle - Hurt Walk - Female",12,"F_R_WALK_HURT",8),
 ;------------------------------------------------------
+; Water anims
+;------------------------------------------------------
+("Standing - Empty Hands - Idle - Female Water",8,"FW_N_STD",8),
+("Standing - Empty Hands - Walk - Female Water",12,"FW_N_WALK",8),
+("Standing - Pistol - Idle - Female Water",8,"FW_P_BRTH",8),
+("Standing - Pistol - Aim & Shoot - Female Water",21,"FW_N_SHOT",8),
+("Standing - Dual Pistols - Aim & Shoot - Female Water",25,"FW_DBLSHOT",8),
+;------------------------------------------------------
 ; NOT IN USE!
 ;------------------------------------------------------
 ;("Prone - Pistol - Crawl & Shoot - Female UNFINISHED",29,"F_N_PRNE",8),

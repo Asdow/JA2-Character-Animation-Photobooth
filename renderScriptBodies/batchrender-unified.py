@@ -60,14 +60,15 @@ for i in range(len(animationArray)):
 	for j in range(1,5):
 		bpy.data.node_groups["JA2 Layered Sprite - Body Group"].nodes["File Output.00"+str(j)].base_path = outputfolder
 	bpy.data.node_groups["JA2 Layered Sprite - Body Shadow Group"].nodes["File Output"].base_path = outputfolder
-
+	bpy.data.node_groups["JA2 - Full Body Group"].nodes["File Output.026"].base_path = outputfolder
+	
 	# Prop 1, 2, 3...10 outputs
 	for j in range(1,26):
 		if j < 10:
 			number = "00" + str(j)
 		else:
 			number = "0" + str(j)
-		bpy.data.scenes["camera 1"].node_tree.nodes["File Output." + number].base_path = outputfolder
+		bpy.data.scenes["camera 1"].node_tree.nodes["File Output." + number].base_path = outputfolder	
 	
 
 	# Hide objects in renders
@@ -84,6 +85,7 @@ for i in range(len(animationArray)):
 	bpy.data.objects["Body - RGM"].hide_render = False
 	bpy.data.objects["Body - BGM"].hide_render = True
 	bpy.data.objects["Body - FGM"].hide_render = True
+	bpy.data.objects["Body - Elite Camo"].hide_render = True
 	
 
 	if bpy.data.objects["Body - RGM"].hide_render == False:
@@ -92,12 +94,28 @@ for i in range(len(animationArray)):
 		helpers.setCameraOrthoScale(6.0)
 	if bpy.data.objects["Body - FGM"].hide_render == False:
 		helpers.setCameraOrthoScale(6.6)
-		
+	if bpy.data.objects["Body - Elite Camo"].hide_render == False:
+		bpy.data.node_groups["Background Group"].nodes["Switch"].check = True
+
 
 	# Set up water animations
 	if "Water" in currentAction:
 		for j in range(1,26):
 			helpers.disablePropGroundshadows(j)
+
+
+	# Set body file outputs
+	propsOnly = True
+	layeredBody = True
+	if propsOnly:
+		helpers.disableLayeredbodyOutput()
+		helpers.disableFullbodyOutput()
+	elif layeredBody:
+		helpers.disableFullbodyOutput()
+		helpers.enableLayeredbodyOutput()
+	else:
+		helpers.enableFullbodyOutput()
+		helpers.disableLayeredbodyOutput()
 
 
 	# Display props in renders depending on the set
@@ -195,11 +213,12 @@ for i in range(len(animationArray)):
 		bpy.data.objects["Hat - Camo Helmet"].hide_render = False
 		bpy.data.objects["Vest - Long Sleeved"].hide_render = False
 		bpy.data.objects["Hat - Ballcap"].hide_render = False
+		bpy.data.objects["Vest - Kevlar"].hide_render = False
 		
 		# Modifiers
 		bpy.data.objects["Vest - Flak Jacket"].modifiers["Shrinkwrap"].target = bpy.data.objects["RGM - Vest Target"]
 		bpy.data.objects["Hat - Ballcap"].modifiers["Shrinkwrap"].target = bpy.data.objects["Body - RGM"]
-		
+		bpy.data.objects["Vest - Kevlar"].modifiers["Shrinkwrap"].target = bpy.data.objects["RGM - Vest Target"]
 		
 		# Switch the background color to gray for props that use the default bodytype palette
 		bpy.data.node_groups["JA2 Layered Sprite - Prop 10"].nodes["Switch.002"].check = False
@@ -214,16 +233,19 @@ for i in range(len(animationArray)):
 			bpy.data.objects["Hat - Helmet"].hide_render = True
 			bpy.data.objects["Hat - Booney"].hide_render = True
 			bpy.data.objects["Vest - Long Sleeved"].hide_render = True
+			bpy.data.objects["Vest - Kevlar"].hide_render = True
 			# Show RGF specific ones
 			bpy.data.objects["Vest - Flak Jacket - Female"].hide_render = False
 			bpy.data.objects["Hat - Beret - Female"].hide_render = False
 			bpy.data.objects["Hat - Helmet - Female"].hide_render = False
 			bpy.data.objects["Hat - Booney - Female"].hide_render = False
 			bpy.data.objects["Vest - FGM Long Sleeved"].hide_render = False
-			
+			bpy.data.objects["Vest - Kevlar - Female"].hide_render = False
+
 			bpy.data.objects["Vest - Flak Jacket - Female"].modifiers["Shrinkwrap"].target = bpy.data.objects["FGM - Vest Target"]
 			bpy.data.objects["Hat - Ballcap"].modifiers["Shrinkwrap"].target = bpy.data.objects["Body - FGM"]
-			
+			bpy.data.objects["Vest - Kevlar - Female"].modifiers["Shrinkwrap"].target = bpy.data.objects["FGM - Vest Target"]
+
 		elif bpy.data.objects["Body - BGM"].hide_render == False:
 			# Hide RGM objects
 			bpy.data.objects["Vest - Long Sleeved"].hide_render = True
@@ -231,10 +253,10 @@ for i in range(len(animationArray)):
 			bpy.data.objects["Vest - BGM Long Sleeved"].hide_render = False
 			bpy.data.objects["Vest - Flak Jacket"].modifiers["Shrinkwrap"].target = bpy.data.objects["BGM - Vest Target"]
 			bpy.data.objects["Hat - Ballcap"].modifiers["Shrinkwrap"].target = bpy.data.objects["Body - BGM"]
+			bpy.data.objects["Vest - Kevlar"].modifiers["Shrinkwrap"].target = bpy.data.objects["BGM - Vest Target"]
 		
 		
 		# Disable unused renderlayers
-		helpers.disablePropRenderlayer(12)
 		helpers.disablePropRenderlayer(13)
 		helpers.disablePropRenderlayer(14)
 		helpers.disablePropRenderlayer(15)
