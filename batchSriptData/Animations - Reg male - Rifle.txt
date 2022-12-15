@@ -33,10 +33,10 @@
 ;------------------------------------------------------
 ; Water anims
 ;------------------------------------------------------
-;("Standing - Rifle - Idle Water",8,"SW_R_STD",8),
-;("Standing - Rifle - Walk Water",12,"SW_R_WALK",8),
-;("Standing - Rifle - Hip Aim Water",21,"SW_SR_HIP_AIM",8),
-;("Standing - Rifle - Aim Water",21,"SW_SR_AIM",8),
+("Standing - Rifle - Idle Water",8,"SW_R_STD",8),
+("Standing - Rifle - Walk Water",12,"SW_R_WALK",8),
+("Standing - Rifle - Hip Aim Water",21,"SW_SR_HIP_AIM",8),
+("Standing - Rifle - Aim Water",21,"SW_SR_AIM",8),
 ;------------------------------------------------------
 ; NOT IN USE
 ;------------------------------------------------------

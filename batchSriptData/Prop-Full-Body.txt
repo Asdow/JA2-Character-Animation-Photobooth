@@ -1,3 +1,4 @@
 ; :: separator, palette filename, prefix, suffix
 ;------------------------------------------------------
-Colormap.act :: FullBody :: _fullbody
+;Colormap.act :: FullBody :: _fullbody
+hats.stp :: FullBody :: _spacemarine

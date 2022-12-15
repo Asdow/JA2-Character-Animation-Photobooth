@@ -9,3 +9,4 @@ Prop-Weapons-4.txt :: Pistols (USP, MP5K, Desert eagle, SW500, Sawnoff-shotgun)
 Prop-Weapons-5.txt :: Melee weapons (Combat knife, crowbar)
 Prop-Weapons-6.txt :: Heavy weapons (LAW, mortar)
 Prop-Weapons-tutorial.txt :: Weapon Tutorial ( G11 )
+Prop-Weapons-7.txt :: WH40K

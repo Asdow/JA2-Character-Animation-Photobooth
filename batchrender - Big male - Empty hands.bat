@@ -2,7 +2,7 @@
 setlocal enabledelayedexpansion
 
 rem change these to wherever they are located on your machine
-set _BLENDERDIR=J:\\Ohjelmat\\Blender\\Blender 3.0
+set _BLENDERDIR=J:\\Ohjelmat\\Blender\\Blender 3.3
 set _BLENDFILE=JA2 2.9_033.blend
 set _PYTHONFILE=batchrender-Animations - Big male - Empty hands.py
 
