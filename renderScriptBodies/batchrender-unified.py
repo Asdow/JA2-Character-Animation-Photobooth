@@ -47,7 +47,6 @@ knifeActions = [
 
 
 
-
 for i in range(len(animationArray)):
 	# Set up specific animation and its end frame
 	currentAction = animationArray[i][0]
@@ -88,6 +87,7 @@ for i in range(len(animationArray)):
 	bpy.data.objects["Body - Elite Camo"].hide_render = True
 	bpy.data.objects["SpaceMarine__mesh"].hide_render = True
 	bpy.data.objects["Body - RGM - Head"].hide_render = False # For EOD suit
+	bpy.data.objects["Body - RGM - Legs"].hide_render = False # For EOD vest, when prone
 
 
 	if bpy.data.objects["Body - RGM"].hide_render == False:
@@ -129,6 +129,10 @@ for i in range(len(animationArray)):
 		helpers.updateWaterVisibility(True)
 		for j in range(1,26):
 			helpers.disablePropGroundshadows(j)
+	else:
+		helpers.updateWaterVisibility(False)
+		for j in range(1,26):
+			helpers.enablePropGroundshadows(j)
 
 
 	# Set body file outputs

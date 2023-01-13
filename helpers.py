@@ -62,6 +62,27 @@ def disablePropGroundshadows(propNumber):
 	return True
 
 
+def enablePropGroundshadows(propNumber):
+	if propNumber < 1 or propNumber > 25:
+		print("Invalid prop number. Aborting")
+		return False
+	
+	if propNumber >= 10:
+		number = "0" + str(propNumber)
+	else:
+		number = "00" + str(propNumber)
+
+	propGroundShadow = "Prop groundShadow_" + number
+	
+	for scene in bpy.data.scenes:
+		for layer in scene.view_layers:
+			layerName = layer.name
+			if layerName == propGroundShadow:
+				layer.use = True
+	
+	return True
+
+
 def disableFullbodyOutput():
 	bpy.data.node_groups["JA2 - Full Body Group"].nodes["File Output.026"].mute = True
 	#bpy.data.nodes["Group.045"].mute = True
@@ -127,7 +148,7 @@ def updateWaterVisibility(toggle):
 									if "brush" in childColl.name:
 										childColl.exclude = True
 									# Show water effect with backpack, EOD vest & pants
-									if "Water Volume" in childColl.name and ("Layer_002" in layerName or "Layer_018" in layerName or "Layer_019" in layerName):
+									if "Water Volume" in childColl.name and ("Layer_002" in layerName or "Layer_018" in layerName or "Layer_019" in layerName or "layer_002" in layerName or "layer_018" in layerName or "layer_019" in layerName):
 										childColl.exclude = False
 									else:
 										childColl.exclude = True
