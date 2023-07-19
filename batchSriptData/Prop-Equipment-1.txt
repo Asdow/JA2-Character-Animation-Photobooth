@@ -12,7 +12,7 @@ Hats.stp :: Prop9 :: _camohelmet
 JA2_character_model_palette_v3.act :: Prop10 :: _lsleeve
 ;------------------------------------------------------
 JA2_character_model_palette_v3.act :: Prop11 :: _bcap
-Hats.stp :: Prop12 :: _kevlar
+Hats_no_EOD.stp :: Prop12 :: _kevlar
 JA2_character_model_palette_v3.act :: Prop13 :: _balaclava
 Hats.stp :: Prop14 :: _spectra
 Hats.stp :: Prop15 :: _holster

@@ -83,11 +83,12 @@ for i in range(len(animationArray)):
 	# Bodytypes
 	bpy.data.objects["Body - RGM"].hide_render = True
 	bpy.data.objects["Body - BGM"].hide_render = True
-	bpy.data.objects["Body - FGM"].hide_render = True
+	bpy.data.objects["Body - FGM"].hide_render = False
 	bpy.data.objects["Body - Elite Camo"].hide_render = True
 	bpy.data.objects["SpaceMarine__mesh"].hide_render = True
-	bpy.data.objects["Body - RGM - Head"].hide_render = False # For EOD suit
-	bpy.data.objects["Body - RGM - Legs"].hide_render = False # For EOD vest, when prone
+	bpy.data.objects["Body - FGM - Head"].hide_render = True # For EOD suit
+	bpy.data.objects["Body - RGM - Head"].hide_render = True # For EOD suit
+	bpy.data.objects["Body - RGM - Legs"].hide_render = True # For EOD vest, when prone
 
 
 	if bpy.data.objects["Body - RGM"].hide_render == False:
@@ -123,7 +124,8 @@ for i in range(len(animationArray)):
 		bpy.data.objects["sm_shoulder_left"].hide_render = True
 		bpy.data.objects["sm_shoulder_right"].hide_render = True
 
-
+	helpers.setCameraOrthoScale(6.0)
+	
 	# Set up water animations
 	if "Water" in currentAction:
 		helpers.updateWaterVisibility(True)
@@ -249,8 +251,10 @@ for i in range(len(animationArray)):
 		bpy.data.objects["Vest - Spectra"].hide_render = False
 		bpy.data.objects["Legs - Holster - Right"].hide_render = False
 		bpy.data.objects["Legs - Holster - Left"].hide_render = False
+		# EOD suit requires a lot of special handling so the EOD vest is hidden by default
 		bpy.data.objects["Helmet - EOD"].hide_render = False
-		bpy.data.objects["Vest - EOD"].hide_render = False
+		bpy.data.objects["Vest - EOD"].hide_render = True
+		bpy.data.objects["Vest - EOD - BGM"].hide_render = True
 		bpy.data.objects["Legs - EOD"].hide_render = False
 		
 		# Modifiers
@@ -265,7 +269,7 @@ for i in range(len(animationArray)):
 		
 		
 		# Change objects depending on the body
-		if bpy.data.objects["Body - FGM"].hide_render == False:
+		if bpy.data.objects["Body - FGM"].hide_render == False or bpy.data.objects["Body - FGM - Head"].hide_render == False:
 			# Hide RGM objects
 			bpy.data.objects["Vest - Flak Jacket"].hide_render = True
 			bpy.data.objects["Hat - Beret"].hide_render = True
@@ -275,6 +279,7 @@ for i in range(len(animationArray)):
 			bpy.data.objects["Vest - Kevlar"].hide_render = True
 			bpy.data.objects["Hat - Balaclava"].hide_render = True
 			bpy.data.objects["Vest - Spectra"].hide_render = True
+			bpy.data.objects["Helmet - EOD"].hide_render = True
 			# Show RGF specific ones
 			bpy.data.objects["Vest - Flak Jacket - Female"].hide_render = False
 			bpy.data.objects["Hat - Beret - Female"].hide_render = False
@@ -284,6 +289,7 @@ for i in range(len(animationArray)):
 			bpy.data.objects["Vest - Kevlar - Female"].hide_render = False
 			bpy.data.objects["Hat - Balaclava - RGF"].hide_render = False
 			bpy.data.objects["Vest - Spectra - RGF"].hide_render = False
+			bpy.data.objects["Helmet - EOD - Female"].hide_render = False
 
 			bpy.data.objects["Vest - Flak Jacket - Female"].modifiers["Shrinkwrap"].target = bpy.data.objects["FGM - Vest Target"]
 			bpy.data.objects["Hat - Ballcap"].modifiers["Shrinkwrap"].target = bpy.data.objects["Body - FGM"]
@@ -304,10 +310,9 @@ for i in range(len(animationArray)):
 			bpy.data.objects["Vest - Kevlar"].modifiers["Shrinkwrap"].target = bpy.data.objects["BGM - Vest Target"]
 		
 		
-		# Disable unused renderlayers
-		for j in range(1,17):
-			helpers.disablePropRenderlayer(j)
-
+		# Disable unused renderlayers			
+		helpers.disablePropRenderlayer(18) #EOD Vest
+		helpers.disablePropRenderlayer(19) #EOD Pants
 		helpers.disablePropRenderlayer(20)
 		helpers.disablePropRenderlayer(21)
 		helpers.disablePropRenderlayer(22)
