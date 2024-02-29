@@ -124,7 +124,6 @@ for i in range(len(animationArray)):
 		bpy.data.objects["sm_shoulder_left"].hide_render = True
 		bpy.data.objects["sm_shoulder_right"].hide_render = True
 
-	helpers.setCameraOrthoScale(6.0)
 	
 	# Set up water animations
 	if "Water" in currentAction:
