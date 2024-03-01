@@ -57,7 +57,7 @@ deathActions = [
 for i in range(len(animationArray)):
 	# Set up specific animation and its end frame
 	currentAction = animationArray[i][0]
-	bpy.context.object.animation_data.action = bpy.data.actions.get(currentAction)
+	bpy.data.objects["rig"].animation_data.action = bpy.data.actions.get(currentAction)
 	bpy.context.scene.frame_end = animationArray[i][1]
 
 
