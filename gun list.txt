@@ -42,9 +42,10 @@ x UZI
 
 --- Heavy weapons ---
 x Milkor MGL
-Mortar
+x Mortar
 x LAW
 x Rocket Rifle
+minigun
 
 --- Props ---
 x Vest (needs proper rigging)
@@ -59,3 +60,13 @@ x crowbar
 x knee pads
 x ballcap
 riot shield
+x camo pants
+x camo shirt
+dress cap
+dress shirt
+fur hat
+x ghillie hat
+x ghillie vest
+x ghillie pants
+cowboy hat (FOR TEX!)
+hedge trimmer

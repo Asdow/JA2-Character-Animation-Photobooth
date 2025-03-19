@@ -159,7 +159,14 @@ def updateWaterVisibility(toggle):
 	bodyLayerlist = [
 		"View Layer", "groundShadow", "Freestyle"
 	]
-
+	propLayers = [
+		"Layer_002", "layer_002", # backpack
+		"Layer_018", "layer_018", # EOD Vest
+		"Layer_019", "layer_019", # EOD Pants
+		"Layer_020", "layer_020", # Ghillie Vest
+		"Layer_021", "layer_021"  # Ghillie Pants
+	]
+	
 	if toggle == True:
 		for scene in bpy.data.scenes:
 			if scene.name in sceneList:
@@ -178,8 +185,8 @@ def updateWaterVisibility(toggle):
 								for childColl in collection.children:
 									if "brush" in childColl.name:
 										childColl.exclude = True
-									# Show water effect with backpack, EOD vest & pants
-									if "Water Volume" in childColl.name and ("Layer_002" in layerName or "Layer_018" in layerName or "Layer_019" in layerName or "layer_002" in layerName or "layer_018" in layerName or "layer_019" in layerName):
+									# Show water effect with backpack, EOD vest & pants, ghillie suit
+									if "Water Volume" in childColl.name and any(substring in layerName for substring in propLayers):
 										childColl.exclude = False
 									else:
 										childColl.exclude = True

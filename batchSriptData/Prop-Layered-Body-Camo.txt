@@ -1,0 +1,9 @@
+; :: separator, palette filename, prefix, suffix
+;------------------------------------------------------
+WoodlandCamo.act :: Prop1 :: _torsocamo
+WoodlandCamo.act :: Prop2 :: _legscamo
+WoodlandCamo.act :: Prop7 :: _Booney
+WoodlandCamo.act :: Prop9 :: _camohelmet
+WoodlandCamo.act :: Prop20 :: _ghilliev
+WoodlandCamo.act :: Prop21 :: _ghilliep
+WoodlandCamo.act :: Prop22 :: _ghillieh

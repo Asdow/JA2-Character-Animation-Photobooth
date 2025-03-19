@@ -2,6 +2,7 @@
 ;------------------------------------------------------
 Prop-Full-Body.txt :: Full base body
 Prop-Layered-Body.txt :: Layered base body
+Prop-Layered-Body-Camo.txt :: Layered camo base body
 Prop-Equipment-1.txt :: Equipment (Vest, Backpack, beret, Helmet, Gasmask, NVG, booney hat, knee pads, camo helmet, long sleeves, ballcap) 
 Prop-Equipment-3.txt :: Equipment (Radio, rock, Helidrop rope)
 Prop-Weapons-1.txt :: Assault rifles (FN FAL, M16, AK47, FAMAS, SCAR-H) and sniper rifles (Barrett, Dragunov, PSG1, TRG42, Patriot) & SMGs and shotguns (P90, Thompson, PPSH41, MP5) and shotguns (Mossberg 590, Saiga 12K, SPAS 12) & LMGs and rifles (RPK, SAW, PKM, Mosin Nagant, M14, Milkor MKL, Rocket rifle)

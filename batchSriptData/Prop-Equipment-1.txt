@@ -6,9 +6,9 @@ Hats.stp :: Prop3 :: _beret
 Hats.stp :: Prop4 :: _helmet
 Hats.stp :: Prop5 :: _gasmask
 Hats.stp :: Prop6 :: _NVG
-Hats.stp :: Prop7 :: _Booney
+WoodlandCamo.act :: Prop7 :: _Booney
 Hats.stp :: Prop8 :: _Pads
-Hats.stp :: Prop9 :: _camohelmet
+WoodlandCamo.act :: Prop9 :: _camohelmet
 JA2_character_model_palette_v3.act :: Prop10 :: _lsleeve
 ;------------------------------------------------------
 JA2_character_model_palette_v3.act :: Prop11 :: _bcap
@@ -20,3 +20,7 @@ Hats.stp :: Prop16 :: _holster_l
 Hats.stp :: Prop17 :: _eod_h
 Hats.stp :: Prop18 :: _eod_v
 Hats.stp :: Prop19 :: _eod_l
+;------------------------------------------------------
+WoodlandCamo.act :: Prop20 :: _ghilliev
+WoodlandCamo.act :: Prop21 :: _ghilliep
+WoodlandCamo.act :: Prop22 :: _ghillieh

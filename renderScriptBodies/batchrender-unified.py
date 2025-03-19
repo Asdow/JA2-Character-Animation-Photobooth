@@ -1,7 +1,16 @@
+from enum import Enum
+class BodyType(Enum):
+	RegMale = 1
+	BigMale = 2
+	RegFemale = 3
+	SpaceMarine = 4
+	EliteOperator = 5
+	
 # Sanity checks before rendering
 bpy.data.objects["rig"].data.pose_position = 'POSE'
 bpy.data.objects["Armature - Helirope"].data.pose_position = 'POSE'
 bpy.data.objects["Armature - Rock"].data.pose_position = 'POSE'
+bpy.context.scene.frame_start = 1
 for j in range(1,26):
 	helpers.enablePropRenderlayer(j)
 
@@ -9,7 +18,7 @@ for j in range(1,26):
 
 objectList = [
 	"Weapon", "Vest", "Backpack", "Hat",
-	"Face", "Legs", "Body", "Item", "Helmet"
+	"Face", "Legs", "Body", "Item", "Helmet", "Ghillie"
 ]
 
 rifleActions = [
@@ -53,6 +62,13 @@ deathActions = [
 ]
 
 
+# Select which bodytype to render
+bodytype = BodyType.RegMale
+
+propsOnly = True
+layeredBody = True
+renderSet = 1
+
 
 for i in range(len(animationArray)):
 	# Set up specific animation and its end frame
@@ -90,27 +106,27 @@ for i in range(len(animationArray)):
 			object.animation_data.action = bpy.data.actions.get("HideMuzzleFlash")			
 
 	# Bodytypes
-	bpy.data.objects["Body - RGM"].hide_render = True
-	bpy.data.objects["Body - BGM"].hide_render = True
-	bpy.data.objects["Body - FGM"].hide_render = False
-	bpy.data.objects["Body - Elite Camo"].hide_render = True
-	bpy.data.objects["SpaceMarine__mesh"].hide_render = True
 	bpy.data.objects["Body - FGM - Head"].hide_render = True # For EOD suit
 	bpy.data.objects["Body - RGM - Head"].hide_render = True # For EOD suit
 	bpy.data.objects["Body - RGM - Legs"].hide_render = True # For EOD vest, when prone
 
 
 	# Camera scale and bodytype specific setup
-	if bpy.data.objects["Body - RGM"].hide_render == False:
+	if bodytype is BodyType.RegMale:
+		bpy.data.objects["Body - RGM"].hide_render = False
 		helpers.setCameraOrthoScale(6.6)
-	if bpy.data.objects["Body - BGM"].hide_render == False:
+	if bodytype is BodyType.BigMale:
+		bpy.data.objects["Body - BGM"].hide_render = False
 		helpers.setCameraOrthoScale(6.0)
-	if bpy.data.objects["Body - FGM"].hide_render == False:
+	if bodytype is BodyType.RegFemale:
+		bpy.data.objects["Body - FGM"].hide_render = False
 		helpers.setCameraOrthoScale(6.6)
-	if bpy.data.objects["Body - Elite Camo"].hide_render == False:
+	if bodytype is BodyType.EliteOperator:
+		bpy.data.objects["Body - Elite Camo"].hide_render = False
 		bpy.data.node_groups["Background Group"].nodes["Switch"].check = True
-	if bpy.data.objects["SpaceMarine__mesh"].hide_render == False:
+	if bodytype is BodyType.SpaceMarine:
 		helpers.setCameraOrthoScale(6.0)
+		bpy.data.objects["SpaceMarine__mesh"].hide_render = False
 		bpy.data.objects["SM_arm_left"].hide_render = False
 		bpy.data.objects["SM_arm_right"].hide_render = False
 		bpy.data.objects["sm_chest"].hide_render = False
@@ -147,8 +163,6 @@ for i in range(len(animationArray)):
 
 
 	# Set body file outputs
-	propsOnly = True
-	layeredBody = True
 	if propsOnly:
 		helpers.disableLayeredbodyOutput()
 		helpers.disableFullbodyOutput()
@@ -161,7 +175,6 @@ for i in range(len(animationArray)):
 
 
 	# Display props in renders depending on the set
-	renderSet = 2
 	if renderSet == 0:
 		# Do not render props
 		for j in range(1,26):
@@ -174,7 +187,6 @@ for i in range(len(animationArray)):
 			#bpy.data.objects["BloodPool.Prone"].animation_data.action = bpy.data.actions.get("Prone - Get Hit And Die - Blood")
 			bpy.data.objects["BloodPool.FlyBack"].hide_render = False
 			bpy.data.objects["BloodPool.FlyBack"].animation_data.action = bpy.data.actions.get("Standing - Empty Hands - Flyback hit - Blood")
-		
 		
 	elif renderSet == 1:
 		bpy.data.objects["Weapon - FN FAL"].hide_render = False
@@ -275,11 +287,21 @@ for i in range(len(animationArray)):
 		bpy.data.objects["Vest - EOD"].hide_render = True
 		bpy.data.objects["Vest - EOD - BGM"].hide_render = True
 		bpy.data.objects["Legs - EOD"].hide_render = False
+		#Ghillie Suit
+		bpy.data.objects["Ghillie - Arms"].hide_render = False
+		bpy.data.objects["Ghillie - Torso"].hide_render = False
+		bpy.data.objects["Ghillie - Boots"].hide_render = False
+		bpy.data.objects["Ghillie - Pants"].hide_render = False
+		bpy.data.objects["Ghillie - Hood"].hide_render = False
 		
 		# Modifiers
 		bpy.data.objects["Vest - Flak Jacket"].modifiers["Shrinkwrap"].target = bpy.data.objects["RGM - Vest Target"]
 		bpy.data.objects["Hat - Ballcap"].modifiers["Shrinkwrap"].target = bpy.data.objects["Body - RGM"]
 		bpy.data.objects["Vest - Kevlar"].modifiers["Shrinkwrap"].target = bpy.data.objects["RGM - Vest Target"]
+		bpy.data.objects["Ghillie - Arms"].modifiers["Shrinkwrap"].target = bpy.data.objects["Body - RGM"]
+		bpy.data.objects["Ghillie - Torso"].modifiers["Shrinkwrap"].target = bpy.data.objects["Body - RGM"]
+		bpy.data.objects["Ghillie - Pants"].modifiers["Shrinkwrap"].target = bpy.data.objects["Body - RGM"]
+		bpy.data.objects["Ghillie - Hood"].modifiers["Shrinkwrap"].target = bpy.data.objects["Body - RGM"]
 		
 		# Switch the background color to gray for props that use the default bodytype palette
 		bpy.data.node_groups["JA2 Layered Sprite - Prop 10"].nodes["Switch.002"].check = False # long sleeves
@@ -313,7 +335,7 @@ for i in range(len(animationArray)):
 			bpy.data.objects["Vest - Flak Jacket - Female"].modifiers["Shrinkwrap"].target = bpy.data.objects["FGM - Vest Target"]
 			bpy.data.objects["Hat - Ballcap"].modifiers["Shrinkwrap"].target = bpy.data.objects["Body - FGM"]
 			bpy.data.objects["Vest - Kevlar - Female"].modifiers["Shrinkwrap"].target = bpy.data.objects["FGM - Vest Target"]
-
+			
 		elif bpy.data.objects["Body - BGM"].hide_render == False:
 			# Hide RGM objects
 			bpy.data.objects["Vest - Long Sleeved"].hide_render = True
@@ -330,11 +352,15 @@ for i in range(len(animationArray)):
 		
 		
 		# Disable unused renderlayers			
+		for j in range(1,7):
+			helpers.disablePropRenderlayer(j)
+		for j in range(10,18):
+			helpers.disablePropRenderlayer(j)
 		helpers.disablePropRenderlayer(18) #EOD Vest
 		helpers.disablePropRenderlayer(19) #EOD Pants
-		helpers.disablePropRenderlayer(20)
-		helpers.disablePropRenderlayer(21)
-		helpers.disablePropRenderlayer(22)
+		#helpers.disablePropRenderlayer(20) #Ghillie Vest
+		#helpers.disablePropRenderlayer(21) #Ghillie Pants
+		#helpers.disablePropRenderlayer(22) #Ghillie Hood
 		helpers.disablePropRenderlayer(23)
 		helpers.disablePropRenderlayer(24)
 		helpers.disablePropRenderlayer(25)
@@ -469,9 +495,60 @@ for i in range(len(animationArray)):
 			helpers.disablePropRenderlayer(j)
 		
 	elif renderSet == 8:
-		bpy.data.objects["Weapon - Bolter"].hide_render = False
-		for j in range(2,26):
+		#bpy.data.objects["Weapon - Bolter"].hide_render = False
+		bpy.data.objects["Body - RGM - CamoShirt"].hide_render = False
+		bpy.data.objects["Body - RGM - CamoLegs"].hide_render = False
+		bpy.data.objects["Hat - Booney"].hide_render = False
+		bpy.data.objects["Hat - Camo Helmet"].hide_render = False
+		#Ghillie Suit
+		bpy.data.objects["Ghillie - Arms"].hide_render = False
+		bpy.data.objects["Ghillie - Torso"].hide_render = False
+		bpy.data.objects["Ghillie - Boots"].hide_render = False
+		bpy.data.objects["Ghillie - Pants"].hide_render = False
+		bpy.data.objects["Ghillie - Hood"].hide_render = False
+		bpy.data.objects["Ghillie - Arms"].modifiers["Shrinkwrap"].target = bpy.data.objects["Body - RGM"]
+		bpy.data.objects["Ghillie - Torso"].modifiers["Shrinkwrap"].target = bpy.data.objects["Body - RGM"]
+		bpy.data.objects["Ghillie - Pants"].modifiers["Shrinkwrap"].target = bpy.data.objects["Body - RGM"]
+		bpy.data.objects["Ghillie - Hood"].modifiers["Shrinkwrap"].target = bpy.data.objects["Body - RGM"]
+
+		# Change objects depending on the body
+		if bpy.data.objects["Body - FGM"].hide_render == False or bpy.data.objects["Body - FGM - Head"].hide_render == False:
+			# Hide RGM objects
+			bpy.data.objects["Hat - Booney"].hide_render = True
+			bpy.data.objects["Body - RGM - CamoShirt"].hide_render = True
+			bpy.data.objects["Body - RGM - CamoLegs"].hide_render = True
+			# Show RGF specific ones
+			bpy.data.objects["Hat - Booney - Female"].hide_render = False
+			bpy.data.objects["Body - FGM - CamoShirt"].hide_render = False
+			bpy.data.objects["Body - FGM - CamoLegs"].hide_render = False
+			# Modifiers
+			bpy.data.objects["Ghillie - Arms"].modifiers["Shrinkwrap"].target = bpy.data.objects["Body - FGM"]
+			bpy.data.objects["Ghillie - Torso"].modifiers["Shrinkwrap"].target = bpy.data.objects["Body - FGM"]
+			bpy.data.objects["Ghillie - Pants"].modifiers["Shrinkwrap"].target = bpy.data.objects["Body - FGM"]
+			bpy.data.objects["Ghillie - Hood"].modifiers["Shrinkwrap"].target = bpy.data.objects["Body - FGM"]
+			
+		elif bpy.data.objects["Body - BGM"].hide_render == False:
+			# Hide RGM objects
+			bpy.data.objects["Body - RGM - CamoShirt"].hide_render = True
+			bpy.data.objects["Body - RGM - CamoLegs"].hide_render = True
+			# Show BGM specific ones
+			bpy.data.objects["Body - BGM - CamoShirt"].hide_render = False
+			bpy.data.objects["Body - BGM - CamoLegs"].hide_render = False
+			
+			# Modifiers
+			bpy.data.objects["Ghillie - Arms"].modifiers["Shrinkwrap"].target = bpy.data.objects["Body - BGM"]
+			bpy.data.objects["Ghillie - Torso"].modifiers["Shrinkwrap"].target = bpy.data.objects["Body - BGM"]
+			bpy.data.objects["Ghillie - Pants"].modifiers["Shrinkwrap"].target = bpy.data.objects["Body - BGM"]
+			bpy.data.objects["Ghillie - Hood"].modifiers["Shrinkwrap"].target = bpy.data.objects["Body - BGM"]
+			
+		for j in range(3,7):
 			helpers.disablePropRenderlayer(j)
+		helpers.disablePropRenderlayer(8)
+		for j in range(10,20):
+			helpers.disablePropRenderlayer(j)
+		helpers.disablePropRenderlayer(23)
+		helpers.disablePropRenderlayer(24)
+		helpers.disablePropRenderlayer(25)
 
 
 	# RENDER AWAYYY!
